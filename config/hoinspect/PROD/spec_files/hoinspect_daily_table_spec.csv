@@ -1,0 +1,4 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy|NumPartitions|Rows|Notes
+HOInspect.dbo.HO_ScoredPolDashboardcount|Y||ScoredDate|N||ID|||
+HOInspect.dbo.HO_ScoredPolicies|Y||ID|N||ID|||
+HOInspect.dbo.HOMEOWNERS_DAILY|Y||DWLOADTIME|N||SysID|||

@@ -1,0 +1,4 @@
+TABLE_NAME|COLUMN_NAME|Notes
+GAIN50.dbo.AgentLicense|LicNo|
+GAIN50.dbo.GAINName|TaxID|
+GAIN50.dbo.SACompany|TaxID|

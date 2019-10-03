@@ -1,0 +1,23 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy|NumPartitions|Rows|Note
+GAIN50.dbo.Address|Y|N|truncate|||AddID|1||
+GAIN50.dbo.AddressBook|Y|N|truncate|||RefID|1||
+GAIN50.dbo.AgencyContract|Y|N|truncate|||tbID|1||
+GAIN50.dbo.AgencyDistribution|Y|N|truncate|||RefID|1||
+GAIN50.dbo.AgencyIndividual|Y|N|truncate|||RefID|1||
+GAIN50.dbo.AgencyMergeHistory|Y|N|truncate|||RefID|1||
+GAIN50.dbo.AgencyPrimary|Y|N|truncate|||RefID|1||
+GAIN50.dbo.AgentLicense|Y|Y|truncate|||TbID|1||
+GAIN50.dbo.CodeCombiningNames|Y|N|truncate|||GTAM_Column_ID|1||
+GAIN50.dbo.CorePrimaryAgencies|Y|N|truncate|||CREATE_DATE|1||
+GAIN50.dbo.Employees|Y|N|truncate|||EmployeeNo_int|1||
+GAIN50.dbo.GAINName|Y|Y|truncate|||RefID|1||
+GAIN50.dbo.MainframeReportsCombinedControl|Y|N|truncate|||Modify_Date|1||
+GAIN50.dbo.PhoneBook|Y|N|truncate|||RefID|1||
+GAIN50.dbo.PLRetention|Y|N|truncate|||RefID|1||
+GAIN50.dbo.PSParticipants|Y|N|truncate|||AgencyRefid|1||
+GAIN50.dbo.SAEmployeeCodes|Y|N|truncate|||Employee_NO|1||
+GAIN50.dbo.SARepAssignment|Y|N|truncate|||RefID|1||
+GAIN50.dbo.SARepExceptions|Y|N|truncate|||ModifyDate|1||
+GAIN50.dbo.tblHighestTier|Y|N|truncate|||SecRefCode|1||
+GAIN50.dbo.SACompany|Y|Y|truncate|||ComID|1||
+GAIN50.dbo.SAEmployeeTypeGroups|Y|N|truncate|||EmpTypeGroup|1||

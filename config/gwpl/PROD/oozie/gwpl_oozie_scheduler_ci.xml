@@ -1,0 +1,91 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="GWPL CI Data Ingestion">
+    <start to="GWPL_INGESTION_CI_LOAD"/>
+       <join name="GWPL_STAGING_LOADS_COMPLETE" to="END"/>
+         <fork name="TRIGGER_STAGING_LOADS">
+                <path start="GWPL_STAGING_LOAD"/>
+                <path start="GWPL_SECURED_STAGING_LOAD"/>
+         </fork>
+        <action name="GWPL_INGESTION_CI_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_ci}</command>
+        <args></args>
+        </ssh>
+        <ok to="GWPL_INGESTION_DELETE_LOAD"/>
+        <error to="GWPL_INGESTION_CI_LOAD_FAILURE"/>
+        </action>
+     <action name="GWPL_INGESTION_DELETE_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_delete}</command>
+        <args></args>
+        </ssh>
+        <ok to="TRIGGER_STAGING_LOADS"/>
+        <error to="GWPL_INGESTION_DELETE_LOAD_FAILURE"/>
+    </action>
+    <action name="GWPL_STAGING_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_staging}</command>
+        <args></args>
+        </ssh>
+        <ok to="GWPL_STAGING_LOADS_COMPLETE"/>
+        <error to="GWPL_STAGING_LOAD_FAILURE"/>
+    </action>
+        <action name="GWPL_SECURED_STAGING_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_secured_staging}</command>
+        <args></args>
+        </ssh>
+        <ok to="GWPL_STAGING_LOADS_COMPLETE"/>
+        <error to="GWPL_SECURED_STAGING_LOAD_FAILURE"/>
+        </action>
+
+        <action name="GWPL_INGESTION_CI_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>GWPL PRODUCTION Daily ingestion - CI load failure notification</subject>
+        <body>GWPL PRODUCTION Daily ingestion - CI load failure notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+        </action>
+
+        <action name="GWPL_INGESTION_DELETE_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>GWPL PRODUCTION Daily ingestion - Delete Batch load failure notification</subject>
+        <body>GWPL PRODUCTION Daily ingestion - Delete Batch load failure notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+        </action>
+
+        <action name="GWPL_STAGING_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>GWPL PRODUCTION Daily - Staging load failure notification</subject>
+        <body>GWPL PRODUCTION Daily - Staging load failure notification</body>
+        </email>
+        <ok to="GWPL_STAGING_LOADS_COMPLETE"/>
+        <error to="KILL"/>
+        </action>
+
+        <action name="GWPL_SECURED_STAGING_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>GWPL PRODUCTION Daily secured staging load failure notification</subject>
+        <body>GWPL PRODUCTION Daily secured staging load failure notification</body>
+        </email>
+        <ok to="GWPL_STAGING_LOADS_COMPLETE"/>
+        <error to="KILL"/>
+        </action>
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+        <message>GWPL PRODUCTION Staging load failed while sending the failure notification </message>
+    </kill>
+    <end name="END" />
+
+</workflow-app>

@@ -1,0 +1,1116 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|Lookup Ref|HardDeleteFlag|PartitionBy|NumPartitions|Decrypt|Rows|Note
+ClaimCenter.dbo.cc_account|N|Y|UpdateTime|Y||ID||AccountNumber||
+ClaimCenter.dbo.cc_activity|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_activitydocument|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_activitypattern|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_actpat_desc_l10n|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_actpat_ssbj_l10n|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_actpat_subj_l10n|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_addnltripaccommodation|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_addnltripsegment|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_address|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_addresscorrection|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_agglimitrpt|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_aggregatelimit|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_allocatedclaimnumber|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_answer|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_answerset|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_archivefailure|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_archivefailuredetails|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_archiveworkitem|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_arraydatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_arraysizecntdd|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_assessmentcontentitem|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_assessmentitem|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_assessmentline|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_assessmentsource|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_assignableforkeydatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_assignableforkeysizecntdd|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_assignqueue|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_attr_desc_l10n|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_attr_name_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_attribute|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_attributeuser|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_authlp_desc_l10n|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_authlp_name_l10n|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_authoritylimit|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_authorityprofile|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_automatedhandler|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_autosyncworkitem|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_batchserver|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_beanversiondatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_benefitperiod|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_benefits|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_biiteminfo|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_bivalidationalert|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_bizweek_nam_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_blobcoldatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_bodypart|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_booleancoldatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_broadcastbatch|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_BudgetLine|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_building|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_bulkinvoice|Y|Y|UpdateTime|Y||ID||BankAccountNumber||
+ClaimCenter.dbo.cc_bulkinvoiceitem|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_bulkinvoiceworkitem|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_businessweek|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_businessweek_zone|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_cachestatsrollupsnap|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_cat_desc_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_cat_name_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_catastrophe|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_catastropheclaimshistory|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_catastropheperil|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_catastrophezone|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_check|Y|Y|UpdateTime|Y||ID||BankAccountNumber||
+ClaimCenter.dbo.cc_checkerworkitem|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_checkgroup|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_checkpayee|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_checkportion|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_checkrecurrence|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_checkrpt|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_checksetreserve|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_citation|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_claim|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_claimaccess|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_claimagglimitrpt|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_claimassoc|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_claimcontact|Y|Y|UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_claimcontactrole|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_claimexception|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_claiminassoc|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_claimindicator|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_claimindicatortrigger|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_claiminfo|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_claiminfoaccess|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_claimisomatchreport|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_claimmetric|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_claimmetriclimit|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_claimmetricrecalctime|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_claimrpt|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_claimsnapshot|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_claimsynchst|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_claimtext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_classcode|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_classificationcondition|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_clobcoldatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_clustermemberdata|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_concurrentempl|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_conditionfilter|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_contact|Y|Y|UpdateTime|Y||ID||HICN_Ext,LicenseNumber,TaxID||
+ClaimCenter.dbo.cc_contactaddress|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_contactcatsScore|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_contactcontact|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_contactfingerprint|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_contactinfo|N|Y|UpdateTime|Y|Y|ID||TaxID||
+ClaimCenter.dbo.cc_contactorigvalue|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_contactretireworkitem|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_contacttag|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_contribfactor|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_coverage|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_coveragelimit|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_coverageline|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_coveragelinematchdatainfo|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_coverageterms|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_credential|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_customdatadistreq|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_customddcolumns|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_customddresults|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_dashboardstats|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_databasedatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_databaseupdatestats|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_datachange|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_datadistqueryexec|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_datageninfo|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_datageninfodetail|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_dateanalysisdatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_datebinneddatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_datebinneddddatebin|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_datebinnedddvalue|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_datespandatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_dbconsistcheckqueryexec|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_dbconsistcheckrun|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_dbmsreport|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_dbperfreport|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_dbstatsworkitem|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_deductible|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_deduction|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_document|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_drugprescribed|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_dwellingroomdamage|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_dynamic_assign|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_eftdata|N|Y|UpdateTime|Y||ID||BankAccountNumber||
+ClaimCenter.dbo.cc_employmentdata|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_encryptedcolumnregistry|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_endorsement|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_evaluation|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_exchangerate|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_exchangerateset|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_expmetriclimit|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_exposure|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_exposureisomatchreport|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_exposuremetric|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_exposurerpt|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_exposuresynchst|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_exposuretext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_financialthresholdtrigger|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_forkeydatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_frptupgrade|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_genericgroupcolumndatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_genericgroupcountdatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_genericgroupdatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_geocodeworkitem|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_group|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_group_assign|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_group_name_l10n|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_groupregion|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_groupuser|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_groupuser_assign|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_groupuserworkload|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_holiday|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_holiday_nam_l10n|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_holiday_tag|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_holiday_zone|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_houranalysisdatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_icdcod_desc_i18n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_icdcode|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_IMEPerformed|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_inboundhistory|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_incident|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_IncompatibleNewExposure|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_injurydiagnosis|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_inst_comm_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_instrumentedmessage|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_instrumentedworkertask|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_instrumentedworkexecutor|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_InvalidCoverageForCause|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_InvalidCoverageForFault|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_largelossthreshold|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_litstatustypeline|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_loadcallback|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loadcallbackresult|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loadcommand|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loaddbstatisticscommand|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loadencryptchunk|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loadencrypttable|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loaderror|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loaderrorrow|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loadexclusion|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loadinsertselect|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loadintegritycheck|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loadoperation|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loadparameter|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loadparentstep|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loadrowcount|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loadstep|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_loadupdatestatisticsselect|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_locationinfo|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_LodgingProvider|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_matter|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_matterexposure|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_maxkey|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_medicalaction|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_medicalcontactstatus|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_medicaltreatment|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_message|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_messagehistory|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_metroreport|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_negotiation|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_negotiationline|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_negotiationtext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_note|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_nullablecolumndatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_official|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_officialid|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_organization|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_OrganizationZoneAdmin|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_orggroup|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_origservreq|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_otherbenefit|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_othercvgdet|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_otherinstruction|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_parameter|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_parentgroup|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_paymentreserve|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_periodpolicy|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_phonenormalizerworkitem|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_policy|Y||UpdateTime|Y||ID||AccountNumber,PolicyNumber||
+ClaimCenter.dbo.cc_policylocation|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_policylocationsummary|N|Y|UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_policylocationsummaryjoin|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_policyperiod|Y||UpdateTime|Y||ID||PolicyNumber||
+ClaimCenter.dbo.cc_policytypemetriclimits|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_privilege|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_processhistory|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_profilerconfig|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_propcontentsscheditem|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_propertyfiredamage|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_propertyitem|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_propertyowner|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_propertywaterdamage|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_purgedrootinfo|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_qchoicedesc_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_qchoicename_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_qfilter|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_qsetfilter|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_qsetname_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_qsndefans_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_qsnname_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_question|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_questionchoice|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_questionset|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_recToRecReserves|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_recurringcheck|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_ref_WC_PD_benefits|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_ref_WC_PD_WeeksAndLimits|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_ref_WC_TD|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_region|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_region_name_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_region_zone|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_reinsurancecoverage|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_reinsurancelosscause|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_reinsurancethreshold|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_relatedactivity|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_reserveline|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_reservelinewrapper|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_review|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_reviewcategoryquestionset|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_reviewcategoryscore|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_reviewqanswerset|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_reviewsyncworkitem|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_reviewtype|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_riagreement|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_riagreementgroup|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_ricoding|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_riskunit|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_ritaccount|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_ritaccountlineitem|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_ritaccounttransaction|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_ritaccttxnhist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_ritransaction|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_ritransactionset|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_role|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_role_desc_l10n|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_role_name_l10n|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_sbqsntext_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_scriptparameter|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_securityzone|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_seczone_dsc_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_seczone_nam_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_sequence|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_servicereqinstructionsvc|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_servicereqstatementdoclink|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_servicerequest|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_servicerequestchange|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_servicerequestdocumentlink|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_servicerequestinstruction|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_servicerequestmetriclimit|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_servicerequeststatement|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_servreqactinst|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_servreqltstqte|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_servreqmetric|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_servreqmsg|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_settlement|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_shemailaddress|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_shfinancialstate|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_shpreviousvalue|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_sitrigger|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_siuanswerset|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_spclstsvcparent|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_specialhandling|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_specialistservice|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_specialistsvccompinctype|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_specsvccompsvcreqkind|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_specsvcdesc_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_specsvcname_l10n|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_standardworkqueue|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_statcode|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_statuelimitationsline|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_subquestion|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_subroadverseparty|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_subrogationsummary|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_subropaymentschedule|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_SubWorkflows|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_supervisedgroup|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_superviseduser|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_superviseescache|N||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_systemparameter|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tabledatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tableparent|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tableregistry|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tableupdatestats|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tableupdatestatsstatement|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_taccount|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_taccountlineitem|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_taccounttransaction|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_taccttxnhistory|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpagglimitora|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpagglimitrpt|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpbiiteminfo|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpbulkinvoicesums|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpcheckrpt|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpcheckrptcheckgroup|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpcheckrptignorepmts|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpcheckset|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpclaimaccess|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpContactAddressLink|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpcoverageriskunitmap|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpexprptstaging|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpexptoincidentcopy|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpmixedcheckgroups|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpnewtacctjointbl|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmppipprimarydoctor|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmprejtacctcontribtxns|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpseveritytoinccopy|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpsrctargettaccounts|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpstagglimit|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpstagglimit2|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpstagingexposurerpt|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpstclaimaccess|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmpsteclaimaccess|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmptaccountcreatejoin|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmptaccountcreditdebit|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmptaccountjoin|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmptaccountlineitem2row|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmptaccountreserveline|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmptacctbalancecopy|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tmptacctcontribtxns|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_transaction|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_transactionid|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_transactionlineitem|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_transactionoffset|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_transactiononset|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_transactionset|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_transsetdocument|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_tripaccommodation|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_tripsegment|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_typecodecountdatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_typekeydatadist|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_typeofproperty|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_upgradedatamodelinfo|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_upgradedbstorageset|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_upgradedbstoragesetcolumns|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_upgradedbstoragesetresults|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_upgradeinstance|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_upgraderowcount|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_upgradeschemaversion|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_upgradetableregistry|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_upgradevtdbmsdump|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_user|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_userbackup|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_usergroupstats|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_userregion|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_userrole|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_userroleassign|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_usersettings|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_validationworkitem|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_vehicle|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_vehicleowner|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_visibilityzone|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_WCbenefitfactorDetail|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_WCBenefitParameterSet|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_wcdenialperiod|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_wclass_desc_l10n|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_wclass_name_l10n|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_wcwaitingperiod|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_workcomp|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_workflow|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_workflowlog|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_workflowstepstats|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_workflowworkitem|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_workitemset|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_workloadclassification|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cc_workqueueworkercontrol|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_workstatus|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_zone|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cc_zone_link|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.cctl_accidenttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_activity|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_activitycalendarview|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_activitycategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_activityclass|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_activityhistorytype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_activitystatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_activitysubjectsearchtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_activitytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_activityview|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_address|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_addresstype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_adjudicativedomain|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_adversepartydenialreason|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_agglimitcalccriteria|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_aggregatelimittype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_aggregatetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_alarmtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_appdedstatus_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_appraisalassigntype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_appraisalclaimoffice_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_appraisalproducttype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_approvalstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_approvedtreatment|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_archivefinalstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_archivesourcestatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_archivestate|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assessmentaction|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assessmentcontentaction|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assessmentevent|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assessmentsource|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assessmentstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assessmenttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assignclaimgroup_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assigngroupordertype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assignmentadditionaltype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assignmentfactors_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assignmentfactorstype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assignmentlosstype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assignmentruletype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assignmentsearchtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assignmentselectiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assignmentstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_assignmentsubgroup|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_authoritylimittype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_autolosscauseconv_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_automatedhandler|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_autosync|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_baggagetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_bankaccount|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_bankaccounttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_batchprocesstype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_batchprocesstypeusage|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_benefitendreasontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_bivalidationalerttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_boattype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_bodyparttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_bulkinvoiceitemstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_bulkinvoicejobtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_bulkinvoicestatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_bulkinvoicevendors_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_bulksearchdateoptions_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_bureaucauseofloss_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_businesstype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_calendarcontext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_catastrophetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_category|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ccc_appraiserassignment|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ccc_claimoffice|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ccc_driveinappointment|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ccc_impactpoints|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ccc_moirecommendations|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_cferrortype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_cfprstatuslist_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_characterset|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_checkbatching|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_checkcancelstatus_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_checkhandlinginstructions|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_checkrecurrence|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_checktype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_checkview|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_citationtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimabstractview|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimaccesstype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimanttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimassoctype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimclosedoutcometype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimgrouplines_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimindicator|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimindicatorcriterion|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claiminfocriteria|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimlifecyclestate|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimmetric|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimmetriccategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimmetriclimit|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimprogresstype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimrecentview|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimreopenedreason|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimsearchnamesearchtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimsearchtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimsecuritytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimsegment|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimsource|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimstate|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimstrategy|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimtexttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_claimtier|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_classificationcondition|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_classtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_closereopeninfo|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_cluereporttype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_cmsdataprocessstatus_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_cmssetmethod_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_collisionpoint|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_compensabilitydecision|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_componenttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_conditionfilter|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_consistencychecktype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contact|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contactapprovalstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contactbidirel|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contactchangeres|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contactclass|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contactlinkstatustype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contactmatchresulttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contactmedicareletter|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contactmedicaretype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contactrel|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contactrelcons|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contactrole|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contactrolecategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contactsearchresulttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contactsearchtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contacttagtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contentlineitemcategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_contentlineitemschedule|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_copart_auctiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_copart_cancelreason|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_copart_losstypecodes|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_copartdocumenttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_copartdocumentversioncode|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_costcategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_costtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_country|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_coverage|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_coveragebasis|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_coverageform|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_coveragesubtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_coveragetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_coveredpartytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_covterm|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_covtermmodelagg|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_covtermmodelrest|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_covtermmodelval|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_covtermpattern|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_crasheventdescription_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_crasheventstatus_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_crashsearchcategory_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_crashsearchoption_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_currency|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_customconditionparamtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_customconditionreturntype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_customconditiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_customerservicetier|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_customhistorytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_dailytranslimit_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_dashboardstattype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_datachangestatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_datadistributiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_datagenactiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_datagenstatustype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_datebindatatype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_datefieldstosearchtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_daterangechoicetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_datesearchtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_daysinweektype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_dbupdatestatsrunnertype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_deductiblestatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_deductiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_deliverymethod|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_dependenttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_detailedbodyparttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_detailedinjurytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_disabledduetoaccident|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_documentsection|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_documentsecuritytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_documentsenttoprint|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_documentstatustype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_documentsubtype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_documenttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_effdatedchangetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_employmentstatustype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_enbulkinvoiceerror|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_endorsementtype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_entitysourcetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_epayinstructionaction|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_epayinstructionstatus_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_epaymentprocessedstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_epaymentstagingstatus_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_epaymentstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_epayyn|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_errorcategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_escheatstatustype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_essentialservicetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_estdamagetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_etlstrings|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_exposureabstractview|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_exposureclosedoutcometype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_exposuremetric|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_exposuremetriclimit|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_exposureprogresstype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_exposurereopenedreason|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_exposuresecuritytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_exposurestate|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_exposuretexttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_exposuretier|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_exposuretype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_externaltooltype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_extwallmat|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_faultrating|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_feeamount_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_feecategory_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_feetype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_financialcriterion|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_financialfeedstatus_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_financialscalculationtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_financialsearchfield|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_financialthreshold|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_financialtriggercause|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_firstfinalreportedagency|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_flaggedtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_freetextclaimsearchentity|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_freetextclaimsearchtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_fretxtclmsrchnamesrchtyp|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_futuremedicalactiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_fxratemarket|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_gendertype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_geocodestatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_geographicalregion|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_groupassignmentmethod|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_grouptype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_history|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_historytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_holidaytagcode|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_howreportedtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_icdbodysystem|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_imetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_importancelevel|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_inboundhistory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_incident|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_includedaystype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_infosource|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_injuredpartyreptype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_injurytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_instructioncategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_instructiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_insuranceline|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_insurancesubline|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_internalpolicytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_isostatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_jurisdiction|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_jurisdictionalformula|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_jurisdictiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_languagetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_largelossnotificationstat|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_largelossnotificationtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ledgerside|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_legalspecialty|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_limitsindicator|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_linecategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_litigationstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_loadcommandtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_loadercallbacktimetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_loaderrortype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_loadfactortype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_loadsteptype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_lobcode|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_localetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_locationoftheft|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_lodgingprovider|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_lossarea|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_losscategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_losscause|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_lossoccured|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_losspartytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_losstype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_lostpropertytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_lostwagesbenefittype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_lotstage|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_lotstatusprocessedstate|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_majorperils|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_manageworkflowactiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_maritalstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_mastercompany_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_mattercourtdistrict|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_mattercourttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_mattermethodserved|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_matterreopenedreason|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_matterrisktype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_matterstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_mattertexttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_mattertype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_mattervenuerating|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_matterview|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_medicalactiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_medicaltreatmentstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_medicaltreatmenttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_memophrase_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_mergeconflictresolution|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_mergeconflictstrategy|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_messagedestinationstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_metricunit|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_metroagencytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_metroreportstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_metroreporttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_nameprefix|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_namesuffix|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_negotiationtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_nossnreason_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_noteblocktype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_notesecuritytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_notetopictype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_notetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_numberofclaims|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_occupancytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_officialid|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_officialidtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_officialtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_offroadvehiclestyle|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_oneincreturntranstype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_oneinctransactiontype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_onpremisestype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_orasqltuningsetcaptureopt|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_organizationtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_otherinstruction|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_otherrecoverablestatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_otherrisktype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_outcome|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ownertype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_paidontime|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_parametertype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_party_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_payeephrase_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_paymentfrequencytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_paymentledgertype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_paymentmethod|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_paymentreason_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_paymenttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_payperiodtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_percentagedriven|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_personrelationtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_phonecountrycode|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_phonetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_policyperiodtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_policyratingplan|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_policysource|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_policysourcesystem_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_policystatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_policysummaryriskunit|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_policytab|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_policytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_preferedcontactmethod_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_pricontributingfactors|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_primarycausetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_primarycolor|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_primaryphonetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_printformat|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_priority|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_productliability_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_profilerconfig|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_propertylineitemcategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_propertysubtype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_providertype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_proximitysearchstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_qsgshopstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_questionformat|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_questionsettype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_questiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_quickclaimdefault|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_radiuschoice|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_reasonforuse|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_reassignmentreason_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_recovbalreporttype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_recovclasstype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_recovcondtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_recoverycategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_recoverystatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_recurrenceday|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_recurrenceweek|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_regiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_reinsuranceflaggedstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_reinsurancetreatytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_rejectreason_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_rentalcompany_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_rentallimits_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_rentalstatus_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_rentaltranstypes|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_reportabilitytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_reportingdate|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_representativeof_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_rescontributingfactors|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_resolutiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_resourcecontext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_retroperiodtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_reviewcategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_reviewservicetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_riagreement|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_riagreementcoveragetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_riagreementstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_riarrangementtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_riskunit|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ritransaction|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ritransactionset|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_roletype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_roofmaterial|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_roomtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_rulesettype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_safeharborstatus_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_salvagedisp_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_salvagestatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_samplecolor|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_sampletheme|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_scriptparametertype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_searchcontacttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_searchobjecttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_searchresult|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_seccontributingfactors|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_selfinsuredtype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_servicereqinstructionsvc|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_servicereqinvoicestatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_servicereqmetriclimittype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_servicerequestkind|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_servicerequestmessagetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_servicerequestmetric|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_servicerequestmetriclimit|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_servicerequestoperation|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_servicerequestprogress|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_servicerequestquotestatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_servicerequeststatement|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_servicerequesttier|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_settlementspeed|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_settlemethod|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_severitytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_shapetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_shnotificationtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_siuoutcome_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_siureferraltype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_siustatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_sortbyrange|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_sourcesystem|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_specialhandling|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_specialistcommmethod|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_specialtytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_sprinklertype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_sprinkretserv|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_sqlstatementtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_startpointtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_startuppage|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_state|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_stateabbreviation|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_statutelimitationstype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_storagecategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_storagetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_stringcriterionmode|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_strmodel_type|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_subroclassification|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_subroclosedoutcome|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_subrogationstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_subrogationtype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_subrogovernmentinvolved|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_subroreferralto_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_subroschedrecoverytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_subrostrategy|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_subrovendorfeetype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_suitstatus_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_suittype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_claimassignmentevent|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_claimcalendarevent|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_claimdiagramevent|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_claimestevent_status|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_claimestimateevent|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_claimevent|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_claimextldocevent|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_claimformevent|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_claimmanjournalevent|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_claimnumbchangeevent|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_claimpaymentevent|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_claimtasevent_status|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_claimtaskevent|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_claimuserevent|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_symb_eventtypes|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_synchstate|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_systempermissiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_systemusertype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_tableupdatestatstype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_taccounttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_taxfilingstatustype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_taxstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_timezonetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_totalloss_dmgcode|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_totalloss_sellercode|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_totalloss_vehicletype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_towerswatsonstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_transaction|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_transactionlifecyclestate|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_transactionsearchview|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_transactionset|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_transactionstatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_transactionview|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_transporttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_treatmentoutcome|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_typeofproperty|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_typereservation_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ubivendor_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_underwritingcompanytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_underwritinggrouptype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_unitofdistance|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_updateop|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_upgradedbstoragesettype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_upgradeexecutiontimetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_userattributetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_userdetailassignable|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_userexperiencetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_userptotype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_userrole|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_userroleconstraint|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_vacationstatustype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_validationissue|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_validationissuetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_validationlevel|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_vehcondtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_vehicleclass|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_vehicledirection|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_vehiclelineitemcategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_vehiclemanufacturer|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_vehiclepolicystatus|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_vehiclestyle|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_vehicletype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_vendortype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_venuetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_waitingperiodtype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_watersource|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_wcbenefitfactorcategory|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_wcbenefitfactortype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_wcbodyparttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_wcdetailedbodyparttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_wcdetailedinjurytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_wcinjurytype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_wcmedicaltreatmenttype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_weathertype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_weekdays|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_witnessposition|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_workcapacity|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_workflow|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_workflowactiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_workflowactivestate|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_workflowhandler|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_workflowlogentry|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_workflowstate|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_workflowtriggerkey|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_workflowworkitem|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_workitemsetstate|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_workitemstatustype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_workloadclassification|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_yesno|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_yesnona_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_zonetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.CCtoPayload1|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_activityhistory_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_adminaudit_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_AIACode_Ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_AssignExposureRank_Ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_AssignJurisState_Ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_AssignmentGroupFilter_Ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_AssignmentGroupQueue_Ext|N||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_AssignmentRule_Ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_AssignmentRuleFactor_Ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_AssignmentRuleGroup_Ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_AssignRuleCoverage_Ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_AssignRuleVehStyle_Ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_cc_sf_bulkinvoicedata|Y|Y|ID|Y||ID||||
+ClaimCenter.dbo.ccx_cc_sf_parts|Y||ID|Y||ID||||
+ClaimCenter.dbo.ccx_ccc_assignmentstats|Y||ID|Y||ID||||
+ClaimCenter.dbo.ccx_ccc_currentdata|Y|Y|ID|Y||ID||||
+ClaimCenter.dbo.ccx_ccc_driveinappointment|N||ID|Y||ID||||
+ClaimCenter.dbo.ccx_ccc_events|Y||ID|Y||ID||||
+ClaimCenter.dbo.ccx_ccc_moiresponse|Y||ID|Y||ID||||
+ClaimCenter.dbo.ccx_CCPTransLineItemTable_Ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_ccx_Rental_Ext|Y||ID|Y||ID||||
+ClaimCenter.dbo.ccx_cfagencylist_ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_cfprdata_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_cfprdatahist_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_cfprdataresp_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_cfprerr_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_cfprvehdataresp_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_ClaimEndorsement|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_claimisomedicarepel|N|Y|UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_claimoffice|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_cluesubmissionhistory_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_CMSEligibilityData_Ext|Y|Y|UpdateTime|Y||ID||HICN||
+ClaimCenter.dbo.ccx_cmsmedicaredetails_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_cmsrepresentative_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_copart_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_copartmakecode_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_covsubtypemapping_ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_crashevent_ext|Y|Y|UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_crasheventhistory_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_crasheventinjuries_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_crasheventmoi_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_crasheventnote_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_crasheventpayld_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_dailyassignment_ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_documentrecipients_ext|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_documentsselections_ext|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_EDW_Replication_Ext|Y||ID|Y|N|ID||||
+ClaimCenter.dbo.ccx_enbulkinvoicedata_ext|Y|Y|UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_epayaccount|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_epayment|Y|Y|UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_epaymentreport_ext|Y|Y|UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_epaymentreport_ext_tmp|N|Y|UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_epaymentstaging_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_exposureisomedicarepel|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_ExposureLawFirmDetail_Ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_financialaudit_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_financiallimit_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_HistoryAddlInfo_Ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_isomedicarehistory_ext|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_ISOOverrideCodesRef_Ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_logtitle_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_lotstageupdates_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_MatterLawFirmDetail_Ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_medicare_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_medicareclaimsent_Ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_oneinctransaction_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_paymentledger_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_paymentledgerreserve_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_pncstatusfile|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_PolicyMergeRef_Ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_PorSessID_Ext|Y||ID|Y|Y|ID||||
+ClaimCenter.dbo.ccx_proquote_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_recoveryevent|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_recoveryoutstanding_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_RentalComment_Ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_rentalhistory_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_reservelargechangeact_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_strmodel_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_subrovendorfees_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_symb_appraiser_ext|Y|Y|UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_symb_documents_ext|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_symb_notifications_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_symbility_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_totalloss_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_totallosscalculation_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_totallossdates_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_totallossfinancials_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_towerswatson|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_userpto_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_delayletterstatus_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_dl_duedate_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cctl_delayletterstatusmsg_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.ccx_xact_appraiser_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_xact_notifications_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cctl_prptyapprsourceid|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_xact_claimassignmentevent|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_docdeliverymethod_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.ccx_batchdoctriggctrl_ext|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.ccx_ehiadditionalchg_ext|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.ccx_ehinote_ext|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.ccx_ehirentalmanagement_ext|Y||UpdateTime|Y|Y|ID||||
+ClaimCenter.dbo.cctl_automateddocuments_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_alternaterentaltype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehiadditionalchargeid_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehiamounttype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehiclaimtype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehifleetratelevel_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehigetlocationtarget_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehinotetype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehipartneroffices_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehiphonetype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehipickupmethod_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehirentalbusinesstype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehirentalstatus_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehireturnmethod_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehitradingpartnerid_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehivehicleclass_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_ehivehiclecondition_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.ccx_doccompliancedelmthd_ext|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_poacontrol_ext|N||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cctl_poadeliverymethod_ext|Y||Truncate and Load|TypeList||||||
+ClaimCenter.dbo.cctl_poatype_ext|Y||Truncate and Load|TypeList||||||

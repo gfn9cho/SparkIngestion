@@ -1,0 +1,7 @@
+<coordinator-app name="DMACT_MTHLY_DATA_INGESTION" frequency="${frequency}" start="${startTime}" end="${endTime}" timezone="${timezone}" xmlns="uri:oozie:coordinator:0.1">
+<action>
+<workflow>
+<app-path>${workflowPath}</app-path>
+</workflow>
+</action>
+</coordinator-app>

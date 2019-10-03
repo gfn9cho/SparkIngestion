@@ -1,0 +1,1479 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy|NumPartitions|Rows|Note
+PolicyCenter.dbo.pc_accountaccount|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_accountcontact|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_accountcontactrole|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_accountproducercode|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_accountuserroleassign|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_acctholderedge|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_acrreplacement|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_activitypattern|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_actpat_desc_l10n|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_actpat_ssbj_l10n|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_actpat_subj_l10n|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_addlinterestdetail|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_address|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_addressreplacement|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_affinitygroup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_affinitygroupjur|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_affinitygroupprodcode|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_affinitygroupproduct|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_allowedpaymentmethod|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_autonumbersequence|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_billinginvoicestream|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_calcroutinedefinition|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_calcroutineparam|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_calcroutineparamset|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_calcstepdef|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_calcstepdefarg|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_calcstepdefoperand|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_calcstepdefratefac|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_cancelrefund|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_classbasis_desc|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_classbasis_name|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_classcodebasis|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_condlookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_contact|Y|Y|UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_contactaddress|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_contactcontact|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_contacttag|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_covlookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_covsymbol|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_covsymbolgrp|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_covtermlookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_covtermoptlookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_covtermpacklookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_cpclasscode|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_credential|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_customforminference|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_defratefactors|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_document|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_effectivedatedfields|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_etlclausepattern|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_etlcovtermoption|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_etlcovtermpackage|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_etlcovtermpattern|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_etlmodifierpattern|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_etlpackterm|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_excllookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_form|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_formedgetable|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_formpat_dsc_l10n|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_formpattern|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_formpatterncovterm|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_formpatterncovtermvalue|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_formpatternjob|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_formpatternlookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_formproduct|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_formtextdata|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_glclasscode|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_group|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_group_assign|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_group_desc_i18n|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_group_name_l10n|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_groupproducercode|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_groupuser|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_groupuser_assign|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_industrycode|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_industrycodeclasscode|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_jobgroup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_jobpolicyperiod|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_jobuserroleassign|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_licensedstate|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_linkedaddress|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_losshistentry|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_minimumpremium|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_modifierlookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_mvr|Y|Y|UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_mvrconfig|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_mvrincident|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_mvrlicense|Y|Y|UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_mvrorder|Y|Y|UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_nonrenewalexplanation|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_nonrenewalexppattern|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_note|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_notificationconfig|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_offeringlookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_officialid|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_officialidvalidationinfo|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_organization|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_orggroup|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_pacost|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_palineexcl|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_pamodifier|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_parameter|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_parentgroup|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_patransaction|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_pavehmodifier|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_paymentplansummary|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_pendingaddressupd|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_pendingcontactupd|Y|Y|UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_periodanswer|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_personalautocov|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_personalvehicle|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_personalvehiclecov|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_pmlockedentity|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_pmlockedfield|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_polholddesc_l10n|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_polholdlong_l10n|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_policyaddlinsureddetail|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_policyaddress|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_policycontactrole|Y|Y|UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_policydrivermvr|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_policyexception|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_policyhold|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_policyholdjob|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_policyholdrule|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_policyholdzone|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_policyline|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_policylineanswer|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_policylocation|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_policypolicydivide|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_policyterm|Y|Y|UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_policyuserroleassign|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_prcod_desc_l10n|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_PrimaryAcctLoc|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_priorpolicy|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_prodratefactorlookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_producercode|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_producercodecurrency|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_producercoderole|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_productlookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_productmodifierlookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_questionlookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_questionsetlookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_ratebook|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_ratetable|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_ratetableargsource|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_ratetableargsourceset|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_ratetablecolumn|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_ratetabledefinition|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_ratetablematchop|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_ratetablematchopdef|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_ratingfactorlookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_reasoncodeactiontype|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_refdatelookup|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_reinsurable|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_riskclass|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_role|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_role_desc_l10n|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_role_name_l10n|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_securityzone|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_taxlocation|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_territory|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_territorycode|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_user|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_userproducercode|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_userrole|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_usersettings|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_uw_issue_ldesc|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_uw_issue_sdesc|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_uwauthoritygrant|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_uwauthorityprofile|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_uwcompany|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_uwisstype_desc|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_uwisstype_name|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pc_uwissue|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_uwissuehistory|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_uwissuetype|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_uwissueuniqueid|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_uwreferralreason|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_vehicleclasscode|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_vehicledriver|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_vehicleindustrycode|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_wcclasscode|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_wcfedliabclasscode|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_wcjurisdiction|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_wcmodifier|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_wcratefactor|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pc_wcstatecov|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pctl_acceptdecline|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_accountcontact|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_accountcontactrole|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_accountorgtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_accountpaymentmethod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_accountrelationshiptype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_accountsearchtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_accountstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_accounttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_actiontype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_activity|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_activitycategory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_activityclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_activitypatternlevel|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_activitystatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_activitytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_additionalinsuredtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_additionalinteresttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_additionalliablimit_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_additionalpropertytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_addlinterestdetail|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_address|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_addresstype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_affinitygroup_hoe_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_affinitygrouptype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_agencydstrbutiontype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_agentcommindtype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_agglimitlevel|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_aggregatelimits|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_airzonerate_bop_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_alarmcertification|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_alarmclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_alarmdescription|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_alarmgrade|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_alarmtype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_amsapti_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_animalbreed_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_animalbreed_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_animaltype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_animaltype_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_antitheft|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_antitheftdevicecl_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_antithefttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_antithefttypeky_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_approvalstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_arbitrationtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_archivefinalstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_archivemethod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_archivesourcestatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_archivestate|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_arealeased|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_arrangementtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_assignmentsearchtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_assignmentselectiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_assignmentstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_attachmentbasistype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_attributederivedflag_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_auditbusinessdayadjust|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_auditescalationprompttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_auditfrequency|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_auditintervalcomputetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_auditmethod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_auditreportdatedirection|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_auditscheduletype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_autoincrease|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_autosync|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_availability|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_availabilitytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bacost|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bajurisdictioncosttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bajurismodifier|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bamodifier|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bankaccounttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_banonownedliabcovcosttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bapolicytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_baratedordertype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_basistype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bastatecond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bastatecov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bastatecovpipcosttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bastateexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_batchprocesstype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_batchprocesstypeusage|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bidependencytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_billingmethod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_billingperiodicity|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_billingremainderallocate|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_billingtransactiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bindoption|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_blanketgrouptype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_blankettype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_blockingaction|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bodytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bopbuildingcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bopcodeaffinityprgm_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bopconstructiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bopcost|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_boplocationcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bopmodifier|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7actioncoastal_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7acvorreplacementcost|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7blanketitem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7bldgcodeeffgrade|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7bldgcodeeffgradeclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7blkttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7buildingcond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7buildingcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7buildingexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7buildingschedcovitem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7bundlecredit_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7classdescription|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7classificationcond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7classificationcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7classificationexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7classificationproperty|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7classschedcovitem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7constructiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7cost|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7doorstrength_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7egftype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7eqzone|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7exposurebasis|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7feettohydrant|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7fireprotectionclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7irpmtype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7linecond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7linecov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7lineexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7linemod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7lineschedconditem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7lineschedcovitem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7locationcond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7locationcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7locationexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7locationschedconditem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7openingprotection_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7pctowneroccupied|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7playground|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7premtype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7propertytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7protectivedeviceorserv|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7ratinggroup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7rdeckattachment_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7roofcattachment_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7roofcovering|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7roofdeckattachment_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7roofshape_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7roofwallattachment_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7servicetype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7storedfactors_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7surchargetype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7swresistance_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7windhailhabitctyref|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7windscertificate_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bp7windsrmaterial_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bpcovoccupationtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bpcreason_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bpcrecord_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bpcrecordstatus_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bpcsource_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bpctargets_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_bpctype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_breakertype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_broadlimited|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_buildersrisk|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_building|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_buildingalarmtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_buildingimprtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_buildinglimitrange|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_buildingrangetx_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_buildingsidetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_burglaralarmtype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_burglarysafeguard|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businessautocond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businessautocov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businessautoexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businessclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businessinperupproptype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businessinteruplimofins|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businesslocationtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businessownerscond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businessownerscov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businessownersexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businesssubtype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businesstype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businesstype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businesstypecategory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businessvehiclecov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_businessvehiclemodifier|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7autodealercond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7autodealercov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7autodealerexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7autonumberingkey|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7avgnoofjobsites|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7bodytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7businessuseclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7commautolinecond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7commautolinecov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7commautolineexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7cost|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7costtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7coveragetype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7disabilitybenefits|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7driverstatus_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7exposuretype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7fleetty|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7garagedealersbuildings|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7garagedealersclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7garagedealerscoveraget|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7garagedealersphysicald|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7garagekeepersratingbas|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7garageservicecond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7garageservicecov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7garageserviceexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7grgsrvsscheditem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7hiredautocostofhire|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7jurisdictioncosttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7legalentity|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7linemod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7lineschedconditem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7lineschedcovitem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7lineschedcovitemcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7modeltype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7mvrviolationtype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7namedindividualcond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7namedindividualcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7namedindividualexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7numberofdaysadvance|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7optionalnumberofdays|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7policyminprem_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7policytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7privatepassengercond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7privatepassengercov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7privatepassengerexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7privatepassengerfleet|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7privatepassengeroperat|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7privatepassengertype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7privatepassengeruse|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7privatepassscheditem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7publictransportationfl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7publictransportationra|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7publictransportationty|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7publictransportcond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7publictransportcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7publictransportexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7publictransscheditem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7radiusclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7registrykey|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7risktype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7seatingcapacity|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7sizeclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7specialtypecond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7specialtypecov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7specialtypeexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7specialtypescheditem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7specialtypesclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7specialtypesmotorcycle|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7specialtypessupplement|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7specialtypestype1|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7statecond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7statecov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7stateexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7statrecord|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7trailerhowused|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7truckcond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7truckcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7truckexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7truckfleet|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7truckradiusclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7truckscheditem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7trucksecondaryclassifi|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7vehiclecodeaffprgm_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7vehicleoperatedmiles|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7vehicletype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7vehptncuse_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7vehterritoryuse_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7vehtncuse_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ca7violationtype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_calcroutineparamname|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_calcstepcategory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_calcstepoperandcategory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_calcstepoperandtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_calcstepoperatorcategory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_calcstepoperatortype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_calcsteptype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_calculationmethod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cancellationsource|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_catastrophetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_causeofloss|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cedingsource_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_characterset|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_chargepattern|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cisinspection_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cisinspectionres_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_claimpaymentext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_claimsfreq_bop_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_claimsseverity_bop_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_claimtype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_classcodetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_classtype_bop_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_closereason_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cluecauseofloss|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cluelineofbusiness|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cluelossdetail_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cluereservedetail_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cluestatus_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coastalcountyaction_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coastalharristier1zip|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coinsurance|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_combineddriverexp|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_commercialpropertycond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_commercialpropertycov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_commercialpropertyexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_commissionindtype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_commissionoffered_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_componenttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_conditionlookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_consistencychecktype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_constructiongroup_bop_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_constructiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_constructiontype_bop_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_constructiontype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contact|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contactapprovalstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contactbidirel|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contactchangeres|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contactclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contactlinkstatustype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contactmatchresulttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contactrel|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contactrelcons|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contactsearchresulttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contactsearchtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contacttagtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contacttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contracteffectiveperiod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contractorsequipcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contractorsequipment|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contractortype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contractstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contrequippartcond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contrequippartcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_contrequippartexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coordinatebenefits|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coordinatepip|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_country|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coverageavailabilityissue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coverageavailabilitytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coverageform|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coveragelookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coveragepatternsearchtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coverageratefactor|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coveragescarating_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coveragesdfrating|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coveragesparating|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coveragesymboltype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coveredlocation_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_coveredpartytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_covtermlookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_covtermmodelagg|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_covtermmodelrest|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_covtermmodeltype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_covtermmodelval|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_covtermoptlookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_covtermpacklookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_covtermpremaddcov_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_covtermusetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cpblanketcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cpbuildingcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cpcauseofloss|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cpcost|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cplocationcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cpmodifier|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cpreportingform|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cpvaluationmethod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_creditcardissuer|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_creditcardtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_creditlevelext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_creditreportdmext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_creditreportparametersext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_creditreportserviceext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_creditscoretype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_creditstatusext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ct_windmitigationdisc_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cucost|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_culayer_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_culine_extcond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_culine_extcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_culine_extexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_culinemod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_culineschedcovitem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cupolicytype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_cuprogramtype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_currency|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_customerservicetier|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_customhistorytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_customizationvalue_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_datachangestatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_datadistributiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_datagenactiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_datagenstatustype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_datebindatatype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_datecalcunit|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_datefieldstosearchtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_daterangechoicetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_datesearchtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dayofweek|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dbupdatestatsrunnertype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_declinationactiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_deductiblebasis|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_deductiblecauseofloss|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_deductibletype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_defaultratefactorrow|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_depositfrequency|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_deppmntscheduletype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_derivedincidentattribute|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_descofoperations_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_descriptionproperty_bp7|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_designatesitesops|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dfbasecovtype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dfcovpremtype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dffeerateroutines_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dfsurchrgrateroutines_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_diagnosticratingworksheet|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_diagratingworksheetref|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_diffreason|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_disttoworkschool|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_divingboards|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dmv_ar_errorcodetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dmv_az_errorcodetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dmv_co_errorcodetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dmv_ga_errorcodetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dmv_ia_errorcodetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dmv_md_errorcodetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dmv_mo_errorcodetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dmv_ms_errorcodetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dmv_sc_errorcodetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dmv_va_errorcodetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_docdlvrystatustype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_documentcategory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_documentname|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_documentsection|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_documentsecuritytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_documentstatustype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_documenttemplatetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_documenttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_doorstrength_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_driverannualmiles_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_driverdetails_type_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_driverexclusionreason_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_driverexperience|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_drivertype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_drivingprograms|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dwelling_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dwellinganimal_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dwellingcov_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dwellinglocationtype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dwellingmodifier_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dwellingoccupancytype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dwellingoccupancytype_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dwellingratefactor_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dwellingsurchargetype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dwellingusage_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_dwellingusage_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_earthquakeconstgrp_bp7|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_earthquakezones_bop|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_eartquakezones|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_educationlevel|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_effdatedchangetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_effectivenessgrade|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_electricalexception_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_employeeclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_employeeleasingtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_employertypema|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_employmentstatustype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_emptheftblanket|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_enoeligibility_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_entitysourcetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_errorcategory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_errorcategory_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_eselosshistorytype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_esigntype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_etlclausepattern|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_etlcoveragetermpattern|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_etlcovtermopt|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_etlcovtermpack|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_etlpackageterm|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_etlstrings|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_excludedexposuretype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_exclusionlookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_existencetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_explosspaymentlimits|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_expmodstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_extendedrpttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_extentprotectiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_externaltooltype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_extrptngprodworkdatetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_factorquerystrategy|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_familyunits|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_familyunitsmultidwelling|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_familyunitsopprop|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_farmlocationtype_ho|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_faultcodeindicator_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_fedempliabact|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_fedempliabprogram|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_finalauditoption|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_financialcriterion|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_financialsearchfield|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_firelegal|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_fireprotectclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_flaggedword_bop_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_flaggedword_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_fleettype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_focusofexclusion|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_forgivenesscode|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_formassociation|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_forminferencetime|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_formsdocumentcategory_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_fortifiedtier|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_foundationtype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_foundationtypemsb_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_fuellinelocation_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_fuellinelocationtype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_fueltanklocationtype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_fulllimitedtort|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_fxratemarket|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_garagedoorstrength_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_garagetype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_gendertype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_generalliabilitycond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_generalliabilitycov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_generalliabilityexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_geocodestatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_glacttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_glcost|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_glcostsplittype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_glcostsubline|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_glcoverageformtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_gllineschcovitemcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_gllinescheduleconditem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_gllineschedulecovitem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_gllinescheduleexclitem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_glmodifier|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_glproductworktype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_glstatecosttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_gly2kcompspecdcovexcltype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_gnpsubtotaltype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_gradetype_bop_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_grossannualreceipts|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_grouptype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hazardgroup_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_heatingtype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_history|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_historytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hoassistedcovlimit|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hocovtermpremium_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hodiscounts_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hodtcrate_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hodwellingtheftbasis_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hoearthquakerate_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hoexteriorwall_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hoextwallrating_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hofeerateroutines_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hofeetype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hohomestyle_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_holidaytagcode|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_holocation_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_holossappliedto_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_holossperils_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_holosstiers_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_homeownerscost_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_homeownerslinecond_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_homeownerslinecov_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_homeownerslineexcl_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_homeownersmodifier_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_homeownersratefactor_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hoperiltype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hopolicytype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_horatingtype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_horooftyperating_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hosurchrgrateroutines_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hoterritoryrelrate_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_hovaluationmethod_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_howatercraft_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_howatercraftboattype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_howatercraftcov_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_howatercraftcovrditem_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_howatercraftdock_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_howatercraftfueltype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_howatercraftlaidup_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_howatercraftmodifier_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_howatercraftpoweredby_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_howatercraftpremtype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_howatercraftratefact_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_howatercraftrateterr_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_howfaccesoryfueltype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_howfaccessorypower_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ibhscertificatetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ibhsfortifiedfornc_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ibhsmitigationnc_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_imaccountsreccov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_imaccountsreceivable|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_imaccountsrecpartcond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_imaccountsrecpartcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_imaccountsrecpartexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_imcost|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_imcoveragepart|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_imexcludedaccount|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_immunitytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_impacttestcaseprogress|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_impacttestcasestatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_impacttestingjobprogress|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_impacttestingprepresult|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_impacttestingrunresult|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_imsign|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_imsigncov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_inboundhistory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_incidentcategory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_incidentlimit|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_includedaystype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_inclusion|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_increasedlimit_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_industryappetite|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_industrycodetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_industrytype_bop_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_inflationguard|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_inspectionmodelresult_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_inspectionreturntype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_inspectiontype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_installedpolicyline|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_interesttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_intrainterstateusage|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_invoicedeliverymethod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_iso_bop_classcode_clsa|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_issueseverity|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_job|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_jobdatetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_jobgroup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_jobtotemplatemapext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_jurisdiction|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_jurisdictiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_languagetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ledgerside|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_legacystatus_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_legalclassification|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_lengthoflease|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_lettertype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_liabilityact|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_licensetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_liquorclassgrade_bop|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_listedreasons|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_loadcommandtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_loadercallbacktimetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_loaderrortype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_loadfactortype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_loadsteptype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_lobfieldvisibility|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_lobtypelist|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_localetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_locationlimit_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_locationnamedinsured|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_losscause|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_lossentrycause|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_lossentrystatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_losshistorytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_losshistorytype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_losspaymentlimits|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_maemployertype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_manageworkflowactiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_maritalstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_mergeconflictresolution|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_mergeconflictstrategy|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_meritratingcredittype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_meritratingdebittype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_messagedestinationstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_messagesearchstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_minesubsexistence_bop|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_minesubsidenceexistence|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_miningcoverage|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_misccontacttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_modifierdatatype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_modifierlookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_moneysecuritytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_months|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_multidiscpolicytypes_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_multipolicydiscratefactor|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_mvr|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_mvrcategory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_mvrincident|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_mvrincidenttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_mvrinvalidlicstatus_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_mvrlicense|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_mvrorder|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_mvrrecordtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_mvrresponse|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_mvrstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_naicscodeaffprgm_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_nameprefix|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_namesuffix|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ncpolicystatus_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_nonbillableamount_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_nonrenewalcode|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_noofchildren|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_noofmortgages|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_noofresidents|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_notesecuritytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_notetopictype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_notetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_noticedelivery|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_notificationactiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_notificationcategory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_numberofaccidents|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_numberofamilyunits_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_numberoffullbaths_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_numberoffullbathsmsb_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_numberofhalfbathmsb_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_numberofhalfbaths_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_numberofstories_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_numunits_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_occupationtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_offeringlookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_officialid|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_officialidrequiredtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_officialidscope|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_officialidtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_oiltanklocation_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_oldconstructiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_openingprotection_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_orasqltuningsetcaptureopt|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_organizationtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_otherstates|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_overridesourcecategory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_overridesourcetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_packagerisk|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pacost|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_padriverdiscounttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_paemployeenamedownertype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pamodifier|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pamultipolicydiscount|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_panonnamedownertype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_papassiverestraint_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_papipcovcosttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_papolicydiscountrating|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_parametertype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_passiverestrainttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pastreetsmartstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pavehiclemodifier|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pavehicleratingtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_payablebasistype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_paymentmethod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_paymenttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_payperiodtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pc10_bop_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pcreminderstatus_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_percentbytens|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_percentduplicated|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_percentoccupied|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_personalautocond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_personalautocov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_personalautoexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_personalpropertytype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_personalvehiclecov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_personorg|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_phonecountrycode|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_phonetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pipcovered|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_piphousehold|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pipnjagglimit|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pipworklossexclusion|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_plumbingtype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_policycontactrole|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_policyfeetype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_policyformtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_policyfxrate|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_policyline|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_policyperiodclonestatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_policyperiodstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_policytermarchivestate|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_prerenewaldirection|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_primarycolor|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_primarycoverage|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_primaryphonetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_printformat|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_priorcarrier_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_priorinsurancerequired|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_priority|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_priorlossext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_priorpolicy|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_prodratebooklist_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_producerchangesource_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_producerstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_producerstatususe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_productaccounttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_productlist_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_productlookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_productmodifier|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_productmodifierlookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_productratefactorlookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_productselectionreason|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_productselectionstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_producttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_productworkdatetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_profilerconfig|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_propertyageupgrade_bop|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_prorationmethod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_proximitysearchstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pup_ulvehiclecovlimit_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pup_ulwc_covlimit_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupanimal_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupannualreceiptstype_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupbusactformopt_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupbusinessclass_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupbusinessform_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupbusinesstype_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupcost_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupdwelling_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupemplposition_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupempltype_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupexcesslayer_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupexposure_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupinfraction_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupinfractiontype_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_puplinecond_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_puplinecov_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_puplineexcl_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_puplinemodifier_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_puplocationtype_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_puppoweredby_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupratingstep_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_puprelationship_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupterritory_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_puptransportoper_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupulpolicytype_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupulwatercraftcovlmt_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupvehicletype_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_pupwatercrafttype_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_purgestatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_questionformat|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_questionlookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_questionpostonchange|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_questionsetlookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_questionsettype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_questiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_quoteroundingmode|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_quotetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_radioactivecoverage|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_radiuscode|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_rateamounttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ratebookgrouplist_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ratebookjurisdiction_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ratebookstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_rateconversiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_rateengineparameter|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ratefactorlookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ratefactorrow|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ratefactortype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ratemethod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ratesubtotaltype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ratetablecolumndisplay|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ratetabledatatype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ratetableerrortype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ratetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ratingstyle|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ravehsymbolcode|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_rbpolicytype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_reasoncode|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_reasondescription_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_receptacletype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_reconcileddata_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_refdatetypelookup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_referencedatebytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_referencedatetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_regiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_reinstatecode|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_reinsurable|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_relationship|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_relationshiptoinsured|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_relationshiptoprimary|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_renewalcode|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_residencetype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_residencetype_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_residencetype_pup_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_resourcecontext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_reviewcategory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_reviewservicetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_revisiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_rewritetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_riagreement|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_riattachmentinclusion|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_riattachmentinclusiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ricedingworkitem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ricoveragegroup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ricoveragegrouptype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_rieffdatedstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ripolicyattachment|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_rirecalcreason|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ririsk|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_roletype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_roofcoverattachment_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_roofdeckattachment_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_roofingmaterial_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_roofshapetype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_rooftowallconnection_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_rooftype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_roost_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_roundingmodetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_roundingscaletype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_rowuniformitystatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_rpsdtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_rqithresholdtype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_rulesettype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_sa_smstemplateid|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_saempdiscounttype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_safedoortype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_safeguards|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_safelabel|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_safetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_safetypremiumcredittype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_saleslead_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_salesleadvendor_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_samplea|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_sampleb|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_samplecolor|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_sampledataset|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_sampledatasetcategory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_sampletheme|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_sbcovpackages|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_scheduleditem_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_scheduletype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_scoretype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_scriptparametertype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_searchobjecttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_searchresult|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_secondarywaterresist_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_segment|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_signconstruction|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_signtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_smallbusinesstype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_smarthometypes_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_sortbyrange|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_sourceid_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_specialcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_specialtytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_specifiedcauseofloss|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_spoilagetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_sprinklered|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_sprinklersystemtype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_sqlstatementtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_startpointtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_startuppage|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_state|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_stateabbreviation|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_stateautocompanies_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_stopgap|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_stringcriterionmode|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_swimmingpools|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_swimmingpooltype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_swimmingpooltype_pup|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_swimmingpooltype_pup_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_synchstate|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_systempermissiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_systemusertype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_tableupdatestatstype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_taxfilingstatustype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_taxstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_teamstatsrecordtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_teamstatstype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_telematicsstatus_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_templatedescriptorext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_termtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_territorycode|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_territorydefinition|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_terrorismcoverage_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_testonlytype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_tier|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_timezonetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_tiv_bop_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_trailergaragingzone|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_trainingclasstype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_typeofsupplementalrpting|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ubidevice_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ubivendor_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ulcarrier_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ulcov_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ulcovtermusetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ulcovtype_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ulcupolicy_extcond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ulcupolicy_extcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ulcupolicy_extexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ulcupolicy_extmod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ulgradetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_ulpolicy_pue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_umuimstacking_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_umuimstackingoutcome_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_umuimvehcountrg_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_unitofdistance|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_updateop|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_upgradedbstoragesettype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_upgradeexecutiontimetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_usagetype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_userattributetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_userexperiencetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_userrole|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_userroleconstraint|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_usertype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_usertypecategory|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_uwapprovaldurationtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_uwcompanycode|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_uwcompanystatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_uwissueblockingpoint|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_uwissuecheckingset|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_uwissuehistorystatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_uwreferralreasonstatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_uwvalueassignmenttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vacationstatustype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_validationissue|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_validationissuetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_validationlevel|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_valuationmethod|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_valuecomparator|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_valueformattertype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_valueprovider|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vavehicledriver_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vehicleaddedbytype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vehiclecompatibility_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vehicledriver|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vehicleemployeeusage|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vehiclehistoryscore_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vehiclehistoryscorestatus|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vehicleindustry|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vehicleindustryuse|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vehicleoperator_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vehicleownership|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vehicleprimaryuse|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vehiclesizeclass|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vehicletype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vehicleusedtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vendor_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_vendortype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_venuetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_violationtype_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_voluntarycomp|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_waiverofsubrogationtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_watchpersonsupervision|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_wcclasscodefederaldomains|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_wccost|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_wccoveredemployeebase|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_wcdiscounts_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_wcjurisdictioncosttype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_wclaborcontactdetail|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_wcmodifier|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_wcparticipatingplanid|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_wcratestepaction|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_wcstatecov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_weekdays|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_wh_notsel_buildlim_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_whdeductrange_bop_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_windhail_bop|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_windhailconstgrp_bop_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_windhailded_bop_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_windhailtexascounties_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_windrating|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_windresistanceclass_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_windtype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_wiringtype_hoe|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workcapacity|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workerkind|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workerscompcond|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workerscompcov|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workerscompexcl|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workflow|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workflowactiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workflowactivestate|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workflowhandler|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workflowlogentry|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workflowstate|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workflowtriggerkey|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workflowworkitem|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workitemsetstate|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_workitemstatustype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_worklossexclstatus_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_xcuhazardsallowed|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_xcusite|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_y2kexclusiontype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_yesno_ext|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_zone|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pctl_zonetype|Y||Truncate and Load|TypeList|| |||
+PolicyCenter.dbo.pcx_accountanswer|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_accsalesfunnelquestion|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_additionalinsuredcov|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_addldrvrdatactrl_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_adminaudit_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_affinitygroupstat|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_amsapti_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_assistedCareLiving|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_autorenewtermagents_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_bodystylecodes|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_BPCBatch_Ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_BPCRecord_Ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_buildingAddAndAlteration|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_businessPursuits|Y|Y|UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_cancelcutoffdays_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_cancellationleadtimes_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_carecustodyctrl|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_carrier_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_CISInspectionRes_Ext|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_cisrequestcount|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_claimpaymentext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_cluelossdetail|Y|Y|ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_ClueLossTypes_Ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_cluepayoutreservedetail|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_cluestatusdetail|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_coastalcounties_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_coveragetouwqmap_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_covtermpremaddcov_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_covtermpremium_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_CreditInfoExt|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_creditranges_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_CreditReportExt|Y|Y|UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_CreditReportParametersExt|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_csremail_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_ctcoastalcounties_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_cuvehcnthazardgrade_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_deliquency_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_dhistatelookup_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_dwelling_hoe|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_dwellingAnimals_hoe|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_dwellingcov_hoe|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_dwellingmodifier_hoe|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_ears_recondata_ext|Y|Y|UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_eartquakezones|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_edeliverychargescount_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_edeliveryoptoutcateg_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_edsemail_ext|Y|Y|UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_edw_replication_ext|Y||Repl_UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_enoeligibility_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_esebillinginput_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_eselossinput_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_esepolicyinput_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_esescorereasoninfo_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_esignature_Ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_ESignAuthDetails|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_esigncancelThresholds_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_farmerPersonalLibDetails|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_flaggedword_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_formpatternclausecode|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_FormsDocumentCategory_Ext|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_FormsDocumentLookup_Ext|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_ho_alabamacountiesded_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_ho_brushfirezipcodes_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_ho_coastalcounties_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_ho_coastalcounty_ded_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_ho_rqithreshold_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_ho_texascountiesded_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_ho_texasfiredistrict_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_hobasefactorrr_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_hoclaimslossesrecon_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_hocluelossesrecon_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_hocovtermpremium_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_hodiscounts_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_hodtcrate_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_hoearthquakerate_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_hoexteriorwalldesc_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_hoexteriorwallmsb_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_hofoundationtypemsb_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_hogaragetype_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_hogaragetypemsb_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_HOInspectionModelRes_Ext|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_holineexcl_hoe|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_holocation_hoe|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_homeBusinessInsurance|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_homeownerscost_hoe|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_homeownerslinecov_hoe|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_homodifier_hoe|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_honumoffullbathmsb_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_honumofhalfbathmsb_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_horeconciliationdata_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_horoofcovertype_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_horoofcovertypemsb_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_horoofshapetype_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_hostoriestype_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_hoterritoryrelrate_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_hotransaction_hoe|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_howatercraft_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_howatercraftaccess_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_howatercraftcov_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_industrycode_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_industrycodeproptypeext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_inflationfactor_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_integrationdatastore|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_isotaxcoderesponse_ext|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_JobToTemplateMapExt|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_legaltext_ext|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_lexisnexismodeldb|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_lossAssessmentEQ|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_lossassessuppaddloc|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_losshistoryentryautoext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_mincovtermlimit_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_minesubsidenceexistence|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_msbceusers_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_multilinediscdetail_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_multipolicyratetbl|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_naicsdetails|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_nonbillableamount_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_NoticeDelivery|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_npcancelnoticeExt|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_npcanceltransclsedays_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_npmortgageestrtcancel_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_orderexclusionlookup_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_otherMembers|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_pa_rqithreshold_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_paautoreconciliation_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_paclaimcovmap_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_PAClassCodeSys_Ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_paforgivchargatt_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_pagwattributes_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_palossdata_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_papriorlimitgroup_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_pareconcilestaterules_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_pasdipcode_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_pavehiclerisksymbol|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_policycontactroledbarole|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_policyfee_ext|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_policyothnamedinsdetails|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_policyreviewdisplayfields|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_PorSessID_Ext|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_portalaccount_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_portalpolicy_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_portalrecentlyviewed_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_PPCreditInfoExt|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_pptvehicledriverref_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_prerenewalLeadtime|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_priorlossext|Y|Y|UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_priorpolicylien_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_priorpolicyvehcile_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_prodratebooklist_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_productlist_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_productlob_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_pubvehicledriverref_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_pupanimal_pue|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_pupcost_pue|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_pupdwelling_pue|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_pupexposure_pue|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_puplinecov_pue|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_puplineexcl_pue|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_pupmodifier_pue|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_puptransaction_pue|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_puptransportoper_pue|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_pupvehmvrdatachk_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_ratebooklist_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_reconcileddata_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_reconstructioncost|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_renewalbindoptions_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_renewalleadtime_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_renewaltiershift_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_residentEmp|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_roofshape_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_roost_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_sa_legacycarriers_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_sa_smsentity|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_sa_smstemplateattribute|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_sa_smstemplates|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_saemail_ext|Y||ID|Y|ID|ID|||
+PolicyCenter.dbo.pcx_saleslead_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_sccostedge|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_schedulecancellation_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_scheduleditem_hoe|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_scheduledpersonalproperty|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_secseasresidenceloc|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_secseasresidencelocopprop|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_spcvehicledriverref_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_specialexclusiontable_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_stateautopriorcarrier_ext|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_synccoverage_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_taxcodelookupresponse_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_telematics_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_termsandconditions_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_terrorismcoverage_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_terrorismend_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_thirdpartyorgs_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_truckvehicledriverref_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_uladditionalinterests_ext|Y|Y|UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_ulcov_pue|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_ulpolicy_pue|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_umuimstacking_ex|Y||ID|Y||ID|||
+PolicyCenter.dbo.pcx_uwactassigndetail_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_vehtermpremium_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_vincorrectionnoticedata|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_wcdiscounts_ext|Y||UpdateTime|Y|ID|ID|||
+PolicyCenter.dbo.pcx_wh_aop_notsel_ext|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pcx_windhailcoastcounties_ext|Y||ID|Y||ID|||

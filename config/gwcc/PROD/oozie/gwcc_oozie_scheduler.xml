@@ -1,0 +1,20 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="GWCC Data Ingestion">
+    <start to="GWCC_INGESTION"/>
+    
+    <action name="GWCC_INGESTION">
+	<ssh xmlns="uri:oozie:ssh-action:0.1">
+	<host>${focusNodeLogin}</host>
+	<command>${spark_run_script_path}</command>
+	<args></args>
+	</ssh>
+	<ok to="END"/>
+	<error to="KILL"/>
+    </action>
+
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+        <message>Job failed for GWCC Tables , error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="END" />
+</workflow-app>

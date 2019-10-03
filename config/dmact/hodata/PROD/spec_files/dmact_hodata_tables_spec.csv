@@ -1,0 +1,2 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy|NumPartitions|Rows|Note
+DMACT.dbo.HODATA|Y|N|LoadDate|||DataMonth|163||

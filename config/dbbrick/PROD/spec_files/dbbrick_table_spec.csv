@@ -1,0 +1,2 @@
+DB/TABLE|Send to Lake|Has PII|CDC|Lookup Column Ref|HardDeleteFlag|partitionBy|numPartitions|Rows|Note
+DB_Brick.dbo.DBBrickWork|Y|N|truncate|||NumInq|||

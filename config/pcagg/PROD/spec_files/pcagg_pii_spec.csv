@@ -1,0 +1,103 @@
+TABLE_NAME|COLUMN_NAME|Notes
+policycenteragg.dbo.pc_commercialdriver|FirstName|Not ingested
+policycenteragg.dbo.pc_commercialdriver|FirstNameDenorm|Not ingested
+policycenteragg.dbo.pc_commercialdriver|FirstNameKanji|Not ingested
+policycenteragg.dbo.pc_commercialdriver|LastName|Not ingested
+policycenteragg.dbo.pc_commercialdriver|LastNameDenorm|Not ingested
+policycenteragg.dbo.pc_commercialdriver|LastNameKanji|Not ingested
+policycenteragg.dbo.pc_commercialdriver|LicenseNumber|Not ingested
+policycenteragg.dbo.pc_contact|FirstName|
+policycenteragg.dbo.pc_contact|FirstNameDenorm|
+policycenteragg.dbo.pc_contact|FirstNameKanji|
+policycenteragg.dbo.pc_contact|FormerName|
+policycenteragg.dbo.pc_contact|LastName|
+policycenteragg.dbo.pc_contact|LastNameDenorm|
+policycenteragg.dbo.pc_contact|LastNameKanji|
+policycenteragg.dbo.pc_contact|LicenseNumber|
+policycenteragg.dbo.pc_contact|MiddleName|
+policycenteragg.dbo.pc_contact|TaxID|
+policycenteragg.dbo.pc_inclusionperson|FirstName|Not ingested
+policycenteragg.dbo.pc_inclusionperson|FirstName|Not ingested
+policycenteragg.dbo.pc_inclusionperson|FirstNameDenorm|Not ingested
+policycenteragg.dbo.pc_inclusionperson|FirstNameDenorm|Not ingested
+policycenteragg.dbo.pc_inclusionperson|LastName|Not ingested
+policycenteragg.dbo.pc_inclusionperson|LastName|Not ingested
+policycenteragg.dbo.pc_inclusionperson|LastNameDenorm|Not ingested
+policycenteragg.dbo.pc_inclusionperson|LastNameDenorm|Not ingested
+policycenteragg.dbo.pc_job|NameofExcludedDriver|
+policycenteragg.dbo.pc_job|PrimaryInsuredName|
+policycenteragg.dbo.pc_job|PrimaryInsuredNameDenorm|
+policycenteragg.dbo.pc_mvr|FirstName|
+policycenteragg.dbo.pc_mvr|FirstNameDenorm|
+policycenteragg.dbo.pc_mvr|LastName|
+policycenteragg.dbo.pc_mvr|LastNameDenorm|
+policycenteragg.dbo.pc_mvr|MiddleName|
+policycenteragg.dbo.pc_mvr|SSN|
+policycenteragg.dbo.pc_mvrlicense|LicenseNumber|
+policycenteragg.dbo.pc_mvrorder|FirstNameSC|
+policycenteragg.dbo.pc_mvrorder|FirstNameSCDenorm|
+policycenteragg.dbo.pc_mvrorder|LastNameSC|
+policycenteragg.dbo.pc_mvrorder|LastNameSCDenorm|
+policycenteragg.dbo.pc_mvrorder|LicenseNumberSC|
+policycenteragg.dbo.pc_mvrorder|MiddleNameSC|
+policycenteragg.dbo.pc_pendingcontactupd|FirstName|
+policycenteragg.dbo.pc_pendingcontactupd|FirstNameKanji|
+policycenteragg.dbo.pc_pendingcontactupd|LastName|
+policycenteragg.dbo.pc_pendingcontactupd|LastNameKanji|
+policycenteragg.dbo.pc_pendingcontactupd|LicenseNumber|
+policycenteragg.dbo.pc_pendingcontactupd|MiddleName|
+policycenteragg.dbo.pc_policycontactrole|DriversLicenseNum|
+policycenteragg.dbo.pc_policycontactrole|FirstNameInternal|
+policycenteragg.dbo.pc_policycontactrole|FirstNameInternalDenorm|
+policycenteragg.dbo.pc_policycontactrole|FirstNameKanjiInternal|
+policycenteragg.dbo.pc_policycontactrole|FirstNameKanjiInternalDenorm|
+policycenteragg.dbo.pc_policycontactrole|LastNameInternal|
+policycenteragg.dbo.pc_policycontactrole|LastNameInternalDenorm|
+policycenteragg.dbo.pc_policycontactrole|LastNameKanjiInternal|
+policycenteragg.dbo.pc_policycontactrole|LastNameKanjiInternalDenorm|
+policycenteragg.dbo.pc_policycontactrole|LicenseNumberInternal|
+policycenteragg.dbo.pc_policycontactrole|MiddleName_Ext|
+policycenteragg.dbo.pc_policycontactrole|MiddleNameInternal|
+policycenteragg.dbo.pc_policycontactrole|PrintName_ExtInternal|
+policycenteragg.dbo.pc_policycontactrole|PrintName_ExtInternalDenorm|
+policycenteragg.dbo.pc_policyperiod|PrimaryInsuredName|
+policycenteragg.dbo.pc_policyperiod|PrimaryInsuredNameDenorm|
+policycenteragg.dbo.pc_policyterm|NameofExcludedDriver|
+policycenteragg.dbo.pcx_businessPursuits|insuredName|
+policycenteragg.dbo.pcx_ca7commautodriver|FirstName|
+policycenteragg.dbo.pcx_ca7commautodriver|FirstNameDenorm|
+policycenteragg.dbo.pcx_ca7commautodriver|LastName|
+policycenteragg.dbo.pcx_ca7commautodriver|LastNameDenorm|
+policycenteragg.dbo.pcx_ca7commautodriver|LicenseNumber|
+policycenteragg.dbo.pcx_ceemployeeagent_ext|FirstName|Not ingested
+policycenteragg.dbo.pcx_ceemployeeagent_ext|LastName|Not ingested
+policycenteragg.dbo.pcx_cluelossdetail|ClaimantName|
+policycenteragg.dbo.pcx_cluelossdetail|PolicyHolderName|
+policycenteragg.dbo.pcx_CreditReportExt|AlternateFirstName|
+policycenteragg.dbo.pcx_CreditReportExt|AlternateLastName|
+policycenteragg.dbo.pcx_CreditReportExt|AlternateMiddleName|
+policycenteragg.dbo.pcx_CreditReportExt|FirstName|
+policycenteragg.dbo.pcx_CreditReportExt|LastName|
+policycenteragg.dbo.pcx_CreditReportExt|MiddleName|
+policycenteragg.dbo.pcx_ears|FirstName|Not ingested
+policycenteragg.dbo.pcx_ears|LastName|Not ingested
+policycenteragg.dbo.pcx_ears|LicenseNumber|Not ingested
+policycenteragg.dbo.pcx_ears|MiddleName|Not ingested
+policycenteragg.dbo.pcx_ears_recondata_ext|PolicyDriverName|
+policycenteragg.dbo.pcx_edsemail_ext|FirstName|
+policycenteragg.dbo.pcx_edsemail_ext|LastName|
+policycenteragg.dbo.pcx_priorlossext|LicenseNum|
+policycenteragg.dbo.pcx_priorlossext|PolicyHolderName|
+policycenteragg.dbo.pcx_sr2226filinginfo|LicenseNumber|Not ingested
+policycenteragg.dbo.pcx_TemplateDescriptorExt|BOClassName|Not ingested
+policycenteragg.dbo.pcx_uladditionalinterests_ext|FirstName_Ext|
+policycenteragg.dbo.pcx_uladditionalinterests_ext|LastName_Ext|
+policycenteragg.dbo.pcx_uladditionalinterests_ext|LicenseNumber_Ext|
+policycenteragg.dbo.pcx_uladditionalinterests_ext|MiddleName_Ext|
+policycenteragg.dbo.pcx_uladditionalinterests_ext|PolicyAddIntName_Ext|
+policycenteragg.dbo.pcx_uladditionalinterests_ext|SSNOfficialID_Ext|
+policycenteragg.dbo.pcx_ulcuautodriver_ext|FirstName|
+policycenteragg.dbo.pcx_ulcuautodriver_ext|FirstNameDenorm|
+policycenteragg.dbo.pcx_ulcuautodriver_ext|LastName|
+policycenteragg.dbo.pcx_ulcuautodriver_ext|LastNameDenorm|
+policycenteragg.dbo.pcx_ulcuautodriver_ext|LicenseNumber|

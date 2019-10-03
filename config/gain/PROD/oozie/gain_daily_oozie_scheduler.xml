@@ -1,0 +1,19 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="Gain Daily Data Ingestion">
+    <start to="GAIN_INGESTION"/>    
+    <action name="GAIN_INGESTION">
+	<ssh xmlns="uri:oozie:ssh-action:0.1">
+	<host>${focusNodeLogin}</host>
+	<command>${spark_run_script_path}</command>
+	<args></args>
+	</ssh>
+	<ok to="END"/>
+	<error to="KILL"/>
+    </action>
+
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+        <message>Job failed for GAIN Tables , error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="END" />
+</workflow-app>

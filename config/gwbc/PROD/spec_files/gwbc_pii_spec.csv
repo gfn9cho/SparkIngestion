@@ -1,0 +1,9 @@
+TABLE_NAME|COLUMN_NAME|Notes
+BillingCenter.dbo.bcx_Chaseremitlogging_ext|AccountID
+BillingCenter.dbo.bc_usersettings|LastAccounts
+BillingCenter.dbo.bc_contact|DateOfBirth
+BillingCenter.dbo.bc_contact|LicenseNumber
+BillingCenter.dbo.bc_contact|TaxID
+BillingCenter.dbo.bc_account|AccountName
+BillingCenter.dbo.bc_account|AccountNameDenorm
+BillingCenter.dbo.bc_account|AccountNameKanji

@@ -1,0 +1,40 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="RAVEHICLE Mthly DI Data Ingestion">
+    <start to="RAVEHICLE_MTHLY_DI_INGESTION"/>
+
+    <action name="RAVEHICLE_MTHLY_DI_INGESTION">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path}</command>
+        <args></args>
+        </ssh>
+        <ok to="RAVEHICLE_MTHLY_DI_INGESTION_LOAD_SUCCESS"/>
+        <error to="RAVEHICLE_MTHLY_DI_INGESTION_LOAD_FAILURE"/>
+    </action>
+
+    <action name="RAVEHICLE_MTHLY_DI_INGESTION_LOAD_SUCCESS">
+        <email xmlns="uri:oozie:email-action:0.1">
+		    <to>${emailToAddress}</to>
+            <subject>RAVehicle mthly DI ingestion load success notification (${mode})</subject>
+            <body>RAVehicle mthly DI ${mode} ingestion load is completed</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+    </action>
+
+    <action name="RAVEHICLE_MTHLY_DI_INGESTION_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+		    <to>${emailToAddress}</to>
+            <subject>RAVehicle mthly DI ingestion load failure notification (${mode})</subject>
+            <body>RAVehicle mthly DI ${mode} ingestion load failure notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+    </action>
+
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+        <message>RAVehicle mthly DI ingestion load failed while sending the failure notification </message>
+    </kill>
+    <end name="END" />
+</workflow-app>

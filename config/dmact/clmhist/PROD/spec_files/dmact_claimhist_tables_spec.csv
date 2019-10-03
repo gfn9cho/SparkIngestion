@@ -1,0 +1,2 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy|NumPartitions|Rows|Note
+DMACT.dbo.AM_ClaimsHist|Y|N|dwLoadTime|||AccountDate|5||

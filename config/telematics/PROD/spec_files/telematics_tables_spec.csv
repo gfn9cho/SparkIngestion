@@ -1,0 +1,12 @@
+DB/TABLE|Send to Lake|Has PII (Y/N)|CDC|Lookup Column Ref|HardDeleteFlag|PartitionBY|numPartitions|Rows (10/17)|Note
+telematics.dbo.Anomalies|Y|N|loadtime|||ID|10|13|
+telematics.dbo.DeviceStatus|Y|N|rowid|||rowid|10|3353|
+telematics.dbo.DriveAbility|Y|N|ID|||ID|10|1748|
+telematics.dbo.DriveAbilityBatch|Y|N|BatchEffDate|||BatchID|10|1|
+telematics.dbo.OctoDeviceStatus|Y|Y|coalesce(ProcessedByNotActivatedBatchOn,DateAdded)|||ID|10|24|
+telematics.dbo.PolicyDriveAbility|Y|N|ID|||ID|10|4|
+telematics.dbo.PolicyDriveAbilityBatch|Y|N|BatchEffDate|||BatchID|10|1|
+telematics.dbo.RoostTransactions|Y|Y|ID|||ID|10|527|
+telematics.dbo.TelematicsHistory|Y|N|ID|||ID|10|9465|
+telematics.dbo.Transactions|Y|Y|rowid|||rowid|10|70126|
+telematics.dbo.VehicleCompatibilityList|Y|N|id|||id|10|8337|

@@ -1,0 +1,5 @@
+Table|Source Column|Ref Table Column|Typelist (per Dictionary)|Harmonized Column Names|Attributes from Lookup Table
+SABIR_ReportingSystem.dbo.POLICY_INFORCE_DAILY|PIF_SYMBOL|Code|SABIR_METAACT.dbo.Ref_AM_POLICY_SYMBOL|POLICY_SYMBOL_DESC|Description
+SABIR_ReportingSystem.dbo.POLICY_INFORCE_DAILY|PIF_LINE_BUSINESS|Code|SABIR_METAACT.dbo.Ref_AM_LINE_OF_BUSIENSS|LOB_DESC|Description
+SABIR_ReportingSystem.dbo.POLICY_INFORCE_DAILY|PIF_MASTER_CO_NUMBER|Code|SABIR_METAACT.dbo.Ref_AM_MCO|MCO_DESC / MCO_EASCd / MCO_PRODUCT / MCO_PLATFORM|Description / EASCode / Product / OriginalPlatform
+SABIR_ReportingSystem.dbo.POLICY_INFORCE_DAILY|PIF_RISK_STATE_PROV|Code|SABIR_METAACT.dbo.Ref_AM_RISK_STATE|RISK_STATE_DESC / RISK_STATE_ABBRV|Description / StateAbbrev

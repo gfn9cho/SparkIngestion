@@ -1,0 +1,20 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="V6PIF Daily Data Ingestion">
+    <start to="V6PIF_INGESTION"/>
+    
+    <action name="V6PIF_INGESTION">
+	<ssh xmlns="uri:oozie:ssh-action:0.1">
+	<host>${focusNodeLogin}</host>
+	<command>${spark_run_script_path}</command>
+	<args></args>
+	</ssh>
+	<ok to="END"/>
+	<error to="KILL"/>
+    </action>
+
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+        <message>Job failed for V6PIF Tables , error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="END" />
+</workflow-app>

@@ -1,0 +1,30 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="EDWEXTERNAL Data Ingestion">
+    <start to="EDWEXTERNAL_INGESTION"/>
+    
+    <action name="EDWEXTERNAL_INGESTION">
+	<ssh xmlns="uri:oozie:ssh-action:0.1">
+	<host>${focusNodeLogin}</host>
+	<command>${spark_run_script_path}</command>
+	<args></args>
+	</ssh>
+	<ok to="END"/>
+ 	<error to="EDWEXTERNAL_INGESTION_DI_LOAD_FAILURE"/>
+    </action>
+ 
+    <action name="EDWEXTERNAL_INGESTION_DI_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>edfdatalake@stateauto.com</to>
+        <subject>EDWEXTERNAL INGESTION LOAD FAILURE NOTIFICATION</subject>
+        <body>EdwExternal ingestion DI load failure notification, please check the logs for more information</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+        </action>
+
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+        <message>Job failed for EDWEXTERNAL Tables , error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="END" />
+</workflow-app>

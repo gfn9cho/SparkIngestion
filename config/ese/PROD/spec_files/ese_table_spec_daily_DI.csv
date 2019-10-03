@@ -1,0 +1,5 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy|NumPartitions|Row Count (Prod 6/27)|Notes
+ESE.dbo.ESERequest|Y|N|DateTimeStamp|||RequestID|||
+ESE.dbo.PA_SE_REF_SCORE_RSLT|Y|N|DB_MODIFIED_TMS|||SCORE_RUN_ID|||
+ESE.dbo.PA_SE_REF_SCORE_RSN_RSLT|Y|N|DB_MODIFIED_TMS|||RSN_ID|||
+ESE.dbo.PA_SE_REF_SCORE_VAR_RSLT|Y|N|DB_MODIFIED_TMS|||SCORE_RUN_ID|||

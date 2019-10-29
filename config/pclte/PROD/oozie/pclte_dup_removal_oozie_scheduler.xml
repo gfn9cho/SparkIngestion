@@ -1,0 +1,30 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="PCLTE Ingestion Dup Removal">
+    <start to="PCLTE_INGESTION_DUP_REMOVAL_LOAD"/>
+        <action name="PCLTE_INGESTION_DUP_REMOVAL_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_ingestion_dup_removal}</command>
+        <args></args>
+        </ssh>
+        <ok to="END"/>
+        <error to="PCLTE_INGESTION_DUP_REMOVAL_LOAD_FAILURE"/>
+    </action>
+	
+	<action name="PCLTE_INGESTION_DUP_REMOVAL_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>PCLTE PRODUCTION Daily ingestion - Duplicate Removal failure notification</subject>
+        <body>PCLTE PRODUCTION Daily ingestion -  Duplicate Removal failure notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+    </action>
+		
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+	<message>PCLTE PRODUCTION Duplicate removal script failed while sending the failure notification </message>
+    </kill>
+    <end name="END" />
+
+</workflow-app>

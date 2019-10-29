@@ -1,0 +1,1071 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="XACTDOC" type="XACTDOC"/>
+	<xs:complexType name="ACTIVITIES">
+		<xs:annotation>
+			<xs:documentation>This element and its children are included if the "Add Activity Diary Notes" option is selected as an export option</xs:documentation>
+			<xs:documentation>CSR: Make sure the major version of the export is 2003 or above, if the major version is left blank or is 2002 or below then older depreciated tags are included in the XML and they aren't part of this schema</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ACTIVITY" type="ACTIVITY" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ACTIVITY">
+		<xs:sequence>
+			<xs:element name="EXPENSES" type="EXPENSES" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="process" type="str100" use="optional"/>
+		<xs:attribute name="activity" type="str20" use="optional"/>
+		<xs:attribute name="start" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="finish" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="updated" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="desc" type="str100" use="optional"/>
+		<xs:attribute name="longDesc" type="str8000" use="optional"/>
+		<xs:attribute name="remind" type="bool" use="optional"/>
+		<xs:attribute name="todo" type="bool" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ADDRESS">
+		<xs:attribute name="city" type="str60" use="optional"/>
+		<xs:attribute name="country" type="country" use="optional"/>
+        <xs:attribute name="county" type="str60" use="optional"/>
+		<xs:attribute name="lat" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="lon" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="postal" type="str10" use="optional"/>
+        <xs:attribute name="primary" type="bool" use="optional"/>
+		<xs:attribute name="state" type="str60" use="optional"/>
+		<xs:attribute name="street" type="str60" use="optional"/>
+		<xs:attribute name="street2" type="str60" use="optional"/>
+		<xs:attribute name="street3" type="str60" use="optional"/>
+		<xs:attribute name="type" type="addressType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ADDRESSES">
+		<xs:sequence>
+			<xs:element name="ADDRESS" type="ADDRESS" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ADM">
+		<xs:all>
+			<xs:element name="COVERAGE_LOSS" type="COVERAGE_LOSS" minOccurs="0"/>
+		</xs:all>
+		<xs:attribute name="agentCode" type="str8" use="optional"/>
+		<xs:attribute name="agentName" type="str85" use="optional"/>
+		<xs:attribute name="branchNumber" type="nullableInteger" use="optional"/>
+		<xs:attribute name="clientNumber" type="nullableInteger" use="optional"/>
+		<xs:attribute name="dateEntered" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="dateProjCompleted" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="dateJobCompleted" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="dateContacted" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="dateInspected" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="dateOfLoss" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="dateReceived" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="fileNumber" type="str36" use="optional"/>
+		<xs:attribute name="onsite" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="estimatedOnsite" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="printOnsite" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="onsitePayment" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="numRmsAffected" type="nullableInteger" use="optional"/>
+		<xs:attribute name="denial" type="denialType" use="optional"/>
+		<xs:attribute name="denialExplanation" type="str4000" use="optional"/>
+		<xs:attribute name="dateProjectedComplete" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="dateProjectedStart" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="gt30WorkingDays" type="nullableInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation>UK only</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="gt500PersonDays" type="nullableInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation>UK only</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ADMIN_INFO">
+		<xs:attribute name="branch" type="str20" use="optional"/>
+		<xs:attribute name="accessName" type="str60" use="optional"/>
+		<xs:attribute name="accessPhone" type="phoneNumber" use="optional"/>
+		<xs:attribute name="accessPhoneExt" type="phoneExt20" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ATT_FILE">
+		<xs:attribute name="fileName" type="str200" use="required"/>
+		<xs:attribute name="fileDesc" type="str2048" use="required"/>
+        <xs:attribute name="fileType" type="str200" use="optional"/>
+		<xs:attribute name="fileDate" type="nullableDateOrDateTime" use="optional"/>
+		<xs:attribute name="approvalStatus" type="attachmentApprovalType" use="optional">
+			<xs:annotation>
+				<xs:documentation>Included as part of the Add approved status option (a sub-option of the Add List Of Exported Files option)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ATTACHMENTS">
+		<xs:annotation>
+			<xs:documentation>Included if the Add List of Exported Files option (in XML) is selected</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ATT_FILE" type="ATT_FILE" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CLAIM_INFO">
+		<xs:all>
+			<xs:element name="ADMIN_INFO" type="ADMIN_INFO" minOccurs="0"/>
+			<xs:element name="ACTIVITIES" type="ACTIVITIES" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="COL">
+		<xs:attribute name="desc" type="str256" use="optional"/>
+		<xs:attribute name="otherCause" type="str256" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="COMPANY">
+		<xs:attribute name="name" type="str40" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="CONTACT">
+		<xs:all>
+			<xs:element name="COMPANY" type="COMPANY" minOccurs="0"/>
+			<xs:element name="ADDRESSES" type="ADDRESSES" minOccurs="0"/>
+			<xs:element name="CONTACTMETHODS" type="CONTACTMETHODS" minOccurs="0"/>
+		</xs:all>
+		<xs:attribute name="name" type="str160" use="optional"/>
+		<xs:attribute name="qcode" type="str15" use="optional"/>
+		<xs:attribute name="type" type="contactType" use="required"/>
+		<xs:attribute name="goesBy" type="str20" use="optional"/>
+		<xs:attribute name="position" type="str25" use="optional"/>
+		<xs:attribute name="mortgageHolder" type="str80" use="optional">
+			<xs:annotation>
+				<xs:documentation>Only included for the "Client" type if not blank</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="mortgageLoanNum" type="str15" use="optional">
+			<xs:annotation>
+				<xs:documentation>Only included for the "Client" type if not blank </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="birthDate" type="dateOrNull" use="optional"/>
+		<xs:attribute name="reference" type="str60" use="optional"/>
+		<xs:attribute name="language" type="str20" use="optional"/>
+		<xs:attribute name="title" type="str60" use="optional"/>
+		<xs:attribute name="claimUnit" type="str5" use="optional">
+			<xs:annotation>
+				<xs:documentation>Only included for the "Estimator" or "ClaimRep" type if not blank </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CONTACTMETHODS">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="EMAIL" type="EMAIL" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PHONE" type="PHONE" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="CONTACTS">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:choice>
+				<xs:element name="CONTACT" type="CONTACT"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CONTROL_POINT">
+		<xs:all>
+			<xs:element name="NOTES" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Notes associated with the control point. Not all control points contain notes. One note per control point.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+		<xs:attribute name="reservation" type="bool" use="optional">
+			<xs:annotation>
+				<xs:documentation>If the control point is the reviewed control point, this attribute indicates whether the record has been reviewed with reservations/exceptions.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="stamp" type="nullableDateOrDateTime" use="optional">
+			<xs:annotation>
+				<xs:documentation>The date and time of the control point.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="type" type="controlPointType" use="optional"/>
+		<xs:attribute name="user" type="str55" use="optional"/>
+		<xs:attribute name="userNumber" type="str25" use="optional"/>
+		<xs:attribute name="userId" type="str20" use="optional"/>
+		<xs:attribute name="flags" type="nullableInteger" use="optional"/>
+		<xs:attribute name="amount" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="userLastName" type="str40" use="optional"/>
+		<xs:attribute name="userFirstName" type="str40" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="CONTROL_POINTS">
+		<xs:sequence>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="CANCELLATION_COMMENTS" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Added if the "Add Control Points" Option is on</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="CONTROL_POINT" type="CONTROL_POINT">
+					<xs:annotation>
+						<xs:documentation>Added if the "Add Control Points" Option is on or XN Standard Data is included</xs:documentation>
+						<xs:documentation>Added if XN Standard Data is included  for carrier or sender desk adjuster assigned checkpoints</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="grossEstimate" type="xs:decimal" use="optional">
+			<xs:annotation>
+				<xs:documentation>Added if the "Add Control Points" Option is on</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="bill" type="nullableInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation>Added if the "Add Control Points" Option is on</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="referral" type="bool" use="optional">
+			<xs:annotation>
+				<xs:documentation>Added if the "Add Control Points" Option is on</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="testAssignment" type="bool" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>Included in export regardless of whether the "Add Control Points" Option is on</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="COVERAGE">
+		<xs:all>
+			<xs:element name="LOSS_DATA" type="LOSS_DATA" minOccurs="0"/>
+		</xs:all>
+		<xs:attribute name="applyTo" type="covApplyTo" use="optional" />
+		<xs:attribute name="coins" type="nullableInteger" use="optional"/>
+		<xs:attribute name="covName" type="str100" use="optional"/>
+		<xs:attribute name="covType" type="covType" use="optional"/>
+		<xs:attribute name="deductible" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="id" type="covID" use="required"/>
+		<xs:attribute name="policyLimit" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="reserveAmt" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="sharedLimitRefID" type="nullableInteger" use="optional"/>
+		<xs:attribute name="sharedDeductibleRefID" type="nullableInteger" use="optional"/>
+		<xs:attribute name="addlCovType" type="nullableInteger" use="optional"/>
+		<xs:attribute name="assocCov" type="nullableInteger" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="COVERAGE_LOSS">
+		<xs:all>
+			<xs:element name="COVERAGES" type="COVERAGES" minOccurs="0"/>
+			<xs:element name="TOL" type="TOL" minOccurs="0"/>
+		</xs:all>
+		<xs:attribute name="claimNumber" type="str30" use="optional"/>
+		<xs:attribute name="policyNumber" type="str20" use="optional"/>
+		<xs:attribute name="catastrophe" type="str15" use="optional"/>
+		<xs:attribute name="isCommercial" type="bool" use="optional"/>
+		<xs:attribute name="policyStart" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="policyEnd" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="dateInitCov" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="isTotalLoss" type="nullableInteger" use="optional"/>
+		<xs:attribute name="dedApplyAcrossAllUI" type="bool" use="optional"/>
+		<xs:attribute name="roofDamage" type="roofDamageType" use="optional"/>
+		<xs:attribute name="roofType" type="str60" use="optional"/>
+		<xs:attribute name="roofAge" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="fullRoofReplacement" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="fullSidingReplacement" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="fullFencingReplacement" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="fullHVACComponentReplacement" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="fullWoodFlooringReplacement" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="waiver" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="paidBillOnly" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="penaltyAfterDeduct" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="absorbDed" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="coverageNotes" type="str1000" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="COVERAGES">
+		<xs:sequence>
+			<xs:element name="COVERAGE" type="COVERAGE" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="lossOfUse" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="lossOfUseReserve" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="doNotApplyLimits" type="bool" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="EMAIL">
+		<xs:attribute name="address" type="str512" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name = "EMBEDDED_PL">
+		<xs:all>
+			<xs:element name="MINIMUMS" type="MINIMUMS" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name = "EST_CHANGE">
+		<xs:attribute name="estChgType" type="nullableInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation>0 = supplement, 1 = Correction</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="estChgReason" type="str60" use="optional"/>
+		<xs:attribute name="onsite" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="printOnsite" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="confirmed" type="bool" use="optional" default = "0"/>
+	</xs:complexType>
+	<xs:complexType name = "EST_CHANGES">
+		<xs:all>
+			<xs:element name="EST_CHANGE" type="EST_CHANGE" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="EXPENSE">
+		<xs:attribute name="hours" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="amount" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="code" type="str2" use="optional"/>
+		<xs:attribute name="codeDesc" type="str100" use="optional"/>
+		<xs:attribute name="desc" type="str100" use="optional"/>
+		<xs:attribute name="miles" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="paidByEmp" type="bool" use="optional" default="0"/>
+		<xs:attribute name="personalCar" type="bool" use="optional" default="0"/>
+		<xs:attribute name="noCharge" type="bool" use="optional" default="0"/>
+		<xs:attribute name="prorated" type="bool" use="optional" default="0"/>
+	</xs:complexType>
+	<xs:complexType name="EXPENSES">
+		<xs:sequence>
+			<xs:element name="EXPENSE" type="EXPENSE" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LOSS_DATA">
+		<xs:attribute name="deductApplied" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="overLimits" type="nullableDecimal" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name = "MINIMUM">
+		<xs:attribute name="id" type="str16" use="optional"/>
+		<xs:attribute name="desc" type="str1024" use="optional"/>
+		<xs:attribute name="amount" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="cat" type="str3" use="optional"/>
+		<xs:attribute name="sel" type="str10" use="optional"/>
+		<xs:attribute name="doNotApply" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="lockedAmount" type="nullableDecimal" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name = "MINIMUMS">
+		<xs:sequence>
+			<xs:element name="MINIMUM" type="MINIMUM" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PARAMS">
+		<xs:attribute name="priceList" type="str20" use="optional"/>
+		<xs:attribute name="defaultAct" type="str1" use="optional" />
+		<xs:attribute name="taxJurisdiction" type="str20" use="optional"/>
+		<xs:attribute name="checkpointPL" type="str20" use="optional"/>
+		<xs:attribute name="plModifiedDateTime" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="salesTaxModified" type="bool" use="optional" default = "0">
+			<xs:annotation>
+				<xs:documentation>This is attribute isn't in the estimate XML file but is derived from one that is (salesTaxModifiedDateTime)</xs:documentation>
+				<xs:documentation>We don't collect the date the sales tax was modified but we collect whether it has been modified</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="noOPAction" type="nullableInteger" use="optional"/>
+		<xs:attribute name="defaultRepairedBy" type="repairedByType" use="optional"/>
+		<xs:attribute name="permitType" type="str1" use="optional"/>
+		<xs:attribute name="laborCostModel" type="laborCostModel" use="optional"/>
+		<xs:attribute name="depRemoval" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="depMaterialsOnly" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="depAddOns" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="depMat" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="depNonMat" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="depTaxes" type="bool" use="optional" default = "0"/>
+		<xs:attribute name="maxDepr" type="maxPercentType" use="optional"/>
+		<xs:attribute name="ignoreItemDeprUnder" type="nullableDecimal" use="optional"/>
+		<xs:attribute name="overhead" type="opPercent" use="optional"/>
+		<xs:attribute name="profit" type="opPercent" use="optional"/>
+		<xs:attribute name="cumulativeOP" type="bool" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="PHONE">
+		<xs:attribute name="extension" type="phoneExt20" use="optional"/>
+		<xs:attribute name="number" type="phoneNumber" use="optional"/>
+		<xs:attribute name="primary" type="bool" use="optional">
+			<xs:annotation>
+				<xs:documentation>We evaluate this attribute but don't store the value in a way that is available for this export. So it will not be included in the xml, but I added it to the schema for completeness - it is possible it will be populated from the add on options</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="type" type="phoneType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="PROJECT_INFO">
+		<xs:all>
+			<xs:element name="NOTES" type="str4000" minOccurs="0"/>
+		</xs:all>
+		<xs:attribute name="assignmentCode" type="str12" use="optional"/>
+		<xs:attribute name="name" type="str20" use="optional"/>
+		<xs:attribute name="version" type="str5" use="optional"/>
+		<xs:attribute name="profile" type="profileCode" use="optional"/>
+		<xs:attribute name="xactnetAddress" type="str40" use="optional"/>
+		<xs:attribute name="created" type="dateOrDateTime" use="optional"/>
+		<xs:attribute name="userId" type="str8" use="optional"/>
+        <xs:attribute name="showDeskAdjuster" type="bool" use="optional">
+			<xs:annotation>
+				<xs:documentation>Added As Part of the Standard XN attributes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+        <xs:attribute name="showIADeskAdjuster" type="bool" use="optional">
+			<xs:annotation>
+				<xs:documentation>Added As Part of the Standard XN attributes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="status" type="str100" use="optional">
+			<xs:annotation>
+				<xs:documentation>Added As Part of the Standard XN attributes. The value is always "Completed"</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="SUMMARY">
+		<xs:annotation>
+			<xs:documentation>This Element and all its attributes are add as part of the "Add Summary Info" Option </xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="homeOwnerItems" type="xs:decimal" use="optional"/>
+		<xs:attribute name="contractorItems" type="xs:decimal" use="optional"/>
+		<xs:attribute name="estimateLineItemTotal" type="xs:decimal" use="optional"/>
+		<xs:attribute name="minimumChargeAdjustments" type="xs:decimal" use="optional"/>
+		<xs:attribute name="overhead" type="xs:decimal" use="optional"/>
+		<xs:attribute name="profit" type="xs:decimal" use="optional"/>
+		<xs:attribute name="salesTax" type="xs:decimal" use="optional"/>
+		<xs:attribute name="grossEstimate" type="xs:decimal" use="optional"/>
+		<xs:attribute name="permitsAndFees" type="xs:decimal" use="optional"/>
+		<xs:attribute name="salvageRetention" type="xs:decimal" use="optional"/>
+		<xs:attribute name="recoverableDepreciation" type="xs:decimal" use="optional"/>
+		<xs:attribute name="nonRecoverableDepreciation" type="xs:decimal" use="optional"/>
+		<xs:attribute name="netEstimate" type="xs:decimal" use="optional"/>
+		<xs:attribute name="priceListLineItemTotal" type="xs:decimal" use="optional"/>
+		<xs:attribute name="deductible" type="xs:decimal" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="TOL">
+		<xs:all>
+			<xs:element name="COL" type="COL" minOccurs="0"/>
+		</xs:all>
+		<xs:attribute name="desc" type="str35" use="optional"/>
+		<xs:attribute name="code" type="str10" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="XACTDOC">
+		<xs:all>
+			<xs:element name="XACTNET_INFO" type="XACTNET_INFO" minOccurs="0"/>
+			<xs:element name="ADM" type="ADM" minOccurs="0"/>
+			<xs:element name="CLAIM_INFO" type="CLAIM_INFO" minOccurs="0"/>
+			<xs:element name="CONTACTS" type="CONTACTS" minOccurs="0"/>
+			<xs:element name="PARAMS" type="PARAMS" minOccurs="0"/>
+			<xs:element name="PROJECT_INFO" type="PROJECT_INFO" minOccurs="0"/>
+			<xs:element name="EST_CHANGES" type="EST_CHANGES" minOccurs="0"/>
+			<xs:element name="EMBEDDED_PL" type="EMBEDDED_PL" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="XACTNET_INFO">
+		<xs:all>
+			<xs:element name="CONTROL_POINTS" type="CONTROL_POINTS" minOccurs="0"/>
+			<xs:element name="SUMMARY" type="SUMMARY" minOccurs="0"/>
+			<xs:element name="ATTACHMENTS" type="ATTACHMENTS" minOccurs="0"/>
+		</xs:all>
+		<xs:attribute name="assignmentType" type="xs:int" use="optional" default="1">
+			<xs:annotation>
+				<xs:documentation>"1" = Claim Type (the default), "4" = XA Contents, "8" = XM8 Valuation, "32" = REO, "64" = Remodel, "4096" = Flood Assignment type</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="businessUnit" type="str100" use="optional"/>
+		<xs:attribute name="cancellation" type="bool" use="optional"/>
+		<xs:attribute name="carrierAttribute1" type="str100" use="optional">
+			<xs:annotation>
+				<xs:documentation>This is a carrier-supplied value that XactAnalysis stores for carrier-specific logic.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="carrierAttribute2" type="str100" use="optional">
+			<xs:annotation>
+				<xs:documentation>This is a carrier-supplied value that XactAnalysis stores for carrier-specific logic.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="carrierAttribute3" type="str100" use="optional">
+			<xs:annotation>
+				<xs:documentation>This is a carrier-supplied value that XactAnalysis stores for carrier-specific logic.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="carrierExternalUniqueId" type="str20" use="optional"/>
+		<xs:attribute name="carrierId" type="xs:int" use="optional">
+			<xs:annotation>
+				<xs:documentation>The identifier that uniquely identifies the asset manager that created the assignment. This defines the dataset the assignment is placed in.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="carrierName" type="str40" use="optional">
+			<xs:annotation>
+				<xs:documentation>Added as part of the standard XN attributes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="carrierNameForXM8" type="str40" use="optional">
+			<xs:annotation>
+				<xs:documentation>Added as part of the Standard XN Attributes </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="collaboratorsXnAddress" type="str31" use="optional"/>
+		<xs:attribute name="collaboratorsXM8UserId" type="str8" use="optional"/>
+		<xs:attribute name="collaboratorsName" type="str50" use="optional"/>
+		<xs:attribute name="createdByReassignment" type="bool" use="optional"/>
+		<xs:attribute name="creatorsUserNumber" type="str25" use="optional">
+			<xs:annotation>
+				<xs:documentation>The XactAnalysis user number of the individual that created the assignment</xs:documentation>
+				<xs:documentation>Added as part of the standard XN attributes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="creatorsFirstName" type="str40" use="optional">
+			<xs:annotation>
+				<xs:documentation>First name of the individual that created the assignment</xs:documentation>
+				<xs:documentation>Added as part of the standard XN attributes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="creatorsLastName" type="str40" use="optional">
+			<xs:annotation>
+				<xs:documentation>Last name of the individual that created the assignment</xs:documentation>
+				<xs:documentation>Added as part of the standard XN attributes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="creatorsEmailAddress" type="str80" use="optional">
+			<xs:annotation>
+				<xs:documentation>Email address of the individual that created the assignment</xs:documentation>
+				<xs:documentation>Added as part of the standard XN attributes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="emergency" type="bool" use="optional" default="0"/>
+		<xs:attribute name="estimateCount" type="str30" use="optional"/>
+		<xs:attribute name="groupId" type="str7" use="optional" default="0"/>
+		<xs:attribute name="jobSizeCode" type="jobSize" use="optional">
+			<xs:annotation>
+				<xs:documentation>1= Small job, 2 = Moderate job, 4 = Medium job, 8 = Large job, 16 = Extra large job, 32 = Extremely large job</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="mitigation" type="bool" use="optional" default="0">
+			<xs:annotation>
+				<xs:documentation>Indicates that the claim is a mitigation claim. (rotationTrade = "Mitigation")</xs:documentation>
+				<xs:documentation>Added as part of the Standard XN Attributes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="profileCode" type="profileCode" use="optional">
+			<xs:annotation>
+				<xs:documentation>The profile that the carrier has been assigned.</xs:documentation>
+				<xs:documentation>Added as part of the Standard XN Attributes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+
+		<xs:attribute name="recipientsId" type="str30" use="optional"/>
+		<xs:attribute name="recipientsXM8UserId" type="str8" use="optional"/>
+		<xs:attribute name="recipientsUserNumber" type="str25" use="optional">
+			<xs:annotation>
+				<xs:documentation>Added as part of the Standard XN Attributes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="recipientsXNAddress" type="str31" use="optional"/>
+		<xs:attribute name="referralCarrierId" type="xs:int" use="optional"/>
+		<xs:attribute name="referralCarrierName" type="str40" use="optional">
+			<xs:annotation>
+				<xs:documentation>Added as part of the standard XN attributes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="referralXNAddress" type="str31" use="optional"/>
+		<xs:attribute name="rotationTrade" type="str22" use="optional">
+			<xs:annotation>
+				<xs:documentation>Usually General or Emergency.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="senderAttribute1" type="str100" use="optional">
+			<xs:annotation>
+				<xs:documentation>This is a sender-supplied value that XactAnalysis stores for sender-specific logic.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="senderAttribute2" type="str100" use="optional">
+			<xs:annotation>
+				<xs:documentation>This is a sender-supplied value that XactAnalysis stores for sender-specific logic.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="senderAttribute3" type="str100" use="optional">
+			<xs:annotation>
+				<xs:documentation>This is a sender-supplied value that XactAnalysis stores for sender-specific logic.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="senderExternalUniqueId" type="str20" use="optional"/>
+		<xs:attribute name="senderId" type="xs:int" use="optional"/>
+		<xs:attribute name="carrierOffice1" type="str40" use="optional"/>
+		<xs:attribute name="carrierOffice2" type="str40" use="optional"/>
+		<xs:attribute name="carrierOffice3" type="str40" use="optional"/>
+		<xs:attribute name="sendersOfficeDescription1" type="str40" use="optional"/>
+		<xs:attribute name="sendersOfficeDescription2" type="str40" use="optional"/>
+		<xs:attribute name="sendersOfficeDescription3" type="str40" use="optional"/>
+		<xs:attribute name="sendersXNAddress" type="str31" use="optional">
+			<xs:annotation>
+				<xs:documentation>The XactAnalysis address of the entity that manages the assignment. XactAnalysis provides this value to the customer.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="sourceTransactionId" type="str7" use="optional"/>
+		<xs:attribute name="thirdPartyGeoId" type="str20" use="optional">
+			<xs:annotation>
+				<xs:documentation>Contains a geographic code provided by the carrier, which can then be used in Advanced Search for sorting and filtering.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="thirdPartyId" type="str20" use="optional">
+			<xs:annotation>
+				<xs:documentation>Is either the carrierExternalUniqueId or the senderExternalUniqueId if the carrierExternalUniqueId is blank.</xs:documentation>
+				<xs:documentation>Added as part of the Standard XN attributes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="transactionId" type="str7" use="optional">
+			<xs:annotation>
+				<xs:documentation>XactAnalysis's internal ID for the assignment. This is added by XactAnalysis for new assignments.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="transactionType" type="str7" use="optional"/>
+		<xs:attribute name="xaProjectId" type="str7" use="optional">
+			<xs:annotation>
+				<xs:documentation>TransactionId of Project. This functionality is not currently available for Claims assignments.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="addressType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="12">
+				<xs:annotation>
+					<xs:documentation>Expected Address Types are Home, Property, Business, and Billing.  However we don't restrict this, so other types are possible.</xs:documentation>
+				</xs:annotation>
+			</xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="attachmentApprovalType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[Aa]pproved"/>
+			<xs:pattern value="[Rr]ejected"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="bool">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="roofDamageType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="0">
+				<xs:annotation>
+					<xs:documentation>None</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Partial Replacement</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Total Replacement</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="contactType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[Cc]lient"/>
+			<xs:pattern value="[Ee]stimator"/>
+			<xs:pattern value="[Cc]laim[Rr]ep"/>
+			<xs:pattern value="[Cc]laimant"/>
+			<xs:pattern value="[Dc]esk[Aa]djuster"/>
+			<xs:pattern value="[Ii][Aa][Dd]esk[Aa]djuster"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="controlPointType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[Aa]ppointment [Cc]ancelled"/>
+			<xs:pattern value="[Aa]ppointment [Ss]cheduled"/>
+			<xs:pattern value="[Aa]ssignment [Dd]ocuments [Rr]eceived"/>
+			<xs:pattern value="[Cc]ancelled"/>
+			<xs:pattern value="[Cc]arrier [Dd]esk [Aa]djuster [Aa]ssigned"/>
+			<xs:pattern value="[Cc]arrier [Rr]eviewed"/>
+			<xs:pattern value="[Cc]arrier [Rr]eviewer [Aa]ccepted"/>
+			<xs:pattern value="[Cc]arrier [Rr]eviewer [Aa]ssigned"/>
+			<xs:pattern value="[Cc]lient [Aa]pproved"/>
+			<xs:pattern value="[Cc]lient [Rr]ejected"/>
+			<xs:pattern value="[Cc]ontacted"/>
+			<xs:pattern value="[Dd]elivered"/>
+			<xs:pattern value="[Ff]ile [Cc]losed"/>
+			<xs:pattern value="[Ff]ile [Rr]eopened"/>
+			<xs:pattern value="[Ff]irst [Rr]eport"/>
+			<xs:pattern value="[Ii]nspected"/>
+			<xs:pattern value="[Jj]ob [Ss]tarted"/>
+			<xs:pattern value="[Jj]ob [Cc]ompleted"/>
+			<xs:pattern value="[Nn]ot [Ss]old"/>
+			<xs:pattern value="[Nn]ote"/>
+			<xs:pattern value="[Nn]otified"/>
+			<xs:pattern value="[Qq][Aa] [Aa]pproved"/>
+			<xs:pattern value="[Qq][Aa] [Rr]ejected"/>
+			<xs:pattern value="[Rr]eady [Ff]or [Aa]gn"/>
+			<xs:pattern value="[Rr]eassigned"/>
+			<xs:pattern value="[Rr]eceived"/>
+			<xs:pattern value="[Rr]ejected"/>
+			<xs:pattern value="[Rr]eviewed"/>
+			<xs:pattern value="[Rr]eviewer [Aa]ccepted"/>
+			<xs:pattern value="[Rr]eviewer [Aa]ssigned"/>
+			<xs:pattern value="[Ss]ender [Dd]esk [Aa]djuster [Aa]ssigned"/>
+			<xs:pattern value="[Ss]ender [Rr]eviewed"/>
+			<xs:pattern value="[Ss]ender [Rr]eview [Aa]ccepted"/>
+			<xs:pattern value="[Ss]ender [Rr]eviewer [Aa]ssigned"/>
+			<xs:pattern value="[Tt]arget [Jj]ob [Cc]ompletion [Dd]ate"/>
+			<xs:pattern value="[Tt]arget [Jj]ob [Ss]tart [Dd]ate"/>
+			<xs:pattern value="[Uu]ploaded"/>
+			<xs:pattern value="[Xx][Cc]entral [Ff]ile [Cc]losed"/>
+			<xs:pattern value="[Xx][Cc]entral [Ff]ile [Rr]eopened"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="country">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="US"/>
+			<xs:enumeration value="CA"/>
+			<xs:enumeration value="GB"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="covApplyTo">
+		<xs:restriction base="xs:string">
+		    <xs:enumeration value=""/>
+			<xs:enumeration value="0">
+				<xs:annotation>
+					<xs:documentation>Applies to RC</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Apply to AC</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Apply To Both</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="covID">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="COV[0-9]{1,10}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="covType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+		    <xs:enumeration value="-1">
+				<xs:annotation>
+					<xs:documentation>Empty</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="0">
+				<xs:annotation>
+					<xs:documentation>Dwelling</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Other Structures</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Contents</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>Obsolete</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="4">
+				<xs:annotation>
+					<xs:documentation>Obsolete</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="5">
+				<xs:annotation>
+					<xs:documentation>Obsolete</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="6">
+				<xs:annotation>
+					<xs:documentation>Obsolete</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="7">
+				<xs:annotation>
+					<xs:documentation>Obsolete</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="8">
+				<xs:annotation>
+					<xs:documentation>Obsolete</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9">
+				<xs:annotation>
+					<xs:documentation>Obsolete</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+    <xs:simpleType name="dateOrDateTime">
+        <xs:union memberTypes="xs:date xs:dateTime"/>
+    </xs:simpleType>
+	<xs:simpleType name="dateOrNull">
+        <xs:union memberTypes="xs:date str0"/>
+    </xs:simpleType>
+	<xs:simpleType name="nullableDateOrDateTime">
+        <xs:union memberTypes="xs:date xs:dateTime str0"/>
+    </xs:simpleType>
+	<xs:simpleType name="denialType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="Denial"/>
+			<xs:enumeration value="Partial Denial"/>
+			<xs:enumeration value="Letter Needed"/>
+			<xs:enumeration value="Covered Loss"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="laborCostModel">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="0">
+				<xs:annotation>
+					<xs:documentation>Labor Minimums Model</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>BSC Model</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>No Model</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="jobSize">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="8"/>
+			<xs:enumeration value="16"/>
+			<xs:enumeration value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="maxPercentType">
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:maxInclusive value="100" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="nullableInteger">
+		<xs:union memberTypes="xs:int str0"/>
+	</xs:simpleType>
+	<xs:simpleType name="nullableDecimal">
+		<xs:union memberTypes="xs:decimal str0"/>
+	</xs:simpleType>
+	<xs:simpleType name="opPercent">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="1" />
+			<xs:minInclusive value="0.0" />
+			<xs:maxInclusive value="999.9" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="phoneExt20">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+			<xs:pattern value="[0-9]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="phoneNumber">
+		<xs:restriction base="xs:string">
+      <xs:maxLength value="12"/>
+			<xs:pattern value="[0-9]{3,4}\-[0-9]{3}\-[0-9]{4}|[0-9]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="phoneType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[Hh]ome"/>
+			<xs:pattern value="[Bb]usiness"/>
+			<xs:pattern value="[Cc]ell"/>
+			<xs:pattern value="[Pp]ager"/>
+			<xs:pattern value="[Oo]ther"/>
+			<xs:pattern value="[Cc]ellular"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="profileCode">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
+			<xs:pattern value="[a-zA-Z0-9]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="repairedByType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Contractor"/>
+			<xs:enumeration value="Homeowner"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str0">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str1">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str10">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str100">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str1000">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str1024">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1024"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str12">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str15">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="15"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str16">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="16"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str160">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="160"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str2">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str20">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str200">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="200"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str2048">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2048"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str22">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="22"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str25">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="25"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str256">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str3">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str30">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str31">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="31"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str35">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str36">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str40">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str5">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str50">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str512">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="512"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str55">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="55"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str6">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str60">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="60"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str7">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str8">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str80">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="80"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="str85">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="85"/>
+		</xs:restriction>
+	</xs:simpleType>
+    <xs:simpleType name="str4000">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="4000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="str8000">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="8000"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

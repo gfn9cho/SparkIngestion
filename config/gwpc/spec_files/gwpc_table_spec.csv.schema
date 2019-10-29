@@ -1,3 +1,0 @@
-DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy|NumPartitions|Rows|Note
-PolicyCenter.dbo.pcx_priorlossext|Y|Y|UpdateTime|Y||ID|||
-PolicyCenter.dbo.pc_losshistentry|Y||UpdateTime|Y|ID|ID|||

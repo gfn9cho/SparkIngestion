@@ -3,12 +3,12 @@
 ech0 "Starting with the DIs"
 
        echo "starting with DI 2"
-       sh /home/hadoop/edf/gwbc/scripts/gwbc_dataingestion_di.sh
+       sh /home/hadoop/processed/gwbc/scripts/gwbc_dataingestion_di.sh
        status=$?
        if [ ${status} -eq 0 ]; then
                echo "Completed the second  DI script and the status is $status"
                echo "starting with Hard delete batch"
-               sh /home/hadoop/edf/gwbc/scripts/gwbc_dataingestion_delete.sh
+               sh /home/hadoop/processed/gwbc/scripts/gwbc_dataingestion_delete.sh
                status=$?
                if [ ${status} -eq 0 ]; then
                        echo "Completed the hard delete batch script and the status is $status"

@@ -89,7 +89,7 @@ DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy
 [PolicyCenterL4-1].dbo.pc_licensedstate|Y||UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pc_linkedaddress|Y||UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pc_losshistentry|Y||UpdateTime|Y|ID|ID|||
-[PolicyCenterL4-1].dbo.pc_modifierlookup|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pc_modifierlookup|N||UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pc_mvr|Y|Y|UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pc_mvrconfig|Y||UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pc_mvrincident|Y||UpdateTime|Y||ID|||
@@ -150,7 +150,7 @@ DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy
 [PolicyCenterL4-1].dbo.pc_ratetabledefinition|Y||UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pc_ratetablematchop|Y||UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pc_ratetablematchopdef|Y||UpdateTime|Y||ID|||
-[PolicyCenterL4-1].dbo.pc_ratingfactorlookup|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pc_ratingfactorlookup|N||UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pc_reasoncodeactiontype|Y||UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pc_refdatelookup|Y||UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pc_reinsurable|Y||UpdateTime|Y|ID|ID|||
@@ -1354,7 +1354,7 @@ DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy
 [PolicyCenterL4-1].dbo.pcx_discretionaryPayrollExp|Y||UpdateTime|Y|ID|ID|||
 [PolicyCenterL4-1].dbo.pcx_ears_recondata_ext|Y|Y|UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pcx_earthquakeconstgrp_bp7|Y||UpdateTime|Y||ID|||
-[PolicyCenterL4-1].dbo.pcx_earthquakezonesBOP|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_earthquakezonesBOP|N||UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pcx_edeliveryoptoutcateg_ext|Y||UpdateTime|Y|ID|ID|||
 [PolicyCenterL4-1].dbo.pcx_edsemail_ext|Y|Y|UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pcx_edw_replication_ext|Y||Repl_UpdateTime|Y||ID|||
@@ -1465,3 +1465,9 @@ DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy
 [PolicyCenterL4-1].dbo.pctl_ca7modelyear_ext|Y||ID|Y|ID|ID|||
 [PolicyCenterL4-1].dbo.pcx_cucovtermpremium_ext|N||UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pcx_bp7covetermpremium_ext|N||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_ca7mvrattributesnewmodel|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_ca7newmodelstateeffdate|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_esebaptxndetails_ext|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_ca7esepolicyinfo_ext|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_ca7esevehiclescore_ext|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pctl_dunslookuptype|Y||Truncate and Load|TypeList|||||

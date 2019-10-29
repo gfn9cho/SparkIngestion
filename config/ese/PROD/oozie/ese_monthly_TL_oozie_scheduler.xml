@@ -1,5 +1,5 @@
 <workflow-app
-    xmlns="uri:oozie:workflow:0.1" name="RAVEHICLE Mthly DI Data Ingestion">
+    xmlns="uri:oozie:workflow:0.1" name="ESE Monthly DI Data Ingestion">
     <start to="ESE_MONTHLY_TL_INGESTION"/>
 
     <action name="ESE_MONTHLY_TL_INGESTION">

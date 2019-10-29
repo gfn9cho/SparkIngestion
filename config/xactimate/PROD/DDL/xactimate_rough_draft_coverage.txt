@@ -1,0 +1,63 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS claims_vendor_secure.xactimate_rough_draft_coverage(
+	coverageID string,
+	coverageName string,
+	coverageType string,
+	coverageDeductible string,
+	coverageLossDataBD string,
+	coverageLossDataNonRecDeprec string,
+	coverageLossDataDedutApplied string,
+	coverageLossDataInsCarried string,
+	coverageLossDataRCVInsCarried string,
+	coverageLossDataACVInsCarried string,
+	coverageLossDataPotentialSuppClaim string,
+	coverageLossDataTotal string,
+	coverageLossDataValACV string,
+	coverageLossDataValRCV string,
+	coverageLossDataSalvage string,
+	coverageLossDataDirectReplacement string,
+	coverageLossDataPriorPmts string,
+	coverageLossDataCoins string,
+	coverageLossDataCoinsFormula string,
+	coverageLossDataOverLimits string,
+	coverageLossDataAcvClaim string,
+	coverageLossDataAcvLoss string,
+	coverageLossDataAdjLossAmt string,
+	coverageLossDataRCL string,
+	coverageLossDataRcvClaim string,
+	coverageSummaryActualRecDepr string,
+	coverageSummaryACV string,
+	coverageSummaryDeductible string,
+	coverageSummaryDepr string,
+	coverageSummaryFullDeduct string,
+	coverageSummaryLineItemTotal string,
+	coverageSummaryNetClaim string,
+	coverageSummaryNetClaimIfRec string,
+	coverageSummaryPriorPmts string,
+	coverageSummaryPriorPmtsAdj string,
+	coverageSummaryRCV string,
+	coverageSummaryRecDepr string,
+	coverageSummarySubtotal string,
+	coverageSummaryPaymentTrackerPTestRemaining string,
+	coverageSummaryPaymentTrackerPTestValue string,
+	coverageSummaryPaymentTrackerPTItemsWithRemaining string,
+	coverageSummaryPaymentTrackerPTnumItemActs string,
+	coverageSummaryPaymentTrackerPTRecoverableDep string,
+	coverageSummaryPaymentTrackerPTTotalPaid string,
+	coverageSummaryOverhead string,
+	coverageSummaryProfit string,
+	coverageSummarySignature string,
+	fileTransactionID string,
+	file string
+
+  )
+ ROW FORMAT SERDE
+  'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+ WITH SERDEPROPERTIES (
+  'quoteChar'='\"')
+ STORED AS INPUTFORMAT
+  'org.apache.hadoop.mapred.TextInputFormat'
+ OUTPUTFORMAT
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+ LOCATION
+  's3://sa-l4-emr-ed-userdata-secure/ClaimsTeam/claims_vendor/xactimate/rough_draft_coverage/'
+ TBLPROPERTIES ('skip.header.line.count'='1')

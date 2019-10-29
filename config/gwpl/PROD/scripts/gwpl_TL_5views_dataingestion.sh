@@ -2,13 +2,12 @@
 
 
 echo "Started the script for GWPL 5 VIEWS TL "
-base_dir=/home/hadoop/edf
-hadoop_base_dir=/user/hadoop/edf
+base_dir=/home/hadoop/processed
 
 spec_files_path=$base_dir/gwpl/spec_files
 jar_path=$base_dir/jars
 spark_app_jar_file_suffix=edf_dataingestion-assembly
-spark_app_jar_file_version=1.1.5.jar
+spark_app_jar_file_version=2.0.0.jar
 date=`date +%Y-%m-%d`
 date_ts=`date '+%Y-%m-%d_%H%M%S%s'`
 mkdir -p $base_dir/logs/$date
@@ -45,4 +44,5 @@ else
 	echo "Spark job failed with error status for GWPL TL, Please have a look at the logs in below file on the server in the appropriate s3 bucket for yarn logs"
 exit 1
 fi
+
 

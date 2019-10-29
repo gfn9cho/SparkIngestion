@@ -1,0 +1,69 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS claims_vendor_secure.xactimate_rough_draft(
+	fileXMLNS string,
+	fileMajorVersion string,
+	fileMinorVersion string,
+	headerCompName string,
+	headerDateCreated string,
+	estimateInfoCarrierID string,
+	estimateInfoClaimNumber string,
+	estimateInfoDeprMat string,
+	estimateInfoDeprNonMat string,
+	estimateInfoDeprTaxes string,
+	estimateInfoEstimateName string,
+	estimateInfoEstimateType string,
+	estimateInfoInspectionNotPerformed string,
+	estimateInfoInsuredName string,
+	estimateInfoLaborEff string,
+	estimateInfoPolicyNumber string,
+	estimateInfoOpeningStatement string,
+	dateLoss string,
+	dateCompleted string,
+	dateReceived string,
+	dateEntered string,
+	dateContacted string,
+	lineItemDetailContractorTotal string,
+	lineItemDetailHomeownerTotal string,
+	lineItemDetailTotal string,
+	recapByRoomTotal string,
+	recapCategorySubtotalACV string,
+	recapCategorySubtotalDeprec string,
+	recapCategorySubtotalRCV string,
+	recapCategoryNonOPSubtotalACV string,
+	recapCategoryNonOPSubtotalPercentage string,
+	recapCategoryNonOPSubtotalDeprec string,
+	recapCategoryNonOPSubtotalRCV string,
+	recapCategoryOPSubtotalACV string,
+	recapCategoryOPSubtotalDeprec string,
+	recapCategoryOPSubtotalPercentage string,
+	recapCategoryOPSubtotalRCV string,
+	recapCategoryOverheadPercentage string,
+	recapCategoryOverheadRCV string,
+	recapCategoryProfitPercentage string,
+	recapCategoryProfitRCV string,
+	recapCategoryTaxACV string,
+	recapCategoryTaxDeprec string,
+	recapCategoryTaxDesc string,
+	recapCategoryTaxPercentage string,
+	recapCategoryTaxRCV string,
+	recapTaxLineItemsOverhead string,
+	recapTaxLineItemsProfit string,
+	recapTaxOverheadAmt string,
+	recapTaxOverheadRate string,
+	recapTaxProfitAmt string,
+	recapTaxProfitRate string,
+	closingStatement string,
+	ptTotals string,
+	fileTransactionID string,
+	file string
+  )
+ ROW FORMAT SERDE
+  'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+ WITH SERDEPROPERTIES (
+  'quoteChar'='\"')
+ STORED AS INPUTFORMAT
+  'org.apache.hadoop.mapred.TextInputFormat'
+ OUTPUTFORMAT
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+ LOCATION
+  's3://sa-l4-emr-ed-userdata-secure/ClaimsTeam/claims_vendor/xactimate/rough_draft/'
+ TBLPROPERTIES ('skip.header.line.count'='1')

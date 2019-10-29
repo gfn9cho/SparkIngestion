@@ -11,11 +11,12 @@
 ##############################################################################
 
 workflow_name=$1
-base_dir=/home/hadoop/edf
+base_dir=/home/hadoop/processed
+polling_base_dir=/home/hadoop/polling
 DATE_TS=`date '+%Y-%m-%d_%H%M%S%s'`
-log_file=${base_dir}/logs/polling/oozie_logs/${workflow_name}_${DATE_TS}"_oozie.log"
-STATUS_FILE=${base_dir}/logs/polling/oozie_logs/${workflow_name}_${DATE_TS}"_status.log"
-source $base_dir/.app.config
+log_file=${polling_base_dir}/logs/oozie_logs/${workflow_name}_${DATE_TS}"_oozie.log"
+STATUS_FILE=${polling_base_dir}/logs/oozie_logs/${workflow_name}_${DATE_TS}"_status.log"
+source $polling_base_dir/.app.config
 
 WAIT_INTERVAL=10
 
@@ -32,7 +33,7 @@ LOGGER() {
 LOGGER I "Start execute oozie $workflow_name job monthly load script"
 
 
-oozie_url="http://ip-10-64-102-242.corp.stateauto.com:11000/oozie"
+oozie_url="http://ip-10-84-38-68.corp.stateauto.com:11000/oozie"
 
 LOGGER I "oozie job --oozie ${oozie_url} -config ${base_dir}/${workflow_name}/oozie/${workflow_name}_job.properties -run"
 
@@ -86,6 +87,8 @@ fi
 done
 
 '
+
+
 
 
 

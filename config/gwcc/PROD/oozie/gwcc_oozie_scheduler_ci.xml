@@ -8,8 +8,18 @@
 	<command>${spark_run_script_path_ci}</command>
 	<args></args>
 	</ssh>
-	<ok to="GWCC_STAGING_LOAD"/>
+	<ok to="GWCC_INGESTION_DELETE_LOAD"/>
 	<error to="GWCC_INGESTION_CI_LOAD_FAILURE"/>
+    </action>
+	
+	<action name="GWCC_INGESTION_DELETE_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_delete}</command>
+        <args></args>
+        </ssh>
+        <ok to="GWCC_STAGING_LOAD"/>
+        <error to="GWCC_INGESTION_DELETE_LOAD_FAILURE"/>
     </action>
 	
     <action name="GWCC_STAGING_LOAD">
@@ -32,6 +42,15 @@
 	<error to="KILL"/>
 	</action>
 	
+	<action name="GWCC_INGESTION_DELETE_LOAD_FAILURE">
+	<email xmlns="uri:oozie:email-action:0.1">
+	<to>edfdatalake@stateauto.com</to>
+	<subject>GWCC PRODUCTION Daily ingestion - Delete Batch load failure notification</subject>
+	<body>GWCC PRODUCTION Daily ingestion - Delete Batch load failure notification</body>
+	</email>
+	<ok to="END"/>
+	<error to="KILL"/>
+    </action>
 	
 	<action name="GWCC_STAGING_LOAD_FAILURE">
 	<email xmlns="uri:oozie:email-action:0.1">

@@ -8,7 +8,7 @@ object JdbcConnectionUtility {
     val dbUser = propertyConfigs.getOrElse("spark.DataIngestion.dbUser","")
     val dbPwd_enc = propertyConfigs.getOrElse("spark.DataIngestion.dbPwd","")    ///Password
     val dbPwd = Cipher(dbPwd_enc).simpleOffset(-5)
-    val sourceDB = propertyConfigs.getOrElse("spark.DataIngestion.sourceDB","").replaceAll("\\[","").replaceAll("\\]","").replaceAll("-","_")
+    val sourceDB = propertyConfigs.getOrElse("spark.DataIngestion.sourceDB","")
     val jdbcSqlConnStr = if(propertyConfigs.getOrElse("spark.DataIngestion.dbType","") == "Netezza")
       s"""jdbc:netezza://$dbHost:5480;database=$sourceDB;user=$dbUser;password=$dbPwd;"""
     else

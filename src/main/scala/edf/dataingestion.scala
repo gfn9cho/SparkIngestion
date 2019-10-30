@@ -174,14 +174,4 @@ package object dataingestion {
     else
       false
   }
-
-  def isConnectDatabase() : Boolean = {
-     val connectDatabase =  propertyMap.getOrElse("spark.ingestion.isconnectdatabase", "false")
-    if(connectDatabase=="true")
-      true
-    else
-      false
-  }
-
-
 }

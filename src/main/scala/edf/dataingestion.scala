@@ -3,6 +3,7 @@ import scala.collection.immutable.Map
 import edf.utilities.{JdbcConnectionUtility, MetaInfo, sqlQueryParserFromCSV}
 import org.apache.spark.sql.types.{LongType, StringType, StructField, StructType}
 import org.joda.time.{DateTime, DateTimeZone}
+
 package object dataingestion {
 
   implicit lazy val implicitConversions = scala.language.implicitConversions
@@ -127,7 +128,7 @@ package object dataingestion {
 
   val considerBatchWindow: String = propertyMap.getOrElse("spark.DataIngestion.considerBatchWindow", "")
 
-  val sourceDB: String = propertyMap.getOrElse("spark.DataIngestion.sourceDB", "").replaceAll("\\[","").replaceAll("\\]","").replaceAll("-","_")
+  val sourceDB: String = propertyMap.getOrElse("spark.DataIngestion.sourceDB", "")
   val sourceDBFormatted: String = if(propertyMap.getOrElse("spark.DataIngestion.sourceDB", "").contains("[") || propertyMap.getOrElse("spark.DataIngestion.sourceDB", "").contains("-"))
     propertyMap.getOrElse("spark.DataIngestion.sourceDB", "").replaceAll("\\[","").replaceAll("\\]","").replaceAll("-","_")
   else
@@ -174,4 +175,36 @@ package object dataingestion {
     else
       false
   }
+
+    /*
+    *  def deleteStagePartition: Unit = {
+        val stageAuditData = spark.sql(s"select * from $stageAuditHiveTable where where processName = '$processName' " +
+          s"and  stagingStatus = 'InProgress' and stagingDate in (" +
+          s"select max(stagingDate) from $stageAuditHiveTable where processName = '$processName'")
+        val filePattern = raw"s3://([^/]+)/(.*)".r
+        val fileListStr = stageAuditData.
+          select(col("fileName")).rdd.collect
+          .map(file => {
+            val fileStr = file.getAs[String](0)
+            fileStr match {
+              case filePattern(bucket, file) => Some(bucket, file)
+              case _ => None
+            }
+          }).toList
+        val bucketName = fileListStr.head.get._1
+        val fileList = fileListStr.map(_.get._2).mkString("\n")
+
+        val awsDeleteCmd = scala.sys.process.Process(s"""echo $fileList | xargs -P8 -n1000 bash -c " +
+          s"'aws s3api delete-objects --bucket $bucketName --delete
+          "Objects=[$$(printf "{Key=%s}," "$$@")],Quiet=false"' _""")
+        val filesDeleted = awsDeleteCmd.!!
+        Holder.log.info("Stage File Deleted: " + filesDeleted)
+        stageAuditData
+          .withColumn("stagingStatus", lit("Complete"))
+          .write.format("parquet").mode(SaveMode.Append)
+          .partitionBy("processName","stagingDate")
+          .bucketBy(50, "tableName")
+          .options(Map("path"-> (stageAuditPath + "/stageAudit")))
+          .saveAsTable(stageAuditHiveTable)
+      }*/
 }

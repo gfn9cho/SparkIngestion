@@ -8,6 +8,7 @@ import javax.mail.internet.{InternetAddress, MimeMessage}
 import javax.mail.{MessagingException, Session, Transport}
 
 
+
 /** Mail constructor.
  *
   *  @constructor Mail

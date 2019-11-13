@@ -1,5 +1,6 @@
 package edf.dataingestion
 import edf.utilities.{Holder, MetaInfo, sqlQueryParserFromCSV}
+
 class CdcQueryBuilder(propertyConfigs: Map[String, String], tableSpecDetails: List[(String, String)]) {
 
   val coalescePattern = """coalesce\((.*),(.*)\)""".r

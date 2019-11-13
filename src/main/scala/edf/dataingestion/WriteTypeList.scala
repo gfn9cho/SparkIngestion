@@ -8,6 +8,7 @@ import org.apache.spark.sql.functions.{col, lit}
 import edf.utilities.BatchConcurrency
 
 import scala.concurrent.{Await, Future}
+
 object WriteTypeList {
 
   def writeConnectTypeListTables(spark: SparkSession, propertyConfigs: Map[String, String],
@@ -136,7 +137,6 @@ object WriteTypeList {
           val auditValues = value.split(splitString)
           val sourceDBStr = auditValues(2).split("\\.")
           val sourceDB = sourceDBStr(0).toLowerCase.replaceAll("\\[","").replaceAll("\\]","").replaceAll("-","_")
-
           /*
           * EDIN-***: Start Instead of hard coding the suffix of hive database now we are passing the whole DB name from property file
           */

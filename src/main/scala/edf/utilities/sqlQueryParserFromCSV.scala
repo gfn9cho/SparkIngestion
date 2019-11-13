@@ -44,12 +44,9 @@ object sqlQueryParserFromCSV {
 
   def getPropertyFile(propFile: String): Iterator[propertyFile] = {
     for {
-       line <- Source.fromFile(propFile).getLines().filter(line => {
-           Holder.log.info("##### Line " + line)
-           !(line.startsWith("#") || line.startsWith("\t") || line.trim == "")
-           })
-        values = line.split(":", 2)
-      } yield propertyFile(values(0), values(1))
+      line <- Source.fromFile(propFile).getLines().filter(line => !(line.startsWith("#")  || line.startsWith("\t") || line.trim == ""))
+      values = line.split(":",2)
+    } yield propertyFile(values(0), values(1))
   }
 
   //val lookUpData = getLookUpData

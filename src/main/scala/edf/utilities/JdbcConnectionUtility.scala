@@ -33,7 +33,7 @@ object JdbcConnectionUtility {
                                             propertyConfigs.getOrElse("spark.DataIngestion.dbPwd", ""))    ///Password
     val dbTLPwd = Cipher(dbTLPwd_enc).simpleOffset(-5)
     val sourceTLDB = propertyConfigs.getOrElse("spark.dataingestion.sourceTLDB",
-                                            propertyConfigs.getOrElse("spark.DataIngestion.sourceDB", "").replaceAll("\\[","").replaceAll("\\]","").replaceAll("-","_"))
+                                            propertyConfigs.getOrElse("spark.DataIngestion.sourceDB", ""))
     val jdbcTLSqlConnStr = s"""jdbc:sqlserver://$dbTLHost:1433;database=$sourceTLDB;user=$dbTLUser;password=$dbTLPwd;"""
     jdbcTLSqlConnStr
   }

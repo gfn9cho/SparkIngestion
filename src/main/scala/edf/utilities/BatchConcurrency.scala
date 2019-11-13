@@ -1,5 +1,6 @@
 package edf.utilities
 import java.util.concurrent.Executors
+
 object BatchConcurrency {
 
   //import scala.util._
@@ -7,13 +8,6 @@ object BatchConcurrency {
   import scala.concurrent._
   import scala.concurrent.duration.Duration
   import scala.concurrent.duration.Duration._
-  import edf.utilities.Holder
-  import org.apache.spark.sql.{DataFrame, Row, SaveMode, SparkSession}
-  import org.apache.spark.sql.functions.{col, lit}
-  import edf.utilities.BatchConcurrency
-
-  import scala.concurrent.{Await, Future}
-  import scala.util.{Failure, Success, Try}
 
 /*  val pool = Executors.newFixedThreadPool(5)
   @transient implicit val xc = ExecutionContext.fromExecutorService(pool)*/

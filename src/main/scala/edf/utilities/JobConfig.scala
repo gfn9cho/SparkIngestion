@@ -1,6 +1,7 @@
 package edf.utilities
 import org.apache.spark.sql.SparkSession
 
+
 object JobConfig {
   implicit lazy val implicitConversions = scala.language.implicitConversions
   def getJobConfigProperties(spark: SparkSession): Map[String, String] = {

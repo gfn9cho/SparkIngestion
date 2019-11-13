@@ -76,7 +76,7 @@ object DataLoad extends SparkJob {
             s"please verify the same, rerun the ingestion and restart the hard delete batch \n"
 
           MailingAgent.sendMail(s"$fromEmail", s"$toEmail",
-            subject = s"${environment} : New Account Failure notification from $processnameInSubject process", text = htmlContentStr)
+            subject = s"${environment} : New Cluster Failure notification from $processnameInSubject process", text = htmlContentStr)
           spark.stop()
           System.exit(1)
           //spark.conf.set("spark.yarn.maxAppAttempts", 1)
@@ -130,7 +130,7 @@ case ex: Exception =>
       * Fix for EDIN-330 :  Any failure in harddelete batch getting email alert as dataExtract
       */
     MailingAgent.sendMail(s"$fromEmail", s"$toEmail",
-      subject = s"${environment} : New Account Failure notification from $processnameInSubject process", text = htmlContentStr)
+      subject = s"${environment} : New Cluster Failure notification from $processnameInSubject process", text = htmlContentStr)
     spark.stop()
     System.exit(1)
   }
@@ -150,7 +150,7 @@ val htmlContentStr = "There is no table present in table specs, the processing i
 * Fix for EDIN-330 :  Any failure in harddelete batch getting email alert as dataExtract
 */
 MailingAgent.sendMail(s"$fromEmail", s"$toEmail",
-subject = s"${environment} : New Account Failure notification from $processnameInSubject process", text = htmlContentStr)
+subject = s"${environment} : New Cluster Failure notification from $processnameInSubject process", text = htmlContentStr)
 spark.stop()
 System.exit(1)
 }
@@ -224,11 +224,8 @@ val saveMode = if (loadType == "TL") SaveMode.Overwrite else SaveMode.Append
 def getBatchWindowStartTime = if (loadType == "TL") "1900-01-01"
 else {
 def batchStart = spark.sql(s"select max(batchwindowend) from $auditDB.batchstats where processname = '${processName}' and harddeletebatch != 'Y'")
-val result = batchStart.first().getAs[String](0)
-  batchStart.show
-  Holder.log.info(s"##### QUERY : select max(batchwindowend) from $auditDB.batchstats where processname = '${processName}' and harddeletebatch != 'Y'")
-  Holder.log.info("The batchstart from  getBatchWindowStartTime: "+ result+"|")
-  result
+
+batchStart.first().getAs[String](0)
 }
 
 def getReplTime: String = {
@@ -236,7 +233,8 @@ def getReplTime: String = {
 //val dateNow = now.minusMillis(2)
 //dateNow.add(Calendar.MILLISECOND, -2)
 val replTimeNow = getUpdateTime(spark, propertyConfigs)
-
+// Holder.log.info("replTime: " +  replTimeNow)
+//Holder.log.info("batchWindowStartTime: " + getBatchWindowStartTime)
 if (replTimeNow <= getBatchWindowStartTime && considerBatchWindow == "Y") {
   Thread.sleep(30000)
   getReplTime
@@ -416,8 +414,9 @@ createDF(spark, refTableListStr, propertyConfigs, 'Y', 50, batchWindowStart,
 
 //Holder.log.info("#####TypeListIngestionFutures: " + TypeListIngestionFutures.toList)
 def writeTypeListTables(batchWindowStart: String, replicationTime: String) = {
-  if(isConnectDatabase){
-  WriteTypeList.writeConnectTypeListTables(spark, propertyConfigs,
+
+if(isConnectDatabase){
+WriteTypeList.writeConnectTypeListTables(spark, propertyConfigs,
   TypeListIngestionFutures(batchWindowStart, replicationTime), mainTableListFromTableSpec)
 } else {
 WriteTypeList.writeOtherTYpeListTables(spark, propertyConfigs,
@@ -597,7 +596,7 @@ spark.createDataFrame(spark.sparkContext.parallelize(batchStats,1), batchStatsSc
   .options(Map("path" -> (auditPath + "/batchstats")))
   .mode(SaveMode.Append).saveAsTable(s"$auditDB.batchstats")
 
-val auditData = spark.sql(s"select * from $auditDB.audit where processName = '$processName' " +
+val auditData = spark.sql(s"select * from $auditDB.audit where processname = '$processName' " +
   s"and ingestiondt = '$datePartition'").coalesce(1)
 
 auditData.write.format("parquet")
@@ -610,9 +609,9 @@ spark.sql(s"select * from $auditDB.${sourceDBFormatted}_audit_temp where process
 
   .write.format("parquet")
   .options(Map("path" -> (auditPath + "/audit"), "maxRecordsPerFile" -> "30000"))
-  .mode(SaveMode.Overwrite).insertInto(s"$auditDB.audit")
-spark.conf.set("spark.sql.sources.partitionOverwriteMode","static")
-//spark.sql(s"alter table $auditDB.audit_temp drop if exists partition(processName='$processName')")
+    .mode(SaveMode.Overwrite).insertInto(s"$auditDB.audit")
+  spark.conf.set("spark.sql.sources.partitionOverwriteMode","dynamic")
+  //spark.sql(s"alter table $auditDB.audit_temp drop if exists partition(processName='$processName')")
 spark.catalog.refreshTable(s"$auditDB.${sourceDBFormatted}_audit_temp")
 
 spark.catalog.refreshTable(s"$auditDB.audit")
@@ -634,7 +633,7 @@ data match {
     }
     val htmlContentStr = GenerateHtmlContent.generateContent(data, processName, batchTimes._4, environment)
     MailingAgent.sendMail(s"$fromEmail", s"$toEmail",
-      subject = s"${environment} : New Account Failure notification from $processnameInSubject process", text = htmlContentStr)
+      subject = s"${environment} : New Cluster Failure notification from $processnameInSubject process", text = htmlContentStr)
 }
 }
 case _ => Holder.log.info("empty seq")
@@ -883,8 +882,7 @@ case pii: List[String] =>
   }
 
  // val numPart = if(loadType == "TL") df.select(col("ingestiondt").as("months")).dropDuplicates.count.toInt else 1
-  if(schemaCheck == true && loadType!="TL") alterSchema(df, hiveSecureTable, hiveSecuredDB)
-  import org.apache.spark.sql.functions.lit
+  if(schemaCheck == true) alterSchema(df, hiveSecureTable, hiveSecuredDB)
   val securedHiveTableName = harmonizedSecurePath + tableDF_arr(2)
   //if(spark.catalog.tableExists(s"$securedHiveTableName"))
   //spark.catalog.refreshTable(s"$securedHiveTableName")
@@ -933,8 +931,7 @@ if (refTableList.contains(tableToBeIngested) && !mainTableListFromTableSpec.cont
  // val numPart = if(loadType == "TL") final_df.select(col("ingestiondt").as("months")).dropDuplicates.count.toInt else 1
 val dftos3 = if(hardDeleteBatch == "Y") final_df else final_df.filter(cdcColMax <= max_window)
   val sourceCount = dftos3.count
-  if(schemaCheck == true && loadType!="TL") alterSchema(dftos3, hiveTableName, "")
-
+  if(schemaCheck == true) alterSchema(dftos3, hiveTableName, "")
  /*
  * EDIN-362: Create empty hive table in harmonized layer for TL
  */
@@ -979,7 +976,7 @@ val appendOrOverwrite = restartabilityInd match {
 }
   val dftos3 = if(hardDeleteBatch == "Y") final_df else final_df.filter(cdcColMax <= max_window)
   val sourceCount = dftos3.count
-  if(schemaCheck == true && loadType!="TL") alterSchema(dftos3, hiveTableName, "")
+   if(schemaCheck == true) alterSchema(dftos3, hiveTableName, "")
 /*
  * EDIN-362: Create empty hive table in harmonized layer for TL
  */
@@ -998,7 +995,6 @@ val appendOrOverwrite = restartabilityInd match {
     hiveDB, s3Path, hardDeleteBatch, partitionByCol, loadType)*/
   val tgtCount = spark.sql(s"select count(*) as df_count from $hiveTableName " +
     s"where batch = '$batchPartition'").first().getAs[Long]("df_count")
-
      (sourceCount, tgtCount)
 } else  if((loadType == "TL") && (emptyTableLoadRequired == "true")) {
     Holder.log.info("loadType_2: " + loadType)
@@ -1167,7 +1163,7 @@ dfL.join(broadcast(dfR.select(sCondition: _*).dropDuplicates), jCondition, joinT
 
 def getUpdateTime(spark: SparkSession, propertyConfigs: Map[String, String]): String = {
 Holder.log.info("getUpdateTime Called")
-val sourceDB = propertyConfigs.getOrElse("spark.DataIngestion.sourceDB", "").replaceAll("\\[","").replaceAll("\\]","").replaceAll("-","_")
+val sourceDB = propertyConfigs.getOrElse("spark.DataIngestion.sourceDB", "")
 val sourceDBFormatted=if(propertyConfigs.getOrElse("spark.DataIngestion.sourceDB", "").contains("-"))
 propertyConfigs.getOrElse("spark.DataIngestion.sourceDB", "").replaceAll("\\[","").replaceAll("\\]","").replaceAll("-","_")
 else

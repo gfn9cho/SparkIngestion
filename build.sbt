@@ -4,7 +4,7 @@ val sparkVersion = "2.3.0"
 
 lazy val root = (project in file(".")).
   settings(
-    name := "edf_dataingestion",
+    name := "datalake_processed",
     version := "2.0.0",
 
     scalaVersion := "2.11.7",

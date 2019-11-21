@@ -1,0 +1,20 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy|NumPartitions|Rows|Note
+DMACT.dbo.AM_Boat|Y|N|dw_load_datetime|||dw_load_datetime|1||
+DMACT.dbo.AM_BOP|Y|N|dw_load_datetime|||dw_load_datetime|1||
+DMACT.dbo.AM_CA|Y|N|dw_load_datetime|||dw_load_datetime|1||
+DMACT.dbo.AM_CF|Y|N|dw_load_datetime|||dw_load_datetime|1||
+DMACT.dbo.AM_Claims|Y|N|dw_load_datetime|||dw_load_datetime|1||
+DMACT.dbo.AM_CPP|Y|N|dw_load_datetime|||dw_load_datetime|1||
+DMACT.dbo.AM_Crime|Y|N|dw_load_datetime|||dw_load_datetime|1||
+DMACT.dbo.AM_DF|Y|N|dw_load_datetime|||dw_load_datetime|1||
+DMACT.dbo.AM_EQ|Y|N|dw_load_datetime|||dw_load_datetime|1||
+DMACT.dbo.AM_Farm|Y|N|dw_load_datetime|||dw_load_datetime|1||
+DMACT.dbo.AM_GL|Y|N|dw_load_datetime|||dw_load_datetime|1||
+DMACT.dbo.AM_Home|Y|N|dw_load_datetime|||dw_load_datetime|135||
+DMACT.dbo.AM_IM|Y|N|dw_load_datetime|||dw_load_datetime|1||
+DMACT.dbo.AM_Master_Earn|Y|N|dw_load_datetime|||AccountYYYYMM|5||
+DMACT.dbo.AM_Master|Y|N|dw_load_datetime|||AccountYYYYMM|4||
+DMACT.dbo.AM_Misc|Y|N|dw_load_datetime|||dw_load_datetime|1||
+DMACT.dbo.AM_PersUmb|Y|N|dw_load_datetime|||dw_load_datetime|1||
+DMACT.dbo.AM_PPA|Y|N|dw_load_datetime|||dw_load_datetime|141||
+DMACT.dbo.AM_WC|Y|N|dw_load_datetime|||dw_load_datetime|1||

@@ -1,0 +1,16 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy|NumPartitions|Rows|Note
+EnterpriseReportOrdering.dbo.LexisNexisADDReports|Y|Y|DateAdded|||ID|||
+EnterpriseReportOrdering.dbo.LexisNexisAutoDataPrefillLogReports|Y|Y|DateAdded|||ID|||
+EnterpriseReportOrdering.dbo.LexisNexisAutoDataPrefillReports|Y|Y|DateAdded|||ID|||
+EnterpriseReportOrdering.dbo.LexisNexisClueAutoLogReports|Y|Y|DateAdded|||ID|||
+EnterpriseReportOrdering.dbo.LexisNexisClueAutoReports|Y|Y|DateAdded|||ID|||
+EnterpriseReportOrdering.dbo.LexisNexisClueCommercialLogReports|Y|Y|DateAdded|||ID|||
+EnterpriseReportOrdering.dbo.LexisNexisClueCommercialReports|Y|Y|DateRequestReceived|||ID|||
+EnterpriseReportOrdering.dbo.LexisNexisClueHomeLogReports|Y|Y|DateAdded|||ID|||
+EnterpriseReportOrdering.dbo.LexisNexisClueHomeReports|Y|Y|DateAdded|||ID|||
+EnterpriseReportOrdering.dbo.LexisNexisCreditLogReports|Y|Y|DateAdded|||ID|||
+EnterpriseReportOrdering.dbo.LexisNexisCreditReports|Y|Y|DateAdded|||ID|||
+EnterpriseReportOrdering.dbo.LexisNexisMVRLogReports|Y|Y|DateAdded|||ID|||
+EnterpriseReportOrdering.dbo.LexisNexisMVRReports|Y|Y|DateAdded|||ID|||
+EnterpriseReportOrdering.dbo.LexisNexisPropertyDataPrefillLogReports|Y|Y|DateAdded|||ID|||
+EnterpriseReportOrdering.dbo.LexisNexisPropertyDataPrefillReports|Y|Y|DateAdded|||ID|||

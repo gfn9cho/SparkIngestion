@@ -1,0 +1,20 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="TELEMATICS Data Ingestion">
+    <start to="TELEMATICS_INGESTION"/>
+    
+    <action name="TELEMATICS_INGESTION">
+	<ssh xmlns="uri:oozie:ssh-action:0.1">
+	<host>${focusNodeLogin}</host>
+	<command>${spark_run_script_path}</command>
+	<args></args>
+	</ssh>
+	<ok to="END"/>
+	<error to="KILL"/>
+    </action>
+
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+        <message>Job failed for TELEMATICS Tables , error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="END" />
+</workflow-app>

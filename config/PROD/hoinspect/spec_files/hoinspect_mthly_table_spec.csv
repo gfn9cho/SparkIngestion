@@ -1,0 +1,13 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy|NumPartitions|Rows|Notes
+HOInspect.dbo.credit_cptofi_home2|Y||ID|N||ID|||
+HOInspect.dbo.easi_vars_closest|Y||ID|N||ID|||
+HOInspect.dbo.hazard_beta|Y||ID|N||ID|||
+HOInspect.dbo.itv_beta_t|Y||ID|N||ID|||
+HOInspect.dbo.itv_hazard_cutoff|Y||ID|N||ID|||
+HOInspect.dbo.master_state|Y||ID|N||ID|||
+HOInspect.dbo.missing_impute|Y||ID|N||ID|||
+HOInspect.dbo.pca_hazard_total|Y||ID|N||ID|||
+HOInspect.dbo.pca_itv_total|Y||ID|N||ID|||
+HOInspect.dbo.phazard_centiles|Y||ID|N||ID|||
+HOInspect.dbo.pitv_centiles|Y||ID|N||ID|||
+HOInspect.dbo.weather_vars_closest|Y||ID|N||ID|||

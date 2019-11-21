@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="XACTDOC" type="XACTDOC"/>
+	<xs:complexType name="ADM">
+		<xs:all>
+			<xs:element name="TYPESOFLOSS" type="TYPESOFLOSS"/>
+		</xs:all>
+	</xs:complexType>	
+	<xs:complexType name="CONTACT">
+		<xs:all>
+			<xs:element name="CONTACTMETHODS" type="CONTACTMETHODS"/>
+		</xs:all>
+		<xs:attribute name="name" type="xs:string"/>
+		<xs:attribute name="type" type="contactType"/>
+	</xs:complexType>
+	<xs:complexType name="CONTACTMETHODS">
+		<xs:choice  maxOccurs="unbounded">
+			<xs:element name="PHONE" type="PHONE" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="CONTACTS">
+		<xs:all>
+			<xs:element name="CONTACT" type="CONTACT"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="CONTROL_POINT">
+		<xs:attribute name="stamp" type="xs:dateTime"/>
+		<xs:attribute name="type" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="CONTROL_POINTS">
+		<xs:all>
+			<xs:element name="CONTROL_POINT" type="CONTROL_POINT"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="PHONE">
+		<xs:attribute name="extension" type="phoneExt20"/>
+		<xs:attribute name="number" type="phoneNumber"/>
+		<xs:attribute name="type" type="phoneType"/>
+	</xs:complexType>
+	<xs:complexType name="TYPEOFLOSS">
+		<xs:attribute name="claimNumber" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="TYPESOFLOSS">
+		<xs:all>
+			<xs:element name="TYPEOFLOSS" type="TYPEOFLOSS"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="XACTDOC">
+		<xs:all>
+			<xs:element name="XACTNET_INFO" type="XACTNET_INFO"/>
+			<xs:element name="CONTACTS" type="CONTACTS"/>
+			<xs:element name="ADM" type="ADM"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="XACTNET_INFO">
+		<xs:all>
+			<xs:element name="CONTROL_POINTS" type="CONTROL_POINTS"/>
+		</xs:all>
+		<xs:attribute name="recipientsXNAddress" type="xs:string"/>
+		<xs:attribute name="recipientsXM8UserId" type="xs:string"/>
+		<xs:attribute name="transactionId" type="xs:string"/>
+		<xs:attribute name="origTransactionId" type="xs:string"/>
+	</xs:complexType>
+	<xs:simpleType name="bool">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="contactType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ClaimRep"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="phoneType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Office"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="phoneNumber">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="12"/>
+			<xs:pattern value="[0-9]{3,4}\-[0-9]{3}\-[0-9]{4}|[0-9]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="phoneExt20">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+			<xs:pattern value="[0-9]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,17 @@
+Table|Source Column|Ref Table Column|Typelist (per Dictionary)|Harmonized Column Names|Attributes from Lookup Table
+GAIN50.dbo.AddressBook|Atype|Atype|GAIN50.dbo.AddressType|addresstype_atypename / addresstype_adtypedesc|ATypeName / ADTypeDesc
+GAIN50.dbo.AgencyDistribution|Dtype|Dtype|GAIN50.dbo.DistributionType|distributiontype_dtypename / distributiontype_displayorder|DTypeName / DisplayOrder
+GAIN50.dbo.AgencyIndividual|TitleID|TitleID|GAIN50.dbo.AgencyIndividualTitle|agencyindividualtitle_title / agencyindividualtitle_isprincipal|Title / IsPrincipal
+GAIN50.dbo.Employees|EntityStatus|Code|GAIN50.dbo.AgencyStatus|agencystatus_description|Description
+GAIN50.dbo.GAINName|AddType|AType|GAIN50.dbo.AddressType|addresstype_atypename / addresstype_adtypedesc|ATypeName / ADTypeDesc
+GAIN50.dbo.GAINName|Structure|Code|GAIN50.dbo.AgencyStructure|agencystructure_description|Description
+GAIN50.dbo.GAINName|coalesce(MStatus,'A')|Code|GAIN50.dbo.AgencyCodeUse|agencycodeuse_description|Code
+GAIN50.dbo.GAINName|coalesce(MStatus,'A')|Code|GAIN50.dbo.AgencyCodeUse|agencycodeuse_co|Co
+GAIN50.dbo.PhoneBook|PhType|PhType|GAIN50.dbo.PhoneType|phonetype_phtypename / phonetype_phtypegroup / phonetype_phtypedesc / phonetype_phtypenotes|PhTypeName / PhTypeGroup / PhTypeDesc / PhTypeNotes
+GAIN50.dbo.PLRetention|EmpType|EmpType|GAIN50.dbo.SAEmployeeType|saemployeetype_emptypename / saemployeetype_emptitle / saemployeetype_displayorder / saemployeetype_porcorb / saemployeetype_emptypegroup|EmpTypeName / EmpTitle / DisplayOrder / PorCorB / EmpTypeGroup
+GAIN50.dbo.PSParticipants|CoachNum|CoachID|GAIN50.dbo.PSCoach|pscoach_coachlname / pscoach_coachfname|CoachLName / CoachFName
+GAIN50.dbo.PSParticipants|FocusNum|FocusID|GAIN50.dbo.PSFocus|psfocus_focus|Focus
+GAIN50.dbo.PSParticipants|ProgramNum|Programnum|GAIN50.dbo.PSPrograms|psprograms_programdate|ProgramDate
+GAIN50.dbo.SAEmployeeCodes|EmpType|EmpType|GAIN50.dbo.SAEmployeeType|saemployeetype_emptypename / saemployeetype_emptitle / saemployeetype_displayorder / saemployeetype_porcorb / saemployeetype_emptypegroup|EmpTypeName / EmpTitle / DisplayOrder / PorCorB / EmpTypeGroup
+GAIN50.dbo.SARepAssignment|EmpType|EmpType|GAIN50.dbo.SAEmployeeType|saemployeetype_emptypename / saemployeetype_emptitle / saemployeetype_displayorder / saemployeetype_porcorb / saemployeetype_emptypegroup|EmpTypeName / EmpTitle / DisplayOrder / PorCorB / EmpTypeGroup
+GAIN50.dbo.SARepExceptions|EmpType|EmpType|GAIN50.dbo.SAEmployeeType|saemployeetype_emptypename / saemployeetype_emptitle / saemployeetype_displayorder / saemployeetype_porcorb / saemployeetype_emptypegroup|EmpTypeName / EmpTitle / DisplayOrder / PorCorB / EmpTypeGroup

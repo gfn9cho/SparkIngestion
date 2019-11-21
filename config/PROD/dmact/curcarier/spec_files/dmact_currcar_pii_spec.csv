@@ -1,0 +1,13 @@
+Table|PII Column|Notes:
+DMACT.dbo.CurrentCarrierMaster|InsuredDOB|
+DMACT.dbo.CurrentCarrierMaster|InsuredFname|
+DMACT.dbo.CurrentCarrierMaster|InsuredLname|
+DMACT.dbo.CurrentCarrierMaster|Insured1Name|
+DMACT.dbo.CurrentCarrierMaster|Insured2Name|
+DMACT.dbo.CurrentCarrierMaster|Insured3Name|
+DMACT.dbo.CurrentCarrierMaster|Insured4Name|
+DMACT.dbo.CurrentCarrierMaster|Insured5Name|
+DMACT.dbo.CurrentCarrierMaster|Insured6Name|
+DMACT.dbo.CurrentCarrierMaster|Insured7Name|
+DMACT.dbo.CurrentCarrierMaster|Insured8Name|
+DMACT.dbo.CurrentCarrierMaster|Insured9Name|

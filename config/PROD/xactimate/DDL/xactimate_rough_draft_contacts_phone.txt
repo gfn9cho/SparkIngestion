@@ -1,0 +1,19 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS claims_vendor_secure.xactimate_rough_draft_contacts_phone(
+    contactID string,
+    contactPhonePrimary string,
+    contactPhoneType string,
+    contactPhoneNumber string,
+    fileTransactionID string,
+    file string
+  )
+ ROW FORMAT SERDE
+  'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+ WITH SERDEPROPERTIES (
+  'quoteChar'='\"')
+ STORED AS INPUTFORMAT
+  'org.apache.hadoop.mapred.TextInputFormat'
+ OUTPUTFORMAT
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+ LOCATION
+  's3://sa-l4-emr-ed-userdata-secure/ClaimsTeam/claims_vendor/xactimate/rough_draft_contacts_phone/'
+ TBLPROPERTIES ('skip.header.line.count'='1')

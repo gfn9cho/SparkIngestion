@@ -1,0 +1,19 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy|NumPartitions|Rows|Note
+RAVehicle.dbo.NC_VinMasterSupplementalVS|Y||ID|N||ID|||
+RAVehicle.dbo.NC_VinMasterVehicleSymbolsAndModule|Y||ID|N||ID|||
+RAVehicle.dbo.VinMasterInterimVehicleModuleLiability|Y||ID|N||ID|||
+RAVehicle.dbo.VinMasterInterimVehicleSymbolsAndModule|Y||ID|N||ID|||
+RAVehicle.dbo.VinMasterInterimVMLBatch|Y||BatchEffDate|N||BatchID|||
+RAVehicle.dbo.VinMasterInterimVSBatch|Y||BatchEffDate|N||BatchID|||
+RAVehicle.dbo.VinMasterSpecialHandlingVML|Y||ID|N||ID|||
+RAVehicle.dbo.VinMasterSpecialHandlingVMLBatch|Y||BatchEffDate|N||BatchID|||
+RAVehicle.dbo.VinMasterSpecialHandlingVS|Y||ID|N||ID|||
+RAVehicle.dbo.VinMasterSpecialHandlingVSBatch|Y||BatchEffDate|N||BatchID|||
+RAVehicle.dbo.VinMasterSupplementalVML|Y||ID|N||ID|||
+RAVehicle.dbo.VinMasterSupplementalVS|Y||ID|N||ID|||
+RAVehicle.dbo.VinMasterVehicleModuleLiability|Y||ID|N||ID|||
+RAVehicle.dbo.VinMasterVehicleSymbolsAndModule|Y||ID|N||ID|||
+RAVehicle.dbo.VinMasterVINPosition4lookup|Y||ID|N||ID|||
+RAVehicle.dbo.VinMasterVINPosition6lookup|Y||ID|N||ID|||
+RAVehicle.dbo.VinMasterVMLBatch|Y||BatchEffDate|N||BatchID|||
+RAVehicle.dbo.VinMasterVSBatch|Y||BatchEffDate|N||BatchID|||

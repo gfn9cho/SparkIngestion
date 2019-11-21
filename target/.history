@@ -1,0 +1,4 @@
+;reload; set _root_.org.jetbrains.sbt.StructureKeys.sbtStructureOptions in Global := "download resolveClassifiers resolveSbtClassifiers" ;*/*:dumpStructureTo C:/Users/KUM2180/AppData/Local/Temp/sbt-structure1.xml; session clear-all
+{file:/C:/Users/KUM2180/Downloads/New_Ingestion/DatalakeProcessed/}root/clean
+{file:/C:/Users/KUM2180/Downloads/New_Ingestion/DatalakeProcessed/}root/assembly
+{file:/C:/Users/KUM2180/Downloads/New_Ingestion/DatalakeProcessed/}root/clean

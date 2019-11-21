@@ -1,0 +1,37 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="DMACT Monthly Data Ingestion">
+    <start to="DMACT_INGESTION"/>
+    <action name="DMACT_INGESTION">
+      <ssh xmlns="uri:oozie:ssh-action:0.1">
+          <host>${focusNodeLogin}</host>
+          <command>${spark_run_script_path_dmact_mthly}</command>
+          <args></args>
+      </ssh>
+      <ok to="DMACTREF_INGESTION"/>
+      <error to="FAILURE_EMAIL"/>
+    </action>
+    <action name="DMACTREF_INGESTION">
+      <ssh xmlns="uri:oozie:ssh-action:0.1">
+          <host>${focusNodeLogin}</host>
+          <command>${spark_run_script_path_dmact_ref_mthly}</command>
+          <args></args>
+      </ssh>
+      <ok to="END"/>
+      <error to="FAILURE_EMAIL"/>
+    </action>
+    <action name="FAILURE_EMAIL">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>Production : Failure DMACT/DMACTREF Ingestion</subject>
+        <body>DMACT or DMACTREF ingestion load has failed. Please research.</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+    </action>
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+        <message>Job failed for DMACT Tables , error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="END" />
+</workflow-app>
+

@@ -1,0 +1,20 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS claims_vendor_secure.xactimate_estimate_email(
+contactID string,
+contactEmail string,
+admClaimNumber string,
+admPolicyNumber string,
+contactEmailCount string,
+XactnetTransactionId string,
+file string
+  )
+ ROW FORMAT SERDE
+  'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+ WITH SERDEPROPERTIES (
+  'quoteChar'='\"')
+ STORED AS INPUTFORMAT
+  'org.apache.hadoop.mapred.TextInputFormat'
+ OUTPUTFORMAT
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+ LOCATION
+  's3://sa-l4-emr-ed-userdata-secure/ClaimsTeam/claims_vendor/xactimate/estimate_email/'
+ TBLPROPERTIES ('skip.header.line.count'='1')

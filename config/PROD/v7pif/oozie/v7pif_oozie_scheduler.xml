@@ -1,0 +1,28 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="V7PIF Data Ingestion">
+    <start to="V7PIF_INGESTION"/>
+    
+    <action name="V7PIF_INGESTION">
+	<ssh xmlns="uri:oozie:ssh-action:0.1">
+	<host>${focusNodeLogin}</host>
+	<command>${spark_run_script_path}</command>
+	<args></args>
+	</ssh>
+	<ok to="END"/>
+	<error to="FAILURE_EMAIL"/>
+    </action>
+    <action name="FAILURE_EMAIL">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>Production : Failure V7PIF Ingestion</subject>
+        <body>V7PIF ingestion load has failed. Please research.</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+    </action>
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+        <message>Job failed for V7PIF Tables , error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="END" />
+</workflow-app>

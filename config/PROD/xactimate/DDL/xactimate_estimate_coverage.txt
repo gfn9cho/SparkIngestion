@@ -1,0 +1,29 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS claims_vendor_secure.xactimate_estimate_coverage(
+covApplyTo string,
+covCoins string,
+covName string,
+covType string,
+covDeductible string,
+covID string,
+covPolicyLimit string,
+covReserveAmt string,
+covDeductApplied string,
+covOverLimits string,
+admClaimNumber string,
+admPolicyNumber string,
+admCat string,
+XactnetTransactionId string,
+file string
+
+  )
+ ROW FORMAT SERDE
+  'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+ WITH SERDEPROPERTIES (
+  'quoteChar'='\"')
+ STORED AS INPUTFORMAT
+  'org.apache.hadoop.mapred.TextInputFormat'
+ OUTPUTFORMAT
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+ LOCATION
+  's3://sa-l4-emr-ed-userdata-secure/ClaimsTeam/claims_vendor/xactimate/estimate_coverage/'
+ TBLPROPERTIES ('skip.header.line.count'='1')

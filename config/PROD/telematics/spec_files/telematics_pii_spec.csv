@@ -1,0 +1,8 @@
+Table|PII Column|Notes:
+TelematicsLake.dbo.OctoDeviceStatus|LastName|
+TelematicsLake.dbo.OctoDeviceStatus|FirstName|
+TelematicsLake.dbo.RoostTransactions|FirstName|
+TelematicsLake.dbo.RoostTransactions|LastName|
+TelematicsLake.dbo.Transactions|contactlastname|
+TelematicsLake.dbo.Transactions|contactfirstname|
+TelematicsLake.dbo.Transactions|userinitiatingaction|

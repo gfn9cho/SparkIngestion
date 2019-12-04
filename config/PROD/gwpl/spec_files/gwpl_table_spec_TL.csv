@@ -93,7 +93,7 @@ PolicyCenter.dbo.pc_nonrenewalexppattern|Y||UpdateTime|Y||ID|||
 PolicyCenter.dbo.pc_note|Y||UpdateTime|Y||ID|||
 PolicyCenter.dbo.pc_notificationconfig|Y||UpdateTime|Y||ID|||
 PolicyCenter.dbo.pc_offeringlookup|Y||UpdateTime|Y||ID|||
-PolicyCenter.dbo.pc_officialid|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_officialid|Y|Y|UpdateTime|Y||ID|||
 PolicyCenter.dbo.pc_officialidvalidationinfo|Y||UpdateTime|Y||ID|||
 PolicyCenter.dbo.pc_organization|Y||UpdateTime|Y||ID|||
 PolicyCenter.dbo.pc_orggroup|Y||ID|Y|ID|ID|||

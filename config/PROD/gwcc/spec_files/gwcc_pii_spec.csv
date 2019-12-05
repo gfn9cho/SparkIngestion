@@ -51,3 +51,4 @@ ClaimCenter.dbo.ccx_epaymentreport_ext|BankNumber|
 ClaimCenter.dbo.ccx_epaymentreport_ext_tmp|BankNumber|
 ClaimCenter.dbo.ccx_symb_appraiser_ext|FirstName|
 ClaimCenter.dbo.ccx_symb_appraiser_ext|LastName|
+ClaimCenter.dbo.cc_officialid|OfficialIDValue|

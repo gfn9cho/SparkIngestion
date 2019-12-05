@@ -68,3 +68,4 @@ PolicyCenter.dbo.pcx_uladditionalinterests_ext|LicenseNumber_Ext|
 PolicyCenter.dbo.pcx_uladditionalinterests_ext|MiddleName_Ext|
 PolicyCenter.dbo.pcx_uladditionalinterests_ext|PolicyAddIntName_Ext|
 PolicyCenter.dbo.pcx_uladditionalinterests_ext|SSNOfficialID_Ext|
+PolicyCenter.dbo.pc_officialid|OfficialIDValue|

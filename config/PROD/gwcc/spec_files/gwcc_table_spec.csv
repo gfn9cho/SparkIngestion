@@ -217,7 +217,7 @@ ClaimCenter.dbo.cc_negotiationtext|Y||ID|Y|Y|ID||||
 ClaimCenter.dbo.cc_note|Y||UpdateTime|Y|ID|ID||||
 ClaimCenter.dbo.cc_nullablecolumndatadist|N||ID|Y|Y|ID||||
 ClaimCenter.dbo.cc_official|Y||UpdateTime|Y||ID||||
-ClaimCenter.dbo.cc_officialid|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cc_officialid|Y|Y|UpdateTime|Y||ID||||
 ClaimCenter.dbo.cc_organization|Y||UpdateTime|Y||ID||||
 ClaimCenter.dbo.cc_OrganizationZoneAdmin|N||UpdateTime|Y||ID||||
 ClaimCenter.dbo.cc_orggroup|Y||ID|Y|Y|ID||||

@@ -74,3 +74,14 @@ TABLE_NAME|COLUMN_NAME|Notes
 [PolicyCenterL4-1].dbo.pcx_ulcuautodriver_ext|LastNameDenorm|
 [PolicyCenterL4-1].dbo.pcx_ulcuautodriver_ext|LicenseNumber|
 [PolicyCenterL4-1].dbo.pc_officialid|OfficialIDValue|
+[PolicyCenterL4-1].dbo.pcx_fadriver|FirstName|
+[PolicyCenterL4-1].dbo.pcx_fadriver|LastName|
+[PolicyCenterL4-1].dbo.pcx_fadriver|LicenseNumber|
+[PolicyCenterL4-1].dbo.pcx_fadriver|MiddleName|
+[PolicyCenterL4-1].dbo.pcx_frmexcludedoperators_ext|FirstName|
+[PolicyCenterL4-1].dbo.pcx_frmexcludedoperators_ext|LastName|
+[PolicyCenterL4-1].dbo.pcx_fudriver|FirstName|
+[PolicyCenterL4-1].dbo.pcx_fudriver|LastName|
+[PolicyCenterL4-1].dbo.pcx_fudriver|LicenseNumber|
+[PolicyCenterL4-1].dbo.pcx_fudriver|MiddleName|
+[PolicyCenterL4-1].dbo.pcx_Reconciliation_Ext|DriverName|

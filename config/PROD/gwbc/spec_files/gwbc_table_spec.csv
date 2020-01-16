@@ -558,3 +558,7 @@ BillingCenter.dbo.bcx_paymentplanlobcode|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bcx_paymentplanpolicyterm_ext|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bcx_paymentprocessaudit_ext|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bcx_PorSessID_Ext|Y| |issueDate|Y|ID|ID| ||
+BillingCenter.dbo.bc_agencycycleprocess|Y| |UpdateTime|Y|ID|ID| ||
+BillingCenter.dbo.bc_agencydisbpaidcontext|Y| |UpdateTime|Y| |ID| ||
+BillingCenter.dbo.bc_agencymoneyrcvdcontext|Y| |UpdateTime|Y| |ID| ||
+BillingCenter.dbo.bc_agencybillcycle|Y| |UpdateTime|Y|ID|ID| ||

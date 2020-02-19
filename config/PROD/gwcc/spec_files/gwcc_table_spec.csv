@@ -1034,7 +1034,7 @@ ClaimCenter.dbo.ccx_crasheventpayld_ext|Y||UpdateTime|Y||ID||||
 ClaimCenter.dbo.ccx_dailyassignment_ext|Y||ID|Y|Y|ID||||
 ClaimCenter.dbo.ccx_documentrecipients_ext|N||UpdateTime|Y||ID||||
 ClaimCenter.dbo.ccx_documentsselections_ext|N||UpdateTime|Y||ID||||
-ClaimCenter.dbo.ccx_EDW_Replication_Ext|Y||ID|Y|N|ID||||
+ClaimCenter.dbo.ccx_EDW_Replication_Ext|Y||Repl_UpdateTime|Y|N|ID||||
 ClaimCenter.dbo.ccx_enbulkinvoicedata_ext|Y|Y|UpdateTime|Y||ID||||
 ClaimCenter.dbo.ccx_epayaccount|Y||UpdateTime|Y||ID||||
 ClaimCenter.dbo.ccx_epayment|Y|Y|UpdateTime|Y||ID||||
@@ -1121,7 +1121,11 @@ ClaimCenter.dbo.cc_catastropheperil|Y||ID|Y|Y|ID||||
 ClaimCenter.dbo.cc_catastrophezone|Y||ID|Y|Y|ID||||
 ClaimCenter.dbo.cc_credential|Y||UpdateTime|Y|ID|ID||||
 ClaimCenter.dbo.cc_group|Y||UpdateTime|Y|ID|ID||||
-ClaimCenter.dbo.ccx_copartcentpaperwork_ext|Y||UpdateTime|Y||ID||||
 ClaimCenter.dbo.ccx_documentshipper_ext|N||UpdateTime|||ID||||
 ClaimCenter.dbo.cctl_fedexservicetype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.ccx_copartcentpaperwork_ext|Y||UpdateTime|Y||ID||||
 ClaimCenter.dbo.cctl_ccc_transactiontype|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.ccx_xactcoverage_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.ccx_xactimatedataset_ext|Y||UpdateTime|Y||ID||||
+ClaimCenter.dbo.cctl_notificationeventtype_ext|Y||Truncate and Load|TypeList|| ||||
+ClaimCenter.dbo.cctl_stpstatus_ext|Y||Truncate and Load|TypeList|| ||||

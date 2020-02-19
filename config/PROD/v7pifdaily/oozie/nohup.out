@@ -1,0 +1,5 @@
+Started the script for V7PIF Daily ingestion load
+sh: /home/hadoop/processed/v7pifdaily/scripts/v7pifdailyquotedataingestion.sh: No such file or directory
+Started the script for V7PIF Quote Daily ingestion load
+Completed the script and the status is 0
+Completed the script and the status is 0

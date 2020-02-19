@@ -8,8 +8,28 @@
 	<command>${spark_run_script_path}</command>
 	<args></args>
 	</ssh>
-	<ok to="END"/>
-	<error to="KILL"/>
+	<ok to="LEGACY_DAILY_DTL_INGESTION_LOAD_SUCCESS"/>
+	<error to="LEGACY_DAILY_DTL_INGESTION_LOAD_FAILURE"/>
+    </action>
+	
+	<action name="LEGACY_DAILY_DTL_INGESTION_LOAD_SUCCESS">
+        <email xmlns="uri:oozie:email-action:0.1">
+		    <to>${emailToAddress}</to>
+            <subject>Legacy daily DTL ingestion load success notification (${mode})</subject>
+            <body>Legacy daily DI ${mode} ingestion load is completed</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+    </action>
+
+    <action name="LEGACY_DAILY_DTL_INGESTION_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+		    <to>${emailToAddress}</to>
+            <subject>Legacy daily DTL ingestion load failure notification (${mode})</subject>
+            <body>Legacy daily DI ${mode} ingestion load failure notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
     </action>
 
     <kill name="KILL">

@@ -1,0 +1,168 @@
+19/10/06 22:46:50 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/10/06 22:46:51 INFO RMProxy: Connecting to ResourceManager at ip-10-84-38-68.corp.stateauto.com/10.84.38.68:8032
+19/10/06 22:46:52 INFO Client: Requesting a new application from cluster with 6 NodeManagers
+19/10/06 22:46:52 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (122880 MB per container)
+19/10/06 22:46:52 INFO Client: Will allocate AM container, with 16896 MB memory including 1536 MB overhead
+19/10/06 22:46:52 INFO Client: Setting up container launch context for our AM
+19/10/06 22:46:52 INFO Client: Setting up the launch environment for our AM container
+19/10/06 22:46:52 INFO Client: Preparing resources for our AM container
+19/10/06 22:46:52 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+19/10/06 22:46:55 INFO Client: Uploading resource file:/mnt/tmp/spark-b884894d-307d-4efd-925a-cd223c13c902/__spark_libs__5044164638352186864.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0194/__spark_libs__5044164638352186864.zip
+19/10/06 22:46:56 INFO Client: Uploading resource file:/home/hadoop/processed/jars/edf_dataingestion_legacy-assembly-2.0.0.jar -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0194/edf_dataingestion_legacy-assembly-2.0.0.jar
+19/10/06 22:46:56 INFO Client: Uploading resource file:/home/hadoop/processed/legacy/spec_files/legacy_TL.properties#diProperties.properties -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0194/legacy_TL.properties
+19/10/06 22:46:56 INFO Client: Uploading resource file:/home/hadoop/processed/legacy/spec_files/legacy_lookup_info.csv#legacy_lookup_info.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0194/legacy_lookup_info.csv
+19/10/06 22:46:56 INFO Client: Uploading resource file:/home/hadoop/processed/legacy/spec_files/legacy_pii_spec.csv#legacy_pii_spec.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0194/legacy_pii_spec.csv
+19/10/06 22:46:56 INFO Client: Uploading resource file:/home/hadoop/processed/legacy/spec_files/legacy_tables_spec_TL.csv#legacy_tables_spec_TL.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0194/legacy_tables_spec_TL.csv
+19/10/06 22:46:56 INFO Client: Uploading resource file:/etc/spark/conf/hive-site.xml -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0194/hive-site.xml
+19/10/06 22:46:56 INFO Client: Uploading resource file:/mnt/tmp/spark-b884894d-307d-4efd-925a-cd223c13c902/__spark_conf__4085232333803327353.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0194/__spark_conf__.zip
+19/10/06 22:46:56 INFO SecurityManager: Changing view acls to: hadoop
+19/10/06 22:46:56 INFO SecurityManager: Changing modify acls to: hadoop
+19/10/06 22:46:56 INFO SecurityManager: Changing view acls groups to: 
+19/10/06 22:46:56 INFO SecurityManager: Changing modify acls groups to: 
+19/10/06 22:46:56 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+19/10/06 22:46:58 INFO Client: Submitting application application_1570041489538_0194 to ResourceManager
+19/10/06 22:46:58 INFO YarnClientImpl: Submitted application application_1570041489538_0194
+19/10/06 22:46:59 INFO Client: Application report for application_1570041489538_0194 (state: ACCEPTED)
+19/10/06 22:46:59 INFO Client: 
+	 client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1570402018826
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_0194/
+	 user: hadoop
+19/10/06 22:47:00 INFO Client: Application report for application_1570041489538_0194 (state: ACCEPTED)
+19/10/06 22:47:01 INFO Client: Application report for application_1570041489538_0194 (state: ACCEPTED)
+19/10/06 22:47:02 INFO Client: Application report for application_1570041489538_0194 (state: ACCEPTED)
+19/10/06 22:47:03 INFO Client: Application report for application_1570041489538_0194 (state: ACCEPTED)
+19/10/06 22:47:04 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:04 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ip-10-84-37-145.corp.stateauto.com
+	 ApplicationMaster RPC port: 45391
+	 queue: default
+	 start time: 1570402018826
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_0194/
+	 user: hadoop
+19/10/06 22:47:05 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:06 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:07 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:08 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:09 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:10 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:11 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:12 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:13 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:14 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:15 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:16 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:17 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:18 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:19 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:20 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:21 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:22 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:23 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:24 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:25 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:26 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:27 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:28 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:29 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:30 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:31 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:32 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:33 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:34 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:35 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:36 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:37 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:38 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:39 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:40 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:41 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:42 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:43 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:44 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:45 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:46 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:47 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:48 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:49 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:50 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:51 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:52 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:53 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:54 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:55 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:56 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:57 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:58 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:47:59 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:00 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:01 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:02 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:03 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:04 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:05 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:06 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:07 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:08 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:09 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:10 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:11 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:12 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:13 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:14 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:15 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:16 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:17 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:18 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:19 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:20 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:21 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:22 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:23 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:24 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:25 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:26 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:27 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:28 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:29 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:30 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:31 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:32 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:33 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:34 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:35 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:36 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:37 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:38 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:39 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:40 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:41 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:42 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:43 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:44 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:45 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:46 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:48 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:49 INFO Client: Application report for application_1570041489538_0194 (state: RUNNING)
+19/10/06 22:48:50 INFO Client: Application report for application_1570041489538_0194 (state: FINISHED)
+19/10/06 22:48:50 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ip-10-84-37-145.corp.stateauto.com
+	 ApplicationMaster RPC port: 45391
+	 queue: default
+	 start time: 1570402018826
+	 final status: SUCCEEDED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_0194/
+	 user: hadoop
+19/10/06 22:48:50 INFO ShutdownHookManager: Shutdown hook called
+19/10/06 22:48:50 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-f55f085d-6bd8-4c2c-a1cf-dc1c77fef0c5
+19/10/06 22:48:50 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-b884894d-307d-4efd-925a-cd223c13c902

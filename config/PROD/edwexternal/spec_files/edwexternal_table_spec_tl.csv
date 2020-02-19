@@ -24,3 +24,5 @@ EDW_ExternalData.dbo.LGREP_COPY_SBREXT_DPLR_HISTORY|Y||Truncate and Load|TypeLis
 EDW_ExternalData.dbo.LGREP_RAW_SAPRODMF_RSGTAM|Y||Truncate and Load|TypeList|| |||
 EDW_ExternalData.dbo.LGREP_RAW_SAPRODMF_V7GTAM|Y||Truncate and Load|TypeList|| |||
 EDLake.dbo.ent_ref_code|Y||Truncate and Load|TypeList|| |||Curation
+EDLake.dbo.iso_pasp_rules_lookup|Y||Truncate and Load|TypeList|| |||Curation
+EDLake.dbo.plcy_nc_line_code|Y||Truncate and Load|TypeList|| |||Curation

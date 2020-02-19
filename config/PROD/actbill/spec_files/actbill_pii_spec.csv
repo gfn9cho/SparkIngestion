@@ -1,0 +1,4 @@
+TABLE_NAME|COLUMN_NAME|Notes
+Actuary_Billing.dbo.bil_eft_rej_bch|bil_bank_acct_nbr|
+Actuary_Billing.dbo.bil_eft_rej_bch|bil_pay_lng_nm|
+Actuary_Billing.dbo.bil_bcr_v|bil_crcrd_act_nbr|

@@ -1,0 +1,28 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="V7PIF Quote Daily Data Ingestion">
+    <start to="V7PIF_QUOTE_DAILY_INGESTION"/>
+    
+    <action name="V7PIF_QUOTE_DAILY_INGESTION">
+	<ssh xmlns="uri:oozie:ssh-action:0.1">
+	<host>${focusNodeLogin}</host>
+	<command>${spark_run_script_path}</command>
+	<args></args>
+	</ssh>
+	<ok to="END"/>
+	<error to="v7PIF_QUOTE_DAILY_INGESTION_FAILURE"/>
+    </action>
+    <action name="v7PIF_QUOTE_DAILY_INGESTION_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>V7PIF QUOTE DAILY INGESTION LOAD FAILURE NOTIFICATION</subject>
+        <body>v7pif quote daily load failure notification, please check the logs for more information</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+    </action>
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+        <message>Job failed for v7PIF Quote Daily Tables , error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="END" />
+</workflow-app>

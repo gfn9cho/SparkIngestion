@@ -1,0 +1,105 @@
+19/10/05 17:23:01 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/10/05 17:23:02 INFO RMProxy: Connecting to ResourceManager at ip-10-84-38-68.corp.stateauto.com/10.84.38.68:8032
+19/10/05 17:23:03 INFO Client: Requesting a new application from cluster with 6 NodeManagers
+19/10/05 17:23:03 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (122880 MB per container)
+19/10/05 17:23:03 INFO Client: Will allocate AM container, with 16896 MB memory including 1536 MB overhead
+19/10/05 17:23:03 INFO Client: Setting up container launch context for our AM
+19/10/05 17:23:03 INFO Client: Setting up the launch environment for our AM container
+19/10/05 17:23:03 INFO Client: Preparing resources for our AM container
+19/10/05 17:23:03 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+19/10/05 17:23:05 INFO Client: Uploading resource file:/mnt/tmp/spark-693b625f-ad6e-481f-91da-ffa05775373b/__spark_libs__1116083803401403653.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0088/__spark_libs__1116083803401403653.zip
+19/10/05 17:23:06 INFO Client: Uploading resource file:/home/hadoop/processed/jars/edf_dataingestion_legacy-assembly-2.0.0.jar -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0088/edf_dataingestion_legacy-assembly-2.0.0.jar
+19/10/05 17:23:06 INFO Client: Uploading resource file:/home/hadoop/processed/legacy/spec_files/legacy_DI.properties#diProperties.properties -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0088/legacy_DI.properties
+19/10/05 17:23:06 INFO Client: Uploading resource file:/home/hadoop/processed/legacy/spec_files/legacy_lookup_info.csv#legacy_lookup_info.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0088/legacy_lookup_info.csv
+19/10/05 17:23:06 INFO Client: Uploading resource file:/home/hadoop/processed/legacy/spec_files/legacy_pii_spec.csv#legacy_pii_spec.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0088/legacy_pii_spec.csv
+19/10/05 17:23:06 INFO Client: Uploading resource file:/home/hadoop/processed/legacy/spec_files/legacy_tables_spec_DI.csv#legacy_tables_spec_DI.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0088/legacy_tables_spec_DI.csv
+19/10/05 17:23:06 INFO Client: Uploading resource file:/etc/spark/conf/hive-site.xml -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0088/hive-site.xml
+19/10/05 17:23:06 INFO Client: Uploading resource file:/mnt/tmp/spark-693b625f-ad6e-481f-91da-ffa05775373b/__spark_conf__1015542185756090509.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0088/__spark_conf__.zip
+19/10/05 17:23:06 INFO SecurityManager: Changing view acls to: hadoop
+19/10/05 17:23:06 INFO SecurityManager: Changing modify acls to: hadoop
+19/10/05 17:23:06 INFO SecurityManager: Changing view acls groups to: 
+19/10/05 17:23:06 INFO SecurityManager: Changing modify acls groups to: 
+19/10/05 17:23:06 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+19/10/05 17:23:08 INFO Client: Submitting application application_1570041489538_0088 to ResourceManager
+19/10/05 17:23:08 INFO YarnClientImpl: Submitted application application_1570041489538_0088
+19/10/05 17:23:09 INFO Client: Application report for application_1570041489538_0088 (state: ACCEPTED)
+19/10/05 17:23:09 INFO Client: 
+	 client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1570296188256
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_0088/
+	 user: hadoop
+19/10/05 17:23:10 INFO Client: Application report for application_1570041489538_0088 (state: ACCEPTED)
+19/10/05 17:23:11 INFO Client: Application report for application_1570041489538_0088 (state: ACCEPTED)
+19/10/05 17:23:12 INFO Client: Application report for application_1570041489538_0088 (state: ACCEPTED)
+19/10/05 17:23:13 INFO Client: Application report for application_1570041489538_0088 (state: ACCEPTED)
+19/10/05 17:23:14 INFO Client: Application report for application_1570041489538_0088 (state: ACCEPTED)
+19/10/05 17:23:15 INFO Client: Application report for application_1570041489538_0088 (state: ACCEPTED)
+19/10/05 17:23:16 INFO Client: Application report for application_1570041489538_0088 (state: ACCEPTED)
+19/10/05 17:23:17 INFO Client: Application report for application_1570041489538_0088 (state: FAILED)
+19/10/05 17:23:17 INFO Client: 
+	 client token: N/A
+	 diagnostics: Application application_1570041489538_0088 failed 2 times due to AM Container for appattempt_1570041489538_0088_000002 exited with  exitCode: 13
+Failing this attempt.Diagnostics: Exception from container-launch.
+Container id: container_1570041489538_0088_02_000001
+Exit code: 13
+Stack trace: ExitCodeException exitCode=13: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:972)
+	at org.apache.hadoop.util.Shell.run(Shell.java:869)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:1170)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:235)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:299)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:83)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+Container exited with a non-zero exit code 13
+For more detailed output, check the application tracking page: http://ip-10-84-38-68.corp.stateauto.com:8088/cluster/app/application_1570041489538_0088 Then click on links to logs of each attempt.
+. Failing the application.
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1570296188256
+	 final status: FAILED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:8088/cluster/app/application_1570041489538_0088
+	 user: hadoop
+19/10/05 17:23:17 ERROR Client: Application diagnostics message: Application application_1570041489538_0088 failed 2 times due to AM Container for appattempt_1570041489538_0088_000002 exited with  exitCode: 13
+Failing this attempt.Diagnostics: Exception from container-launch.
+Container id: container_1570041489538_0088_02_000001
+Exit code: 13
+Stack trace: ExitCodeException exitCode=13: 
+	at org.apache.hadoop.util.Shell.runCommand(Shell.java:972)
+	at org.apache.hadoop.util.Shell.run(Shell.java:869)
+	at org.apache.hadoop.util.Shell$ShellCommandExecutor.execute(Shell.java:1170)
+	at org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor.launchContainer(DefaultContainerExecutor.java:235)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:299)
+	at org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch.call(ContainerLaunch.java:83)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+Container exited with a non-zero exit code 13
+For more detailed output, check the application tracking page: http://ip-10-84-38-68.corp.stateauto.com:8088/cluster/app/application_1570041489538_0088 Then click on links to logs of each attempt.
+. Failing the application.
+Exception in thread "main" org.apache.spark.SparkException: Application application_1570041489538_0088 finished with failed status
+	at org.apache.spark.deploy.yarn.Client.run(Client.scala:1149)
+	at org.apache.spark.deploy.yarn.YarnClusterApplication.start(Client.scala:1526)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:849)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:167)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:195)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:924)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:933)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+19/10/05 17:23:17 INFO ShutdownHookManager: Shutdown hook called
+19/10/05 17:23:17 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-1cb8b253-f874-4064-80ef-378b056516c0
+19/10/05 17:23:17 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-693b625f-ad6e-481f-91da-ffa05775373b

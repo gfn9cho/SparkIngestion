@@ -12,12 +12,12 @@ spec_files_path=$ingestion_base_dir/gwpl/spec_files
 spark-submit --class edf.dataingestion.DataLoad \
  --master yarn --deploy-mode cluster  \
  --conf $spark_common_conf \
- --conf spark.executor.cores=5 --conf spark.executor.memory=10g --conf spark.driver.memory=20g --conf spark.executor.memoryOverhead=1g \
+ --conf spark.executor.cores=5 --conf spark.executor.memory=20g --conf spark.driver.memory=20g --conf spark.executor.memoryOverhead=1g \
  --conf spark.dynamicAllocation.enabled=true \
  --conf spark.dynamicAllocation.maxExecutors=100 \
  --conf spark.dynamicAllocation.minExecutors=5 \
  --name gwpl_TL_dataingestion  \
- --files $spec_files_path/gwpl_TL.properties#diProperties.properties,$spec_files_path/gwpl_lookup_info.csv#gwpl_lookup_info.csv,$spec_files_path/gwpl_pii_spec.csv#gwpl_pii_spec.csv,$spec_files_path/gwpl_table_spec.csv#gwpl_table_spec.csv,/etc/spark/conf/hive-site.xml \
+ --files $spec_files_path/gwpl_TL.properties#diProperties.properties,$spec_files_path/gwpl_lookup_info.csv#gwpl_lookup_info.csv,$spec_files_path/gwpl_pii_spec.csv#gwpl_pii_spec.csv,$spec_files_path/gwpl_table_spec_TL.csv#gwpl_table_spec_TL.csv,/etc/spark/conf/hive-site.xml \
  --properties-file /usr/lib/spark/conf/spark-defaults.conf \
  $ingestion_jar_path/$ingestion_jar_name \
 gwpl_TL_dataingestion 1>>$log_file 2>&1

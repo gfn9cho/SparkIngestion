@@ -98,8 +98,17 @@ object WriteTypeList {
           val df = newTypes.where(col("typelistName")===auditValues(2))
           val sourceCount = df.count
           if (!mainTableListFromTableSpec.contains(auditValues(2))) {
-            df.write.format("parquet").options(Map("path" -> harmonizedPath))
-              .mode(SaveMode.Overwrite).saveAsTable(hiveTableName)
+            // Added Try and Match as part of F&R change(102,105)
+            Try {
+              df.write.format("parquet").options(Map("path" -> harmonizedPath))
+                .mode(SaveMode.Overwrite).saveAsTable(hiveTableName)
+            } match {
+              case Success(_) => None
+              case Failure(ex) => {
+              Holder.log.info("Failed TypeList: " + hiveTableName + "-" + harmonizedPath + "-" + sourceCount)
+              throw new Exception(ex.getMessage)
+              }
+            }
           }
           Row(auditValues(0), auditValues(1), auditValues(2), sourceCount, auditValues(4), auditValues(5), auditValues(6), "", auditValues(8), auditValues(9), null, null, auditValues(12), sourceCount,null)
         } else

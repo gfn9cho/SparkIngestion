@@ -1,0 +1,17 @@
+19/09/26 23:16:56 WARN SparkSubmit$$anon$2: Failed to load edf.dataingestion.DataIngestionUpgraded.
+java.lang.ClassNotFoundException: edf.dataingestion.DataIngestionUpgraded
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:348)
+	at org.apache.spark.util.Utils$.classForName(Utils.scala:238)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:810)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:167)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:195)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:924)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:933)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+19/09/26 23:16:56 INFO ShutdownHookManager: Shutdown hook called
+19/09/26 23:16:56 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-f83928f8-49b4-4781-8726-6419fbc0c214

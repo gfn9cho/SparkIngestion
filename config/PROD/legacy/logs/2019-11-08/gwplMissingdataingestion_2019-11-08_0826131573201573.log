@@ -1,0 +1,1080 @@
+19/11/08 08:26:15 INFO Holder$: ##### Line ########################################################################################
+19/11/08 08:26:15 INFO Holder$: ##### Line 	
+19/11/08 08:26:15 INFO Holder$: ##### Line 		Property File to be used for the EDF Process.
+19/11/08 08:26:15 INFO Holder$: ##### Line 	
+19/11/08 08:26:15 INFO Holder$: ##### Line #######################################################################################
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # processName is used to capture the load statistics in the audit table.
+19/11/08 08:26:15 INFO Holder$: ##### Line # Partitioning is based on the this name in the audit table.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.processName:gwplMissingDataExtract
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # LoadType defines the frequency of load and type.
+19/11/08 08:26:15 INFO Holder$: ##### Line # TL-Truncate and Load, DI,MI,WI- Daily, Monthly & Weekly incremental loads respctivley, CI- Continous Ingestion Load
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.loadType:TL
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # Restartabilty Indicator is used to reload the table that are failed to write to S3 or a count mismatch event.
+19/11/08 08:26:15 INFO Holder$: ##### Line # When set to Y - EDF will fetch all the failed table for the day and reload the respective partitions.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.restartabilityInd:N
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # Restartabilty level along with the restability Indicator, will specify the restarabilty level between set of tables or entire batch.
+19/11/08 08:26:15 INFO Holder$: ##### Line # When set to table - EDF will reload the failed table from the previous batches for the day.
+19/11/08 08:26:15 INFO Holder$: ##### Line # When set to batch - EDF will skip the table that are successfully loaded in the last batch and load the rest of the tables in a batch.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.restartabilityLevel:table
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # restartTableIdentifier sets the loadStatus that needs to be considered for the restart Mode.
+19/11/08 08:26:15 INFO Holder$: ##### Line # by Default, this property takes failed status from audit table. For any custom status, modify the below parameter accordingly for reloading the previously failed JObs.
+19/11/08 08:26:15 INFO Holder$: ##### Line # This setting affects only the table level restartability.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.restartTableIdentifier:failedUnknown
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # DeleteBatch Indicator when set to Y will run the ingestion process for hard deletes.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.hardDeleteBatch:N
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # Set this parameter to true when a schema check is desired.  Normally, this should be set to false.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.schemaCheck:false
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # partitionOverwriteMode defined the target partition mode of whether to Overwrite or Append a partition.
+19/11/08 08:26:15 INFO Holder$: ##### Line # By Default, this property takes static.
+19/11/08 08:26:15 INFO Holder$: ##### Line # For incremental load that involved staging layer, this needs to be dynamic
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.partitionOverwriteMode:dynamic
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # batchParallelism defines the degree of asynchronus data load.
+19/11/08 08:26:15 INFO Holder$: ##### Line # This number defines how many tables are read from database and written to S3 in parallel.  50 for TL; 25 for CI/DI
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.batchParallelism:25
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # ConsiderBatchWindow will be used to switch between the batch window timings vs using max(updatetime) in the hive target table.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.considerBatchWindow:N
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # batchEndCutOff along with the loadType - CI, will define the cutt off time for the EDF on a day.
+19/11/08 08:26:15 INFO Holder$: ##### Line # To end the continous load at 6:00 PM EST, specify 17-59
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.batchEndCutOff:17-59
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # This parameter is used to define the iteration for harDeleteBatch.
+19/11/08 08:26:15 INFO Holder$: ##### Line # This when set on CI mode, will start the hardDeleteBatch at this Iteration.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.hardDeleteBatchIter:3
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # email Address to be captured to send the notification email
+19/11/08 08:26:15 INFO Holder$: ##### Line #spark.DataIngestion.fromEmail:dev.edfdatalake@stateauto.com
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.toEmail:edlakerun@stateauto.com
+19/11/08 08:26:15 INFO Holder$: ##### Line #spark.DataIngestion.toEmail:leah.pinkert@stateauto.com
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.ccEmail:
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # repl_table specifies how EDF will get the batch window timing  between database replication table vs database sysdate.
+19/11/08 08:26:15 INFO Holder$: ##### Line # When blank, database system date will be used, otherwise the given repl_table will be queried for the batch window.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.repl_table:
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # timeLagInMins along with the batchWindowTiming will determine the batch window end time.
+19/11/08 08:26:15 INFO Holder$: ##### Line # To limit the batch window timing to current system time minus 2 mins, specify 2.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.timeLagInMins:2
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # lookUpFile specifies the typelist joins to be performed before inserting into harmonized layer in S3.
+19/11/08 08:26:15 INFO Holder$: ##### Line # If no lookup required, provide an empty file with only the header.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.lookUpFile:/home/hadoop/processed/gwpl/spec_files/gwpl_lookup_info.csv
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # tableFile specifies the list of tables to be ingested.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.tableFile:/home/hadoop/processed/gwpl/spec_files/gwpl_table_spec.csv
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # piiFile specifies the list of pii columns that needs to be masked.
+19/11/08 08:26:15 INFO Holder$: ##### Line # specify an empty file with only the header, if no PII found.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.piiFile:/home/hadoop/processed/gwpl/spec_files/gwpl_pii_spec.csv
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # DB Info & Credentials
+19/11/08 08:26:15 INFO Holder$: ##### Line # Provide an encrypted password which will be decrypted inside EDF.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.dbHost:SAE1DGWSQLP23
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.dbUser:edf_lakeRO
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.dbPwd:Iwn[j^tzwYwzhp(6:
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.sourceDB:PolicyCenter
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # stagePartitionBy will be used to specify the fieldName from the sourceDb which is used to partition staging data load
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.stagePartitionBy:updatetime
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # stageTablePrefix will be used to specify the prefix for the staging tables.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.stageTablePrefix:stg_gwpl
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # targetDB will be used to prefix the hive database name.
+19/11/08 08:26:15 INFO Holder$: ##### Line # connect_gwpl specifies the database prefix for gwpl which is transformed as connect_gwpl_data_processed in reference to the Glue catalog.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.targetDB:processed_gwpl
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # auditDB will be used to prefix the hive database name.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.auditDB:audit_ingestion
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # secured DB prefix will be used to load the secured tables data, which transforms simlilar to the target DB.
+19/11/08 08:26:15 INFO Holder$: ##### Line # connect_secured_gwpl to connect_secured_gwpl_data_processed
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.targetSecuredDB:processed_secured_gwpl
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # staging DB prefix will be used to load the secured tables data, which transforms simlilar to the target DB.
+19/11/08 08:26:15 INFO Holder$: ##### Line # connect_secured_gwpl to connect_secured_gwpl_data_processed
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.hiveStageDB:staging_gwpl
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line # s3 paths for the harmonized and secured data.
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.hrmnzds3SecurePath:s3://sa-l4-datalake-processed-secure/processed_secured_gwpl
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.hrmnzds3Path:s3://sa-l4-datalake-processed/processed_gwpl
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.auditPath:s3://sa-l4-datalake-processed/audit_ingestion/audit_missing_data
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:15 INFO Holder$: ##### Line #Source Missing Records identification params
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.srcMissingDataTables:gwpl_missing_table_list.csv
+19/11/08 08:26:15 INFO Holder$: ##### Line #Possible Value - identify, load, both
+19/11/08 08:26:15 INFO Holder$: ##### Line #spark.DataIngestion.missingDataAction:both
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.missingDataAction:identify
+19/11/08 08:26:15 INFO Holder$: ##### Line #spark.DataIngestion.missingDataAction:load
+19/11/08 08:26:15 INFO Holder$: ##### Line spark.DataIngestion.missingDataBatchToLoad:
+19/11/08 08:26:15 INFO Holder$: ##### Line 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO Holder$: hiveDB_Cdc: processed_gwpl
+19/11/08 08:26:16 INFO Holder$: dbMaptable_arr: 
+19/11/08 08:26:16 INFO SparkContext: Running Spark version 2.4.0
+19/11/08 08:26:16 INFO SparkContext: Submitted application: GWPL_Missing_DataIngestion
+19/11/08 08:26:16 INFO SecurityManager: Changing view acls to: hadoop
+19/11/08 08:26:16 INFO SecurityManager: Changing modify acls to: hadoop
+19/11/08 08:26:16 INFO SecurityManager: Changing view acls groups to: 
+19/11/08 08:26:16 INFO SecurityManager: Changing modify acls groups to: 
+19/11/08 08:26:16 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+19/11/08 08:26:16 INFO Utils: Successfully started service 'sparkDriver' on port 35945.
+19/11/08 08:26:16 INFO SparkEnv: Registering MapOutputTracker
+19/11/08 08:26:16 INFO SparkEnv: Registering BlockManagerMaster
+19/11/08 08:26:16 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+19/11/08 08:26:16 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+19/11/08 08:26:16 INFO DiskBlockManager: Created local directory at /mnt/tmp/blockmgr-e5bd647e-588d-4ab0-b394-c92b01de40e1
+19/11/08 08:26:16 INFO MemoryStore: MemoryStore started with capacity 10.5 GB
+19/11/08 08:26:16 INFO SparkEnv: Registering OutputCommitCoordinator
+19/11/08 08:26:17 WARN Utils: Service 'SparkUI' could not bind on port 8088. Attempting port 8089.
+19/11/08 08:26:17 INFO Utils: Successfully started service 'SparkUI' on port 8089.
+19/11/08 08:26:17 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://ip-10-84-38-68.corp.stateauto.com:8089
+19/11/08 08:26:17 INFO SparkContext: Added JAR file:/home/hadoop/processed/gwpl/missing_data_utils/jars/edf_missing_dataingestion-assembly-2.0.0.jar at spark://ip-10-84-38-68.corp.stateauto.com:35945/jars/edf_missing_dataingestion-assembly-2.0.0.jar with timestamp 1573201577314
+19/11/08 08:26:17 WARN FairSchedulableBuilder: Fair Scheduler configuration file not found so jobs will be scheduled in FIFO order. To use fair scheduling, configure pools in fairscheduler.xml or set spark.scheduler.allocation.file to a file that contains the configuration.
+19/11/08 08:26:17 INFO FairSchedulableBuilder: Created default pool: default, schedulingMode: FIFO, minShare: 0, weight: 1
+19/11/08 08:26:17 WARN Utils: spark.executor.instances less than spark.dynamicAllocation.minExecutors is invalid, ignoring its setting, please update your configs.
+19/11/08 08:26:17 INFO Utils: Using initial executors = 5, max of spark.dynamicAllocation.initialExecutors, spark.dynamicAllocation.minExecutors and spark.executor.instances
+19/11/08 08:26:18 INFO RMProxy: Connecting to ResourceManager at ip-10-84-38-68.corp.stateauto.com/10.84.38.68:8032
+19/11/08 08:26:18 INFO Client: Requesting a new application from cluster with 6 NodeManagers
+19/11/08 08:26:18 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (122880 MB per container)
+19/11/08 08:26:18 INFO Client: Will allocate AM container, with 896 MB memory including 384 MB overhead
+19/11/08 08:26:18 INFO Client: Setting up container launch context for our AM
+19/11/08 08:26:18 INFO Client: Setting up the launch environment for our AM container
+19/11/08 08:26:18 INFO Client: Preparing resources for our AM container
+19/11/08 08:26:18 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+19/11/08 08:26:20 INFO Client: Uploading resource file:/mnt/tmp/spark-d0e4f457-3a9b-4c2e-b083-18fd5d1bb4b6/__spark_libs__3762441807847182510.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_19281/__spark_libs__3762441807847182510.zip
+19/11/08 08:26:21 INFO Client: Uploading resource file:/home/hadoop/processed/jars/sqljdbc42.jar -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_19281/sqljdbc42.jar
+19/11/08 08:26:21 INFO Client: Uploading resource file:/home/hadoop/processed/gwpl/missing_data_utils/spec_files/fairScheduler.xml#fairScheduler.xml -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_19281/fairScheduler.xml
+19/11/08 08:26:21 INFO Client: Uploading resource file:/home/hadoop/processed/gwpl/missing_data_utils/spec_files/gwpl_missing.properties#diProperties.properties -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_19281/gwpl_missing.properties
+19/11/08 08:26:21 INFO Client: Uploading resource file:/home/hadoop/processed/gwpl/spec_files/gwpl_lookup_info.csv#/home/hadoop/processed/gwpl/spec_files/gwpl_lookup_info.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_19281/gwpl_lookup_info.csv
+19/11/08 08:26:21 INFO Client: Uploading resource file:/home/hadoop/processed/gwpl/spec_files/gwpl_pii_spec.csv#/home/hadoop/processed/gwpl/spec_files/gwpl_pii_spec.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_19281/gwpl_pii_spec.csv
+19/11/08 08:26:21 INFO Client: Uploading resource file:/home/hadoop/processed/gwpl/spec_files/gwpl_table_spec.csv#/home/hadoop/processed/gwpl/spec_files/gwpl_table_spec.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_19281/gwpl_table_spec.csv
+19/11/08 08:26:21 INFO Client: Uploading resource file:/home/hadoop/processed/gwpl/missing_data_utils/spec_files/gwpl_missing_table_list.csv#/home/hadoop/processed/gwpl/missing_data_utils/spec_files/gwpl_missing_table_list.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_19281/gwpl_missing_table_list.csv
+19/11/08 08:26:21 INFO Client: Uploading resource file:/etc/spark/conf/hive-site.xml -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_19281/hive-site.xml
+19/11/08 08:26:22 INFO Client: Uploading resource file:/mnt/tmp/spark-d0e4f457-3a9b-4c2e-b083-18fd5d1bb4b6/__spark_conf__7527368020349767489.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_19281/__spark_conf__.zip
+19/11/08 08:26:22 INFO SecurityManager: Changing view acls to: hadoop
+19/11/08 08:26:22 INFO SecurityManager: Changing modify acls to: hadoop
+19/11/08 08:26:22 INFO SecurityManager: Changing view acls groups to: 
+19/11/08 08:26:22 INFO SecurityManager: Changing modify acls groups to: 
+19/11/08 08:26:22 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+19/11/08 08:26:23 INFO Client: Submitting application application_1570041489538_19281 to ResourceManager
+19/11/08 08:26:23 INFO YarnClientImpl: Submitted application application_1570041489538_19281
+19/11/08 08:26:23 INFO SchedulerExtensionServices: Starting Yarn extension services with app application_1570041489538_19281 and attemptId None
+19/11/08 08:26:24 INFO Client: Application report for application_1570041489538_19281 (state: ACCEPTED)
+19/11/08 08:26:24 INFO Client: 
+	 client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1573201583532
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_19281/
+	 user: hadoop
+19/11/08 08:26:25 INFO Client: Application report for application_1570041489538_19281 (state: ACCEPTED)
+19/11/08 08:26:26 INFO Client: Application report for application_1570041489538_19281 (state: FAILED)
+19/11/08 08:26:26 INFO Client: 
+	 client token: N/A
+	 diagnostics: Application application_1570041489538_19281 failed 2 times due to AM Container for appattempt_1570041489538_19281_000002 exited with  exitCode: -1
+Failing this attempt.Diagnostics: Destination must be relative
+For more detailed output, check the application tracking page: http://ip-10-84-38-68.corp.stateauto.com:8088/cluster/app/application_1570041489538_19281 Then click on links to logs of each attempt.
+. Failing the application.
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1573201583532
+	 final status: FAILED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:8088/cluster/app/application_1570041489538_19281
+	 user: hadoop
+19/11/08 08:26:26 INFO Client: Deleted staging directory hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_19281
+19/11/08 08:26:26 ERROR YarnClientSchedulerBackend: The YARN application has already ended! It might have been killed or the Application Master may have failed to start. Check the YARN application logs for more details.
+19/11/08 08:26:26 ERROR SparkContext: Error initializing SparkContext.
+org.apache.spark.SparkException: Application application_1570041489538_19281 failed 2 times due to AM Container for appattempt_1570041489538_19281_000002 exited with  exitCode: -1
+Failing this attempt.Diagnostics: Destination must be relative
+For more detailed output, check the application tracking page: http://ip-10-84-38-68.corp.stateauto.com:8088/cluster/app/application_1570041489538_19281 Then click on links to logs of each attempt.
+. Failing the application.
+	at org.apache.spark.scheduler.cluster.YarnClientSchedulerBackend.waitForApplication(YarnClientSchedulerBackend.scala:94)
+	at org.apache.spark.scheduler.cluster.YarnClientSchedulerBackend.start(YarnClientSchedulerBackend.scala:63)
+	at org.apache.spark.scheduler.TaskSchedulerImpl.start(TaskSchedulerImpl.scala:178)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:501)
+	at org.apache.spark.SparkContext$.getOrCreate(SparkContext.scala:2520)
+	at org.apache.spark.sql.SparkSession$Builder$$anonfun$7.apply(SparkSession.scala:935)
+	at org.apache.spark.sql.SparkSession$Builder$$anonfun$7.apply(SparkSession.scala:926)
+	at scala.Option.getOrElse(Option.scala:121)
+	at org.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:926)
+	at edf.dataingestion.SparkJob$class.main(SparkJob.scala:16)
+	at edf.missingdataload.FindAndLoadMissingRecords$.main(FindAndLoadMissingRecords.scala:16)
+	at edf.missingdataload.FindAndLoadMissingRecords.main(FindAndLoadMissingRecords.scala)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.spark.deploy.JavaMainApplication.start(SparkApplication.scala:52)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:849)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:167)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:195)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:924)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:933)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+19/11/08 08:26:26 INFO SparkUI: Stopped Spark web UI at http://ip-10-84-38-68.corp.stateauto.com:8089
+19/11/08 08:26:26 WARN YarnSchedulerBackend$YarnSchedulerEndpoint: Attempted to request executors before the AM has registered!
+19/11/08 08:26:26 INFO YarnClientSchedulerBackend: Shutting down all executors
+19/11/08 08:26:26 INFO YarnSchedulerBackend$YarnDriverEndpoint: Asking each executor to shut down
+19/11/08 08:26:26 INFO SchedulerExtensionServices: Stopping SchedulerExtensionServices
+(serviceOption=None,
+ services=List(),
+ started=false)
+19/11/08 08:26:26 INFO YarnClientSchedulerBackend: Stopped
+19/11/08 08:26:26 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+19/11/08 08:26:26 INFO MemoryStore: MemoryStore cleared
+19/11/08 08:26:26 INFO BlockManager: BlockManager stopped
+19/11/08 08:26:26 INFO BlockManagerMaster: BlockManagerMaster stopped
+19/11/08 08:26:26 WARN MetricsSystem: Stopping a MetricsSystem that is not running
+19/11/08 08:26:26 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+19/11/08 08:26:26 INFO SparkContext: Successfully stopped SparkContext
+Exception in thread "main" org.apache.spark.SparkException: Application application_1570041489538_19281 failed 2 times due to AM Container for appattempt_1570041489538_19281_000002 exited with  exitCode: -1
+Failing this attempt.Diagnostics: Destination must be relative
+For more detailed output, check the application tracking page: http://ip-10-84-38-68.corp.stateauto.com:8088/cluster/app/application_1570041489538_19281 Then click on links to logs of each attempt.
+. Failing the application.
+	at org.apache.spark.scheduler.cluster.YarnClientSchedulerBackend.waitForApplication(YarnClientSchedulerBackend.scala:94)
+	at org.apache.spark.scheduler.cluster.YarnClientSchedulerBackend.start(YarnClientSchedulerBackend.scala:63)
+	at org.apache.spark.scheduler.TaskSchedulerImpl.start(TaskSchedulerImpl.scala:178)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:501)
+	at org.apache.spark.SparkContext$.getOrCreate(SparkContext.scala:2520)
+	at org.apache.spark.sql.SparkSession$Builder$$anonfun$7.apply(SparkSession.scala:935)
+	at org.apache.spark.sql.SparkSession$Builder$$anonfun$7.apply(SparkSession.scala:926)
+	at scala.Option.getOrElse(Option.scala:121)
+	at org.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:926)
+	at edf.dataingestion.SparkJob$class.main(SparkJob.scala:16)
+	at edf.missingdataload.FindAndLoadMissingRecords$.main(FindAndLoadMissingRecords.scala:16)
+	at edf.missingdataload.FindAndLoadMissingRecords.main(FindAndLoadMissingRecords.scala)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.spark.deploy.JavaMainApplication.start(SparkApplication.scala:52)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:849)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:167)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:195)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:924)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:933)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+19/11/08 08:26:26 INFO ShutdownHookManager: Shutdown hook called
+19/11/08 08:26:26 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-d0e4f457-3a9b-4c2e-b083-18fd5d1bb4b6
+19/11/08 08:26:26 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-1fc8d9a0-a121-4aef-895e-68365bc073e2

@@ -1,0 +1,156 @@
+19/09/27 12:52:19 INFO SparkContext: Running Spark version 2.4.0
+19/09/27 12:52:19 INFO SparkContext: Submitted application: gwcc_delete_dataingestion
+19/09/27 12:52:19 INFO SecurityManager: Changing view acls to: hadoop
+19/09/27 12:52:19 INFO SecurityManager: Changing modify acls to: hadoop
+19/09/27 12:52:19 INFO SecurityManager: Changing view acls groups to: 
+19/09/27 12:52:19 INFO SecurityManager: Changing modify acls groups to: 
+19/09/27 12:52:19 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+19/09/27 12:52:19 INFO Utils: Successfully started service 'sparkDriver' on port 37737.
+19/09/27 12:52:19 INFO SparkEnv: Registering MapOutputTracker
+19/09/27 12:52:19 INFO SparkEnv: Registering BlockManagerMaster
+19/09/27 12:52:19 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+19/09/27 12:52:19 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+19/09/27 12:52:19 INFO DiskBlockManager: Created local directory at /mnt/tmp/blockmgr-58e7da9c-9c28-4358-81c4-4abbf696349a
+19/09/27 12:52:19 INFO MemoryStore: MemoryStore started with capacity 5.2 GB
+19/09/27 12:52:19 INFO SparkEnv: Registering OutputCommitCoordinator
+19/09/27 12:52:19 WARN Utils: Service 'SparkUI' could not bind on port 8088. Attempting port 8089.
+19/09/27 12:52:19 INFO Utils: Successfully started service 'SparkUI' on port 8089.
+19/09/27 12:52:19 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://ip-10-84-38-68.corp.stateauto.com:8089
+19/09/27 12:52:19 INFO SparkContext: Added JAR file:/home/hadoop/processed/jars/edf_dataingestion-assembly-2.0.0.jar at spark://ip-10-84-38-68.corp.stateauto.com:37737/jars/edf_dataingestion-assembly-2.0.0.jar with timestamp 1569588739917
+19/09/27 12:52:19 WARN FairSchedulableBuilder: Fair Scheduler configuration file not found so jobs will be scheduled in FIFO order. To use fair scheduling, configure pools in fairscheduler.xml or set spark.scheduler.allocation.file to a file that contains the configuration.
+19/09/27 12:52:19 INFO FairSchedulableBuilder: Created default pool: default, schedulingMode: FIFO, minShare: 0, weight: 1
+19/09/27 12:52:19 WARN Utils: spark.executor.instances less than spark.dynamicAllocation.minExecutors is invalid, ignoring its setting, please update your configs.
+19/09/27 12:52:19 INFO Utils: Using initial executors = 5, max of spark.dynamicAllocation.initialExecutors, spark.dynamicAllocation.minExecutors and spark.executor.instances
+19/09/27 12:52:20 INFO RMProxy: Connecting to ResourceManager at ip-10-84-38-68.corp.stateauto.com/10.84.38.68:8032
+19/09/27 12:52:20 INFO Client: Requesting a new application from cluster with 38 NodeManagers
+19/09/27 12:52:20 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (122880 MB per container)
+19/09/27 12:52:20 INFO Client: Will allocate AM container, with 896 MB memory including 384 MB overhead
+19/09/27 12:52:20 INFO Client: Setting up container launch context for our AM
+19/09/27 12:52:20 INFO Client: Setting up the launch environment for our AM container
+19/09/27 12:52:20 INFO Client: Preparing resources for our AM container
+19/09/27 12:52:20 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+19/09/27 12:52:23 INFO Client: Uploading resource file:/mnt/tmp/spark-d226aa1b-e5ff-4978-88e6-34517fe0ed9c/__spark_libs__3826460806492405472.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10794/__spark_libs__3826460806492405472.zip
+19/09/27 12:52:25 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/spec_files/gwcc_delete.properties#diProperties.properties -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10794/gwcc_delete.properties
+19/09/27 12:52:25 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/spec_files/gwcc_lookup_info.csv#gwcc_lookup_info.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10794/gwcc_lookup_info.csv
+19/09/27 12:52:25 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/spec_files/gwcc_pii_spec.csv#gwcc_pii_spec.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10794/gwcc_pii_spec.csv
+19/09/27 12:52:25 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/spec_files/gwcc_table_spec.csv#gwcc_table_spec.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10794/gwcc_table_spec.csv
+19/09/27 12:52:25 INFO Client: Uploading resource file:/etc/spark/conf/hive-site.xml -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10794/hive-site.xml
+19/09/27 12:52:25 INFO Client: Uploading resource file:/mnt/tmp/spark-d226aa1b-e5ff-4978-88e6-34517fe0ed9c/__spark_conf__7534239230928282265.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10794/__spark_conf__.zip
+19/09/27 12:52:25 INFO SecurityManager: Changing view acls to: hadoop
+19/09/27 12:52:25 INFO SecurityManager: Changing modify acls to: hadoop
+19/09/27 12:52:25 INFO SecurityManager: Changing view acls groups to: 
+19/09/27 12:52:25 INFO SecurityManager: Changing modify acls groups to: 
+19/09/27 12:52:25 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+19/09/27 12:52:26 INFO Client: Submitting application application_1567696628598_10794 to ResourceManager
+19/09/27 12:52:26 INFO YarnClientImpl: Submitted application application_1567696628598_10794
+19/09/27 12:52:26 INFO SchedulerExtensionServices: Starting Yarn extension services with app application_1567696628598_10794 and attemptId None
+19/09/27 12:52:27 INFO Client: Application report for application_1567696628598_10794 (state: ACCEPTED)
+19/09/27 12:52:27 INFO Client: 
+	 client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1569588746642
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1567696628598_10794/
+	 user: hadoop
+19/09/27 12:52:28 INFO Client: Application report for application_1567696628598_10794 (state: ACCEPTED)
+19/09/27 12:52:29 INFO Client: Application report for application_1567696628598_10794 (state: ACCEPTED)
+19/09/27 12:52:30 INFO Client: Application report for application_1567696628598_10794 (state: ACCEPTED)
+19/09/27 12:52:31 INFO YarnClientSchedulerBackend: Add WebUI Filter. org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter, Map(PROXY_HOSTS -> ip-10-84-38-68.corp.stateauto.com, PROXY_URI_BASES -> http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1567696628598_10794), /proxy/application_1567696628598_10794
+19/09/27 12:52:31 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /jobs, /jobs/json, /jobs/job, /jobs/job/json, /stages, /stages/json, /stages/stage, /stages/stage/json, /stages/pool, /stages/pool/json, /storage, /storage/json, /storage/rdd, /storage/rdd/json, /environment, /environment/json, /executors, /executors/json, /executors/threadDump, /executors/threadDump/json, /static, /, /api, /jobs/job/kill, /stages/stage/kill.
+19/09/27 12:52:31 INFO Client: Application report for application_1567696628598_10794 (state: RUNNING)
+19/09/27 12:52:31 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: 10.84.47.164
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1569588746642
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1567696628598_10794/
+	 user: hadoop
+19/09/27 12:52:31 INFO YarnClientSchedulerBackend: Application application_1567696628598_10794 has started running.
+19/09/27 12:52:31 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 37745.
+19/09/27 12:52:31 INFO NettyBlockTransferService: Server created on ip-10-84-38-68.corp.stateauto.com:37745
+19/09/27 12:52:31 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+19/09/27 12:52:31 INFO YarnSchedulerBackend$YarnSchedulerEndpoint: ApplicationMaster registered as NettyRpcEndpointRef(spark-client://YarnAM)
+19/09/27 12:52:31 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, ip-10-84-38-68.corp.stateauto.com, 37745, None)
+19/09/27 12:52:31 INFO BlockManagerMasterEndpoint: Registering block manager ip-10-84-38-68.corp.stateauto.com:37745 with 5.2 GB RAM, BlockManagerId(driver, ip-10-84-38-68.corp.stateauto.com, 37745, None)
+19/09/27 12:52:31 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, ip-10-84-38-68.corp.stateauto.com, 37745, None)
+19/09/27 12:52:31 INFO BlockManager: external shuffle service port = 7337
+19/09/27 12:52:31 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, ip-10-84-38-68.corp.stateauto.com, 37745, None)
+19/09/27 12:52:31 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /metrics/json.
+19/09/27 12:52:32 INFO EventLoggingListener: Logging events to hdfs:/var/log/spark/apps/application_1567696628598_10794
+19/09/27 12:52:32 WARN Utils: spark.executor.instances less than spark.dynamicAllocation.minExecutors is invalid, ignoring its setting, please update your configs.
+19/09/27 12:52:32 INFO Utils: Using initial executors = 5, max of spark.dynamicAllocation.initialExecutors, spark.dynamicAllocation.minExecutors and spark.executor.instances
+19/09/27 12:52:36 INFO YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.84.46.190:49568) with ID 5
+19/09/27 12:52:36 INFO ExecutorAllocationManager: New executor 5 has registered (new total is 1)
+19/09/27 12:52:36 INFO BlockManagerMasterEndpoint: Registering block manager ip-10-84-46-190.corp.stateauto.com:42479 with 3.0 GB RAM, BlockManagerId(5, ip-10-84-46-190.corp.stateauto.com, 42479, None)
+19/09/27 12:52:36 INFO YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.84.47.40:53912) with ID 2
+19/09/27 12:52:36 INFO ExecutorAllocationManager: New executor 2 has registered (new total is 2)
+19/09/27 12:52:36 INFO BlockManagerMasterEndpoint: Registering block manager ip-10-84-47-40.corp.stateauto.com:39665 with 3.0 GB RAM, BlockManagerId(2, ip-10-84-47-40.corp.stateauto.com, 39665, None)
+19/09/27 12:52:37 INFO YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.84.42.73:51968) with ID 1
+19/09/27 12:52:37 INFO ExecutorAllocationManager: New executor 1 has registered (new total is 3)
+19/09/27 12:52:37 INFO YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.84.37.152:47738) with ID 3
+19/09/27 12:52:37 INFO ExecutorAllocationManager: New executor 3 has registered (new total is 4)
+19/09/27 12:52:37 INFO YarnClientSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.8
+19/09/27 12:52:37 INFO BlockManagerMasterEndpoint: Registering block manager ip-10-84-42-73.corp.stateauto.com:36007 with 3.0 GB RAM, BlockManagerId(1, ip-10-84-42-73.corp.stateauto.com, 36007, None)
+19/09/27 12:52:37 INFO SharedState: loading hive config file: file:/etc/spark/conf.dist/hive-site.xml
+19/09/27 12:52:37 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('hdfs:///user/spark/warehouse').
+19/09/27 12:52:37 INFO SharedState: Warehouse path is 'hdfs:///user/spark/warehouse'.
+19/09/27 12:52:37 INFO YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.84.47.53:48976) with ID 4
+19/09/27 12:52:37 INFO ExecutorAllocationManager: New executor 4 has registered (new total is 5)
+19/09/27 12:52:37 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /SQL.
+19/09/27 12:52:37 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /SQL/json.
+19/09/27 12:52:37 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /SQL/execution.
+19/09/27 12:52:37 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /SQL/execution/json.
+19/09/27 12:52:37 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /static/sql.
+19/09/27 12:52:37 INFO BlockManagerMasterEndpoint: Registering block manager ip-10-84-37-152.corp.stateauto.com:38891 with 3.0 GB RAM, BlockManagerId(3, ip-10-84-37-152.corp.stateauto.com, 38891, None)
+19/09/27 12:52:37 INFO BlockManagerMasterEndpoint: Registering block manager ip-10-84-47-53.corp.stateauto.com:33615 with 3.0 GB RAM, BlockManagerId(4, ip-10-84-47-53.corp.stateauto.com, 33615, None)
+19/09/27 12:52:37 INFO StateStoreCoordinatorRef: Registered StateStoreCoordinator endpoint
+Exception in thread "main" java.io.FileNotFoundException: diProperties.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at scala.io.Source$.fromFile(Source.scala:91)
+	at scala.io.Source$.fromFile(Source.scala:76)
+	at scala.io.Source$.fromFile(Source.scala:54)
+	at edf.utilities.sqlQueryParserFromCSV$.getPropertyFile(sqlQueryParserFromCSV.scala:47)
+	at edf.utilities.JobConfig$.getJobConfigProperties(JobConfig.scala:12)
+	at edf.dataingestion.SparkJob$class.initiateAndRun$1(SparkJob.scala:21)
+	at edf.dataingestion.SparkJob$class.main(SparkJob.scala:18)
+	at edf.dataingestion.DataLoad$.main(DataLoad.scala:18)
+	at edf.dataingestion.DataLoad.main(DataLoad.scala)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.spark.deploy.JavaMainApplication.start(SparkApplication.scala:52)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:849)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:167)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:195)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:924)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:933)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+19/09/27 12:52:37 INFO SparkContext: Invoking stop() from shutdown hook
+19/09/27 12:52:37 INFO SparkUI: Stopped Spark web UI at http://ip-10-84-38-68.corp.stateauto.com:8089
+19/09/27 12:52:37 INFO YarnClientSchedulerBackend: Interrupting monitor thread
+19/09/27 12:52:37 INFO YarnClientSchedulerBackend: Shutting down all executors
+19/09/27 12:52:37 INFO YarnSchedulerBackend$YarnDriverEndpoint: Asking each executor to shut down
+19/09/27 12:52:37 INFO SchedulerExtensionServices: Stopping SchedulerExtensionServices
+(serviceOption=None,
+ services=List(),
+ started=false)
+19/09/27 12:52:37 INFO YarnClientSchedulerBackend: Stopped
+19/09/27 12:52:37 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+19/09/27 12:52:37 INFO MemoryStore: MemoryStore cleared
+19/09/27 12:52:37 INFO BlockManager: BlockManager stopped
+19/09/27 12:52:37 INFO BlockManagerMaster: BlockManagerMaster stopped
+19/09/27 12:52:37 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+19/09/27 12:52:37 INFO SparkContext: Successfully stopped SparkContext
+19/09/27 12:52:37 INFO ShutdownHookManager: Shutdown hook called
+19/09/27 12:52:37 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-ed88e875-7696-464f-b2f0-0431d864064e
+19/09/27 12:52:37 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-d226aa1b-e5ff-4978-88e6-34517fe0ed9c

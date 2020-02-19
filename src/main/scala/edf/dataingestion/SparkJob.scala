@@ -1,6 +1,8 @@
 package edf.dataingestion
+
 import org.apache.spark.sql.SparkSession
 import edf.utilities.JobConfig
+
 trait SparkJob {
 
   def main(args: Array[String]): Unit = {

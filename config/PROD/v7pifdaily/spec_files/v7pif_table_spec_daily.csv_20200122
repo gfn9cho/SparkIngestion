@@ -1,0 +1,3 @@
+DB/TABLE|Send to Lake|Has PII|CDC|Lookup Column Ref|HardDeleteFlag|partitionBy|Rows|Note
+v7M_PIF_EXTRACT.dbo.v7D_MASTER|Y|Y|TransactionYYYYMM|Y||TransactionYYYYMM| |
+v7M_PIF_EXTRACT.dbo.v7D_45_LOSS53K|Y|Y|TransactionYYYYMM|Y||TransactionYYYYMM| |

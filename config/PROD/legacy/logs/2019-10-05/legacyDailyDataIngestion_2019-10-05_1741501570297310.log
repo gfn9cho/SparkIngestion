@@ -1,0 +1,190 @@
+19/10/05 17:41:52 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/10/05 17:41:53 INFO RMProxy: Connecting to ResourceManager at ip-10-84-38-68.corp.stateauto.com/10.84.38.68:8032
+19/10/05 17:41:53 INFO Client: Requesting a new application from cluster with 6 NodeManagers
+19/10/05 17:41:53 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (122880 MB per container)
+19/10/05 17:41:53 INFO Client: Will allocate AM container, with 16896 MB memory including 1536 MB overhead
+19/10/05 17:41:53 INFO Client: Setting up container launch context for our AM
+19/10/05 17:41:53 INFO Client: Setting up the launch environment for our AM container
+19/10/05 17:41:53 INFO Client: Preparing resources for our AM container
+19/10/05 17:41:53 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+19/10/05 17:41:56 INFO Client: Uploading resource file:/mnt/tmp/spark-e98c5863-7652-4086-9e22-5dc9a65bdfb8/__spark_libs__7831423583682269576.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0089/__spark_libs__7831423583682269576.zip
+19/10/05 17:41:57 INFO Client: Uploading resource file:/home/hadoop/processed/jars/edf_dataingestion_legacy-assembly-2.0.0.jar -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0089/edf_dataingestion_legacy-assembly-2.0.0.jar
+19/10/05 17:41:57 INFO Client: Uploading resource file:/home/hadoop/processed/legacy/spec_files/legacy_DI.properties#diProperties.properties -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0089/legacy_DI.properties
+19/10/05 17:41:57 INFO Client: Uploading resource file:/home/hadoop/processed/legacy/spec_files/legacy_lookup_info.csv#legacy_lookup_info.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0089/legacy_lookup_info.csv
+19/10/05 17:41:57 INFO Client: Uploading resource file:/home/hadoop/processed/legacy/spec_files/legacy_pii_spec.csv#legacy_pii_spec.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0089/legacy_pii_spec.csv
+19/10/05 17:41:57 INFO Client: Uploading resource file:/home/hadoop/processed/legacy/spec_files/legacy_tables_spec_DI.csv#legacy_tables_spec_DI.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0089/legacy_tables_spec_DI.csv
+19/10/05 17:41:57 INFO Client: Uploading resource file:/etc/spark/conf/hive-site.xml -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0089/hive-site.xml
+19/10/05 17:41:57 INFO Client: Uploading resource file:/mnt/tmp/spark-e98c5863-7652-4086-9e22-5dc9a65bdfb8/__spark_conf__6021581010795824252.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0089/__spark_conf__.zip
+19/10/05 17:41:57 INFO SecurityManager: Changing view acls to: hadoop
+19/10/05 17:41:57 INFO SecurityManager: Changing modify acls to: hadoop
+19/10/05 17:41:57 INFO SecurityManager: Changing view acls groups to: 
+19/10/05 17:41:57 INFO SecurityManager: Changing modify acls groups to: 
+19/10/05 17:41:57 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+19/10/05 17:41:59 INFO Client: Submitting application application_1570041489538_0089 to ResourceManager
+19/10/05 17:41:59 INFO YarnClientImpl: Submitted application application_1570041489538_0089
+19/10/05 17:42:00 INFO Client: Application report for application_1570041489538_0089 (state: ACCEPTED)
+19/10/05 17:42:00 INFO Client: 
+	 client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1570297319360
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_0089/
+	 user: hadoop
+19/10/05 17:42:01 INFO Client: Application report for application_1570041489538_0089 (state: ACCEPTED)
+19/10/05 17:42:02 INFO Client: Application report for application_1570041489538_0089 (state: ACCEPTED)
+19/10/05 17:42:03 INFO Client: Application report for application_1570041489538_0089 (state: ACCEPTED)
+19/10/05 17:42:04 INFO Client: Application report for application_1570041489538_0089 (state: ACCEPTED)
+19/10/05 17:42:05 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:05 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ip-10-84-39-41.corp.stateauto.com
+	 ApplicationMaster RPC port: 43863
+	 queue: default
+	 start time: 1570297319360
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_0089/
+	 user: hadoop
+19/10/05 17:42:06 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:07 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:08 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:09 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:10 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:11 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:12 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:13 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:14 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:15 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:16 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:17 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:18 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:19 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:20 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:21 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:22 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:23 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:24 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:25 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:26 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:27 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:28 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:29 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:30 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:31 INFO Client: Application report for application_1570041489538_0089 (state: ACCEPTED)
+19/10/05 17:42:31 INFO Client: 
+	 client token: N/A
+	 diagnostics: [Sat Oct 05 17:42:31 +0000 2019] Application is Activated, waiting for resources to be assigned for AM.  Details : AM Partition = CORE ; Partition Resource = <memory:368640, vCores:48> ; Queue's Absolute capacity = 100.0 % ; Queue's Absolute used capacity = 0.0 % ; Queue's Absolute max capacity = 100.0 % ; 
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1570297319360
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_0089/
+	 user: hadoop
+19/10/05 17:42:32 INFO Client: Application report for application_1570041489538_0089 (state: ACCEPTED)
+19/10/05 17:42:33 INFO Client: Application report for application_1570041489538_0089 (state: ACCEPTED)
+19/10/05 17:42:34 INFO Client: Application report for application_1570041489538_0089 (state: ACCEPTED)
+19/10/05 17:42:35 INFO Client: Application report for application_1570041489538_0089 (state: ACCEPTED)
+19/10/05 17:42:36 INFO Client: Application report for application_1570041489538_0089 (state: ACCEPTED)
+19/10/05 17:42:37 INFO Client: Application report for application_1570041489538_0089 (state: ACCEPTED)
+19/10/05 17:42:38 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:38 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ip-10-84-32-151.corp.stateauto.com
+	 ApplicationMaster RPC port: 35629
+	 queue: default
+	 start time: 1570297319360
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_0089/
+	 user: hadoop
+19/10/05 17:42:39 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:40 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:41 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:42 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:43 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:44 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:45 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:46 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:47 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:48 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:49 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:50 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:51 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:52 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:53 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:54 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:55 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:56 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:57 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:58 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:42:59 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:43:00 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:43:01 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:43:02 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:43:03 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:43:04 INFO Client: Application report for application_1570041489538_0089 (state: RUNNING)
+19/10/05 17:43:05 INFO Client: Application report for application_1570041489538_0089 (state: FINISHED)
+19/10/05 17:43:05 INFO Client: 
+	 client token: N/A
+	 diagnostics: User class threw exception: java.lang.NullPointerException
+	at java.lang.String.compareTo(String.java:1155)
+	at scala.collection.immutable.StringLike$class.compare(StringLike.scala:74)
+	at scala.collection.immutable.StringOps.compare(StringOps.scala:29)
+	at scala.collection.immutable.StringOps.compare(StringOps.scala:29)
+	at scala.math.Ordered$class.$less$eq(Ordered.scala:84)
+	at scala.collection.immutable.StringOps.$less$eq(StringOps.scala:29)
+	at edf.dataingestion.DataLoad$.getReplTime$1(DataLoad.scala:184)
+	at edf.dataingestion.DataLoad$.run(DataLoad.scala:631)
+	at edf.dataingestion.SparkJob$class.initiateAndRun$1(SparkJob.scala:20)
+	at edf.dataingestion.SparkJob$class.main(SparkJob.scala:16)
+	at edf.dataingestion.DataLoad$.main(DataLoad.scala:20)
+	at edf.dataingestion.DataLoad.main(DataLoad.scala)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.spark.deploy.yarn.ApplicationMaster$$anon$2.run(ApplicationMaster.scala:678)
+
+	 ApplicationMaster host: ip-10-84-32-151.corp.stateauto.com
+	 ApplicationMaster RPC port: 35629
+	 queue: default
+	 start time: 1570297319360
+	 final status: FAILED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_0089/
+	 user: hadoop
+19/10/05 17:43:05 ERROR Client: Application diagnostics message: User class threw exception: java.lang.NullPointerException
+	at java.lang.String.compareTo(String.java:1155)
+	at scala.collection.immutable.StringLike$class.compare(StringLike.scala:74)
+	at scala.collection.immutable.StringOps.compare(StringOps.scala:29)
+	at scala.collection.immutable.StringOps.compare(StringOps.scala:29)
+	at scala.math.Ordered$class.$less$eq(Ordered.scala:84)
+	at scala.collection.immutable.StringOps.$less$eq(StringOps.scala:29)
+	at edf.dataingestion.DataLoad$.getReplTime$1(DataLoad.scala:184)
+	at edf.dataingestion.DataLoad$.run(DataLoad.scala:631)
+	at edf.dataingestion.SparkJob$class.initiateAndRun$1(SparkJob.scala:20)
+	at edf.dataingestion.SparkJob$class.main(SparkJob.scala:16)
+	at edf.dataingestion.DataLoad$.main(DataLoad.scala:20)
+	at edf.dataingestion.DataLoad.main(DataLoad.scala)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.spark.deploy.yarn.ApplicationMaster$$anon$2.run(ApplicationMaster.scala:678)
+
+Exception in thread "main" org.apache.spark.SparkException: Application application_1570041489538_0089 finished with failed status
+	at org.apache.spark.deploy.yarn.Client.run(Client.scala:1149)
+	at org.apache.spark.deploy.yarn.YarnClusterApplication.start(Client.scala:1526)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:849)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:167)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:195)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:924)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:933)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+19/10/05 17:43:05 INFO ShutdownHookManager: Shutdown hook called
+19/10/05 17:43:05 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-e98c5863-7652-4086-9e22-5dc9a65bdfb8
+19/10/05 17:43:05 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-105d0316-0e6e-4f16-9e04-5821634aae51

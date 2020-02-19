@@ -1,3 +1,7 @@
 DB/TABLE|Send to Lake|Has PII|CDC|Lookup Column Ref|HardDeleteFlag|partitionBy|Rows|Note
-v7M_PIF_EXTRACT.dbo.v7D_MASTER|Y|Y|TransactionYYYYMM|Y||TransactionYYYYMM| |
-v7M_PIF_EXTRACT.dbo.v7D_45_LOSS53K|Y|Y|TransactionYYYYMM|Y||TransactionYYYYMM| |
+SABIR_BusinessInsurance.dbo.V7D_MASTER|Y|Y|TransactionYYYYMM|Y||TransactionYYYYMM| |
+SABIR_BusinessInsurance.dbo.V7D_02_PINFO53K|Y|Y|TransactionYYYYMM|Y||TransactionYYYYMM| |
+SABIR_BusinessInsurance.dbo.V7D_35_VEHDES53|Y|Y|TransactionYYYYMM|Y||TransactionYYYYMM| |
+SABIR_BusinessInsurance.dbo.V7D_43_PMD4JK|Y|Y|TransactionYYYYMM|Y||TransactionYYYYMM| |
+SABIR_BusinessInsurance.dbo.V7D_45_LOSS53K|Y|Y|TransactionYYYYMM|Y||TransactionYYYYMM| |
+SABIR_BusinessInsurance.dbo.V7D_45_STACCT5K|Y|Y|TransactionYYYYMM|Y||TransactionYYYYMM| |

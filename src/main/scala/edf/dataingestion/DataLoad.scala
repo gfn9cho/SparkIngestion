@@ -1,11 +1,6 @@
 package edf.dataingestion
 
 import java.sql.Timestamp
-
-import scala.collection.immutable.Map
-import scala.concurrent._
-import scala.language.higherKinds
-import scala.util.{Failure, Success, Try}
 import java.util.concurrent.Executors
 
 import org.joda.time.{DateTime, DateTimeZone, Days, Minutes}
@@ -13,6 +8,10 @@ import org.apache.spark.sql._
 import org.apache.spark.sql.functions._
 import edf.utilities._
 import org.joda.time.format.DateTimeFormat
+
+import scala.concurrent._
+import scala.language.higherKinds
+import scala.util.{Failure, Success, Try}
 import scala.collection.immutable.Map
 
 object DataLoad extends SparkJob {
@@ -233,8 +232,6 @@ def getReplTime: String = {
 //val dateNow = now.minusMillis(2)
 //dateNow.add(Calendar.MILLISECOND, -2)
 val replTimeNow = getUpdateTime(spark, propertyConfigs)
-// Holder.log.info("replTime: " +  replTimeNow)
-//Holder.log.info("batchWindowStartTime: " + getBatchWindowStartTime)
 if (replTimeNow <= getBatchWindowStartTime && considerBatchWindow == "Y") {
   Thread.sleep(30000)
   getReplTime
@@ -414,10 +411,15 @@ createDF(spark, refTableListStr, propertyConfigs, 'Y', 50, batchWindowStart,
 
 //Holder.log.info("#####TypeListIngestionFutures: " + TypeListIngestionFutures.toList)
 def writeTypeListTables(batchWindowStart: String, replicationTime: String) = {
+  if(isConnectDatabase){
+    Holder.log.info("#### CONNECT DATABASE ")
+    // Adding one more if condition as part of F&R release(417)
+    if(isTypeListToBeRefreshed) {
+      Holder.log.info("#### TypeList Refresh Required ")
+      WriteTypeList.writeConnectTypeListTables(spark, propertyConfigs,
+        TypeListIngestionFutures(batchWindowStart, replicationTime), mainTableListFromTableSpec)
+    }
 
-if(isConnectDatabase){
-WriteTypeList.writeConnectTypeListTables(spark, propertyConfigs,
-  TypeListIngestionFutures(batchWindowStart, replicationTime), mainTableListFromTableSpec)
 } else {
 WriteTypeList.writeOtherTYpeListTables(spark, propertyConfigs,
   TypeListIngestionFutures(batchWindowStart, replicationTime), mainTableListFromTableSpec)
@@ -515,15 +517,18 @@ ingestionResult._1 match {
  */
     val loadStats =
       //if (!emptyDataFrameInd) s3WriteIterator(0) else Success((0L, 0L, "success", "",prevWindow._1,prevWindow._2))
-      if (!emptyDataFrameInd || loadType == "TL") s3WriteIterator(0) else
-        {
-          Success((0L, 0L, "success", "",prevWindow._1,prevWindow._2))
-        }
+      if (!emptyDataFrameInd || loadType == "TL") s3WriteIterator(0) else Success((0L, 0L, "success", "",prevWindow._1,prevWindow._2))
    // Holder.log.info("readStatistics: " + readStatistics.mkString(","))
 
     //dropping the temp view for the main table.
-    Holder.log.info("dropping maindf: " + mainDF + " at " + now)
-    if(spark.catalog.tableExists(mainDF)) spark.catalog.dropTempView(mainDF)
+
+    if(spark.catalog.tableExists(mainDF)) {
+      // Adding one extra if condition as part of F&R changes(527)
+      if(!refTableList.contains(tableName)) {
+        Holder.log.info("dropping maindf: " + mainDF + " at " + now)
+        spark.catalog.dropTempView(mainDF)
+      }
+    }
     loadStats match {
       case Success(stats) =>
         val minWindowStr = if(stats._5 == null) "" else stats._5.toString
@@ -609,9 +614,9 @@ spark.sql(s"select * from $auditDB.${sourceDBFormatted}_audit_temp where process
 
   .write.format("parquet")
   .options(Map("path" -> (auditPath + "/audit"), "maxRecordsPerFile" -> "30000"))
-    .mode(SaveMode.Overwrite).insertInto(s"$auditDB.audit")
+  .mode(SaveMode.Overwrite).insertInto(s"$auditDB.audit")
   spark.conf.set("spark.sql.sources.partitionOverwriteMode","dynamic")
-  //spark.sql(s"alter table $auditDB.audit_temp drop if exists partition(processName='$processName')")
+//spark.sql(s"alter table $auditDB.audit_temp drop if exists partition(processName='$processName')")
 spark.catalog.refreshTable(s"$auditDB.${sourceDBFormatted}_audit_temp")
 
 spark.catalog.refreshTable(s"$auditDB.audit")
@@ -684,8 +689,10 @@ consolidate(iterator, List.empty)
 if (loadType == "TL" || loadType == "DI") {
 val batchWindowStart = getBatchWindowStartTime
 val replicationTime = getReplTime
+// Added if((isConnectDatabase && !isTypeListToBeRefreshed) condition as part of F&R change(693)
 if (refTableListStr.trim != "")
-if(restartabilityInd == "Y" && isConnectDatabase)
+if((isConnectDatabase && !isTypeListToBeRefreshed) ||
+  (restartabilityInd == "Y" && isConnectDatabase))
   spark.sql(s"select * from $auditDB.$oldConsolidateTypeList")
     .coalesce(1)
     .createOrReplaceTempView(oldConsolidateTypeList)
@@ -699,8 +706,10 @@ val resultConsolidation = iterAction(afterWriteResults)
 closeActionsAndSendFailureMail(resultConsolidation)
 }
 else {
+// Added if((isConnectDatabase && !isTypeListToBeRefreshed) condition as part of F&R change(711)
 if (refTableListStr.trim != "")
-if(restartabilityInd == "Y")
+  if((isConnectDatabase && !isTypeListToBeRefreshed) ||
+    (restartabilityInd == "Y" && isConnectDatabase))
   spark.sql(s"select * from $auditDB.$oldConsolidateTypeList")
     .coalesce(1)
     .createOrReplaceTempView(oldConsolidateTypeList)
@@ -731,13 +740,14 @@ if (batchTimeTaken < 300000) Thread.sleep(300000 - batchTimeTaken)
 
 def getCdcColMax(tableToBeIngested: String) = {
 val cdcColFromTableSpecStr = tableSpecMap.getOrElse(tableToBeIngested, "").split(splitString, -1)
-Holder.log.info("tableToBeIngested: " + tableToBeIngested)
+Holder.log.info("dataingestion-tableName: " + tableToBeIngested)
 val (cdcColFromTableSpec, hardDeleteFlag, partitionBy) = (cdcColFromTableSpecStr(0),
                                                         cdcColFromTableSpecStr(1),
                                                         cdcColFromTableSpecStr(2) )
 val coalescePattern = """coalesce\((.*),(.*)\)""".r
 val multiColPattern = """(.*,.*)+""".r
 //Holder.log.info("partColsStr: " + partColsStr)
+import org.apache.spark.sql.functions.{coalesce, col}
 
 val (cdcColMax, colName) = cdcColFromTableSpec match {
 case coalescePattern(col1: String, col2: String) => {
@@ -882,7 +892,9 @@ case pii: List[String] =>
   }
 
  // val numPart = if(loadType == "TL") df.select(col("ingestiondt").as("months")).dropDuplicates.count.toInt else 1
-  if(schemaCheck == true) alterSchema(df, hiveSecureTable, hiveSecuredDB)
+  // Added loadType!="TL" as part of F&R change(896)
+  if(schemaCheck == true && loadType!="TL") alterSchema(df, hiveSecureTable, hiveSecuredDB)
+  import org.apache.spark.sql.functions.lit
   val securedHiveTableName = harmonizedSecurePath + tableDF_arr(2)
   //if(spark.catalog.tableExists(s"$securedHiveTableName"))
   //spark.catalog.refreshTable(s"$securedHiveTableName")
@@ -931,7 +943,9 @@ if (refTableList.contains(tableToBeIngested) && !mainTableListFromTableSpec.cont
  // val numPart = if(loadType == "TL") final_df.select(col("ingestiondt").as("months")).dropDuplicates.count.toInt else 1
 val dftos3 = if(hardDeleteBatch == "Y") final_df else final_df.filter(cdcColMax <= max_window)
   val sourceCount = dftos3.count
-  if(schemaCheck == true) alterSchema(dftos3, hiveTableName, "")
+//Holder.log.info("s3Count: " + dftos3.count)
+  // Added loadType!="TL" as part of F&R change (948)
+  if(schemaCheck == true && loadType!="TL") alterSchema(dftos3, hiveTableName, "")
  /*
  * EDIN-362: Create empty hive table in harmonized layer for TL
  */
@@ -951,17 +965,25 @@ val dftos3 = if(hardDeleteBatch == "Y") final_df else final_df.filter(cdcColMax 
     hiveDB, s3Path, hardDeleteBatch, partitionByCol, loadType)*/
   val tgtCount = spark.sql(s"select count(*) as df_count from $hiveTableName " +
     s"where batch = '$batchPartition'").first().getAs[Long]("df_count")
-    (sourceCount, tgtCount)
+  (sourceCount, tgtCount)
 }
   else if((loadType == "TL") && (emptyTableLoadRequired == "true")) {
     // if(spark.catalog.tableExists(s"$hiveTableName"))
     //    spark.catalog.refreshTable(s"$hiveTableName")
-    dftos3
-      .write.format("parquet")
-      .partitionBy("ingestiondt", "batch")
-      .options(Map("path" -> s3Path, "maxRecordsPerFile" -> "100000"))
-      .mode(SaveMode.Overwrite)
-      .saveAsTable(hiveTableName)
+// Added Try and Match block as part of F&R Change(974,981)
+   Try {
+     dftos3
+       .write.format("parquet")
+       .partitionBy("ingestiondt", "batch")
+       .options(Map("path" -> s3Path, "maxRecordsPerFile" -> "100000"))
+       .mode(SaveMode.Overwrite)
+       .saveAsTable(hiveTableName)
+   } match {
+      case Success(_) => None
+      case Failure(ex) => {
+        Holder.log.info("Empty Table Failed:" + hiveTableName +"-" + ex.getMessage)
+      }
+    }
     /* StagingDataLoad.stagingDataLoad(spark: SparkSession, datePartition, hiveTableName,
        hiveDB, s3Path, hardDeleteBatch, partitionByCol, loadType)*/
     val tgtCount = spark.sql(s"select count(*) as df_count from $hiveTableName " +
@@ -976,13 +998,18 @@ val appendOrOverwrite = restartabilityInd match {
 }
   val dftos3 = if(hardDeleteBatch == "Y") final_df else final_df.filter(cdcColMax <= max_window)
   val sourceCount = dftos3.count
-   if(schemaCheck == true) alterSchema(dftos3, hiveTableName, "")
+  // Added loadType!="TL" as part of F&R changes(1002)
+  if(schemaCheck == true && loadType!="TL") alterSchema(dftos3, hiveTableName, "")
 /*
  * EDIN-362: Create empty hive table in harmonized layer for TL
  */
 //if(!dftos3.head(1).isEmpty) {
   if((loadType != "TL") && (!dftos3.head(1).isEmpty)) {
-    dftos3
+  //if(spark.catalog.tableExists(s"$hiveTableName"))
+   // spark.catalog.refreshTable(s"$hiveTableName")
+// Added Try and Match block as part of F&R changes(1011,1020)
+    Try {
+  dftos3
     .write.format("parquet")
     .partitionBy("ingestiondt", "batch")
     //.bucketBy(10,"bucket")
@@ -990,13 +1017,20 @@ val appendOrOverwrite = restartabilityInd match {
     .options(Map("path" -> s3Path))
     .mode(appendOrOverwrite)
     .saveAsTable(hiveTableName)
+    } match {
+      case Success(_) => None
+      case Failure(ex) => {
+        Holder.log.info("Empty Table Failed:" + hiveTableName + "-" + ex.getMessage)
+      }
+    }
 
 /* StagingDataLoad.stagingDataLoad(spark: SparkSession, datePartition, hiveTableName,
     hiveDB, s3Path, hardDeleteBatch, partitionByCol, loadType)*/
   val tgtCount = spark.sql(s"select count(*) as df_count from $hiveTableName " +
     s"where batch = '$batchPartition'").first().getAs[Long]("df_count")
-     (sourceCount, tgtCount)
-} else  if((loadType == "TL") && (emptyTableLoadRequired == "true")) {
+  (sourceCount, tgtCount)
+}
+  else if((loadType == "TL") && (emptyTableLoadRequired == "true")) {
     Holder.log.info("loadType_2: " + loadType)
     dftos3
       .write.format("parquet")
@@ -1010,9 +1044,9 @@ val appendOrOverwrite = restartabilityInd match {
         hiveDB, s3Path, hardDeleteBatch, partitionByCol, loadType)*/
     val tgtCount = spark.sql(s"select count(*) as df_count from $hiveTableName " +
       s"where batch = '$batchPartition'").first().getAs[Long]("df_count")
-     (sourceCount, tgtCount)
-  } else  (0L,0L)
-  }
+    (sourceCount, tgtCount)
+  } else (0L,0L)
+}
 if(hardDeleteBatch == "Y") (srcCount, tgtCount,null, null) else (srcCount, tgtCount,min_window, max_window)
 //10L
 }
@@ -1098,10 +1132,16 @@ typeTableList match {
       typeTable_arr(0)
     val typeTable = formattedTypeDBName + "_" + typeTable_arr(2)
     val sqlStr = typeTableSqlSplit(1)
-    val typeDF = if(isConnectDatabase)
-                    spark.table(oldConsolidateTypeList).filter(col("typelistName") === typeTableSqlSplit(0))
-                 else
-                    spark.sql(s"select * from $typeTable")
+    val typeDF = if(isConnectDatabase) {
+      val typeData = spark.table(oldConsolidateTypeList).
+        filter(col("typelistName") === typeTableSqlSplit(0))
+      // Added one more if condition to check the typeData dataframe isempty or not as part of F&R change(1139)
+      if(!typeData.head(1).isEmpty)
+        typeData
+      else
+        spark.sql(s"select * from $typeTable")
+    } else
+      spark.sql(s"select * from $typeTable")
     val condition = SqlConditionBuilder.parseCondition(types._2, sqlStr, ref_col_list)
     val selfJoinInd = if (mainDF == typeTable) 'Y' else 'N'
     val joinedDF = joinDFs(df, typeDF, condition, "left", selfJoinInd)

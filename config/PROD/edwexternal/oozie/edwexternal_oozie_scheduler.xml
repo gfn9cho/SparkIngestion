@@ -22,7 +22,7 @@
     </action>
     <action name="EDWEXTERNAL_INGESTION_DI_LOAD_FAILURE">
         <email xmlns="uri:oozie:email-action:0.1">
-        <to>edfdatalake@stateauto.com</to>
+        <to>${emailToAddress}</to>
         <subject>EDWEXTERNAL INGESTION LOAD FAILURE NOTIFICATION</subject>
         <body>EDWExternal ingestion load failure notification, please check the logs for more information</body>
         </email>

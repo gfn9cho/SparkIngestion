@@ -62,15 +62,24 @@ package object dataingestion {
                       .map(props => (props.propertyName, props.PropValue)).toMap
 
   val targetDB: String = propertyMap.getOrElse("spark.DataIngestion.targetDB", "")
+  //Below variable decalration is for Missing ID
+  val targetSecuredDB: String = propertyMap.getOrElse("spark.DataIngestion.targetSecuredDB", "")
   val oldConsolidateTypeList: String = targetDB  + "_typelist_consolidated"
   val newConsolidateTypeList: String = oldConsolidateTypeList + "_new"
   val auditPath: String = propertyMap.getOrElse("spark.DataIngestion.auditPath", "")
   val auditDB: String = propertyMap.getOrElse("spark.DataIngestion.auditDB", "")
   val hrmnzds3Path: String = propertyMap.getOrElse("spark.DataIngestion.hrmnzds3Path", "")
 
+  //below varibale is for missing ID
+  val harmonizeds3SecurePath: String = propertyMap.getOrElse("spark.DataIngestion.hrmnzds3SecurePath", "")
+
+
   val processName: String = propertyMap.getOrElse("spark.DataIngestion.processName", "")
   val lookUpFile: String = propertyMap.getOrElse("spark.DataIngestion.lookUpFile", "")
   val tableFile: String = propertyMap.getOrElse("spark.DataIngestion.tableFile", "")
+
+  //below varibale is for missing ID
+  val srcMissingDataTables: String = propertyMap.getOrElse("spark.DataIngestion.srcMissingDataTables", "")
   val loadType: String = propertyMap.getOrElse("spark.DataIngestion.loadType", "")
   val batchParallelism: String = propertyMap.getOrElse("spark.DataIngestion.batchParallelism", "")
   val batchEndCutOff: Array[String] = propertyMap.getOrElse("spark.DataIngestion.batchEndCutOff", "").split("-")
@@ -82,6 +91,9 @@ package object dataingestion {
   val refTableListFromTableSpec: Iterator[String] = metaInfoForTableFile.getTypeTables
   val mainTableListFromTableSpec: List[String] = metaInfoForTableFile.getTableSpec.map(_._1)
   val refTableList: List[String] = (refTableListFromLookUp ++ refTableListFromTableSpec).toList.distinct
+
+  //below varibale is for missing ID
+  val ref_col_list = metaInfoForLookupFile.getRefColList
   val refTableListStr: String = refTableList.mkString(splitString)
   val piiFile: String = propertyMap.getOrElse("spark.DataIngestion.piiFile", "")
   val piiListInfo: Map[String, List[(String, String)]] = new MetaInfo(piiFile,tableFile).getPiiInfoList
@@ -122,6 +134,8 @@ package object dataingestion {
   val deleteTableList: List[String] = tableSpec.map(x => (x._1,x._2.split(splitString,-1)(1))).filter(_._2 == "id").map(_._1)
   val tableSpecMap: Map[String, String] = tableSpec.toMap
 
+  //below varibale is for missing ID
+  val tableSpecMapTrimmed: Map[String, String] = tableSpecMap.map{case (k,v) => k.split("\\.")(2).toLowerCase -> v}
   val refTableListfromTableSpec: String = metaInfoForTableFile.getTypeTables.mkString(splitString)
 
   val cdcQueryMap: Map[String, String] = new CdcQueryBuilder(propertyMap, tableSpec).draftCdcQuery()
@@ -129,6 +143,8 @@ package object dataingestion {
   val considerBatchWindow: String = propertyMap.getOrElse("spark.DataIngestion.considerBatchWindow", "")
 
   val sourceDB: String = propertyMap.getOrElse("spark.DataIngestion.sourceDB", "")
+
+  val connectDBInd: String = propertyMap.getOrElse("spark.DataIngestion.connectDBInd", "N")
   val sourceDBFormatted: String = if(propertyMap.getOrElse("spark.DataIngestion.sourceDB", "").contains("[") || propertyMap.getOrElse("spark.DataIngestion.sourceDB", "").contains("-"))
     propertyMap.getOrElse("spark.DataIngestion.sourceDB", "").replaceAll("\\[","").replaceAll("\\]","").replaceAll("-","_")
   else
@@ -168,43 +184,40 @@ package object dataingestion {
     else if (auditDB.toLowerCase.trim.contains("uat")) "UAT"
     else "Production"
   }
-  def isConnectDatabase() : Boolean = {
-    val connectDatabase = propertyMap.getOrElse("spark.ingestion.isconnectdatabase", "false")
-    if (connectDatabase == "true")
-      true
-    else
-      false
-  }
 
-    /*
-    *  def deleteStagePartition: Unit = {
-        val stageAuditData = spark.sql(s"select * from $stageAuditHiveTable where where processName = '$processName' " +
-          s"and  stagingStatus = 'InProgress' and stagingDate in (" +
-          s"select max(stagingDate) from $stageAuditHiveTable where processName = '$processName'")
-        val filePattern = raw"s3://([^/]+)/(.*)".r
-        val fileListStr = stageAuditData.
-          select(col("fileName")).rdd.collect
-          .map(file => {
-            val fileStr = file.getAs[String](0)
-            fileStr match {
-              case filePattern(bucket, file) => Some(bucket, file)
-              case _ => None
-            }
-          }).toList
-        val bucketName = fileListStr.head.get._1
-        val fileList = fileListStr.map(_.get._2).mkString("\n")
+  val isConnectDatabase: Boolean =  propertyMap.getOrElse("spark.ingestion.isconnectdatabase", "false") == "true"
+  val isTypeListToBeRefreshed: Boolean =  propertyMap.getOrElse("spark.ingestion.isTypeListToBeRefreshed", "false") == "true"
 
-        val awsDeleteCmd = scala.sys.process.Process(s"""echo $fileList | xargs -P8 -n1000 bash -c " +
-          s"'aws s3api delete-objects --bucket $bucketName --delete
-          "Objects=[$$(printf "{Key=%s}," "$$@")],Quiet=false"' _""")
-        val filesDeleted = awsDeleteCmd.!!
-        Holder.log.info("Stage File Deleted: " + filesDeleted)
-        stageAuditData
-          .withColumn("stagingStatus", lit("Complete"))
-          .write.format("parquet").mode(SaveMode.Append)
-          .partitionBy("processName","stagingDate")
-          .bucketBy(50, "tableName")
-          .options(Map("path"-> (stageAuditPath + "/stageAudit")))
-          .saveAsTable(stageAuditHiveTable)
-      }*/
+
+  /*
+  *  def deleteStagePartition: Unit = {
+      val stageAuditData = spark.sql(s"select * from $stageAuditHiveTable where where processName = '$processName' " +
+        s"and  stagingStatus = 'InProgress' and stagingDate in (" +
+        s"select max(stagingDate) from $stageAuditHiveTable where processName = '$processName'")
+      val filePattern = raw"s3://([^/]+)/(.*)".r
+      val fileListStr = stageAuditData.
+        select(col("fileName")).rdd.collect
+        .map(file => {
+          val fileStr = file.getAs[String](0)
+          fileStr match {
+            case filePattern(bucket, file) => Some(bucket, file)
+            case _ => None
+          }
+        }).toList
+      val bucketName = fileListStr.head.get._1
+      val fileList = fileListStr.map(_.get._2).mkString("\n")
+
+      val awsDeleteCmd = scala.sys.process.Process(s"""echo $fileList | xargs -P8 -n1000 bash -c " +
+        s"'aws s3api delete-objects --bucket $bucketName --delete
+        "Objects=[$$(printf "{Key=%s}," "$$@")],Quiet=false"' _""")
+      val filesDeleted = awsDeleteCmd.!!
+      Holder.log.info("Stage File Deleted: " + filesDeleted)
+      stageAuditData
+        .withColumn("stagingStatus", lit("Complete"))
+        .write.format("parquet").mode(SaveMode.Append)
+        .partitionBy("processName","stagingDate")
+        .bucketBy(50, "tableName")
+        .options(Map("path"-> (stageAuditPath + "/stageAudit")))
+        .saveAsTable(stageAuditHiveTable)
+    }*/
 }

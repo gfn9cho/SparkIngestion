@@ -1,11 +1,12 @@
 package edf.dataingestion
 
-import scala.util.{Failure, Success, Try}
 import org.apache.spark.sql.{DataFrame, DataFrameReader, SparkSession}
 import org.joda.time.format.DateTimeFormat
 import edf.utilities.{Cipher, Holder, JdbcConnectionUtility, MetaInfo}
 import org.apache.spark.sql.functions.{col, lit, broadcast}
-import org.apache.spark.sql.functions.{col, max, min}
+
+import scala.util.{Failure, Success, Try}
+
 object DataFrameLoader extends Serializable {
 
   val dbMap = Map("accounting" -> "acct", "policy" -> "plcy", "contact" -> "cntct", "claims" -> "clms")
@@ -146,7 +147,7 @@ object DataFrameLoader extends Serializable {
               val partitionMap: Map[String, String] = Map("partitionColumn" -> cdcCols, "lowerBound" -> lower.toString, "upperBound" -> upper.toString, "numPartitions" -> numPartitions.toString)
               //    Holder.log.info("####Capturing queryInfo inside read Table- Truncate: " + s"(select * from ${tableName}) ${df_name}")
               if (cdcColFromTableSpec.trim == "" || cdcColFromTableSpec.contains("truncate") || cdcColFromTableSpec.endsWith("id")) {
-                Success(s"(select  cast(null as datetime) as deleteTime, $decryptCol * from ${tableName} ) ${df_name}", partitionMap)
+                Success(s"(select cast(null as datetime) as deleteTime, $decryptCol * from ${tableName} ) ${df_name}", partitionMap)
               } else if (hardDeleteFlag == "cdc" && tableName.contains(".cdc.")) {
                 Success(s"(select  ${cdcColFromTableSpec} deleteTime, $decryptCol * from ${tableName}  $conditionForQuery) ${df_name}", partitionMap)
               } else
@@ -239,14 +240,20 @@ object DataFrameLoader extends Serializable {
             }
             else {
               //val partColsStr = tableSpecMap.getOrElse(tableName, "")
-              val df = if (refTableList.contains(tableName)) {
+              // As part of F&R changes we added the condition to check maintablespec file(244)
+              val df = if (refTableList.contains(tableName) && !mainTableListFromTableSpec.contains(tableName)) {
                 //Holder.log.info("I am here loding df: ")
                 dfReaderAndQuery._1.load()
-              }
-              else {
+              } else  {
+                import org.apache.spark.sql.functions.lit
                 dfReaderAndQuery._1.load()
                   .withColumn("ingestiondt", lit(datePartition))
                   .withColumn("batch", lit(batchPartition.toString))
+              }
+              // As part of F&R changes added below condition(254-257)
+              if (refTableList.contains(tableName) && mainTableListFromTableSpec.contains(tableName)) {
+                //Holder.log.info("I am here loding df: ")
+                df.cache().createOrReplaceTempView(df_name)
               }
 
               val (min_window, max_window) = if (considerBatchWindow == "Y")
@@ -257,6 +264,10 @@ object DataFrameLoader extends Serializable {
               val operationalFields = df.schema.fieldNames.filter(_.contains("$"))
                 //Holder.log.info(df_name + ": " + df.count())
               if(loadType == "TL")
+// As part of F&R changes added IF condition (268)
+                if (refTableList.contains(tableName) && mainTableListFromTableSpec.contains(tableName))
+                  df.drop(operationalFields: _*).cache.createOrReplaceTempView(df_name)
+                else
                   df.drop(operationalFields: _*).createOrReplaceTempView(df_name)
               else
                 df.drop(operationalFields: _*).cache.createOrReplaceTempView(df_name)
@@ -345,6 +356,7 @@ object DataFrameLoader extends Serializable {
     def targetDFwithIDs =
       spark.sql(s"select $partitionBy, cast(ingestiondt as String) , batch, deleted_flag from $hiveDB.${tableDF_arr(2)} ")
         .repartitionByRange(20, col(s"$partitionBy"))
+    import org.apache.spark.sql.functions.{col, max, min}
     val deleteRecords = targetDFwithIDs.join(sourceDFwithIDs, Seq(partitionBy), "left")
                                        .groupBy(col(partitionBy))
                                        .agg(max(col("ingestiondt")).as("ingestiondt"),
@@ -429,5 +441,4 @@ object DataFrameLoader extends Serializable {
       Success(queryToExecute, partitionMap)
     }
   }
-
 }

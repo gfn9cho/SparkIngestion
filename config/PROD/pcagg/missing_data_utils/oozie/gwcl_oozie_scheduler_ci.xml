@@ -1,0 +1,144 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="GWPL CI Data Ingestion">
+    <start to="GWPL_INGESTION_CI_LOAD"/>
+       <join name="GWPL_STAGING_LOADS_COMPLETE" to="DECISION_NODE"/>
+         <fork name="TRIGGER_STAGING_LOADS">
+                <path start="GWPL_STAGING_LOAD"/>
+                <path start="GWPL_SECURED_STAGING_LOAD"/>
+         </fork>
+        <action name="GWPL_INGESTION_CI_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_ci}</command>
+        <args></args>
+        </ssh>
+        <ok to="GWPL_INGESTION_MISSING_LOAD"/>
+        <error to="GWPL_INGESTION_CI_LOAD_FAILURE"/>
+        </action>
+        <action name="GWPL_INGESTION_MISSING_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_missingdata_load}</command>
+        <args></args>
+        </ssh>
+        <ok to="TRIGGER_STAGING_LOADS"/>
+        <error to="GWPL_INGESTION_MISSING_LOAD_FAILURE"/>
+    </action>
+    <!-- <action name="GWPL_INGESTION_DELETE_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_delete}</command>
+        <args></args>
+        </ssh>
+        <ok to="TRIGGER_STAGING_LOADS"/>
+        <error to="GWPL_INGESTION_DELETE_LOAD_FAILURE"/>
+    </action>-->
+    <action name="GWPL_STAGING_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_staging}</command>
+        <args></args>
+        </ssh>
+        <ok to="GWPL_STAGING_LOADS_COMPLETE"/>
+        <error to="GWPL_STAGING_LOADS_COMPLETE"/>
+    </action>
+        <action name="GWPL_SECURED_STAGING_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_secured_staging}</command>
+        <args></args>
+        </ssh>
+        <ok to="GWPL_STAGING_LOADS_COMPLETE"/>
+        <error to="GWPL_STAGING_LOADS_COMPLETE"/>
+        </action>
+
+        <decision name="DECISION_NODE">
+        <switch>
+                <case to="GWPL_stgRecon">
+                        ${firstNotNull(wf:lastErrorNode(),'No Error') eq 'No Error'}
+                </case>
+
+            <default to="GWPL_STAGING_LOADS_FAILURE"/>
+        </switch>
+        </decision>
+
+        <action name="GWPL_stgRecon">
+          <ssh xmlns="uri:oozie:ssh-action:0.1">
+             <host>${focusNodeLogin}</host>
+             <command>${spark_run_script_path_stgRecon}</command>
+             <args>TABLE_NAME=gwpl_stg</args>
+         <args>LAYER_NAME=RECONCILIATION</args>
+          </ssh>
+          <ok to="GWPL_stgRecon_SUCCESS"/>
+          <error to="GWPL_stgRecon_FAILURE"/>
+        </action>
+
+
+        <action name="GWPL_stgRecon_SUCCESS">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>GWPC_stgRecon_SUCCESS- Success notification</subject>
+        <body>GWPC_stgRecon_SUCCESS - Success notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+        </action>
+
+        <action name="GWPL_stgRecon_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>GWPL_stgRecon_FAILURE- Failure notification</subject>
+        <body>GWPL_stgRecon_FAILURE - Failure notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+        </action>
+
+        <action name="GWPL_INGESTION_CI_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>GWPL PRODUCTION Daily ingestion - CI load failure notification</subject>
+        <body>GWPL PRODUCTION Daily ingestion - CI load failure notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+        </action>
+
+        <action name="GWPL_INGESTION_MISSING_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>GWPL PRODUCTION Daily ingestion - Missing Data Batch load failure notification</subject>
+        <body>GWPL PRODUCTION Daily ingestion - Missing Data Batch load failure notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+        </action>
+
+        <action name="GWPL_INGESTION_DELETE_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>GWPL PRODUCTION Daily ingestion - Delete Batch load failure notification</subject>
+        <body>GWPL PRODUCTION Daily ingestion - Delete Batch load failure notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+        </action>
+
+        <action name="GWPL_STAGING_LOADS_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>GWPL_STAGING_LOADS_FAILURE Daily ingestion - CI load and Stage Recon failure notification</subject>
+        <body>GWPL_STAGING_LOADS_FAILURE Daily ingestion - CI load and Stage Recon failure notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+        </action>
+
+
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+        <message>GWPL PRODUCTION Staging load failed while sending the failure notification </message>
+    </kill>
+    <end name="END" />
+
+</workflow-app>

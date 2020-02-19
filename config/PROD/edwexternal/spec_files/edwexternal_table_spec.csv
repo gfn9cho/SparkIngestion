@@ -57,7 +57,6 @@ EDW_ExternalData.dbo.vCLMS_FTP_EXCEL_COPART_SALVAGE|Y||ETL_Load_Cycle_ID|Y||ETL_
 EDW_ExternalData.dbo.vCLMS_FTP_EXCEL_CSI_CUSTOMER_SERVICE|Y||ETL_Load_Cycle_ID|Y||ETL_Load_Cycle_ID|||
 EDW_ExternalData.dbo.vCLMS_FTP_EXCEL_ENTERPRISE_RENTAL|Y||ETL_Load_Cycle_ID|Y||ETL_Load_Cycle_ID|||
 EDW_ExternalData.dbo.vCLMS_FTP_EXCEL_HERTZ_RENTAL|Y||ETL_Load_Cycle_ID|Y||ETL_Load_Cycle_ID|||
-EDW_ExternalData.dbo.vCLMS_FTP_TEXT_CCC_COLLISION_ESTIMATE|Y||ETL_Load_Cycle_ID|Y||ETL_Load_Cycle_ID|||
 EDW_ExternalData.dbo.vCLMS_FTP_TEXT_CCC_TOTAL_LOSS|Y||ETL_Load_Cycle_ID|Y||ETL_Load_Cycle_ID|||
 EDW_ExternalData.dbo.EXTRACT_LOAD_CYCLE|Y||CYCLE_END_DTTM|Y||LOAD_CYCLE_ID|||
 EDW_ExternalData.dbo.EXTRACT_PROCESS_STATUS|Y||Truncate and Load|TypeList|| |||
@@ -266,7 +265,6 @@ EDW_ExternalData.dbo.vSYMBLTY_FTP_EXCEL_ClaimDiagrams|Y||ETL_Load_Cycle_ID|Y||ET
 EDW_ExternalData.dbo.vSYMBLTY_FTP_EXCEL_Claims|Y||ETL_Load_Cycle_ID|Y||ETL_Load_Cycle_ID|||
 EDW_ExternalData.dbo.vSYMBLTY_FTP_EXCEL_ClaimUsers|Y||ETL_Load_Cycle_ID|Y||ETL_Load_Cycle_ID|||
 EDW_ExternalData.dbo.vSYMBLTY_FTP_EXCEL_CustomFields|Y||ETL_Load_Cycle_ID|Y||ETL_Load_Cycle_ID|||
-EDW_ExternalData.dbo.vSYMBLTY_FTP_EXCEL_EstimateCoverages|Y||ETL_Load_Cycle_ID|Y||ETL_Load_Cycle_ID|||
 EDW_ExternalData.dbo.vSYMBLTY_FTP_EXCEL_EstimateItemNotes|Y||ETL_Load_Cycle_ID|Y||ETL_Load_Cycle_ID|||
 EDW_ExternalData.dbo.vSYMBLTY_FTP_EXCEL_EstimateItems|Y||ETL_Load_Cycle_ID|Y||ETL_Load_Cycle_ID|||
 EDW_ExternalData.dbo.vSYMBLTY_FTP_EXCEL_Estimates|Y||ETL_Load_Cycle_ID|Y||ETL_Load_Cycle_ID|||

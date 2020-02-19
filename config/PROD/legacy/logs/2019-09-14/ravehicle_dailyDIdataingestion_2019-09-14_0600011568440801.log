@@ -1,0 +1,218 @@
+19/09/14 06:00:03 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/09/14 06:00:04 INFO RMProxy: Connecting to ResourceManager at ip-10-84-38-68.corp.stateauto.com/10.84.38.68:8032
+19/09/14 06:00:04 INFO Client: Requesting a new application from cluster with 6 NodeManagers
+19/09/14 06:00:04 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (122880 MB per container)
+19/09/14 06:00:04 INFO Client: Will allocate AM container, with 22528 MB memory including 2048 MB overhead
+19/09/14 06:00:04 INFO Client: Setting up container launch context for our AM
+19/09/14 06:00:04 INFO Client: Setting up the launch environment for our AM container
+19/09/14 06:00:04 INFO Client: Preparing resources for our AM container
+19/09/14 06:00:04 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+19/09/14 06:00:07 INFO Client: Uploading resource file:/mnt/tmp/spark-ca1b9e59-e10e-4925-a006-1ae824f342ef/__spark_libs__1505124694405440340.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_1136/__spark_libs__1505124694405440340.zip
+19/09/14 06:00:07 INFO Client: Uploading resource file:/home/hadoop/processed/jars/edf_dataingestion-assembly-2.0.0.jar -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_1136/edf_dataingestion-assembly-2.0.0.jar
+19/09/14 06:00:07 INFO Client: Uploading resource file:/home/hadoop/processed/ravehicle/spec_files/ravehicle_daily_DI.properties#diProperties.properties -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_1136/ravehicle_daily_DI.properties
+19/09/14 06:00:07 INFO Client: Uploading resource file:/home/hadoop/processed/ravehicle/spec_files/ravehicle_daily_lookup_info.csv#ravehicle_daily_lookup_info.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_1136/ravehicle_daily_lookup_info.csv
+19/09/14 06:00:07 INFO Client: Uploading resource file:/home/hadoop/processed/ravehicle/spec_files/ravehicle_daily_pii_spec.csv#ravehicle_daily_pii_spec.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_1136/ravehicle_daily_pii_spec.csv
+19/09/14 06:00:07 INFO Client: Uploading resource file:/home/hadoop/processed/ravehicle/spec_files/ravehicle_daily_table_spec.csv#ravehicle_daily_table_spec.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_1136/ravehicle_daily_table_spec.csv
+19/09/14 06:00:07 INFO Client: Uploading resource file:/etc/spark/conf/hive-site.xml -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_1136/hive-site.xml
+19/09/14 06:00:08 INFO Client: Uploading resource file:/mnt/tmp/spark-ca1b9e59-e10e-4925-a006-1ae824f342ef/__spark_conf__8396472970757494259.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_1136/__spark_conf__.zip
+19/09/14 06:00:08 INFO SecurityManager: Changing view acls to: hadoop
+19/09/14 06:00:08 INFO SecurityManager: Changing modify acls to: hadoop
+19/09/14 06:00:08 INFO SecurityManager: Changing view acls groups to: 
+19/09/14 06:00:08 INFO SecurityManager: Changing modify acls groups to: 
+19/09/14 06:00:08 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+19/09/14 06:00:09 INFO Client: Submitting application application_1567696628598_1136 to ResourceManager
+19/09/14 06:00:09 INFO YarnClientImpl: Submitted application application_1567696628598_1136
+19/09/14 06:00:10 INFO Client: Application report for application_1567696628598_1136 (state: ACCEPTED)
+19/09/14 06:00:10 INFO Client: 
+	 client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1568440809334
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1567696628598_1136/
+	 user: hadoop
+19/09/14 06:00:11 INFO Client: Application report for application_1567696628598_1136 (state: ACCEPTED)
+19/09/14 06:00:12 INFO Client: Application report for application_1567696628598_1136 (state: ACCEPTED)
+19/09/14 06:00:13 INFO Client: Application report for application_1567696628598_1136 (state: ACCEPTED)
+19/09/14 06:00:14 INFO Client: Application report for application_1567696628598_1136 (state: ACCEPTED)
+19/09/14 06:00:15 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:15 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ip-10-84-35-220.corp.stateauto.com
+	 ApplicationMaster RPC port: 44137
+	 queue: default
+	 start time: 1568440809334
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1567696628598_1136/
+	 user: hadoop
+19/09/14 06:00:16 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:17 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:18 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:19 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:20 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:21 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:22 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:23 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:24 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:25 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:26 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:27 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:28 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:29 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:30 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:31 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:32 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:33 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:34 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:35 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:36 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:37 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:38 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:39 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:40 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:41 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:42 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:43 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:44 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:45 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:46 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:47 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:48 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:49 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:50 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:51 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:52 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:53 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:54 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:55 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:56 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:57 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:58 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:00:59 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:00 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:01 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:02 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:03 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:04 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:05 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:06 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:07 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:08 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:09 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:10 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:11 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:12 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:13 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:14 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:15 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:16 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:17 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:18 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:19 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:20 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:21 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:22 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:23 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:24 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:25 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:26 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:27 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:28 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:29 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:30 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:31 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:32 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:33 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:34 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:35 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:36 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:37 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:38 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:39 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:40 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:41 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:42 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:43 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:44 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:45 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:46 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:47 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:48 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:49 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:50 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:51 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:52 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:53 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:54 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:55 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:56 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:57 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:58 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:01:59 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:00 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:01 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:02 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:03 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:04 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:05 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:06 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:07 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:08 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:09 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:10 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:11 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:12 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:13 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:14 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:15 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:16 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:17 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:18 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:19 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:20 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:21 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:22 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:23 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:24 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:25 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:26 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:27 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:28 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:29 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:30 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:31 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:32 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:33 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:34 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:35 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:36 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:37 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:38 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:39 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:40 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:41 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:42 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:43 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:44 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:45 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:46 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:47 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:48 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:49 INFO Client: Application report for application_1567696628598_1136 (state: RUNNING)
+19/09/14 06:02:50 INFO Client: Application report for application_1567696628598_1136 (state: FINISHED)
+19/09/14 06:02:50 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ip-10-84-35-220.corp.stateauto.com
+	 ApplicationMaster RPC port: 44137
+	 queue: default
+	 start time: 1568440809334
+	 final status: SUCCEEDED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1567696628598_1136/
+	 user: hadoop
+19/09/14 06:02:50 INFO ShutdownHookManager: Shutdown hook called
+19/09/14 06:02:50 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-ca1b9e59-e10e-4925-a006-1ae824f342ef
+19/09/14 06:02:50 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-d4537890-79e3-4149-8f78-54dad38c929b

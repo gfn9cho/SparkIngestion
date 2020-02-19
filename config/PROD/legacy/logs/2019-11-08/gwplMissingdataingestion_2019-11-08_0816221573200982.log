@@ -1,0 +1,169 @@
+19/11/08 08:16:24 INFO Holder$: ##### Line ########################################################################################
+19/11/08 08:16:24 INFO Holder$: ##### Line 	
+19/11/08 08:16:24 INFO Holder$: ##### Line 		Property File to be used for the EDF Process.
+19/11/08 08:16:24 INFO Holder$: ##### Line 	
+19/11/08 08:16:24 INFO Holder$: ##### Line #######################################################################################
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # processName is used to capture the load statistics in the audit table.
+19/11/08 08:16:24 INFO Holder$: ##### Line # Partitioning is based on the this name in the audit table.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.processName:gwplMissingDataExtract
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # LoadType defines the frequency of load and type.
+19/11/08 08:16:24 INFO Holder$: ##### Line # TL-Truncate and Load, DI,MI,WI- Daily, Monthly & Weekly incremental loads respctivley, CI- Continous Ingestion Load
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.loadType:TL
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # Restartabilty Indicator is used to reload the table that are failed to write to S3 or a count mismatch event.
+19/11/08 08:16:24 INFO Holder$: ##### Line # When set to Y - EDF will fetch all the failed table for the day and reload the respective partitions.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.restartabilityInd:N
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # Restartabilty level along with the restability Indicator, will specify the restarabilty level between set of tables or entire batch.
+19/11/08 08:16:24 INFO Holder$: ##### Line # When set to table - EDF will reload the failed table from the previous batches for the day.
+19/11/08 08:16:24 INFO Holder$: ##### Line # When set to batch - EDF will skip the table that are successfully loaded in the last batch and load the rest of the tables in a batch.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.restartabilityLevel:table
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # restartTableIdentifier sets the loadStatus that needs to be considered for the restart Mode.
+19/11/08 08:16:24 INFO Holder$: ##### Line # by Default, this property takes failed status from audit table. For any custom status, modify the below parameter accordingly for reloading the previously failed JObs.
+19/11/08 08:16:24 INFO Holder$: ##### Line # This setting affects only the table level restartability.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.restartTableIdentifier:failedUnknown
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # DeleteBatch Indicator when set to Y will run the ingestion process for hard deletes.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.hardDeleteBatch:N
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # Set this parameter to true when a schema check is desired.  Normally, this should be set to false.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.schemaCheck:false
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # partitionOverwriteMode defined the target partition mode of whether to Overwrite or Append a partition.
+19/11/08 08:16:24 INFO Holder$: ##### Line # By Default, this property takes static.
+19/11/08 08:16:24 INFO Holder$: ##### Line # For incremental load that involved staging layer, this needs to be dynamic
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.partitionOverwriteMode:dynamic
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # batchParallelism defines the degree of asynchronus data load.
+19/11/08 08:16:24 INFO Holder$: ##### Line # This number defines how many tables are read from database and written to S3 in parallel.  50 for TL; 25 for CI/DI
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.batchParallelism:25
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # ConsiderBatchWindow will be used to switch between the batch window timings vs using max(updatetime) in the hive target table.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.considerBatchWindow:N
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # batchEndCutOff along with the loadType - CI, will define the cutt off time for the EDF on a day.
+19/11/08 08:16:24 INFO Holder$: ##### Line # To end the continous load at 6:00 PM EST, specify 17-59
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.batchEndCutOff:17-59
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # This parameter is used to define the iteration for harDeleteBatch.
+19/11/08 08:16:24 INFO Holder$: ##### Line # This when set on CI mode, will start the hardDeleteBatch at this Iteration.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.hardDeleteBatchIter:3
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # email Address to be captured to send the notification email
+19/11/08 08:16:24 INFO Holder$: ##### Line #spark.DataIngestion.fromEmail:dev.edfdatalake@stateauto.com
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.toEmail:edlakerun@stateauto.com
+19/11/08 08:16:24 INFO Holder$: ##### Line #spark.DataIngestion.toEmail:leah.pinkert@stateauto.com
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.ccEmail:
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # repl_table specifies how EDF will get the batch window timing  between database replication table vs database sysdate.
+19/11/08 08:16:24 INFO Holder$: ##### Line # When blank, database system date will be used, otherwise the given repl_table will be queried for the batch window.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.repl_table:
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # timeLagInMins along with the batchWindowTiming will determine the batch window end time.
+19/11/08 08:16:24 INFO Holder$: ##### Line # To limit the batch window timing to current system time minus 2 mins, specify 2.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.timeLagInMins:2
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # lookUpFile specifies the typelist joins to be performed before inserting into harmonized layer in S3.
+19/11/08 08:16:24 INFO Holder$: ##### Line # If no lookup required, provide an empty file with only the header.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.lookUpFile:gwpl_lookup_info_CI.csv
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # tableFile specifies the list of tables to be ingested.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.tableFile:gwpl_table_spec_CI.csv
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # piiFile specifies the list of pii columns that needs to be masked.
+19/11/08 08:16:24 INFO Holder$: ##### Line # specify an empty file with only the header, if no PII found.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.piiFile:gwpl_pii_spec_CI.csv
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # DB Info & Credentials
+19/11/08 08:16:24 INFO Holder$: ##### Line # Provide an encrypted password which will be decrypted inside EDF.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.dbHost:SAE1DGWSQLP23
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.dbUser:edf_lakeRO
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.dbPwd:Iwn[j^tzwYwzhp(6:
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.sourceDB:PolicyCenter
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # stagePartitionBy will be used to specify the fieldName from the sourceDb which is used to partition staging data load
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.stagePartitionBy:updatetime
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # stageTablePrefix will be used to specify the prefix for the staging tables.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.stageTablePrefix:stg_gwpl
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # targetDB will be used to prefix the hive database name.
+19/11/08 08:16:24 INFO Holder$: ##### Line # connect_gwpl specifies the database prefix for gwpl which is transformed as connect_gwpl_data_processed in reference to the Glue catalog.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.targetDB:processed_gwpl
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # auditDB will be used to prefix the hive database name.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.auditDB:audit_ingestion
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # secured DB prefix will be used to load the secured tables data, which transforms simlilar to the target DB.
+19/11/08 08:16:24 INFO Holder$: ##### Line # connect_secured_gwpl to connect_secured_gwpl_data_processed
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.targetSecuredDB:processed_secured_gwpl
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # staging DB prefix will be used to load the secured tables data, which transforms simlilar to the target DB.
+19/11/08 08:16:24 INFO Holder$: ##### Line # connect_secured_gwpl to connect_secured_gwpl_data_processed
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.hiveStageDB:staging_gwpl
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line # s3 paths for the harmonized and secured data.
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.hrmnzds3SecurePath:s3://sa-l4-datalake-processed-secure/processed_secured_gwpl
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.hrmnzds3Path:s3://sa-l4-datalake-processed/processed_gwpl/
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.auditPath:s3://sa-l4-datalake-processed/audit_ingestion/audit_missing_data
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+19/11/08 08:16:24 INFO Holder$: ##### Line #Source Missing Records identification params
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.srcMissingDataTables:gwpl_missing_table_list.csv
+19/11/08 08:16:24 INFO Holder$: ##### Line #Possible Value - identify, load, both
+19/11/08 08:16:24 INFO Holder$: ##### Line #spark.DataIngestion.missingDataAction:both
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.missingDataAction:identify
+19/11/08 08:16:24 INFO Holder$: ##### Line #spark.DataIngestion.missingDataAction:load
+19/11/08 08:16:24 INFO Holder$: ##### Line spark.DataIngestion.missingDataBatchToLoad:
+19/11/08 08:16:24 INFO Holder$: ##### Line 
+Exception in thread "main" java.lang.ExceptionInInitializerError
+	at edf.missingdataload.FindAndLoadMissingRecords$.<init>(FindAndLoadMissingRecords.scala:26)
+	at edf.missingdataload.FindAndLoadMissingRecords$.<clinit>(FindAndLoadMissingRecords.scala)
+	at edf.missingdataload.FindAndLoadMissingRecords.main(FindAndLoadMissingRecords.scala)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.spark.deploy.JavaMainApplication.start(SparkApplication.scala:52)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:849)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:167)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:195)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:924)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:933)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+Caused by: java.io.FileNotFoundException: gwpl_table_spec_CI.csv (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at scala.io.Source$.fromFile(Source.scala:91)
+	at scala.io.Source$.fromFile(Source.scala:76)
+	at scala.io.Source$.fromFile(Source.scala:54)
+	at edf.utilities.sqlQueryParserFromCSV$.getTableSpecData(sqlQueryParserFromCSV.scala:30)
+	at edf.utilities.MetaInfo.getTableSpecDetails(MetaInfo.scala:6)
+	at edf.utilities.MetaInfo.getTableSpec(MetaInfo.scala:7)
+	at edf.utilities.MetaInfo.<init>(MetaInfo.scala:15)
+	at edf.dataingestion.package$.<init>(dataingestion.scala:81)
+	at edf.dataingestion.package$.<clinit>(dataingestion.scala)
+	... 15 more
+19/11/08 08:16:24 INFO ShutdownHookManager: Shutdown hook called
+19/11/08 08:16:24 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-6d22c179-cf66-41a9-a96e-4f22b71dc8af

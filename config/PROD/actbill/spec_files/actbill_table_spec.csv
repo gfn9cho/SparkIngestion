@@ -1,0 +1,17 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|Lookup Ref|HardDeleteFlag|PartitionBy|NumPartitions|Rows|Note
+Actuary_Billing.dbo.BIL_ACCOUNT|Y||Truncate and Load|TypeList|| |||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.BIL_AMOUNTS|Y||Truncate and Load|TypeList|| |||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.BIL_BAS_V|Y||Truncate and Load|TypeList|| |||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.BIL_BCD_V|Y||Truncate and Load|TypeList|| |||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.BIL_BCR_V|Y|Y|BIL_ENTRY_DT|Y| |BIL_ENTRY_SEQ_NBR| ||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.BIL_BILL_PLAN|Y||Truncate and Load|TypeList|| |||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.BIL_BPT_V|Y||Truncate and Load|TypeList|| |||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.BIL_DES_REASON|Y||Truncate and Load|TypeList|| |||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.BIL_EFT_PLAN|Y||Truncate and Load|TypeList|| |||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.BIL_EFT_REJ_BCH|Y|Y|BRB_ENTRY_DT|Y| |BRB_ENTRY_SEQ_NBR| ||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.BIL_EFT_REJ_REA|Y||Truncate and Load|TypeList|| |||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.BIL_POLICY_V|Y||Truncate and Load|TypeList|| |||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.BIL_SUPPORT_MISC|Y||Truncate and Load|TypeList|| |||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.BIL_SUPPORT_PLAN|Y||Truncate and Load|TypeList|| |||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.BUS_ACY_TRS_DESC|Y||Truncate and Load|TypeList|| |||Mainframe DB2 Billing Data
+Actuary_Billing.dbo.POLICY_TAB|Y||Truncate and Load|TypeList|| |||Mainframe DB2 Billing Data

@@ -1,4 +1,5 @@
 package edf.utilities
+
 import java.util.concurrent.Executors
 
 object BatchConcurrency {

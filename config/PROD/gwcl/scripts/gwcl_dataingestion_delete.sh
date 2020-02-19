@@ -19,7 +19,7 @@ spark-submit --class edf.dataingestion.DataLoad \
  --name gwcl_delete_dataingestion  \
  --files $spec_files_path/gwcl_delete.properties#diProperties.properties,$spec_files_path/gwcl_lookup_info.csv#gwcl_lookup_info.csv,$spec_files_path/gwcl_pii_spec.csv#gwcl_pii_spec.csv,$spec_files_path/gwcl_table_spec.csv#gwcl_table_spec.csv,/etc/spark/conf/hive-site.xml \
  --properties-file /usr/lib/spark/conf/spark-defaults.conf \
- $ingestion_jar_path/$ingestion_jar_name \
+ $ingestion_jar_path/$ingestion_gwcl_jar_name \
 gwcl_delete_dataingestion 1>>$log_file 2>&1
 status=$?
 echo "Completed the script and the status is $status"

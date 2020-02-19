@@ -1,0 +1,13 @@
+TABLE_NAME|COLUMN_NAME|Notes
+EDLake.dbo.vpc_policyperiod|PrimaryInsuredName|
+EDLake.dbo.vpc_policyperiod|PrimaryInsuredNameDenorm|
+EDLake.dbo.vpc_contact|FirstName|
+EDLake.dbo.vpc_contact|FirstNameDenorm|
+EDLake.dbo.vpc_contact|FirstNameKanji|
+EDLake.dbo.vpc_contact|FormerName|
+EDLake.dbo.vpc_contact|LastName|
+EDLake.dbo.vpc_contact|LastNameDenorm|
+EDLake.dbo.vpc_contact|LastNameKanji|
+EDLake.dbo.vpc_contact|LicenseNumber|
+EDLake.dbo.vpc_contact|MiddleName|
+EDLake.dbo.vpc_contact|TaxID|

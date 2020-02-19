@@ -2,7 +2,6 @@ package edf.utilities
 
 import java.util.Properties
 
-
 import javax.mail.Message.RecipientType
 import javax.mail.internet.{InternetAddress, MimeMessage}
 import javax.mail.{MessagingException, Session, Transport}

@@ -12,9 +12,18 @@
         <command>${spark_run_script_path_ci}</command>
         <args></args>
         </ssh>
-        <ok to="GWCL_INGESTION_DELETE_LOAD"/>
+        <ok to="GWCL_INGESTION_MISSING_LOAD"/>
         <error to="GWCL_INGESTION_CI_LOAD_FAILURE"/>
         </action>
+		<action name="GWCL_INGESTION_MISSING_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_missingdata_load}</command>
+        <args></args>
+        </ssh>
+        <ok to="GWCL_INGESTION_DELETE_LOAD"/>
+        <error to="GWCL_INGESTION_MISSING_LOAD_FAILURE"/>
+    </action>
      <action name="GWCL_INGESTION_DELETE_LOAD">
         <ssh xmlns="uri:oozie:ssh-action:0.1">
         <host>${focusNodeLogin}</host>
@@ -94,7 +103,15 @@
         <ok to="END"/>
         <error to="KILL"/>
         </action>
-
+		<action name="GWCL_INGESTION_MISSING_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>GWCL PRODUCTION Daily ingestion - New Cluster Missing Data Batch load failure notification</subject>
+        <body>GWCL PRODUCTION Daily ingestion - New Cluster Missing Data Batch load failure notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+        </action>
         <action name="GWCL_INGESTION_DELETE_LOAD_FAILURE">
         <email xmlns="uri:oozie:email-action:0.1">
         <to>${emailToAddress}</to>

@@ -1,4 +1,3 @@
-
 <workflow-app
     xmlns="uri:oozie:workflow:0.1" name="PCAGG CI Data Ingestion">
     <start to="PCAGG_INGESTION_CI_LOAD"/>
@@ -8,9 +7,19 @@
         <command>${spark_run_script_path_ci}</command>
         <args></args>
         </ssh>
-        <ok to="PCAGG_INGESTION_DELETE_LOAD"/>
+        <ok to="PCAGG_INGESTION_MISSING_LOAD"/>
         <error to="PCAGG_INGESTION_CI_LOAD_FAILURE"/>
         </action>
+		<action name="PCAGG_INGESTION_MISSING_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_missingdata_load}</command>
+        <args></args>
+        </ssh>
+        <ok to="PCAGG_INGESTION_DELETE_LOAD"/>
+        <error to="PCAGG_INGESTION_MISSING_LOAD_FAILURE"/>
+    </action>
+
      <action name="PCAGG_INGESTION_DELETE_LOAD">
         <ssh xmlns="uri:oozie:ssh-action:0.1">
         <host>${focusNodeLogin}</host>
@@ -39,7 +48,15 @@
     <ok to="END"/>
     <error to="KILL"/>
     </action>
-
+	    <action name="PCAGG_INGESTION_MISSING_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>PCAGG PRODUCTION Daily ingestion - New Cluster Missing Data Batch load failure notification</subject>
+        <body>PCAGG  PRODUCTION Daily ingestion - New Cluster Missing Data Batch load failure notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+        </action>
     <action name="PCAGG_INGESTION_DELETE_LOAD_FAILURE">
     <email xmlns="uri:oozie:email-action:0.1">
     <to>edlakebuild@stateauto.com,edlakerun@stateauto.com</to>

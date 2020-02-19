@@ -1,0 +1,4 @@
+BillingCenter.dbo.bc_invoiceitem
+BillingCenter.dbo.bc_transaction
+BillingCenter.dbo.bc_producercontext
+BillingCenter.dbo.bc_taccount

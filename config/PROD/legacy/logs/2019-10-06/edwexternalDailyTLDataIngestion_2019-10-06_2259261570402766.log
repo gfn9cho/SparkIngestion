@@ -1,0 +1,47 @@
+19/10/06 22:59:28 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/10/06 22:59:29 INFO RMProxy: Connecting to ResourceManager at ip-10-84-38-68.corp.stateauto.com/10.84.38.68:8032
+19/10/06 22:59:29 INFO Client: Requesting a new application from cluster with 6 NodeManagers
+19/10/06 22:59:30 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (122880 MB per container)
+19/10/06 22:59:30 INFO Client: Will allocate AM container, with 16896 MB memory including 1536 MB overhead
+19/10/06 22:59:30 INFO Client: Setting up container launch context for our AM
+19/10/06 22:59:30 INFO Client: Setting up the launch environment for our AM container
+19/10/06 22:59:30 INFO Client: Preparing resources for our AM container
+19/10/06 22:59:30 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+19/10/06 22:59:33 INFO Client: Uploading resource file:/mnt/tmp/spark-f6057a2d-cc49-4e58-a415-49f390d41817/__spark_libs__8404520130093404199.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0196/__spark_libs__8404520130093404199.zip
+19/10/06 22:59:34 INFO Client: Uploading resource file:/home/hadoop/processed/jars/edf_dataingestion-assembly-2.0.0.jar -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0196/edf_dataingestion-assembly-2.0.0.jar
+19/10/06 22:59:34 INFO Client: Uploading resource file:/home/hadoop/processed/edwexternal/spec_files/edwexternal_TL.properties#diProperties.properties -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0196/edwexternal_TL.properties
+19/10/06 22:59:34 INFO Client: Uploading resource file:/home/hadoop/processed/edwexternal/spec_files/edwexternal_lookup_info.csv#edwexternal_lookup_info.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0196/edwexternal_lookup_info.csv
+19/10/06 22:59:34 INFO Client: Uploading resource file:/home/hadoop/processed/edwexternal/spec_files/edwexternal_pii_spec.csv#edwexternal_pii_spec.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0196/edwexternal_pii_spec.csv
+19/10/06 22:59:34 INFO Client: Uploading resource file:/home/hadoop/processed/edwexternal/spec_files/edwexternal_tables_spec_tl.csv#edwexternal_tables_spec_tl.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0196/edwexternal_tables_spec_tl.csv
+19/10/06 22:59:34 INFO Client: Deleted staging directory hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_0196
+Exception in thread "main" java.io.FileNotFoundException: File file:/home/hadoop/processed/edwexternal/spec_files/edwexternal_tables_spec_tl.csv#edwexternal_tables_spec_tl.csv does not exist
+	at org.apache.hadoop.fs.RawLocalFileSystem.deprecatedGetFileStatus(RawLocalFileSystem.java:640)
+	at org.apache.hadoop.fs.RawLocalFileSystem.getFileLinkStatusInternal(RawLocalFileSystem.java:866)
+	at org.apache.hadoop.fs.RawLocalFileSystem.getFileStatus(RawLocalFileSystem.java:630)
+	at org.apache.hadoop.fs.FilterFileSystem.getFileStatus(FilterFileSystem.java:452)
+	at org.apache.hadoop.fs.FileUtil.copy(FileUtil.java:340)
+	at org.apache.hadoop.fs.FileUtil.copy(FileUtil.java:292)
+	at org.apache.spark.deploy.yarn.Client.copyFileToRemote(Client.scala:384)
+	at org.apache.spark.deploy.yarn.Client.org$apache$spark$deploy$yarn$Client$$distribute$1(Client.scala:476)
+	at org.apache.spark.deploy.yarn.Client$$anonfun$prepareLocalResources$10$$anonfun$apply$6.apply(Client.scala:598)
+	at org.apache.spark.deploy.yarn.Client$$anonfun$prepareLocalResources$10$$anonfun$apply$6.apply(Client.scala:597)
+	at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)
+	at org.apache.spark.deploy.yarn.Client$$anonfun$prepareLocalResources$10.apply(Client.scala:597)
+	at org.apache.spark.deploy.yarn.Client$$anonfun$prepareLocalResources$10.apply(Client.scala:596)
+	at scala.collection.immutable.List.foreach(List.scala:392)
+	at org.apache.spark.deploy.yarn.Client.prepareLocalResources(Client.scala:596)
+	at org.apache.spark.deploy.yarn.Client.createContainerLaunchContext(Client.scala:864)
+	at org.apache.spark.deploy.yarn.Client.submitApplication(Client.scala:178)
+	at org.apache.spark.deploy.yarn.Client.run(Client.scala:1134)
+	at org.apache.spark.deploy.yarn.YarnClusterApplication.start(Client.scala:1526)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:849)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:167)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:195)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:924)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:933)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+19/10/06 22:59:34 INFO ShutdownHookManager: Shutdown hook called
+19/10/06 22:59:34 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-11e1b0d2-f7de-43a8-9cf4-adba220af56f
+19/10/06 22:59:34 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-f6057a2d-cc49-4e58-a415-49f390d41817

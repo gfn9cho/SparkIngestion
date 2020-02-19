@@ -1,0 +1,400 @@
+19/11/11 08:00:03 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/11/11 08:00:04 INFO RMProxy: Connecting to ResourceManager at ip-10-84-38-68.corp.stateauto.com/10.84.38.68:8032
+19/11/11 08:00:05 INFO Client: Requesting a new application from cluster with 6 NodeManagers
+19/11/11 08:00:05 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (122880 MB per container)
+19/11/11 08:00:05 INFO Client: Will allocate AM container, with 22528 MB memory including 2048 MB overhead
+19/11/11 08:00:05 INFO Client: Setting up container launch context for our AM
+19/11/11 08:00:05 INFO Client: Setting up the launch environment for our AM container
+19/11/11 08:00:05 INFO Client: Preparing resources for our AM container
+19/11/11 08:00:05 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+19/11/11 08:00:07 INFO Client: Uploading resource file:/mnt/tmp/spark-3eac5d29-49aa-45ce-ba1d-93a3623bf81b/__spark_libs__590547461626522710.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_20745/__spark_libs__590547461626522710.zip
+19/11/11 08:00:08 INFO Client: Uploading resource file:/home/hadoop/processed/jars/edf_dataingestion-assembly-2.0.0.jar -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_20745/edf_dataingestion-assembly-2.0.0.jar
+19/11/11 08:00:08 INFO Client: Uploading resource file:/home/hadoop/processed/ese/spec_files/ese_daily_DI.properties#diProperties.properties -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_20745/ese_daily_DI.properties
+19/11/11 08:00:08 INFO Client: Uploading resource file:/home/hadoop/processed/ese/spec_files/ese_lookup_info.csv#ese_lookup_info.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_20745/ese_lookup_info.csv
+19/11/11 08:00:08 INFO Client: Uploading resource file:/home/hadoop/processed/ese/spec_files/ese_pii_spec.csv#ese_pii_spec.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_20745/ese_pii_spec.csv
+19/11/11 08:00:08 INFO Client: Uploading resource file:/home/hadoop/processed/ese/spec_files/ese_table_spec_daily_DI.csv#ese_table_spec_daily_DI.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_20745/ese_table_spec_daily_DI.csv
+19/11/11 08:00:08 INFO Client: Uploading resource file:/etc/spark/conf/hive-site.xml -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_20745/hive-site.xml
+19/11/11 08:00:08 INFO Client: Uploading resource file:/mnt/tmp/spark-3eac5d29-49aa-45ce-ba1d-93a3623bf81b/__spark_conf__5464977435694740337.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1570041489538_20745/__spark_conf__.zip
+19/11/11 08:00:08 INFO SecurityManager: Changing view acls to: hadoop
+19/11/11 08:00:08 INFO SecurityManager: Changing modify acls to: hadoop
+19/11/11 08:00:08 INFO SecurityManager: Changing view acls groups to: 
+19/11/11 08:00:08 INFO SecurityManager: Changing modify acls groups to: 
+19/11/11 08:00:08 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+19/11/11 08:00:10 INFO Client: Submitting application application_1570041489538_20745 to ResourceManager
+19/11/11 08:00:10 INFO YarnClientImpl: Submitted application application_1570041489538_20745
+19/11/11 08:00:11 INFO Client: Application report for application_1570041489538_20745 (state: ACCEPTED)
+19/11/11 08:00:11 INFO Client: 
+	 client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1573459210598
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_20745/
+	 user: hadoop
+19/11/11 08:00:12 INFO Client: Application report for application_1570041489538_20745 (state: ACCEPTED)
+19/11/11 08:00:13 INFO Client: Application report for application_1570041489538_20745 (state: ACCEPTED)
+19/11/11 08:00:14 INFO Client: Application report for application_1570041489538_20745 (state: ACCEPTED)
+19/11/11 08:00:15 INFO Client: Application report for application_1570041489538_20745 (state: ACCEPTED)
+19/11/11 08:00:16 INFO Client: Application report for application_1570041489538_20745 (state: ACCEPTED)
+19/11/11 08:00:17 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:17 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ip-10-84-38-167.corp.stateauto.com
+	 ApplicationMaster RPC port: 39153
+	 queue: default
+	 start time: 1573459210598
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_20745/
+	 user: hadoop
+19/11/11 08:00:18 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:19 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:20 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:21 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:22 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:23 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:24 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:25 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:26 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:27 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:28 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:29 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:30 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:31 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:32 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:33 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:34 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:35 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:36 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:37 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:38 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:39 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:40 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:41 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:42 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:43 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:44 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:45 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:46 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:47 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:48 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:49 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:50 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:51 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:52 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:53 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:54 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:55 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:56 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:57 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:58 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:00:59 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:00 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:01 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:02 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:03 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:04 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:05 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:06 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:07 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:08 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:09 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:10 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:11 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:12 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:13 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:14 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:15 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:16 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:17 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:18 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:19 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:20 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:21 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:22 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:23 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:24 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:25 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:26 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:27 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:28 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:29 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:30 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:31 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:32 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:33 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:34 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:35 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:36 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:37 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:38 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:39 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:40 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:41 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:42 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:43 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:44 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:45 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:46 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:47 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:48 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:49 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:50 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:51 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:52 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:53 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:54 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:55 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:56 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:57 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:58 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:01:59 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:00 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:01 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:02 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:03 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:04 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:05 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:06 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:07 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:08 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:09 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:10 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:11 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:12 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:13 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:14 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:15 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:16 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:17 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:18 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:19 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:20 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:21 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:22 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:23 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:24 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:25 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:26 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:27 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:28 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:29 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:30 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:31 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:32 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:33 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:34 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:35 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:36 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:37 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:38 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:39 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:40 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:41 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:42 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:43 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:44 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:45 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:46 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:47 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:48 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:49 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:50 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:51 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:52 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:53 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:54 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:55 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:56 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:57 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:58 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:02:59 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:00 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:01 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:02 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:03 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:04 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:05 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:06 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:07 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:08 INFO Client: Application report for application_1570041489538_20745 (state: ACCEPTED)
+19/11/11 08:03:08 INFO Client: 
+	 client token: N/A
+	 diagnostics: [Mon Nov 11 08:03:08 +0000 2019] Application is Activated, waiting for resources to be assigned for AM.  Details : AM Partition = CORE ; Partition Resource = <memory:368640, vCores:48> ; Queue's Absolute capacity = 100.0 % ; Queue's Absolute used capacity = 2.0833335 % ; Queue's Absolute max capacity = 100.0 % ; 
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1573459210598
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_20745/
+	 user: hadoop
+19/11/11 08:03:09 INFO Client: Application report for application_1570041489538_20745 (state: ACCEPTED)
+19/11/11 08:03:10 INFO Client: Application report for application_1570041489538_20745 (state: ACCEPTED)
+19/11/11 08:03:11 INFO Client: Application report for application_1570041489538_20745 (state: ACCEPTED)
+19/11/11 08:03:12 INFO Client: Application report for application_1570041489538_20745 (state: ACCEPTED)
+19/11/11 08:03:13 INFO Client: Application report for application_1570041489538_20745 (state: ACCEPTED)
+19/11/11 08:03:14 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:14 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ip-10-84-45-92.corp.stateauto.com
+	 ApplicationMaster RPC port: 35845
+	 queue: default
+	 start time: 1573459210598
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_20745/
+	 user: hadoop
+19/11/11 08:03:15 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:16 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:17 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:18 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:19 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:20 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:21 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:22 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:23 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:24 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:25 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:26 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:27 INFO Client: Application report for application_1570041489538_20745 (state: RUNNING)
+19/11/11 08:03:28 INFO Client: Application report for application_1570041489538_20745 (state: FINISHED)
+19/11/11 08:03:28 INFO Client: 
+	 client token: N/A
+	 diagnostics: User class threw exception: org.apache.spark.sql.AnalysisException: Table or view not found: `audit_ingestion`.`audit`; line 1 pos 151;
+'Aggregate [unresolvedalias(count(1), None)]
++- 'Filter ((('r_num = 1) && NOT ('loadstatus = success)) && 'batch IN (list#1 []))
+   :  +- 'Project [unresolvedalias('max('batch), None)]
+   :     +- 'Filter (('processname = eseDataExtract) && NOT ('harddeletebatch = Y))
+   :        +- 'UnresolvedRelation `audit_ingestion`.`audit`
+   +- 'SubqueryAlias `__auto_generated_subquery_name`
+      +- 'Project ['tablename, 'loadstatus, 'batch, row_number() windowspecdefinition('tablename, 'batch DESC NULLS LAST, 'loadendtime DESC NULLS LAST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS r_num#0]
+         +- 'Filter (('processname = eseDataExtract) && NOT ('harddeletebatch = Y))
+            +- 'UnresolvedRelation `audit_ingestion`.`audit`
+
+	at org.apache.spark.sql.catalyst.analysis.package$AnalysisErrorAt.failAnalysis(package.scala:42)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1.apply(CheckAnalysis.scala:90)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1.apply(CheckAnalysis.scala:85)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:127)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at scala.collection.immutable.List.foreach(List.scala:392)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at scala.collection.immutable.List.foreach(List.scala:392)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at scala.collection.immutable.List.foreach(List.scala:392)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at scala.collection.immutable.List.foreach(List.scala:392)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at scala.collection.immutable.List.foreach(List.scala:392)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$class.checkAnalysis(CheckAnalysis.scala:85)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.checkAnalysis(Analyzer.scala:95)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer$$anonfun$executeAndCheck$1.apply(Analyzer.scala:108)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer$$anonfun$executeAndCheck$1.apply(Analyzer.scala:105)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.markInAnalyzer(AnalysisHelper.scala:201)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.executeAndCheck(Analyzer.scala:105)
+	at org.apache.spark.sql.execution.QueryExecution.analyzed$lzycompute(QueryExecution.scala:57)
+	at org.apache.spark.sql.execution.QueryExecution.analyzed(QueryExecution.scala:55)
+	at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:47)
+	at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:79)
+	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:642)
+	at edf.dataingestion.DataLoad$.validateIngestionLoadBeforeHardDelete$1(DataLoad.scala:52)
+	at edf.dataingestion.DataLoad$.run(DataLoad.scala:66)
+	at edf.dataingestion.SparkJob$class.initiateAndRun$1(SparkJob.scala:23)
+	at edf.dataingestion.SparkJob$class.main(SparkJob.scala:18)
+	at edf.dataingestion.DataLoad$.main(DataLoad.scala:18)
+	at edf.dataingestion.DataLoad.main(DataLoad.scala)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.spark.deploy.yarn.ApplicationMaster$$anon$2.run(ApplicationMaster.scala:678)
+
+	 ApplicationMaster host: ip-10-84-45-92.corp.stateauto.com
+	 ApplicationMaster RPC port: 35845
+	 queue: default
+	 start time: 1573459210598
+	 final status: FAILED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1570041489538_20745/
+	 user: hadoop
+19/11/11 08:03:28 ERROR Client: Application diagnostics message: User class threw exception: org.apache.spark.sql.AnalysisException: Table or view not found: `audit_ingestion`.`audit`; line 1 pos 151;
+'Aggregate [unresolvedalias(count(1), None)]
++- 'Filter ((('r_num = 1) && NOT ('loadstatus = success)) && 'batch IN (list#1 []))
+   :  +- 'Project [unresolvedalias('max('batch), None)]
+   :     +- 'Filter (('processname = eseDataExtract) && NOT ('harddeletebatch = Y))
+   :        +- 'UnresolvedRelation `audit_ingestion`.`audit`
+   +- 'SubqueryAlias `__auto_generated_subquery_name`
+      +- 'Project ['tablename, 'loadstatus, 'batch, row_number() windowspecdefinition('tablename, 'batch DESC NULLS LAST, 'loadendtime DESC NULLS LAST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS r_num#0]
+         +- 'Filter (('processname = eseDataExtract) && NOT ('harddeletebatch = Y))
+            +- 'UnresolvedRelation `audit_ingestion`.`audit`
+
+	at org.apache.spark.sql.catalyst.analysis.package$AnalysisErrorAt.failAnalysis(package.scala:42)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1.apply(CheckAnalysis.scala:90)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1.apply(CheckAnalysis.scala:85)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:127)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at scala.collection.immutable.List.foreach(List.scala:392)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at scala.collection.immutable.List.foreach(List.scala:392)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at scala.collection.immutable.List.foreach(List.scala:392)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at scala.collection.immutable.List.foreach(List.scala:392)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$foreachUp$1.apply(TreeNode.scala:126)
+	at scala.collection.immutable.List.foreach(List.scala:392)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:126)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$class.checkAnalysis(CheckAnalysis.scala:85)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.checkAnalysis(Analyzer.scala:95)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer$$anonfun$executeAndCheck$1.apply(Analyzer.scala:108)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer$$anonfun$executeAndCheck$1.apply(Analyzer.scala:105)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.markInAnalyzer(AnalysisHelper.scala:201)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.executeAndCheck(Analyzer.scala:105)
+	at org.apache.spark.sql.execution.QueryExecution.analyzed$lzycompute(QueryExecution.scala:57)
+	at org.apache.spark.sql.execution.QueryExecution.analyzed(QueryExecution.scala:55)
+	at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:47)
+	at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:79)
+	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:642)
+	at edf.dataingestion.DataLoad$.validateIngestionLoadBeforeHardDelete$1(DataLoad.scala:52)
+	at edf.dataingestion.DataLoad$.run(DataLoad.scala:66)
+	at edf.dataingestion.SparkJob$class.initiateAndRun$1(SparkJob.scala:23)
+	at edf.dataingestion.SparkJob$class.main(SparkJob.scala:18)
+	at edf.dataingestion.DataLoad$.main(DataLoad.scala:18)
+	at edf.dataingestion.DataLoad.main(DataLoad.scala)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.spark.deploy.yarn.ApplicationMaster$$anon$2.run(ApplicationMaster.scala:678)
+
+Exception in thread "main" org.apache.spark.SparkException: Application application_1570041489538_20745 finished with failed status
+	at org.apache.spark.deploy.yarn.Client.run(Client.scala:1149)
+	at org.apache.spark.deploy.yarn.YarnClusterApplication.start(Client.scala:1526)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:849)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:167)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:195)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:924)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:933)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+19/11/11 08:03:28 INFO ShutdownHookManager: Shutdown hook called
+19/11/11 08:03:28 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-3eac5d29-49aa-45ce-ba1d-93a3623bf81b
+19/11/11 08:03:28 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-1549e2f7-11eb-4aa7-bcf7-b533b9ca782a

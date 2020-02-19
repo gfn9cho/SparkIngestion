@@ -77,6 +77,7 @@ PolicyCenter.dbo.pc_groupuser|Y||ID|Y|ID|ID|||
 PolicyCenter.dbo.pc_groupuser_assign|Y||ID|Y|ID|ID|||
 PolicyCenter.dbo.pc_industrycode|Y||UpdateTime|Y||ID|||
 PolicyCenter.dbo.pc_industrycodeclasscode|Y||UpdateTime|Y||ID|||
+PolicyCenter.dbo.pc_job|Y|Y|UpdateTime|Y||ID|||
 PolicyCenter.dbo.pc_jobgroup|Y||UpdateTime|Y||ID|||
 PolicyCenter.dbo.pc_jobpolicyperiod|Y||ID|Y|ID|ID|||
 PolicyCenter.dbo.pc_jobuserroleassign|Y||UpdateTime|Y||ID|||
@@ -187,7 +188,6 @@ PolicyCenter.dbo.pc_vehicleindustrycode|Y||UpdateTime|Y||ID|||
 PolicyCenter.dbo.pc_wcclasscode|Y||UpdateTime|Y||ID|||
 PolicyCenter.dbo.pc_wcfedliabclasscode|Y||UpdateTime|Y||ID|||
 PolicyCenter.dbo.pc_wcjurisdiction|Y||UpdateTime|Y|ID|ID|||
-PolicyCenter.dbo.pc_job|Y|Y|UpdateTime|Y||ID|||
 PolicyCenter.dbo.pc_wcmodifier|Y||UpdateTime|Y|ID|ID|||
 PolicyCenter.dbo.pc_wcratefactor|Y||UpdateTime|Y|ID|ID|||
 PolicyCenter.dbo.pc_wcstatecov|Y||UpdateTime|Y|ID|ID|||

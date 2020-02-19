@@ -33,7 +33,7 @@ LOGGER() {
 LOGGER I "Start execute oozie $workflow_name job monthly load script"
 
 
-oozie_url="http://ip-10-84-38-68.ec2.internal:11000/oozie"
+oozie_url="http://ip-10-84-38-68.corp.stateauto.com:11000/oozie"
 
 LOGGER I "oozie job --oozie ${oozie_url} -config ${base_dir}/dmact/${workflow_name}/oozie/${workflow_name}_job.properties -run"
 

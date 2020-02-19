@@ -1,0 +1,160 @@
+19/09/27 15:27:22 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/09/27 15:27:23 INFO RMProxy: Connecting to ResourceManager at ip-10-84-38-68.corp.stateauto.com/10.84.38.68:8032
+19/09/27 15:27:23 INFO Client: Requesting a new application from cluster with 11 NodeManagers
+19/09/27 15:27:23 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (122880 MB per container)
+19/09/27 15:27:23 INFO Client: Will allocate AM container, with 16896 MB memory including 1536 MB overhead
+19/09/27 15:27:23 INFO Client: Setting up container launch context for our AM
+19/09/27 15:27:23 INFO Client: Setting up the launch environment for our AM container
+19/09/27 15:27:23 INFO Client: Preparing resources for our AM container
+19/09/27 15:27:23 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+19/09/27 15:27:26 INFO Client: Uploading resource file:/mnt/tmp/spark-989f3b25-1aa7-40eb-9cd2-0149590d8925/__spark_libs__2471324226562866305.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10804/__spark_libs__2471324226562866305.zip
+19/09/27 15:27:27 INFO Client: Uploading resource file:/home/hadoop/processed/jars/edf_dataingestion-assembly-2.0.0.jar -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10804/edf_dataingestion-assembly-2.0.0.jar
+19/09/27 15:27:27 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/spec_files/gwcc_DI.properties#diProperties.properties -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10804/gwcc_DI.properties
+19/09/27 15:27:27 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/spec_files/gwcc_lookup_info.csv#gwcc_lookup_info.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10804/gwcc_lookup_info.csv
+19/09/27 15:27:27 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/spec_files/gwcc_pii_spec.csv#gwcc_pii_spec.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10804/gwcc_pii_spec.csv
+19/09/27 15:27:27 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/spec_files/gwcc_table_spec.csv#gwcc_table_spec.csv -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10804/gwcc_table_spec.csv
+19/09/27 15:27:27 INFO Client: Uploading resource file:/etc/spark/conf/hive-site.xml -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10804/hive-site.xml
+19/09/27 15:27:27 INFO Client: Uploading resource file:/mnt/tmp/spark-989f3b25-1aa7-40eb-9cd2-0149590d8925/__spark_conf__6903855959949561199.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1567696628598_10804/__spark_conf__.zip
+19/09/27 15:27:27 INFO SecurityManager: Changing view acls to: hadoop
+19/09/27 15:27:27 INFO SecurityManager: Changing modify acls to: hadoop
+19/09/27 15:27:27 INFO SecurityManager: Changing view acls groups to: 
+19/09/27 15:27:27 INFO SecurityManager: Changing modify acls groups to: 
+19/09/27 15:27:27 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+19/09/27 15:27:28 INFO Client: Submitting application application_1567696628598_10804 to ResourceManager
+19/09/27 15:27:28 INFO YarnClientImpl: Submitted application application_1567696628598_10804
+19/09/27 15:27:30 INFO Client: Application report for application_1567696628598_10804 (state: ACCEPTED)
+19/09/27 15:27:30 INFO Client: 
+	 client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1569598048977
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1567696628598_10804/
+	 user: hadoop
+19/09/27 15:27:31 INFO Client: Application report for application_1567696628598_10804 (state: ACCEPTED)
+19/09/27 15:27:32 INFO Client: Application report for application_1567696628598_10804 (state: ACCEPTED)
+19/09/27 15:27:33 INFO Client: Application report for application_1567696628598_10804 (state: ACCEPTED)
+19/09/27 15:27:34 INFO Client: Application report for application_1567696628598_10804 (state: ACCEPTED)
+19/09/27 15:27:35 INFO Client: Application report for application_1567696628598_10804 (state: ACCEPTED)
+19/09/27 15:27:36 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:36 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ip-10-84-37-107.corp.stateauto.com
+	 ApplicationMaster RPC port: 37575
+	 queue: default
+	 start time: 1569598048977
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1567696628598_10804/
+	 user: hadoop
+19/09/27 15:27:37 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:38 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:39 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:40 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:41 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:42 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:43 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:44 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:45 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:46 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:47 INFO Client: Application report for application_1567696628598_10804 (state: ACCEPTED)
+19/09/27 15:27:47 INFO Client: 
+	 client token: N/A
+	 diagnostics: [Fri Sep 27 15:27:46 +0000 2019] Application is Activated, waiting for resources to be assigned for AM.  Details : AM Partition = CORE ; Partition Resource = <memory:368640, vCores:48> ; Queue's Absolute capacity = 100.0 % ; Queue's Absolute used capacity = 42.77778 % ; Queue's Absolute max capacity = 100.0 % ; 
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1569598048977
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1567696628598_10804/
+	 user: hadoop
+19/09/27 15:27:48 INFO Client: Application report for application_1567696628598_10804 (state: ACCEPTED)
+19/09/27 15:27:49 INFO Client: Application report for application_1567696628598_10804 (state: ACCEPTED)
+19/09/27 15:27:50 INFO Client: Application report for application_1567696628598_10804 (state: ACCEPTED)
+19/09/27 15:27:51 INFO Client: Application report for application_1567696628598_10804 (state: ACCEPTED)
+19/09/27 15:27:52 INFO Client: Application report for application_1567696628598_10804 (state: ACCEPTED)
+19/09/27 15:27:53 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:53 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ip-10-84-47-80.corp.stateauto.com
+	 ApplicationMaster RPC port: 37917
+	 queue: default
+	 start time: 1569598048977
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1567696628598_10804/
+	 user: hadoop
+19/09/27 15:27:54 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:55 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:56 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:57 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:58 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:27:59 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:28:00 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:28:01 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:28:02 INFO Client: Application report for application_1567696628598_10804 (state: RUNNING)
+19/09/27 15:28:03 INFO Client: Application report for application_1567696628598_10804 (state: FINISHED)
+19/09/27 15:28:03 INFO Client: 
+	 client token: N/A
+	 diagnostics: User class threw exception: java.lang.ArrayIndexOutOfBoundsException: 1
+	at edf.utilities.sqlQueryParserFromCSV$$anonfun$getPropertyFile$3.apply(sqlQueryParserFromCSV.scala:49)
+	at edf.utilities.sqlQueryParserFromCSV$$anonfun$getPropertyFile$3.apply(sqlQueryParserFromCSV.scala:47)
+	at scala.collection.Iterator$$anon$11.next(Iterator.scala:410)
+	at scala.collection.Iterator$$anon$11.next(Iterator.scala:410)
+	at scala.collection.Iterator$class.foreach(Iterator.scala:891)
+	at scala.collection.AbstractIterator.foreach(Iterator.scala:1334)
+	at scala.collection.TraversableOnce$class.toMap(TraversableOnce.scala:316)
+	at scala.collection.AbstractIterator.toMap(Iterator.scala:1334)
+	at edf.utilities.JobConfig$.getJobConfigProperties(JobConfig.scala:12)
+	at edf.dataingestion.SparkJob$class.initiateAndRun$1(SparkJob.scala:21)
+	at edf.dataingestion.SparkJob$class.main(SparkJob.scala:18)
+	at edf.dataingestion.DataLoad$.main(DataLoad.scala:18)
+	at edf.dataingestion.DataLoad.main(DataLoad.scala)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.spark.deploy.yarn.ApplicationMaster$$anon$2.run(ApplicationMaster.scala:678)
+
+	 ApplicationMaster host: ip-10-84-47-80.corp.stateauto.com
+	 ApplicationMaster RPC port: 37917
+	 queue: default
+	 start time: 1569598048977
+	 final status: FAILED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1567696628598_10804/
+	 user: hadoop
+19/09/27 15:28:03 ERROR Client: Application diagnostics message: User class threw exception: java.lang.ArrayIndexOutOfBoundsException: 1
+	at edf.utilities.sqlQueryParserFromCSV$$anonfun$getPropertyFile$3.apply(sqlQueryParserFromCSV.scala:49)
+	at edf.utilities.sqlQueryParserFromCSV$$anonfun$getPropertyFile$3.apply(sqlQueryParserFromCSV.scala:47)
+	at scala.collection.Iterator$$anon$11.next(Iterator.scala:410)
+	at scala.collection.Iterator$$anon$11.next(Iterator.scala:410)
+	at scala.collection.Iterator$class.foreach(Iterator.scala:891)
+	at scala.collection.AbstractIterator.foreach(Iterator.scala:1334)
+	at scala.collection.TraversableOnce$class.toMap(TraversableOnce.scala:316)
+	at scala.collection.AbstractIterator.toMap(Iterator.scala:1334)
+	at edf.utilities.JobConfig$.getJobConfigProperties(JobConfig.scala:12)
+	at edf.dataingestion.SparkJob$class.initiateAndRun$1(SparkJob.scala:21)
+	at edf.dataingestion.SparkJob$class.main(SparkJob.scala:18)
+	at edf.dataingestion.DataLoad$.main(DataLoad.scala:18)
+	at edf.dataingestion.DataLoad.main(DataLoad.scala)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.spark.deploy.yarn.ApplicationMaster$$anon$2.run(ApplicationMaster.scala:678)
+
+Exception in thread "main" org.apache.spark.SparkException: Application application_1567696628598_10804 finished with failed status
+	at org.apache.spark.deploy.yarn.Client.run(Client.scala:1149)
+	at org.apache.spark.deploy.yarn.YarnClusterApplication.start(Client.scala:1526)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:849)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:167)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:195)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:924)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:933)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+19/09/27 15:28:03 INFO ShutdownHookManager: Shutdown hook called
+19/09/27 15:28:03 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-989f3b25-1aa7-40eb-9cd2-0149590d8925
+19/09/27 15:28:03 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-b355361a-919f-41bc-a19a-0054f9570688

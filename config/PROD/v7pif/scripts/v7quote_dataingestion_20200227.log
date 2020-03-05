@@ -1,0 +1,3 @@
+Started the script for V7MQUOTE ingestion load
+Completed the script and the status is 1
+Spark job failed with error status for V7MQUOTE, Please have a look at the logs in below file on the server in the appropriate s3 bucket for yarn logs

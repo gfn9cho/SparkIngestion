@@ -1,0 +1,225 @@
+20/03/04 21:17:59 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+20/03/04 21:18:00 INFO RMProxy: Connecting to ResourceManager at ip-10-84-31-94.corp.stateauto.com/10.84.31.94:8032
+20/03/04 21:18:00 INFO Client: Requesting a new application from cluster with 29 NodeManagers
+20/03/04 21:18:01 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (253952 MB per container)
+20/03/04 21:18:01 INFO Client: Will allocate AM container, with 22528 MB memory including 2048 MB overhead
+20/03/04 21:18:01 INFO Client: Setting up container launch context for our AM
+20/03/04 21:18:01 INFO Client: Setting up the launch environment for our AM container
+20/03/04 21:18:01 INFO Client: Preparing resources for our AM container
+20/03/04 21:18:01 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+20/03/04 21:18:03 INFO Client: Uploading resource file:/mnt/tmp/spark-717e4939-3068-41cf-9a4b-686a40d8ed6f/__spark_libs__2144706691787189534.zip -> hdfs://ip-10-84-31-94.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1582830458885_5061/__spark_libs__2144706691787189534.zip
+20/03/04 21:18:04 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/missing_data_utils/jars/edf_missing_dataingestion-1.0.0.jar -> hdfs://ip-10-84-31-94.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1582830458885_5061/edf_missing_dataingestion-1.0.0.jar
+20/03/04 21:18:04 INFO Client: Uploading resource file:/home/hadoop/processed/jars/sqljdbc42.jar -> hdfs://ip-10-84-31-94.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1582830458885_5061/sqljdbc42.jar
+20/03/04 21:18:04 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/missing_data_utils/spec_files/fairScheduler.xml#fairScheduler.xml -> hdfs://ip-10-84-31-94.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1582830458885_5061/fairScheduler.xml
+20/03/04 21:18:04 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/missing_data_utils/spec_files/gwcc_missing_stg.properties#diProperties.properties -> hdfs://ip-10-84-31-94.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1582830458885_5061/gwcc_missing_stg.properties
+20/03/04 21:18:04 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/spec_files/gwcc_lookup_info.csv#gwcc_lookup_info.csv -> hdfs://ip-10-84-31-94.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1582830458885_5061/gwcc_lookup_info.csv
+20/03/04 21:18:04 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/spec_files/gwcc_pii_spec.csv#gwcc_pii_spec.csv -> hdfs://ip-10-84-31-94.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1582830458885_5061/gwcc_pii_spec.csv
+20/03/04 21:18:04 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/spec_files/gwcc_table_spec_stg.csv#gwcc_table_spec_stg.csv -> hdfs://ip-10-84-31-94.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1582830458885_5061/gwcc_table_spec_stg.csv
+20/03/04 21:18:04 INFO Client: Uploading resource file:/home/hadoop/processed/gwcc/missing_data_utils/spec_files/gwcc_missing_table_list.csv#gwcc_missing_table_list.csv -> hdfs://ip-10-84-31-94.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1582830458885_5061/gwcc_missing_table_list.csv
+20/03/04 21:18:04 INFO Client: Uploading resource file:/etc/spark/conf/hive-site.xml -> hdfs://ip-10-84-31-94.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1582830458885_5061/hive-site.xml
+20/03/04 21:18:04 INFO Client: Uploading resource file:/mnt/tmp/spark-717e4939-3068-41cf-9a4b-686a40d8ed6f/__spark_conf__3447679940242090604.zip -> hdfs://ip-10-84-31-94.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1582830458885_5061/__spark_conf__.zip
+20/03/04 21:18:04 INFO SecurityManager: Changing view acls to: hadoop
+20/03/04 21:18:04 INFO SecurityManager: Changing modify acls to: hadoop
+20/03/04 21:18:04 INFO SecurityManager: Changing view acls groups to: 
+20/03/04 21:18:04 INFO SecurityManager: Changing modify acls groups to: 
+20/03/04 21:18:04 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+20/03/04 21:18:06 INFO Client: Submitting application application_1582830458885_5061 to ResourceManager
+20/03/04 21:18:06 INFO YarnClientImpl: Submitted application application_1582830458885_5061
+20/03/04 21:18:07 INFO Client: Application report for application_1582830458885_5061 (state: ACCEPTED)
+20/03/04 21:18:07 INFO Client: 
+	 client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1583356686164
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-31-94.corp.stateauto.com:20888/proxy/application_1582830458885_5061/
+	 user: hadoop
+20/03/04 21:18:08 INFO Client: Application report for application_1582830458885_5061 (state: ACCEPTED)
+20/03/04 21:18:09 INFO Client: Application report for application_1582830458885_5061 (state: ACCEPTED)
+20/03/04 21:18:10 INFO Client: Application report for application_1582830458885_5061 (state: ACCEPTED)
+20/03/04 21:18:11 INFO Client: Application report for application_1582830458885_5061 (state: ACCEPTED)
+20/03/04 21:18:12 INFO Client: Application report for application_1582830458885_5061 (state: ACCEPTED)
+20/03/04 21:18:13 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:13 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ip-10-84-16-225.corp.stateauto.com
+	 ApplicationMaster RPC port: 37055
+	 queue: default
+	 start time: 1583356686164
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-31-94.corp.stateauto.com:20888/proxy/application_1582830458885_5061/
+	 user: hadoop
+20/03/04 21:18:14 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:15 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:16 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:17 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:18 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:19 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:20 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:21 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:22 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:23 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:24 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:25 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:26 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:27 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:28 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:29 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:30 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:31 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:32 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:33 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:34 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:35 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:36 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:37 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:38 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:39 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:40 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:41 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:42 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:43 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:44 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:45 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:46 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:47 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:48 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:49 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:50 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:51 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:52 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:53 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:54 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:55 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:56 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:57 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:58 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:18:59 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:00 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:01 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:02 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:03 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:04 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:05 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:06 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:07 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:08 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:09 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:10 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:11 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:12 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:13 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:14 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:15 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:16 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:17 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:18 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:19 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:20 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:21 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:22 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:23 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:24 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:25 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:26 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:27 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:28 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:29 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:30 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:31 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:32 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:33 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:34 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:35 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:36 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:37 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:38 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:39 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:40 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:41 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:42 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:43 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:44 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:45 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:46 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:47 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:48 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:49 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:50 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:51 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:52 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:53 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:54 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:55 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:56 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:57 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:58 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:19:59 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:00 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:01 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:02 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:03 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:04 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:05 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:06 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:07 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:08 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:09 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:10 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:11 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:12 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:13 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:14 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:15 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:16 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:17 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:18 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:19 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:20 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:21 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:22 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:23 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:24 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:25 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:26 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:27 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:28 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:29 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:30 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:31 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:32 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:33 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:34 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:35 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:36 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:37 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:38 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:39 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:40 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:41 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:42 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:43 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:44 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:45 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:46 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:47 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:48 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:49 INFO Client: Application report for application_1582830458885_5061 (state: RUNNING)
+20/03/04 21:20:50 INFO Client: Application report for application_1582830458885_5061 (state: FINISHED)
+20/03/04 21:20:50 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ip-10-84-16-225.corp.stateauto.com
+	 ApplicationMaster RPC port: 37055
+	 queue: default
+	 start time: 1583356686164
+	 final status: SUCCEEDED
+	 tracking URL: http://ip-10-84-31-94.corp.stateauto.com:20888/proxy/application_1582830458885_5061/
+	 user: hadoop
+20/03/04 21:20:50 INFO Client: Deleted staging directory hdfs://ip-10-84-31-94.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1582830458885_5061
+20/03/04 21:20:50 INFO ShutdownHookManager: Shutdown hook called
+20/03/04 21:20:50 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-717e4939-3068-41cf-9a4b-686a40d8ed6f
+20/03/04 21:20:50 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-502c39fc-de8d-4e47-bcc0-7d033b82e6eb

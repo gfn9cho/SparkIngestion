@@ -1,96 +1,16 @@
 <workflow-app
     xmlns="uri:oozie:workflow:0.1" name="GWCC CI Data Ingestion">
     <start to="GWCC_INGESTION_CI_LOAD"/>
-       <join name="GWCC_STAGING_LOADS_COMPLETE" to="DECISION_NODE"/>
-         <fork name="TRIGGER_STAGING_LOADS">
-                <path start="GWCC_STAGING_LOAD"/>
-                <path start="GWCC_SECURED_STAGING_LOAD"/>
-         </fork>
-        <action name="GWCC_INGESTION_CI_LOAD">
+       <action name="GWCC_INGESTION_CI_LOAD">
         <ssh xmlns="uri:oozie:ssh-action:0.1">
         <host>${focusNodeLogin}</host>
         <command>${spark_run_script_path_ci}</command>
         <args></args>
         </ssh>
-        <ok to="GWCC_INGESTION_MISSING_LOAD"/>
+        <ok to="END"/>
         <error to="GWCC_INGESTION_CI_LOAD_FAILURE"/>
         </action>
-		 <action name="GWCC_INGESTION_MISSING_LOAD">
-        <ssh xmlns="uri:oozie:ssh-action:0.1">
-        <host>${focusNodeLogin}</host>
-        <command>${spark_run_script_path_missingdata_load}</command>
-        <args></args>
-        </ssh>
-        <ok to="GWCC_INGESTION_DELETE_LOAD"/>
-        <error to="GWCC_INGESTION_MISSING_LOAD_FAILURE"/>
-    </action>
-     <action name="GWCC_INGESTION_DELETE_LOAD">
-        <ssh xmlns="uri:oozie:ssh-action:0.1">
-        <host>${focusNodeLogin}</host>
-        <command>${spark_run_script_path_delete}</command>
-        <args></args>
-        </ssh>
-        <ok to="TRIGGER_STAGING_LOADS"/>
-        <error to="GWCC_INGESTION_DELETE_LOAD_FAILURE"/>
-    </action>
-    <action name="GWCC_STAGING_LOAD">
-        <ssh xmlns="uri:oozie:ssh-action:0.1">
-        <host>${focusNodeLogin}</host>
-        <command>${spark_run_script_path_staging}</command>
-        <args></args>
-        </ssh>
-        <ok to="GWCC_STAGING_LOADS_COMPLETE"/>
-        <error to="GWCC_STAGING_LOADS_COMPLETE"/>
-    </action>
-        <action name="GWCC_SECURED_STAGING_LOAD">
-        <ssh xmlns="uri:oozie:ssh-action:0.1">
-        <host>${focusNodeLogin}</host>
-        <command>${spark_run_script_path_secured_staging}</command>
-        <args></args>
-        </ssh>
-        <ok to="GWCC_STAGING_LOADS_COMPLETE"/>
-        <error to="GWCC_STAGING_LOADS_COMPLETE"/>
-        </action>
-		<decision name="DECISION_NODE">
-        <switch>
-                <case to="GWCC_stgRecon">
-                        ${firstNotNull(wf:lastErrorNode(),'No Error') eq 'No Error'}
-                </case>
-
-            <default to="GWCC_STAGING_LOADS_FAILURE"/>
-        </switch>
-        </decision>
-        <action name="GWCC_stgRecon">
-          <ssh xmlns="uri:oozie:ssh-action:0.1">
-             <host>${focusNodeLogin}</host>
-             <command>${spark_run_script_path_stgRecon}</command>
-             <args></args>
-          </ssh>
-          <ok to="GWCC_stgRecon_SUCCESS"/>
-          <error to="GWCC_stgRecon_FAILURE"/>
-        </action>
-
-
-        <action name="GWCC_stgRecon_SUCCESS">
-        <email xmlns="uri:oozie:email-action:0.1">
-        <to>${emailToAddress}</to>
-        <subject>GWCC Stage Reconciliation Daily - Success notification</subject>
-        <body>GWCC Stage Reconciliation Daily - Source and target counts are matching</body>
-        </email>
-        <ok to="END"/>
-        <error to="KILL"/>
-        </action>
-
-        <action name="GWCC_stgRecon_FAILURE">
-        <email xmlns="uri:oozie:email-action:0.1">
-        <to>${emailToAddress}</to>
-        <subject>GWCC Stage Reconciliation Daily - Failure notification</subject>
-        <body>GWCC Stage Reconciliation Daily - Source and target counts are not matching</body>
-        </email>
-        <ok to="END"/>
-        <error to="KILL"/>
-        </action>
-
+		
         <action name="GWCC_INGESTION_CI_LOAD_FAILURE">
         <email xmlns="uri:oozie:email-action:0.1">
         <to>${emailToAddress}</to>
@@ -100,40 +20,12 @@
         <ok to="END"/>
         <error to="KILL"/>
         </action>
-		<action name="GWCC_INGESTION_MISSING_LOAD_FAILURE">
-        <email xmlns="uri:oozie:email-action:0.1">
-        <to>${emailToAddress}</to>
-        <subject>GWCC PRODUCTION Daily ingestion - New Cluster Missing Data Batch load failure notification</subject>
-        <body>GWCC PRODUCTION Daily ingestion - New Cluster Missing Data Batch load failure notification</body>
-        </email>
-        <ok to="END"/>
-        <error to="KILL"/>
-        </action>
-        <action name="GWCC_INGESTION_DELETE_LOAD_FAILURE">
-        <email xmlns="uri:oozie:email-action:0.1">
-        <to>${emailToAddress}</to>
-        <subject>GWCC PRODUCTION Daily ingestion - Delete Batch load failure notification</subject>
-        <body>GWCC PRODUCTION Daily ingestion - Delete Batch load failure notification</body>
-        </email>
-        <ok to="END"/>
-        <error to="KILL"/>
-        </action>
-
-                <action name="GWCC_STAGING_LOADS_FAILURE">
-        <email xmlns="uri:oozie:email-action:0.1">
-        <to>${emailToAddress}</to>
-        <subject>GWCC PRODUCTION Daily - Staging load failure notification</subject>
-        <body>GWCC PRODUCTION Daily - Staging load failure notification</body>
-        </email>
-        <ok to="END"/>
-        <error to="KILL"/>
-        </action>
-
-
+		
     <kill name="KILL">
         <!-- <message>"Killed job due to error"</message> -->
-        <message>GWCC PRODUCTION Staging load failed while sending the failure notification </message>
+        <message>GWCC PRODUCTION Daily ingestion - CI load failure notification</message>
     </kill>
     <end name="END" />
 
-        </workflow-app>
+</workflow-app>
+

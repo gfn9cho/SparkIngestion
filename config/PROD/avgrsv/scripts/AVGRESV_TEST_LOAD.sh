@@ -45,6 +45,7 @@ V_EPOC_TIME="`TZ=America/New_York date +'%Y%d%m%H%M%S'`"
 v_Log=${LOG_PATH}/${TargetTable}_${V_EPOC_TIME}.log
 export LOGFILE=${v_Log}
 #info "log:${v_Log}"
+echo "class com.sa.edwexternal.Avg_Rsrvs_LF_For_Busns ${JAR_PATH}/Average_Reserves_Lake_Factor-1.0-SNAPSHOT.jar ${Src_CSV_Path} ${Avg_TXT_Path} ${Src_CSV_File} ${Avg_TXT_File} ${TargetDB} ${TargetTable} ${TargetFinal} ${StatTable} ${LOGFILE} ${eff_date} ${test_table_path}"
 echo "log:${v_Log}"
 echo "Log file path :${v_Log}" 2>&1
 exec 1> ${v_Log} 2>&1
@@ -69,6 +70,7 @@ else
    #$(hdfs dfs -rm -r ${TBL_PATH}${TargetTable}/ingestion_yyyymm=${Prev_YYYYMM}) || true
 
    echo "[INFO] Spark Submit in Progress"   
+   echo "class com.sa.edwexternal.Avg_Rsrvs_LF_For_Busns ${JAR_PATH}/Average_Reserves_Lake_Factor-1.0-SNAPSHOT.jar ${Src_CSV_Path} ${Avg_TXT_Path} ${Src_CSV_File} ${Avg_TXT_File} ${TargetDB} ${TargetTable} ${TargetFinal} ${StatTable} ${LOGFILE} ${eff_date} ${test_table_path}"
 spark-submit \
 --conf spark.dynamicAllocation.enabled=true \
 --conf spark.dynamicAllocation.minExecutors=2 \

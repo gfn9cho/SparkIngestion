@@ -1,0 +1,401 @@
+Script started on Thu 05 Mar 2020 06:47:04 AM UTC
+                                                                    
+EEEEEEEEEEEEEEEEEEEE MMMMMMMM           MMMMMMMM RRRRRRRRRRRRRRR    
+E::::::::::::::::::E M:::::::M         M:::::::M R::::::::::::::R   
+EE:::::EEEEEEEEE:::E M::::::::M       M::::::::M R:::::RRRRRR:::::R 
+  E::::E       EEEEE M:::::::::M     M:::::::::M RR::::R      R::::R
+  E::::E             M::::::M:::M   M:::M::::::M   R:::R      R::::R
+  E:::::EEEEEEEEEE   M:::::M M:::M M:::M M:::::M   R:::RRRRRR:::::R 
+  E::::::::::::::E   M:::::M  M:::M:::M  M:::::M   R:::::::::::RR   
+  E:::::EEEEEEEEEE   M:::::M   M:::::M   M:::::M   R:::RRRRRR::::R  
+  E::::E             M:::::M    M:::M    M:::::M   R:::R      R::::R
+  E::::E       EEEEE M:::::M     MMM     M:::::M   R:::R      R::::R
+EE:::::EEEEEEEE::::E M:::::M             M:::::M   R:::R      R::::R
+E::::::::::::::::::E M:::::M             M:::::M RR::::R      R::::R
+EEEEEEEEEEEEEEEEEEEE MMMMMMM             MMMMMMM RRRRRRR      RRRRRR
+                                                                    
+]0;hadoop@ip-10-84-31-94:~/processed/gwpl[?1034h[hadoop@ip-10-84-31-94 gwpl]$ cd scripts/
+]0;hadoop@ip-10-84-31-94:~/processed/gwpl/scripts[hadoop@ip-10-84-31-94 scripts]$ ll
+total 32
+-rwxr-xr-x 1 hadoop hadoop 1465 Sep 21 17:08 [0m[01;32mgwpl_dataingestion_ci.sh[0m
+-rwxr-xr-x 1 hadoop hadoop 1491 Sep 21 17:15 [01;32mgwpl_dataingestion_delete.sh[0m
+-rwxr-xr-x 1 hadoop hadoop 1503 Feb 27 04:47 [01;32mgwpl_dataingestion_delete_stg.sh[0m
+-rwxr-xr-x 1 hadoop hadoop 1517 Jan 25 20:17 [01;32mgwpl_dataingestion_di.sh[0m
+-rwxr-xr-x 1 hadoop hadoop 1541 Feb 27 04:46 [01;32mgwpl_dataingestion_di_stg.sh[0m
+-rwxr-xr-x 1 hadoop hadoop 1471 Jan 28 03:06 [01;32mgwpl_dataingestion_tl.sh[0m
+-rwxr-xr-x 1 hadoop hadoop 1402 Oct 18 02:34 [01;32mgwpl_ing_clnup.sh[0m
+-rwxr-xr-x 1 hadoop hadoop 2376 Sep 15 18:33 [01;32mgwpl_TL_5views_dataingestion.sh[0m
+]0;hadoop@ip-10-84-31-94:~/processed/gwpl/scripts[hadoop@ip-10-84-31-94 scripts]$ pwd
+/home/hadoop/processed/gwpl/scripts
+]0;hadoop@ip-10-84-31-94:~/processed/gwpl/scripts[hadoop@ip-10-84-31-94 scripts]$ cd ..
+]0;hadoop@ip-10-84-31-94:~/processed/gwpl[hadoop@ip-10-84-31-94 gwpl]$ cd ..
+]0;hadoop@ip-10-84-31-94:~/processed[hadoop@ip-10-84-31-94 processed]$ cd ../staging/gwpl
+]0;hadoop@ip-10-84-31-94:~/staging/gwpl[hadoop@ip-10-84-31-94 gwpl]$ cd spec_files/
+]0;hadoop@ip-10-84-31-94:~/staging/gwpl/spec_files[hadoop@ip-10-84-31-94 spec_files]$ ll
+total 24
+-rwxr-xr-x 1 hadoop hadoop    9 Feb 14 04:02 [0m[01;32mgwpl_req_staging_list.csv[0m
+-rwxr-xr-x 1 hadoop hadoop 1565 Nov 16 19:14 [01;32mgwpl_req_staging.properties[0m
+-rwxr-xr-x 1 hadoop hadoop 1639 Feb 13 03:40 [01;32mgwpl_staging_list.csv[0m
+-rwxr-xr-x 1 hadoop hadoop   83 Jan 15 21:47 [01;32mgwpl_staging_pii_list.csv[0m
+-rwxr-xr-x 1 hadoop hadoop 1682 Oct 18 13:50 [01;32mgwpl_staging_pii.properties[0m
+-rwxr-xr-x 1 hadoop hadoop 1561 Oct 18 02:57 [01;32mgwpl_staging.properties[0m
+]0;hadoop@ip-10-84-31-94:~/staging/gwpl/spec_files[hadoop@ip-10-84-31-94 spec_files]$ vi gwpl_staging_list.csv
+[?1049h[?1h=[?2004h[2;1H▽[6n[2;1H  [1;1H]11;?[1;66r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[66;1H"gwpl_staging_list.csv" 88L, 1639C[>c[1;1Hpc_account
+pc_accountcontact
+pc_accountcontactrole
+pc_address
+pc_affinitygroup
+pc_contact
+pc_credential
+pc_document
+pc_effectivedatedfields
+pc_etlclausepattern
+pc_etlcovtermoption
+pc_etlcovtermpackage
+pc_etlcovtermpattern
+pc_etlpackterm
+pc_group
+pc_industrycode
+pc_job
+pc_jobpolicyperiod
+pc_organization
+pc_patransaction
+pc_pavehmodifier
+pc_personalautocov
+pc_personalvehicle
+pc_personalvehiclecov
+pc_policy
+pc_policyaddress
+pc_policycontactrole
+pc_policydrivermvr
+pc_policyline
+pc_policylocation
+pc_policyperiod
+pc_policyterm
+pc_priorpolicy
+pc_producercode
+pc_ratebook
+pc_territorycode
+pc_user
+pc_uwcompany
+pc_uwissue
+pc_uwissuehistory
+pc_vehicledriver
+pcx_dwelling_hoe
+pcx_dwellingcov_hoe
+pcx_dwellingmodifier_hoe
+pcx_ho_texasfiredistrict_ext
+pcx_holineexcl_hoe
+pcx_holocation_hoe
+pcx_homeownerscost_hoe
+pcx_homeownerslinecov_hoe
+pcx_homodifier_hoe
+pcx_hotransaction_hoe
+pcx_howatercraft_ext
+pcx_howatercraftcov_ext
+pcx_multilinediscdetail_ext
+pcx_pavehiclerisksymbol
+pcx_priorpolicyvehcile_ext
+pcx_pupcost_pue
+pcx_puplinecov_pue
+pcx_puplineexcl_pue
+pcx_puptransaction_pue
+pcx_reconcileddata_ext
+pcx_taxcodelookupresponse_ext
+pcx_telematics_ext
+pcx_ulcov_pue
+pcx_ho_coastalcounties_ext[66;213H1,1[11CTop[1;1H[?12l[?25h[?25l[66;1H[K[66;1H:[?12l[?25h$[?25l[?12l[?25h[?25l[1;65r[1;1H[23M[1;66r[43;1Hpcx_ctcoastalcounties_ext
+pc_policyaddlinsureddetail
+pcx_ulpolicy_pue
+pcx_scheduledpersonalproperty
+pc_form
+pcx_homebusinessinsurance
+pcx_hodiscounts_ext
+pc_pacost
+pc_activity
+pcx_horeconciliationdata_ext
+pcx_roofshape_ext
+pc_addlinterestdetail
+pc_formpattern
+pc_mvrlicense
+pc_mvrincident
+pcx_priorlossext
+pcx_claimpaymentext
+pcx_esignature_ext
+pcx_saemail_ext
+pcx_pupdwelling_pue
+pcx_isotaxcoderesponse_ext
+pc_paymentplansummary
+pcx_pupexposure_pue[66;1H[K[66;213H88,1[10CBot[65;1H[?12l[?25h[?25l[66;213H[K[66;1H/[?12l[?25hpc_palineexcl[?25l[?12l[?25h[?25l[31msearch hit BOTTOM, continuing at TOP[m[1m[37m[41mE486: Pattern not found: pc_palineexcl[m[174C88,1[10CBot[65;1H[?12l[?25h[?25l[66;1H[K[66;1H:[?12l[?25h$[?25l[?12l[?25h[?25l[212C88,1[10CBot[65;1H[?12l[?25h[?25l[66;1H[K[66;1H:[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l[66;1H[K[66;1H[?2004l[?1l>[?12l[?25h[?1049l]0;hadoop@ip-10-84-31-94:~/staging/gwpl/spec_files[hadoop@ip-10-84-31-94 spec_files]$ 
+]0;hadoop@ip-10-84-31-94:~/staging/gwpl/spec_files[hadoop@ip-10-84-31-94 spec_files]$ cp gwpl_staging_list.csv gwpl_staging_list.csv_.csvb.csv[1P.csv2.csv0.csv2.csv0.csv2.csv[1P.csv0.csv3.csv0.csv4.csv_.csvb.csvk.csvp.csv
+]0;hadoop@ip-10-84-31-94:~/staging/gwpl/spec_files[hadoop@ip-10-84-31-94 spec_files]$ ll
+total 28
+-rwxr-xr-x 1 hadoop hadoop    9 Feb 14 04:02 [0m[01;32mgwpl_req_staging_list.csv[0m
+-rwxr-xr-x 1 hadoop hadoop 1565 Nov 16 19:14 [01;32mgwpl_req_staging.properties[0m
+-rwxr-xr-x 1 hadoop hadoop 1639 Mar  5 07:31 [01;32mgwpl_staging_list_20200304_bkp.csv[0m
+-rwxr-xr-x 1 hadoop hadoop 1639 Feb 13 03:40 [01;32mgwpl_staging_list.csv[0m
+-rwxr-xr-x 1 hadoop hadoop   83 Jan 15 21:47 [01;32mgwpl_staging_pii_list.csv[0m
+-rwxr-xr-x 1 hadoop hadoop 1682 Oct 18 13:50 [01;32mgwpl_staging_pii.properties[0m
+-rwxr-xr-x 1 hadoop hadoop 1561 Oct 18 02:57 [01;32mgwpl_staging.properties[0m
+]0;hadoop@ip-10-84-31-94:~/staging/gwpl/spec_files[hadoop@ip-10-84-31-94 spec_files]$ vi gwpl_staging_list.csv
+[?1049h[?1h=[?2004h[2;1H▽[6n[2;1H  [1;1H]11;?[1;66r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[66;1H"gwpl_staging_list.csv" 88L, 1639C[>c[1;1Hpc_personalvehiclecov
+pc_policy
+pc_policyaddress
+pc_policycontactrole
+pc_policydrivermvr
+pc_policyline
+pc_policylocation
+pc_policyperiod
+pc_policyterm
+pc_priorpolicy
+pc_producercode
+pc_ratebook
+pc_territorycode
+pc_user
+pc_uwcompany
+pc_uwissue
+pc_uwissuehistory
+pc_vehicledriver
+pcx_dwelling_hoe
+pcx_dwellingcov_hoe
+pcx_dwellingmodifier_hoe
+pcx_ho_texasfiredistrict_ext
+pcx_holineexcl_hoe
+pcx_holocation_hoe
+pcx_homeownerscost_hoe
+pcx_homeownerslinecov_hoe
+pcx_homodifier_hoe
+pcx_hotransaction_hoe
+pcx_howatercraft_ext
+pcx_howatercraftcov_ext
+pcx_multilinediscdetail_ext
+pcx_pavehiclerisksymbol
+pcx_priorpolicyvehcile_ext
+pcx_pupcost_pue
+pcx_puplinecov_pue
+pcx_puplineexcl_pue
+pcx_puptransaction_pue
+pcx_reconcileddata_ext
+pcx_taxcodelookupresponse_ext
+pcx_telematics_ext
+pcx_ulcov_pue
+pcx_ho_coastalcounties_ext
+pcx_ctcoastalcounties_ext
+pc_policyaddlinsureddetail
+pcx_ulpolicy_pue
+pcx_scheduledpersonalproperty
+pc_form
+pcx_homebusinessinsurance
+pcx_hodiscounts_ext
+pc_pacost
+pc_activity
+pcx_horeconciliationdata_ext
+pcx_roofshape_ext
+pc_addlinterestdetail
+pc_formpattern
+pc_mvrlicense
+pc_mvrincident
+pcx_priorlossext
+pcx_claimpaymentext
+pcx_esignature_ext
+pcx_saemail_ext
+pcx_pupdwelling_pue
+pcx_isotaxcoderesponse_ext
+pc_paymentplansummary
+pcx_pupexposure_pue[66;213H88,1[10CBot[65;1H[?12l[?25h[?25l[66;1H[K[66;1H:[?12l[?25h$[?25l[?12l[?25h[?25l[212C88,1[10CBot[65;1H[?12l[?25h[?25l
+[1m-- INSERT --[m[66;213H[K[66;213H88,1[10CBot[65;1H[?12l[?25h[?25l[66;216H2[65;2H[?12l[?25h[?25l[66;216H3[65;3H[?12l[?25h[?25l[66;216H4[65;4H[?12l[?25h[?25l[66;216H5[65;5H[?12l[?25h[?25l[66;216H6[65;6H[?12l[?25h[?25l[66;216H7[65;7H[?12l[?25h[?25l[66;216H8[65;8H[?12l[?25h[?25l[66;216H9[65;9H[?12l[?25h[?25l[66;216H10[65;10H[?12l[?25h[?25l[66;217H1[65;11H[?12l[?25h[?25l[66;217H2[65;12H[?12l[?25h[?25l[66;217H3[65;13H[?12l[?25h[?25l[66;217H4[65;14H[?12l[?25h[?25l[66;217H5[65;15H[?12l[?25h[?25l[66;217H6[65;16H[?12l[?25h[?25l[66;217H7[65;17H[?12l[?25h[?25l[66;217H8[65;18H[?12l[?25h[?25l[66;217H9[65;19H[?12l[?25h[?25l[66;216H20[65;20H[?12l[?25h[?25l[1;65r[65;1H
+[1;66r[66;213H[K[66;213H89,1[10CBot[65;1H[?12l[?25h[?25l[30m[43mpc_palineexcl[m[66;217H4[65;14H[?12l[?25h[66;1H[K[65;13H[?25l[66;213H89,13[9CBot[65;13H[?12l[?25h[?25l[66;217H2[65;12H[?12l[?25h[?25l[66;217H1[65;11H[?12l[?25h[?25l[66;217H0[65;10H[?12l[?25h[?25l[66;216H9 [65;9H[?12l[?25h[?25l[66;216H8[65;8H[?12l[?25h[?25l[66;216H7[65;7H[?12l[?25h[?25l[66;216H6[65;6H[?12l[?25h[?25l[66;216H5[65;5H[?12l[?25h[?25l[66;216H4[65;4H[?12l[?25h[?25l[66;216H3[65;3H[?12l[?25h[?25l[66;216H2[65;2H[?12l[?25h[?25l[66;216H1[65;1H[?12l[?25h[?25l[66;213H[K[66;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l"gwpl_staging_list.csv" 89L, 1653C written
+[?2004l[?1l>[?12l[?25h[?1049l]0;hadoop@ip-10-84-31-94:~/staging/gwpl/spec_files[hadoop@ip-10-84-31-94 spec_files]$ 
+]0;hadoop@ip-10-84-31-94:~/staging/gwpl/spec_files[hadoop@ip-10-84-31-94 spec_files]$ [K[hadoop@ip-10-84-31-94 spec_files]$ cd ../
+]0;hadoop@ip-10-84-31-94:~/staging/gwpl[hadoop@ip-10-84-31-94 gwpl]$ pe[Kwd
+/home/hadoop/staging/gwpl
+]0;hadoop@ip-10-84-31-94:~/staging/gwpl[hadoop@ip-10-84-31-94 gwpl]$ cd ../../rr[K[Ktransform/
+]0;hadoop@ip-10-84-31-94:~/transform[hadoop@ip-10-84-31-94 transform]$ ll
+total 52
+drwxr-xr-x  7 hadoop hadoop  4096 Feb 11 11:37 [0m[01;34mbackup[0m
+drwxr-xr-x 11 hadoop hadoop  4096 Feb 14 06:50 [01;34mdeployment[0m
+drwxr-xr-x  4 hadoop hadoop  4096 Mar  1 04:36 [01;34mjars[0m
+drwxr-xr-x  4 hadoop hadoop  4096 Mar  4 23:09 [01;34mlogs[0m
+drwxr-xr-x  3 hadoop hadoop  4096 Feb  5 15:36 [01;34mmdm[0m
+drwxr-xr-x  4 hadoop hadoop  4096 Oct  1 04:05 [01;34mmodules[0m
+drwxr-xr-x 15 hadoop hadoop  4096 Feb 11 10:50 [01;34moozie[0m
+drwxr-xr-x  3 hadoop hadoop  4096 Mar  4 11:55 [01;34mscripts[0m
+drwxr-xr-x  2 hadoop hadoop  4096 Feb 25 15:13 [01;34mspec_files[0m
+drwxr-xr-x 10 hadoop hadoop 16384 Mar  5 07:53 [01;34myaml[0m
+]0;hadoop@ip-10-84-31-94:~/transform[hadoop@ip-10-84-31-94 transform]$ d[Kcd spec_files/
+]0;hadoop@ip-10-84-31-94:~/transform/spec_files[hadoop@ip-10-84-31-94 spec_files]$ ll
+total 116
+-rwxr-xr-x 1 hadoop hadoop  9482 Feb 14 06:51 [0m[01;32mbkp_20200214_spark_conf.properties[0m
+-rwxr-xr-x 1 hadoop hadoop  5651 Feb 14 06:51 [01;32mbkp_20200214_trans_table_conf.properties[0m
+-rwxr-xr-x 1 hadoop hadoop  3934 Feb  9 16:17 [01;32mCoverageTermConfig_prod_gwcl.txt[0m
+-rwxr-xr-x 1 hadoop hadoop  1765 Oct  9 17:46 [01;32mCoverageTermConfig_prod_gwpl.txt[0m
+-rwxr-xr-x 1 hadoop hadoop  1107 Feb 11 01:53 [01;32mdb_properties.csv[0m
+-rwxr-xr-x 1 hadoop hadoop   561 Mar  3 14:51 [01;32mdefault.env.properties[0m
+-rwxr-xr-x 1 hadoop hadoop   598 Oct  3 11:00 [01;32mdefault.hive.properties[0m
+-rwxr-xr-x 1 hadoop hadoop   296 Dec 19 15:31 [01;32mgwbc_stg_connection.cfg[0m
+-rwxr-xr-x 1 hadoop hadoop   308 Dec 18 16:22 [01;32mgwcc_stg_connection.cfg[0m
+-rwxr-xr-x 1 hadoop hadoop   435 Jan 17 04:29 [01;32mgwcl_stg_connection.cfg[0m
+-rwxr-xr-x 1 hadoop hadoop   430 Jan 17 04:28 [01;32mgwpl_stg_connection.cfg[0m
+-rwxr-xr-x 1 hadoop hadoop  1857 Feb  9 15:46 [01;32mnamespace.prod.properties[0m
+-rwxr-xr-x 1 hadoop hadoop   408 Sep 30 13:00 [01;32mserving_spark_conf.properties[0m
+-rwxr-xr-x 1 hadoop hadoop   154 Sep 30 13:00 [01;32mserving_table_conf.properties[0m
+-rwxr-xr-x 1 hadoop hadoop 28526 Feb 11 07:37 [01;32msources.csv[0m
+-rwxr-xr-x 1 hadoop hadoop 10506 Feb 14 06:51 [01;32mspark_conf.properties[0m
+-rwxr-xr-x 1 hadoop hadoop  6493 Feb 14 06:51 [01;32mtrans_table_conf.properties[0m
+]0;hadoop@ip-10-84-31-94:~/transform/spec_files[hadoop@ip-10-84-31-94 spec_files]$ vi db_properties.csv
+[?1049h[?1h=[?2004h[2;1H▽[6n[2;1H  [1;1H]11;?[1;66r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[66;1H"db_properties.csv" 34L, 1107C[>c[1;1Hstg_database=processed_workday
+ref_database=processed_workday
+mysql_database_name=workday
+mysql_jdbc_host_name=sae1dedsqlp25.ce3vfbdrlipy.us-east-1.rds.amazonaws.com
+mysql_port_number=3306
+mysql_userid=srv_workday
+mysql_password=R~Yjxy(YjEr\5wp&sl
+
+webxl_accounting_date_key=201909
+environment=prod
+
+db_EdwExternalDataProcessed=processed_edwexternal
+db_Staging_cl=staging_gwcl
+db_Staging_pl=staging_gwpl
+db_LgcyDmact=processed_dmact
+db_WorkdayDataProcessed=processed_workday
+db_Transformed=transformed
+userMulesoft=muleadmin
+passwordMulesoft=KzxntsE756<
+mulesoftUrl=l3-sai-fusion-ledgerjournal.cloudhub.io/INT001/EDW
+db_Transformed_write=transformed
+
+prod_staging=s3://sa-l4-datalake-staging
+prod_staging_secure=s3://sa-l4-datalake-staging-secure
+prod_processed=s3://sa-l4-datalake-processed
+prod_transform=s3://sa-l4-datalake-transform
+prod_serving=s3://sa-l4-datalake-serving
+prod_reporting=s3://sa-l4-datalake-reporting-secure
+
+from_mailid=edlakerun@stateauto.com
+to_mailid=karteek.chiratanagandla@stateauto.com,WD_INT_FIN@stateauto.com
+
+webxl_accounting_date_key=NA
+serving_eom_processing_year_month=NA
+[1m[34m~                                                                                                                                                                                                                                    [36;1H~                                                                                                                                                                                                                                    [37;1H~                                                                                                                                                                                                                                    [38;1H~                                                                                                                                                                                                                                    [39;1H~                                                                                                                                                                                                                                    [40;1H~                                                                                                                                                                                                                                    [41;1H~                                                                                                                                                                                                                                    [42;1H~                                                                                                                                                                                                                                    [43;1H~                                                                                                                                                                                                                                    [44;1H~                                                                                                                                                                                                                                    [45;1H~                                                                                                                                                                                                                                    [46;1H~                                                                                                                                                                                                                                    [47;1H~                                                                                                                                                                                                                                    [48;1H~                                                                                                                                                                                                                                    [49;1H~                                                                                                                                                                                                                                    [50;1H~                                                                                                                                                                                                                                    [51;1H~                                                                                                                                                                                                                                    [52;1H~                                                                                                                                                                                                                                    [53;1H~                                                                                                                                                                                                                                    [54;1H~                                                                                                                                                                                                                                    [55;1H~                                                                                                                                                                                                                                    [56;1H~                                                                                                                                                                                                                                    [57;1H~                                                                                                                                                                                                                                    [58;1H~                                                                                                                                                                                                                                    [59;1H~                                                                                                                                                                                                                                    [60;1H~                                                                                                                                                                                                                                    [61;1H~                                                                                                                                                                                                                                    [62;1H~                                                                                                                                                                                                                                    [63;1H~                                                                                                                                                                                                                                    [64;1H~                                                                                                                                                                                                                                    [65;1H~                                                                                                                                                                                                                                    [m[66;212H1,1[11CAll[1;1H[?12l[?25h[?25l[66;1H[K[66;1H:[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l[66;1H[K[66;1H[?2004l[?1l>[?12l[?25h[?1049l]0;hadoop@ip-10-84-31-94:~/transform/spec_files[hadoop@ip-10-84-31-94 spec_files]$ 
+]0;hadoop@ip-10-84-31-94:~/transform/spec_files[hadoop@ip-10-84-31-94 spec_files]$ vinamespace.prod.properties[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kvi namespace.prod.properties
+[?1049h[?1h=[?2004h[2;1H▽[6n[2;1H  [1;1H]11;?[1;66r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[66;1H"namespace.prod.properties" 41L, 1857C[>c[1;1H[34m###############################################################################
+#                          Namespace Base Properties                          #
+###############################################################################[m
+
+[36mv_tmp_path_curation[m=[31m/home/hadoop/transform/logs/transformation_log[m
+[34m#v_logs_path=/home/hadoop/transform/logs[m
+[36mv_tmp_path[m=[31m/home/hadoop/transform/logs[m
+[36mv_tmp_path_serving[m=[31m/home/hadoop/transform/logs/serving_log[m
+[36mJAR_PATH[m=[31m/home/hadoop/transform/jars[m
+[36mYAML_PATH[m=[31m/home/hadoop/transform/yaml[m
+[36mYAML_SCRIPT_PATH[m=[31m/home/hadoop/transform/modules/shell_functions[m
+[36mconfiguration_path[m=[31m/home/hadoop/transform/spec_files[m
+[36mhive_script_path[m=[31m/home/hadoop/transform/modules/hive_functions[m
+[36mV_GWPL_STG_DB[m=[31mstaging_gwpl[m
+[36mV_GWCL_STG_DB[m=[31mstaging_gwcl[m
+[36mV_GWCC_STG_DB[m=[31mstaging_gwcc[m
+[36mV_GWBC_STG_DB[m=[31mstaging_gwbc[m
+[36mV_PCLTE_STG_DB[m=[31mstaging_gw_pclte[m
+[36mV_PCAGG_STG_DB[m=[31mstaging_gw_pcagg[m
+[36mV_LGCY_STG_DB[m=[31mstaging_legacy[m
+[36mV_TEMP_DB[m=[31mserving_temp[m
+[36mV_TRNS_DB[m=[31mtransformed[m
+[36mV_logs_DB[m=[31mtransformed[m
+[36mV_SERVING_DB[m=[31mserving[m
+[36mV_LGCY_SABIR[m=[31mprocessed_sabir[m
+[36mV_LGCY_DMACT[m=[31mprocessed_dmact[m
+[36mV_LGCY_GAIN[m=[31mprocessed_gain[m
+[36mV_EDW_EXTERNAL[m=[31mprocessed_edwexternal[m
+[36mV_ATHENA_VIEW_DB[m=[31medf_transformed_view[m
+[36mv_transform_bucket_path[m=[31ms3://sa-l4-datalake-transform/transformed[m
+[36mv_serving_bucket_path[m=[31ms3://sa-l4-datalake-serving/serving[m
+[36mv_logs_bucket_path[m=[31ms3://sa-l4-datalake-logs/transform/work[m
+[36mv_serving_bucket_path_iso[m=[31ms3://sa-l4-datalake-serving/serving/ISO/[m
+[36mv_athena_query_result[m=[31ms3://sa-l4-datalake-user/qlik[m
+[36mv_serving_bucket_path_tico[m=[31ms3://sa-l4-datalake-serving/serving/TICO/[m
+
+[36mMAIL_FROM[m=[31medfdatalake@stateauto.com[m
+[36mMAIL_TO[m=[31medlakebuild@stateauto.com,edlakerun@stateauto.com[m
+[34m###############################################################################
+#                                     End                                     #
+###############################################################################[m
+[1m[34m~                                                                                                                                                                                                                                    [43;1H~                                                                                                                                                                                                                                    [44;1H~                                                                                                                                                                                                                                    [45;1H~                                                                                                                                                                                                                                    [46;1H~                                                                                                                                                                                                                                    [47;1H~                                                                                                                                                                                                                                    [48;1H~                                                                                                                                                                                                                                    [49;1H~                                                                                                                                                                                                                                    [50;1H~                                                                                                                                                                                                                                    [51;1H~                                                                                                                                                                                                                                    [52;1H~                                                                                                                                                                                                                                    [53;1H~                                                                                                                                                                                                                                    [54;1H~                                                                                                                                                                                                                                    [55;1H~                                                                                                                                                                                                                                    [56;1H~                                                                                                                                                                                                                                    [57;1H~                                                                                                                                                                                                                                    [58;1H~                                                                                                                                                                                                                                    [59;1H~                                                                                                                                                                                                                                    [60;1H~                                                                                                                                                                                                                                    [61;1H~                                                                                                                                                                                                                                    [62;1H~                                                                                                                                                                                                                                    [63;1H~                                                                                                                                                                                                                                    [64;1H~                                                                                                                                                                                                                                    [65;1H~                                                                                                                                                                                                                                    [m[66;212H1,1[11CAll[1;1H[?12l[?25h[?25l[66;1H[K[66;1H:[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l[66;1H[K[66;1H[?2004l[?1l>[?12l[?25h[?1049l]0;hadoop@ip-10-84-31-94:~/transform/spec_files[hadoop@ip-10-84-31-94 spec_files]$ 
+]0;hadoop@ip-10-84-31-94:~/transform/spec_files[hadoop@ip-10-84-31-94 spec_files]$ vi trans_table_conf.properties
+[?1049h[?1h=[?2004h[2;1H▽[6n[2;1H  [1;1H]11;?[1;66r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[66;1H"trans_table_conf.properties" 73L, 6493C[>c[1;1Hdim_date|NULL|NULL|EDWExternal|N|N
+agency|TRANSFORMATION_DTTM|1900-01-01 00:00:00.000|Agency|N|N
+agency_hierarchy|transformation_dttm|1900-01-01 00:00:00.000|Agency|N|N
+gwpl_gwpc_account|Update_DTTM|1900-01-01 00:00:00.000|stg_gwpc_pc_account|N|N|source_system_code|Y
+gwcl_gwpc_account|Update_DTTM|1900-01-01 00:00:00.000|stg_gwpc_pc_account|N|N|source_system_code|Y
+gwpl_gwpc_policy_lookup|transformation_dttm|1900-01-01 00:00:00.000|stg_gwpc_pc_policyperiod|N|N|source_system_code|Y
+gwcl_gwpc_policy_lookup|transformation_dttm|1900-01-01 00:00:00.000|stg_gwpc_pc_policyperiod|N|N|source_system_code|Y
+gwpl_policy_common|Update_DTTM|1900-01-01 00:00:00.000|stg_gwpc_pc_policyperiod|N|N|source_system_code|Y
+gwcl_policy_common|Update_DTTM|1900-01-01 00:00:00.000|stg_gwpc_pc_policyperiod|N|N|source_system_code|Y
+gwpl_gwpc_prem_trans_detail|update_dttm|1900-01-01 00:00:00.000|stg_gwpc_pc_policyperiod|N|N|source_system_code|Y
+gwcl_gwpc_prem_trans_detail|update_dttm|1900-01-01 00:00:00.000|stg_gwpc_pc_policyperiod|N|N|source_system_code|Y
+gwpl_gwpc_earned_prem|transformation_dttm|1900-01-01 00:00:00.000|curation_stats|N|N|source_system_code|Y
+gwcl_gwpc_earned_prem|transformation_dttm|1900-01-01 00:00:00.000|curation_stats|N|N|source_system_code|Y
+gwpl_coverage_common|Update_dttm|1900-01-01 00:00:00.000|stg_gwpc_pc_policyperiod|N|N|source_system_code|Y
+gwcl_coverage_common|Update_dttm|1900-01-01 00:00:00.000|stg_gwpc_pc_policyperiod|N|N|source_system_code|Y
+gwcc_payment|Update_DTTM|1900-01-01 00:00:00.000|stg_gwcc_cc_check|N|N
+gwcc_claim_common|Update_DTTM|1900-01-01 00:00:00.000|stg_gwcc_cc_claim|N|N
+gwcc_loss_exposure_common|Update_DTTM|1900-01-01 00:00:00.000|stg_gwcc_cc_exposure|N|N
+gwcc_claim_center_temp|Update_DTTM|1900-01-01 00:00:00.000|stg_gwcc_cc_claim|N|N
+gwcc_claim_trans_detail|min_update_dttm|1900-01-01 00:00:00.000|gwcc_claim_trans_detail|N|N
+gwcc_exposure_reserve_eom|Update_DTTM|1900-01-01 00:00:00.000|stg_gwcc_cc_transaction|N|N
+gwcc_fin_loss_expsr_cnt|transformation_dttm|1900-01-01 00:00:00.000|gwcc_claim_trans|N|N
+gwcc_exposure_reserve_eod|transformation_dttm|1900-01-01 00:00:00.000|gwcc_claim_trans|N|N
+gwcc_loss_expsr_status_eod|transformation_dttm|1900-01-01 00:00:00.000|gwcc_claim_trans|N|N
+gwpl_policy_claim_expsr_link|transformation_dttm|1900-01-01 00:00:00.000|stg_gwcc_cc_check|N|N|policy_source_system_code|Y
+gwcl_policy_claim_expsr_link|transformation_dttm|1900-01-01 00:00:00.000|stg_gwcc_cc_check|N|N|policy_source_system_code|Y
+stg_dmact_vdm_master_wel2|AccountYYYYMM|201600|vdm_master_wel2|N|N
+lgcy_claim_common|part_col_yyyymm|201512|vdm_master_wel|N|N
+lgcy_coverage_common|part_col_yyyymm|201512|vdm_master_wel|N|N|source_system_code|Y
+lgcy_loss_exposure_common|part_col_yyyymm|201512|vdm_master_wel|N|N
+lgcy_gwpc_policy_lookup|transformation_dttm|1900-01-01 00:00:00.000|stg_policy_lkp|N|N|source_system_code|Y
+lgcy_policy_common|part_col_yyyymm|201512|vdm_master_wel|N|N|source_system_code|Y
+lgcy_policy_inforce_eom|part_col_yyyymm|201512|policy_inforce|N|N
+lgcy_prem_eom|part_col_yyyymm|201512|rs_premiummastereom|N|N
+wel2_loss_eom|part_col_yyyymm|201512|vdm_master_wel|N|N
+wel2_prem_eom|part_col_yyyymm|201511|vdm_master_wel|N|N
+iso_cup_prem|accounting_dateYYYYMM|201906|stg_gwpc_pc_policyperiod|N|N
+iso_earthquake_prem|create_dateyyyymm|201906|stg_gwpc_pc_policyperiod|N|N
+iso_bop_prem|create_dateyyyymm|201906|stg_gwpc_pc_policyperiod|N|N
+iso_ca_prem|create_dateyyyymm|201906|stg_gwpc_pc_policyperiod|N|N
+temp_iso_ca_prem|create_dateyyyymm|201906|stg_gwpc_pc_policyperiod|N|N
+iso_bop_loss|create_dateyyyymm|201906|stg_gwpc_pc_policyperiod|N|N
+iso_ca_loss|create_dateyyyymm|201906|stg_gwpc_pc_policyperiod|N|N
+iso_earthquake_loss|create_dateyyyymm|201906|stg_gwpc_pc_policyperiod|N|N
+iso_cup_loss|accounting_dateyyyymm_part|201906|stg_gwpc_pc_policyperiod|N|N
+gwpl_gwpc_prem_trans_detail_test|update_dttm|1900-01-01 00:00:00.000|stg_gwpc_pc_policyperiod|N|N|source_system_code|Y
+gwcl_gwpc_prem_trans_detail_test|update_dttm|1900-01-01 00:00:00.000|stg_gwpc_pc_policyperiod|N|N|source_system_code|Y
+gwpl_gwpc_earned_prem_test|transformation_dttm|1900-01-01 00:00:00.000|curation_stats|N|N|source_system_code|Y
+gwcl_gwpc_earned_prem_test|transformation_dttm|1900-01-01 00:00:00.000|curation_stats|N|N|source_system_code|Y
+iso_csp_inland_marine_tx|accounting_dateyyyymm|201812|gwpc_prem_trans_detail|N|N
+aais_inland_marine_prem_loss|accounting_dateyyyymm|99201906|gwpc_prem_trans_detail|N|N
+liability_iso_csp_inland_marine_tx|accounting_dateyyyymm_part|201906|stg_gwpc_pc_policyperiod|N|N|source_system_code|Y
+premium_iso_csp_inland_marine_tx|accounting_dateyyyymm_part|201906|stg_gwpc_pc_policyperiod|N|N|source_system_code|Y
+
+premium_aais_inland_marine_prem_loss|accounting_dateyyyymm|201909|gwcc_claim_trans_d|N|N|aais_extract_type_name|Y
+prem_iso_pasp_auto|create_dateyyyymm|201812|stg_gwpl_pc_policyperiod|N|N|source_system_code|Y
+prem_iso_pasp_auto_resulting_codes|create_dateyyyymm|201812|stg_gwpc_pc_policyperiod|N|N
+ticodwprem_tico_ho_df_prem_loss|accounting_dateyyyymm|201912stg_gwpc_pc_policyperiod|N|N|extract_type|Y
+ticoprem_tico_ho_df_prem_loss|accounting_dateyyyymm|201912stg_gwpc_pc_policyperiod|N|N|extract_type|Y
+paidloss_iso_pasp_auto|create_dateyyyymm|201812|stg_gwpc_pc_policyperiod|N|N|source_system_code|Y
+outloss_iso_pasp_auto|create_dateyyyymm|201812|stg_gwpc_pc_policyperiod|N|N|source_system_code|Y
+paidloss_iso_pasp_auto_resulting_codes|create_dateyyyymm|201812|stg_gwpc_pc_policyperiod|N|N
+outloss_iso_pasp_auto_resulting_codes|create_dateyyyymm|201812|stg_gwpc_pc_policyperiod|N|N
+intermediate_iso_ca_prem|create_dateyyyymm|201909|stg_gwpc_pc_policyperiod|N|N[66;212H1,1[11CTop[1;1H[?12l[?25h[?25l[66;1H[K[66;1H:[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l[66;1H[K[66;1H[?2004l[?1l>[?12l[?25h[?1049l]0;hadoop@ip-10-84-31-94:~/transform/spec_files[hadoop@ip-10-84-31-94 spec_files]$ 
+]0;hadoop@ip-10-84-31-94:~/transform/spec_files[hadoop@ip-10-84-31-94 spec_files]$ vi default.env.properties
+[?1049h[?1h=[?2004h[2;1H▽[6n[2;1H  [1;1H]11;?[1;66r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[66;1H"default.env.properties" 11L, 561C[>c[1;1H[34m###############################################################################
+#                                     Systems                                 #
+###############################################################################[m
+
+[36mDEV_ENV[m=[31m"ip-10-63-112-207"[m
+[36mUAT_ENV[m=[31m"ip-10-63-114-58"[m
+[36mPROD_ENV[m=[31m"ip-10-84-31-94"[m
+
+[34m###############################################################################
+#                                     End                                     #
+###############################################################################[m
+[1m[34m~                                                                                                                                                                                                                                    [13;1H~                                                                                                                                                                                                                                    [14;1H~                                                                                                                                                                                                                                    [15;1H~                                                                                                                                                                                                                                    [16;1H~                                                                                                                                                                                                                                    [17;1H~                                                                                                                                                                                                                                    [18;1H~                                                                                                                                                                                                                                    [19;1H~                                                                                                                                                                                                                                    [20;1H~                                                                                                                                                                                                                                    [21;1H~                                                                                                                                                                                                                                    [22;1H~                                                                                                                                                                                                                                    [23;1H~                                                                                                                                                                                                                                    [24;1H~                                                                                                                                                                                                                                    [25;1H~                                                                                                                                                                                                                                    [26;1H~                                                                                                                                                                                                                                    [27;1H~                                                                                                                                                                                                                                    [28;1H~                                                                                                                                                                                                                                    [29;1H~                                                                                                                                                                                                                                    [30;1H~                                                                                                                                                                                                                                    [31;1H~                                                                                                                                                                                                                                    [32;1H~                                                                                                                                                                                                                                    [33;1H~                                                                                                                                                                                                                                    [34;1H~                                                                                                                                                                                                                                    [35;1H~                                                                                                                                                                                                                                    [36;1H~                                                                                                                                                                                                                                    [37;1H~                                                                                                                                                                                                                                    [38;1H~                                                                                                                                                                                                                                    [39;1H~                                                                                                                                                                                                                                    [40;1H~                                                                                                                                                                                                                                    [41;1H~                                                                                                                                                                                                                                    [42;1H~                                                                                                                                                                                                                                    [43;1H~                                                                                                                                                                                                                                    [44;1H~                                                                                                                                                                                                                                    [45;1H~                                                                                                                                                                                                                                    [46;1H~                                                                                                                                                                                                                                    [47;1H~                                                                                                                                                                                                                                    [48;1H~                                                                                                                                                                                                                                    [49;1H~                                                                                                                                                                                                                                    [50;1H~                                                                                                                                                                                                                                    [51;1H~                                                                                                                                                                                                                                    [52;1H~                                                                                                                                                                                                                                    [53;1H~                                                                                                                                                                                                                                    [54;1H~                                                                                                                                                                                                                                    [55;1H~                                                                                                                                                                                                                                    [56;1H~                                                                                                                                                                                                                                    [57;1H~                                                                                                                                                                                                                                    [58;1H~                                                                                                                                                                                                                                    [59;1H~                                                                                                                                                                               

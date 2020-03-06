@@ -1,3 +1,0 @@
-Started the script for GWCC Missing ID utility
-Completed the script and the status is 1
-Spark job failed with error status for GWCC missing unility, Please have a look at the logs in below file on the server in the appropriate s3 bucket for yarn logs

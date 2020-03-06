@@ -1,0 +1,2 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy|NumPartitions|Rows|Note
+[PolicyCenterL4-1].dbo.pc_officialid|Y|Y|UpdateTime|Y||ID|||

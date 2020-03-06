@@ -1,0 +1,105 @@
+########################################################################################
+	
+		Property File to be used for the EDF Process.
+	
+#######################################################################################
+
+# processName is used to capture the load statistics in the audit table.
+# Partitioning is based on the this name in the audit table.
+spark.DataIngestion.processName:LegacyDataExtract
+
+# LoadType defines the frequency of load and type.
+# TL-Truncate and Load, DI,MI,WI- Daily, Monthly & Weekly incremental loads respctivley, CI- Continous Ingestion Load
+spark.DataIngestion.loadType:TL
+
+# Restartabilty Indicator is used to reload the table that are failed to write to S3 or a count mismatch event.
+# When set to Y - EDF will fetch all the failed table for the day and reload the respective partitions.
+spark.DataIngestion.restartabilityInd:N
+
+# Restartabilty level along with the restability Indicator, will specify the restarabilty level between set of tables or entire batch.
+# When set to table - EDF will reload the failed table from the previous batches for the day.
+# When set to batch - EDF will skip the table that are successfully loaded in the last batch and load the rest of the tables in a batch.
+spark.DataIngestion.restatabilityLevel:table
+
+# restartTableIdentifier sets the loadStatus that needs to be considered for the restart Mode.
+# by Default, this property takes failed status from audit table. For any custom status, modify the below parameter accordingly for reloading the previously failed JObs.
+# This setting affects only the table level restartability.
+spark.DataIngestion.restartTableIdentifier:failedUnknown
+
+# partitionOverwriteMode defined the target partition mode of whether to Overwrite or Append a partition.
+# By Default, this property takes static.
+# For incremental load that involved staging layer, this needs to be dynamic
+spark.DataIngestion.partitionOverwriteMode:static
+
+
+# ConsiderBatchWindow will be used to switch between the batch window timings vs using max(updatetime) in the hive target table.
+spark.DataIngestion.considerBatchWindow:N
+
+
+# batchParallelism defines the degree of asynchronus data load.
+# This number defines how many tables are read from database and written to S3 in parallel.
+spark.DataIngestion.batchParallelism:10
+
+# ConsiderBatchWindow will be used to switch between the batch window timings vs using max(updatetime) in the hive target table.
+spark.DataIngestion.considerBatchWindow:N
+
+# batchEndCutOff along with the loadType - CI, will define the cutt off time for the EDF on a day.
+# To end the continous load at 7:00 PM EST, specify 18-59
+spark.DataIngestion.batchEndCutOff:19-59
+
+# This parameter is used to define the iteration for harDeleteBatch.
+# This when set on CI mode, will start the hardDeleteBatch at this Iteration.
+spark.DataIngestion.hardDeleteBatchIter:3
+
+# repl_table specifies how EDF will get the batch window timing  between database replication table vs database sysdate.
+# When blank, database system date will be used, otherwise the given repl_table will be queried for the batch window.
+spark.DataIngestion.repl_table:
+
+
+# timeLagInMins along with the batchWindowTiming will determine the batch window end time.
+# To limit the batch window timing to current system time minus 2 mins, specify -2.
+spark.DataIngestion.timeLagInMins:0
+
+# lookUpFile specifies the typelist joins to be performed before inserting into harmonized layer in S3.
+# If no lookup required, provide an empty file with only the header.
+spark.DataIngestion.lookUpFile:legacy_lookup_info.csv
+
+# tableFile specifies the list of tables to be ingested.
+spark.DataIngestion.tableFile:legacy_tables_spec.csv
+
+
+# piiFile specifies the list of pii columns that needs to be masked.
+# specify an empty file with only the header, if no PII found.
+spark.DataIngestion.piiFile:legacy_pii_spec.csv
+
+
+# DB Info & Credentials
+# Provide an encrypted password which will be decrypted inside EDF.
+spark.DataIngestion.dbType:SqlServer
+spark.DataIngestion.dbHost:SAE1DGWSQLP23
+spark.DataIngestion.dbUser:edf_lakeRO
+spark.DataIngestion.dbPwd:Iwn[j^tzwYwzhp(6:
+spark.DataIngestion.sourceDB:EDW_Staging
+
+
+# targetDB will be used to prefix the hive database name.
+# connect_gwpc specifies the database prefix for policy center which is transformed as connect_gwpc_data_processed in reference to the Glue catalog.
+spark.DataIngestion.targetDB:lgcy_sabir
+
+# secured DB prefix will be used to load the secured tables data, which transforms simlilar to the target DB.
+# connect_secured_gwpc to LGCY_v7PIF_secured_data_processed
+spark.DataIngestion.targetSecuredDB:lgcy_sabir_secured
+
+# auditDB will be used to prefix the hive database name.
+spark.DataIngestion.auditDB:edf_dataingestion
+
+# s3 paths for the harmonized and secured data.
+spark.DataIngestion.hrmnzds3SecurePath:s3a://sa-l4f-emr-edl-processed-secure/legacy
+spark.DataIngestion.hrmnzds3Path:s3a://sa-l4f-emr-edl-processed/legacy
+spark.DataIngestion.auditPath:s3a://sa-l4f-emr-edl-processed/edf_dataingestion
+
+
+### Email address for sending the notification
+spark.DataIngestion.fromEmail:edfdatalake@stateauto.com
+spark.DataIngestion.toEmail:edlakebuild@stateauto.com
+spark.DataIngestion.ccEmail:

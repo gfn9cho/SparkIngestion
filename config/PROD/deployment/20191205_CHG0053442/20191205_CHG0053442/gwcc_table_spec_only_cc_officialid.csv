@@ -1,0 +1,2 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|Lookup Ref|HardDeleteFlag|PartitionBy|NumPartitions|Decrypt|Rows|Note
+ClaimCenter.dbo.cc_officialid|Y|Y|UpdateTime|Y||ID||||

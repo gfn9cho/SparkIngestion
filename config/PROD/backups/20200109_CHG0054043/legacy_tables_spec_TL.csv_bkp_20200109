@@ -1,0 +1,3 @@
+DB/TABLE|Send to Lake|Has PII (Y/N)|CDC|Lookup Column Ref|HardDeleteFlag|PartitionBY|numPartitions|Source count|Note
+SABIR_ReportingSystem.dbo.POLICY_INFORCE_DAILY|Y|Y|truncate|Y||RID|10||
+SABIR_Company_Loss_Master.dbo.Cat_date_ranges|Y|N|truncate|||StartDate|10||

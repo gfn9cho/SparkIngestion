@@ -1,0 +1,85 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="PCAGG CI Data Ingestion">
+    <start to="PCAGG_INGESTION_CI_LOAD"/>
+        <action name="PCAGG_INGESTION_CI_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_ci}</command>
+        <args></args>
+        </ssh>
+        <ok to="PCAGG_INGESTION_MISSING_LOAD"/>
+        <error to="PCAGG_INGESTION_CI_LOAD_FAILURE"/>
+        </action>
+		<action name="PCAGG_INGESTION_MISSING_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_missingdata_load}</command>
+        <args></args>
+        </ssh>
+        <ok to="PCAGG_INGESTION_DELETE_LOAD"/>
+        <error to="PCAGG_INGESTION_MISSING_LOAD_FAILURE"/>
+    </action>
+
+     <action name="PCAGG_INGESTION_DELETE_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_delete}</command>
+        <args></args>
+        </ssh>
+        <ok to="PCAGG_STAGING_LOAD"/>
+        <error to="PCAGG_INGESTION_DELETE_LOAD_FAILURE"/>
+    </action>
+    <action name="PCAGG_STAGING_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_staging}</command>
+        <args></args>
+        </ssh>
+        <ok to="END"/>
+        <error to="PCAGG_STAGING_LOAD_FAILURE"/>
+    </action>
+
+    <action name="PCAGG_INGESTION_CI_LOAD_FAILURE">
+    <email xmlns="uri:oozie:email-action:0.1">
+    <to>edlakebuild@stateauto.com,edlakerun@stateauto.com</to>
+    <subject>PCAGG PRODUCTION Daily ingestion - CI load failure notification</subject>
+    <body>PCAGG PRODUCTION Daily ingestion - CI load failure notification</body>
+    </email>
+    <ok to="END"/>
+    <error to="KILL"/>
+    </action>
+	    <action name="PCAGG_INGESTION_MISSING_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>PCAGG PRODUCTION Daily ingestion - New Cluster Missing Data Batch load failure notification</subject>
+        <body>PCAGG  PRODUCTION Daily ingestion - New Cluster Missing Data Batch load failure notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+        </action>
+    <action name="PCAGG_INGESTION_DELETE_LOAD_FAILURE">
+    <email xmlns="uri:oozie:email-action:0.1">
+    <to>edlakebuild@stateauto.com,edlakerun@stateauto.com</to>
+    <subject>PCAGG PRODUCTION Daily ingestion - Delete Batch load failure notification</subject>
+    <body>PCAGG PRODUCTION Daily ingestion - Delete Batch load failure notification</body>
+    </email>
+    <ok to="END"/>
+    <error to="KILL"/>
+    </action>
+
+    <action name="PCAGG_STAGING_LOAD_FAILURE">
+    <email xmlns="uri:oozie:email-action:0.1">
+    <to>edlakebuild@stateauto.com,edlakerun@stateauto.com</to>
+    <subject>PCAGG PRODUCTION Daily - Staging load failure notification</subject>
+    <body>PCAGG PRODUCTION Daily - Staging load failure notification</body>
+    </email>
+    <ok to="END"/>
+    <error to="KILL"/>
+    </action>
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+        <message>PCAGG PRODUCTION Staging load failed while sending the failure notifiaction </message>
+    </kill>
+    <end name="END" />
+
+</workflow-app>

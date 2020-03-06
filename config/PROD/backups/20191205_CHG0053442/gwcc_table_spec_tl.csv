@@ -1,0 +1,2 @@
+DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|Lookup Ref|HardDeleteFlag|PartitionBy|NumPartitions|Decrypt|Rows|Note
+ClaimCenter.dbo.ccx_totalloss_ext|Y||UpdateTime|Y||ID||||

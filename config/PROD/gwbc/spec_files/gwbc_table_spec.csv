@@ -1,8 +1,6 @@
 DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy|NumPartitions|Rows|Note
-BillingCenter.dbo.bc_account|Y|Y|UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_accountcontact|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_accountcontactrole|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_accountcontext|Y| |UpdateTime|Y|ID|ID| ||
 BillingCenter.dbo.bc_acctinvcpolpersnapshot|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_acctpmntinst|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_activemoneyrcvd|Y| |ID|Y|ID|ID| ||
@@ -16,16 +14,7 @@ BillingCenter.dbo.bc_authlp_name_l10n|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_authorityevent|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_authoritylimit|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_authoritylimitprofile|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_basedist|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_basedistitem|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_basemoneyreceived|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_basenonrecdistitem|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_batchserver|Y| |StartupTime|Y|ID|ID| ||
-BillingCenter.dbo.bc_billinginstruction|Y| |UpdateTime|Y|ID|ID| ||
-BillingCenter.dbo.bc_charge|Y| |UpdateTime|Y|ID|ID| ||
-BillingCenter.dbo.bc_chargecommission|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_chargeinstancecontext|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_chargepattern|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_chargepatterncontext|Y| |UpdateTime|Y|ID|ID| ||
 BillingCenter.dbo.bc_chargeproratatx|Y| |UpdateTime|Y|ID|ID| ||
 BillingCenter.dbo.bc_chargept_nm_l10n|Y| |ID|Y|ID|ID| ||
@@ -43,22 +32,13 @@ BillingCenter.dbo.bc_commissionsubplanrate|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_contact|Y|Y|UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_contactaddress|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_contacttag|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_credential|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_credit|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_creditcontext|Y| |UpdateTime|Y|ID|ID| ||
 BillingCenter.dbo.bc_creditreversal|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_customalpuser|Y| |ID|Y|ID|ID| ||
-BillingCenter.dbo.bc_datachange|Y| |CreateDate|Y|ID|ID| ||
-BillingCenter.dbo.bc_dbmoneyrcvdcontext|Y| |UpdateTime|Y|ID|ID| ||
 BillingCenter.dbo.bc_delinqprocdelayedtrigger|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_delinquencyplanevent|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_delinquencyplanreason|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_delinquencyprocess|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_delinquencyprocessevent|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_disbursement|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_distcriterionfilter|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_document|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_fundstransfer|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_group|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_group_assign|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_group_name_l10n|Y| |ID|Y|ID|ID| ||
@@ -70,10 +50,8 @@ BillingCenter.dbo.bc_holdtypeentry|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_instrumentedmessage|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_instrumentedworkertask|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_instrumentedworkexecutor|Y| |ID|Y|ID|ID| ||
-BillingCenter.dbo.bc_invoice|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_invoicebilledworkitem|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_invoicedueworkitem|Y| |LastUpdateTime|Y|ID|ID| ||
-BillingCenter.dbo.bc_invoiceitem|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_invoiceitemordering|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_invoicestream|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_itemcommission|Y| |UpdateTime|Y| |ID| ||
@@ -82,9 +60,7 @@ BillingCenter.dbo.bc_lineitem|Y| |UpdateTime|Y|ID|ID| ||
 BillingCenter.dbo.bc_message|Y| |AfterSendTime|Y|ID|ID| ||
 BillingCenter.dbo.bc_ModifiedFromDI|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_MovedFromPMR|Y| |ID|Y|ID|ID| ||
-BillingCenter.dbo.bc_negativewriteoff|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_negativewriteoffrev|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_nonreceivableitemctx|Y| |UpdateTime|Y|ID|ID| ||
 BillingCenter.dbo.bc_note|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_officialid|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_onsetinvoiceitem|Y| |ID|Y|ID|ID| ||
@@ -94,16 +70,12 @@ BillingCenter.dbo.bc_origchcmsn|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_outgoingpayment|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_parameter|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_parentgroup|Y| |ID|Y|ID|ID| ||
-BillingCenter.dbo.bc_paymentinstrument|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_paymentplanmodifier|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_paymentrequest|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_paymentrequestworkitem|Y| |LastUpdateTime|Y|ID|ID| ||
 BillingCenter.dbo.bc_plan|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_plan_desc_l10n|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_plan_name_l10n|Y| |ID|Y|ID|ID| ||
-BillingCenter.dbo.bc_policy|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_policycommission|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_policyperiod|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_policyperiodcontact|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_policytransfer|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_polperiodcontactrole|Y| |UpdateTime|Y| |ID| ||
@@ -112,11 +84,8 @@ BillingCenter.dbo.bc_privilege|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_processhistory|Y| |CompleteDate|Y|ID|ID| ||
 BillingCenter.dbo.bc_prodcoderoleentry|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_prodpmntinst|Y| |ID|Y|ID|ID| ||
-BillingCenter.dbo.bc_producer|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_producercode|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_producercontact|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_producercontactrole|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_producercontext|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_ProducerPayment|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_producerpaymentrecurrable|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_producerstatement|Y| |UpdateTime|Y| |ID| ||
@@ -135,29 +104,18 @@ BillingCenter.dbo.bc_role|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_role_desc_l10n|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_role_name_l10n|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_scriptparameter|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_securityzone|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_seczone_nam_l10n|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_sequence|Y| |ID|Y|ID|ID| ||
-BillingCenter.dbo.bc_suspensepayment|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_susppymtcontext|Y| |UpdateTime|Y|ID|ID| ||
-BillingCenter.dbo.bc_taccount|Y| |UpdateTime|Y|ID|ID| ||
-BillingCenter.dbo.bc_TAccountContainer|Y| |UpdateTime|Y|ID|ID| ||
 BillingCenter.dbo.bc_TAccountPattern|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_TAcctOwnerPattern|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_transaction|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_transfertxcontext|Y| |UpdateTime|Y|ID|ID| ||
 BillingCenter.dbo.bc_troubleticket|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_troubleticketjoinentity|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_unappliedfund|Y| |UpdateTime|Y|ID|ID| ||
 BillingCenter.dbo.bc_upgradetableregistry|Y| |ID|Y|ID|ID| ||
-BillingCenter.dbo.bc_user|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_userrole|Y| |ID|Y|ID|ID| ||
 BillingCenter.dbo.bc_usersettings|Y|Y|UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_workflow|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bc_workflowstepstats|Y| |EndTime|Y|ID|ID| ||
 BillingCenter.dbo.bc_workqueueworkercontrol|Y| |LastExecutionTime|Y|ID|ID| ||
-BillingCenter.dbo.bc_writeoff|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_writeoffreversal|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bctl_accountcontext|Y| |Truncate and Load|TypeList| ||||
 BillingCenter.dbo.bctl_accountevaluation|Y| |Truncate and Load|TypeList| ||||
 BillingCenter.dbo.bctl_accountinactivityworkitem|Y| |Truncate and Load|TypeList| ||||
@@ -540,7 +498,6 @@ BillingCenter.dbo.bctl_writeofftype|Y| |Truncate and Load|TypeList| ||||
 BillingCenter.dbo.bctl_yesno|Y| |Truncate and Load|TypeList| ||||
 BillingCenter.dbo.bctl_zonetype|Y| |Truncate and Load|TypeList| ||||
 BillingCenter.dbo.bcx_adminaudit_ext|Y| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bcx_bcaccountsnapshotamnt_ext|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bcx_cancellationext|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bcx_catastrophe_ext|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bcx_catastropheLOB_ext|Y| |UpdateTime|Y| |ID| ||
@@ -558,7 +515,3 @@ BillingCenter.dbo.bcx_paymentplanlobcode|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bcx_paymentplanpolicyterm_ext|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bcx_paymentprocessaudit_ext|Y| |UpdateTime|Y| |ID| ||
 BillingCenter.dbo.bcx_PorSessID_Ext|Y| |issueDate|Y|ID|ID| ||
-BillingCenter.dbo.bc_agencycycleprocess|N| |UpdateTime|Y|ID|ID| ||
-BillingCenter.dbo.bc_agencydisbpaidcontext|N| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_agencymoneyrcvdcontext|N| |UpdateTime|Y| |ID| ||
-BillingCenter.dbo.bc_agencybillcycle|N| |UpdateTime|Y|ID|ID| ||

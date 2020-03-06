@@ -1,0 +1,9 @@
+DB/TABLE|Send to Lake|Has PII (Y/N)|CDC|Lookup Column Ref|HardDeleteFlag|PartitionBY|numPartitions|Source count|Note
+SABIR_ReportingSystem.dbo.POLICY_INFORCE_DAILY|N|Y|truncate|Y||RID|10||
+SABIR_Company_Loss_Master.dbo.Cat_date_ranges|N|N|truncate|||StartDate|10||
+SABIR_Company_Loss_Master.dbo.LOSS_MASTER_EOM_HIST|N|N|truncate|Y||LM_ACCOUNT_date|10||Only load one time!!!
+SABIR_Company_Loss_Master.dbo.LOSS_MASTER_EOM|N|Y|dwLoadTime|Y||TransactionYYYYMM|170||You will run a delete in Harmonized based on TRANSACTIONYYYYMM
+SABIR_ReportingSystem.dbo.RS_PremiumMasterEOM|N|Y|dwLoadTime|Y||TransactionYYYYMM|170||You will run a delete in Harmonized based on TRANSACTIONYYYYMM
+SABIR_ReportingSystem.dbo.POLICY_INFORCE|N|Y|dwLoadTime|Y||TransactionYYYYMM|170||You will run a delete in Harmonized based on TRANSACTIONYYYYMM
+SABIR_Common.dbo.Agency|N|Y|dwTimeStamp|Y||TransactionYYYYMM|170||You will run a delete in Harmonized based on TRANSACTIONYYYYMM
+SABIR_Common.dbo.Employee|Y|Y|dwTimeStamp|Y||ActiveInd|170||You will run a delete in Harmonized based on TRANSACTIONYYYYMM

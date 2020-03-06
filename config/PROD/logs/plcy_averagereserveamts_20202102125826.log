@@ -1,0 +1,121 @@
+Creating backup of the table in s3://sa-l4-datalake-processed/processed_edwexternal/plcy_averagereserveamts_backup/
+Completed 36.6 KiB/72.1 KiB (322.5 KiB/s) with 4 file(s) remainingcopy: s3://sa-l4-datalake-processed/processed_edwexternal/plcy_averagereserveamts/ingestion_yyyymm=202001/part-00001-76fe5432-eda8-4b2b-b793-5a8539db367e.c000 to s3://sa-l4-datalake-processed/processed_edwexternal/plcy_averagereserveamts_backup/ingestion_yyyymm=202001/part-00001-76fe5432-eda8-4b2b-b793-5a8539db367e.c000
+Completed 36.6 KiB/72.1 KiB (322.5 KiB/s) with 3 file(s) remainingCompleted 36.6 KiB/72.1 KiB (269.4 KiB/s) with 3 file(s) remainingcopy: s3://sa-l4-datalake-processed/processed_edwexternal/plcy_averagereserveamts/ingestion_yyyymm=201912_$folder$ to s3://sa-l4-datalake-processed/processed_edwexternal/plcy_averagereserveamts_backup/ingestion_yyyymm=201912_$folder$
+Completed 36.6 KiB/72.1 KiB (269.4 KiB/s) with 2 file(s) remainingCompleted 72.1 KiB/72.1 KiB (490.1 KiB/s) with 2 file(s) remainingcopy: s3://sa-l4-datalake-processed/processed_edwexternal/plcy_averagereserveamts/ingestion_yyyymm=201912/part-00000-76fe5432-eda8-4b2b-b793-5a8539db367e.c000 to s3://sa-l4-datalake-processed/processed_edwexternal/plcy_averagereserveamts_backup/ingestion_yyyymm=201912/part-00000-76fe5432-eda8-4b2b-b793-5a8539db367e.c000
+Completed 72.1 KiB/72.1 KiB (490.1 KiB/s) with 1 file(s) remainingCompleted 72.1 KiB/72.1 KiB (478.0 KiB/s) with 1 file(s) remainingcopy: s3://sa-l4-datalake-processed/processed_edwexternal/plcy_averagereserveamts/ingestion_yyyymm=202001_$folder$ to s3://sa-l4-datalake-processed/processed_edwexternal/plcy_averagereserveamts_backup/ingestion_yyyymm=202001_$folder$
+[INFO] Spark Submit in Progress
+[INFO]  NUMBER OF ARGUEMENTS PASSED 6
+[INFO]  Spark Environment Setup....
+20/02/21 17:58:30 INFO SparkContext: Running Spark version 2.4.0
+20/02/21 17:58:30 INFO SparkContext: Submitted application: Avg_Rsrvs_LF_Load
+20/02/21 17:58:30 INFO SecurityManager: Changing view acls to: hadoop
+20/02/21 17:58:30 INFO SecurityManager: Changing modify acls to: hadoop
+20/02/21 17:58:30 INFO SecurityManager: Changing view acls groups to: 
+20/02/21 17:58:30 INFO SecurityManager: Changing modify acls groups to: 
+20/02/21 17:58:30 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+20/02/21 17:58:30 INFO Utils: Successfully started service 'sparkDriver' on port 36661.
+20/02/21 17:58:30 INFO SparkEnv: Registering MapOutputTracker
+20/02/21 17:58:30 INFO SparkEnv: Registering BlockManagerMaster
+20/02/21 17:58:30 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+20/02/21 17:58:30 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+20/02/21 17:58:30 INFO DiskBlockManager: Created local directory at /mnt/tmp/blockmgr-e7dd61ac-2635-4514-82a1-70652cdf75ee
+20/02/21 17:58:30 INFO MemoryStore: MemoryStore started with capacity 413.9 MB
+20/02/21 17:58:30 INFO SparkEnv: Registering OutputCommitCoordinator
+20/02/21 17:58:31 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+20/02/21 17:58:31 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://ip-10-84-38-68.corp.stateauto.com:4040
+20/02/21 17:58:31 INFO SparkContext: Added JAR file:/home/hadoop/processed/jars/Average_Reserves_Lake_Factor-1.0-SNAPSHOT.jar at spark://ip-10-84-38-68.corp.stateauto.com:36661/jars/Average_Reserves_Lake_Factor-1.0-SNAPSHOT.jar with timestamp 1582307911301
+20/02/21 17:58:31 WARN Utils: spark.executor.instances less than spark.dynamicAllocation.minExecutors is invalid, ignoring its setting, please update your configs.
+20/02/21 17:58:31 INFO Utils: Using initial executors = 2, max of spark.dynamicAllocation.initialExecutors, spark.dynamicAllocation.minExecutors and spark.executor.instances
+20/02/21 17:58:32 INFO RMProxy: Connecting to ResourceManager at ip-10-84-38-68.corp.stateauto.com/10.84.38.68:8032
+20/02/21 17:58:32 INFO Client: Requesting a new application from cluster with 13 NodeManagers
+20/02/21 17:58:32 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (122880 MB per container)
+20/02/21 17:58:32 INFO Client: Will allocate AM container, with 896 MB memory including 384 MB overhead
+20/02/21 17:58:32 INFO Client: Setting up container launch context for our AM
+20/02/21 17:58:32 INFO Client: Setting up the launch environment for our AM container
+20/02/21 17:58:32 INFO Client: Preparing resources for our AM container
+20/02/21 17:58:32 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+20/02/21 17:58:35 INFO Client: Uploading resource file:/mnt/tmp/spark-e584b576-6702-4cfd-ae6d-576e38a024b7/__spark_libs__1166149094037072965.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1578014764864_28341/__spark_libs__1166149094037072965.zip
+20/02/21 17:58:36 INFO Client: Uploading resource file:/etc/spark/conf/hive-site.xml -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1578014764864_28341/hive-site.xml
+20/02/21 17:58:36 INFO Client: Uploading resource file:/mnt/tmp/spark-e584b576-6702-4cfd-ae6d-576e38a024b7/__spark_conf__3684110990995632587.zip -> hdfs://ip-10-84-38-68.corp.stateauto.com:8020/user/hadoop/.sparkStaging/application_1578014764864_28341/__spark_conf__.zip
+20/02/21 17:58:37 INFO SecurityManager: Changing view acls to: hadoop
+20/02/21 17:58:37 INFO SecurityManager: Changing modify acls to: hadoop
+20/02/21 17:58:37 INFO SecurityManager: Changing view acls groups to: 
+20/02/21 17:58:37 INFO SecurityManager: Changing modify acls groups to: 
+20/02/21 17:58:37 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+20/02/21 17:58:38 INFO Client: Submitting application application_1578014764864_28341 to ResourceManager
+20/02/21 17:58:38 INFO YarnClientImpl: Submitted application application_1578014764864_28341
+20/02/21 17:58:38 INFO SchedulerExtensionServices: Starting Yarn extension services with app application_1578014764864_28341 and attemptId None
+20/02/21 17:58:39 INFO Client: Application report for application_1578014764864_28341 (state: ACCEPTED)
+20/02/21 17:58:39 INFO Client: 
+	 client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1582307918646
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1578014764864_28341/
+	 user: hadoop
+20/02/21 17:58:40 INFO Client: Application report for application_1578014764864_28341 (state: ACCEPTED)
+20/02/21 17:58:41 INFO Client: Application report for application_1578014764864_28341 (state: ACCEPTED)
+20/02/21 17:58:42 INFO Client: Application report for application_1578014764864_28341 (state: ACCEPTED)
+20/02/21 17:58:43 INFO YarnClientSchedulerBackend: Add WebUI Filter. org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter, Map(PROXY_HOSTS -> ip-10-84-38-68.corp.stateauto.com, PROXY_URI_BASES -> http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1578014764864_28341), /proxy/application_1578014764864_28341
+20/02/21 17:58:43 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /jobs, /jobs/json, /jobs/job, /jobs/job/json, /stages, /stages/json, /stages/stage, /stages/stage/json, /stages/pool, /stages/pool/json, /storage, /storage/json, /storage/rdd, /storage/rdd/json, /environment, /environment/json, /executors, /executors/json, /executors/threadDump, /executors/threadDump/json, /static, /, /api, /jobs/job/kill, /stages/stage/kill.
+20/02/21 17:58:43 INFO Client: Application report for application_1578014764864_28341 (state: RUNNING)
+20/02/21 17:58:43 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: 10.84.36.173
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1582307918646
+	 final status: UNDEFINED
+	 tracking URL: http://ip-10-84-38-68.corp.stateauto.com:20888/proxy/application_1578014764864_28341/
+	 user: hadoop
+20/02/21 17:58:43 INFO YarnClientSchedulerBackend: Application application_1578014764864_28341 has started running.
+20/02/21 17:58:43 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 36909.
+20/02/21 17:58:43 INFO NettyBlockTransferService: Server created on ip-10-84-38-68.corp.stateauto.com:36909
+20/02/21 17:58:43 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+20/02/21 17:58:43 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, ip-10-84-38-68.corp.stateauto.com, 36909, None)
+20/02/21 17:58:43 INFO YarnSchedulerBackend$YarnSchedulerEndpoint: ApplicationMaster registered as NettyRpcEndpointRef(spark-client://YarnAM)
+20/02/21 17:58:43 INFO BlockManagerMasterEndpoint: Registering block manager ip-10-84-38-68.corp.stateauto.com:36909 with 413.9 MB RAM, BlockManagerId(driver, ip-10-84-38-68.corp.stateauto.com, 36909, None)
+20/02/21 17:58:43 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, ip-10-84-38-68.corp.stateauto.com, 36909, None)
+20/02/21 17:58:43 INFO BlockManager: external shuffle service port = 7337
+20/02/21 17:58:43 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, ip-10-84-38-68.corp.stateauto.com, 36909, None)
+20/02/21 17:58:44 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /metrics/json.
+20/02/21 17:58:44 INFO EventLoggingListener: Logging events to hdfs:/var/log/spark/apps/application_1578014764864_28341
+20/02/21 17:58:44 WARN Utils: spark.executor.instances less than spark.dynamicAllocation.minExecutors is invalid, ignoring its setting, please update your configs.
+20/02/21 17:58:44 INFO Utils: Using initial executors = 2, max of spark.dynamicAllocation.initialExecutors, spark.dynamicAllocation.minExecutors and spark.executor.instances
+20/02/21 17:58:48 INFO YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.84.40.247:44248) with ID 1
+20/02/21 17:58:48 INFO ExecutorAllocationManager: New executor 1 has registered (new total is 1)
+20/02/21 17:58:48 INFO BlockManagerMasterEndpoint: Registering block manager ip-10-84-40-247.corp.stateauto.com:44727 with 4.1 GB RAM, BlockManagerId(1, ip-10-84-40-247.corp.stateauto.com, 44727, None)
+20/02/21 17:58:52 INFO YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.84.36.252:47616) with ID 2
+20/02/21 17:58:52 INFO ExecutorAllocationManager: New executor 2 has registered (new total is 2)
+20/02/21 17:58:52 INFO YarnClientSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.8
+[INFO]  Spark submit arguments read completed....
+[INFO]  Spark and Hive Configuration Setup....
+[INFO]  Current date and time calculation completed....
+[INFO]  --------------------------------- JOB DETAILS - START ----------------------------------
+[INFO]  SOURCE DB/TBL   : processed_edwexternal.plcy_averagereserveamts_test
+[INFO]  TARGET DB/TBL   : processed_edwexternal.plcy_averagereserveamts
+[INFO]  STAT DB/TBL     : processed_edwexternal.plcy_avgrsrvs_stat
+[INFO]  --------------------------------- JOB DETAILS - END  -----------------------------------
+[INFO]  Loading Average Reserves table process Starts....
+[INFO]  ........
+[INFO]  Selecting the current month partition from the table plcy_averagereserveamts_test....
+[INFO]  Check to decide if its a Fresh load(Append) or Reload(Overwrite) for current month on Target Table....
+[INFO]  It's an Overwrite mode on the current partition 202002
+[INFO]  Getting the total record count from the table plcy_averagereserveamts_test....
+[INFO]  Cache completed....
+[INFO]  Stat Assignments completed....
+[INFO]  Table plcy_averagereserveamts_test has Records and Starts for Loading....
+[INFO]  Assigned the total count from Table plcy_averagereserveamts_test for Stat....
+[INFO]  Getting number of Dataframe partitions....
+[INFO]  Loading the Dataframe in to the Target Table....
+[INFO]  Table loaded with fewer than 10 partitions....
+[INFO]  Loading Target Table Completed....
+[INFO]  Getting the Target Table count After the Load....
+[INFO]  Assigning values and Inserting run stats in to the Stat Table....
+[INFO]  Stat Table row successfully inserted with counts....
+[INFO]  JOB COMPLETED SUCCESSFULLY IN 4 SECOND(S)
+[INFO] Script Ends Here...

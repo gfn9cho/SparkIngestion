@@ -1,0 +1,29 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="ACTBILL Data Ingestion">
+    <start to="ACTBILL_INGESTION"/>
+    
+    <action name="ACTBILL_INGESTION">
+	<ssh xmlns="uri:oozie:ssh-action:0.1">
+	<host>${focusNodeLogin}</host>
+	<command>${spark_run_script_path}</command>
+	<args></args>
+	</ssh>
+	<ok to="END"/>
+	<error to="FAILURE_EMAIL"/>
+    </action>
+    <action name="FAILURE_EMAIL">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>Production : Failure ACTBILL Ingestion</subject>
+        <body>ACTBILL ingestion load has failed. Please research.</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+    </action>
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+        <message>Job failed for ACTBILL Tables , error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="END" />
+</workflow-app>
+

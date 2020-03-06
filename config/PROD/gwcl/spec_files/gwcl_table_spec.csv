@@ -1875,3 +1875,974 @@ DB/TABLE|Send to Lake|PII (Y/N)|CDC Column|LookUp Ref|HardDeleteFlag|PartitionBy
 [PolicyCenterL4-1].dbo.pcx_team_ext|Y||UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pcx_portaluser_ext|Y||UpdateTime|Y||ID|||
 [PolicyCenterL4-1].dbo.pcx_tagorder_ext|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pc_contractorsequipment|Y||UpdateTime|Y|ID|ID|||
+[PolicyCenterL4-1].dbo.pc_imaccountsreccond|Y||UpdateTime|Y|ID|ID|||
+[PolicyCenterL4-1].dbo.pc_imcededpremium|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pc_imcededpremiumhistory|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pc_imcededpremiumtransaction|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pc_imcontractorsequipcond|Y||UpdateTime|Y|ID|ID|||
+[PolicyCenterL4-1].dbo.pc_imexcludedaccount|Y||UpdateTime|Y|ID|ID|||
+[PolicyCenterL4-1].dbo.pc_impacttestcaseresult|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pc_impacttestingcase|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pc_impacttestingperiod|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pc_impacttestingratebook|Y||ID|Y|ID|ID|||
+[PolicyCenterL4-1].dbo.pc_imsign|Y||UpdateTime|Y|ID|ID|||
+[PolicyCenterL4-1].dbo.pctl_businessunittype_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_ca7modelyear_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_carriermovedto_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_coveragebasistype_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7birisktypesingleton|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7bldgschedconditem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7bldgschedconditemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7bldgschedcovitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7bldgschedcovitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7bldgschedexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7bldgschedexclitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7buildingcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7buildingcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7buildingexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7busincschedconditem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7busincschedconditemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7busincschedcovitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7busincschedcovitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7busincschedexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7busincschedexclitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7businessincomecond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7businessincomecov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7businessincomeexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7causeoflosssubcategory|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7cost|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7costkeycategory|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7jurisdictioncond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7jurisdictioncov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7jurisdictionexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7jurisschedconditem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7jurisschedconditemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7jurisschedcovitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7jurisschedcovitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7jurisschedexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7jurisschedexclitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7leaseholdintdiscfctr|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7lineschedconditem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7lineschedconditemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7lineschedcovitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7lineschedcovitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7lineschedexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7lineschedexclitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7locationcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7locationcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7locationexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7locschedconditem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7locschedconditemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7locschedcovitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7locschedcovitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7locschedexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7locschedexclitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7occupancyclasscond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7occupancyclasscov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7occupancyclassexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7ocpclsschedconditem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7ocpclsschedconditemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7ocpclsschedcovitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7ocpclsschedcovitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7ocpclsschedexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7ocpclsschedexclitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7personalpropertycond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7personalpropertycov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7personalpropertyexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7prometrixdata_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7prometrixoccupants_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7propertylinecond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7propertylinecov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7propertylineexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7propertylinemod|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7prsprpschconditem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7prsprpschconditemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7prsprpschcovitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7prsprpschcovitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7prsprpschexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7prsprpschexclitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7spcclsbischconditem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7spcclsbischconditemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7spcclsbischcovitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7spcclsbischcovitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7spcclsbischexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7spcclsbischexclitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7spcclsschconditem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7spcclsschconditemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7spcclsschcovitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7spcclsschcovitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7spcclsschexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7spcclsschexclitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7specclsbicond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7specclsbicov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7specclsbiexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7specialclasscond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7specialclasscov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7specialclassexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_cp7statrecord|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_culineschedexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_doclosshistory_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_examplelinetl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_facosttype|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_facoveragetype_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_facreinsurance_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_famvrviolationtype|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_faoperatorexperience|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_faseatingcapacity|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_formsdoccategoryext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_frmcoveragegroup|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_frmdeductible|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_frmequineliabtype|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7cost|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7exposurecond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7exposurecov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7exposureexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7exposuremod|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7exposureschedconditem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7exposureschedcovitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7exposureschedexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7expschedconditemcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7expschedconditemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7expschedconditemexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7expschedcovitemcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7expschedcovitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7expschedcovitemexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7expschedexclitemcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7expschedexclitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7expschedexclitemexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7facreinsursubline_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7linecond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7linecov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7lineexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7linemod|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7lineschconditem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7lineschcovitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7lineschexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locationcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locationcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locationexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locationmod|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locationschedconditem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locationschedcovitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locationschedexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locschedconditemcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locschedconditemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locschedconditemexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locschedcovitemcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locschedcovitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locschedcovitemexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locschedexclitemcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locschedexclitemcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7locschedexclitemexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7statrecord|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublinecond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublinecov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublineexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublinemod|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublineschedconditem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublineschedcovitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublineschedexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublinetypecond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublinetypecov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublinetypeexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublinetypemod|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublinetypeschconditem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublinetypeschcovitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublinetypeschexclitem|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublnschedconditmcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublnschedconditmcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublnschedconditmexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublnschedcovitmcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublnschedcovitmcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublnschedcovitmexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublnschedexclitmcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublnschedexclitmcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublnschedexclitmexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublntypschconditmcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublntypschconditmcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublntypschconditmexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublntypschcovitmcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublntypschcovitmcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublntypschcovitmexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublntypschexclitmcond|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublntypschexclitmcov|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_gl7sublntypschexclitmexcl|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imaccountsrecpartschexclitem_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imbuildersriskpartcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imbuildersriskpartexcl_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imcanadianprovinces_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imcecoveredperil_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imceqippartschcovitem_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imcoinsuranceincome_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imcontainer_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imedpcomp_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imedpcompcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imedpelectrical_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imedppartcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imedpwebsiteserver_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imeqpeakinoutcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imeqpeakseasoninout_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imeqpeakseplimit_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imeqpeakseplimitcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imeqschedinout_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imeqschedinoutcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imeqschedseplimit_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imeqschedseplimitcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imeqsrhaildeductible_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imequippartcovlist_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imequipsrpartcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imequipsrpartexcl_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imexcludedproperty_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imexhibitfloatcoverage_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imfacreinsurcovpart_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imhouroflabel_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imifdelayincompletion_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imifearthandflood_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imifpropertydamage_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imiftypeoftesting_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imincomecoverage_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imincomecovwaitingperiod_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_iminoutbuild_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_iminstafloequipschcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_iminstafloequipsched_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_iminstaflotestingschd_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_iminstaflotestschcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_iminstallfloatersched_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_iminstallfloatpartcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_iminstallfloatschcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imissuerlabel_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immepartschedexclitem_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immiscfloatefexhib_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immiscfloatefexhibcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immiscfloaterspartcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immiscfloaterspartexcl_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immiscfloatmbpfprem_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immiscfloatmbpfpremcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immiscfloatmefequip_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immiscfloatmefequipcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immiscfloatpdfprop_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immiscfloatpdfpropcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immiscfloatschedexclitem_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immiscfloatspfprop_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immiscfloatspfpropcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immiscrestrictexcl_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immobileequiplocation_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immobileequiploccov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immobileequippartcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immobileequippartexcl_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immobileequipseascov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immobileequipseason_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immotortruckcargo_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immotortruckcargocov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immotortruckcargopartcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immotortruckcargopartexcl_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immotorvehiclesched_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immtoperatingterr_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immtpartpropschedexcl_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immtpartschedcovitem_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immtpartschedexclitem_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immtpartthftschedexcl_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_immtvehicleschedcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_impropertycovered_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_impropertyexclname_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imratingbasistype_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imriggerspartcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imsignpartcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imtransitpartcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imtransitpartexcl_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imtransittermicov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imtransitterminals_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imtransitvehicle_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imtransitvehiclecov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imvalpap_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imvalpapcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imvalpappartcontainer_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imvalpappartcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imvalpappartexcl_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imvalpappartschedulecov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imvalpappartscheduleitem_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imwarehouselimitsched_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imwarehouselimschcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imwarehouselocschcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imwarehouselocsched_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imwarehousepartcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imwarehousepartexcl_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imwarehousespilschcov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imwarehousespoilsched_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imwhpartpropschexcl_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_imwhspoilageinculded_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_industryappetite_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_inlandmarinecov_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_inlandmarineexcl_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_lobfieldwidgettype|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_manualcarrier_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_manualclaimtype_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_motorcycleengsize_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_mpddiscounttype_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_noofmortgages_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_occupants|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_plugintypes|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_prometrixasgr_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_prometrixconstclass_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_prometrixinsocc_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_prometrixinterest_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_prometrixrsorder_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_prometrixselectbranch_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_promtrxisbldgsprinkl_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_ratemode|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_rateroutinehandler|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_rateroutinehandler_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_rateroutinehandlerfa_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_rateroutinehandlerfu_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_ratingbasistype|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_reasondescription|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_reinsurancestatus_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_reinsurer_sai|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_sbtupdatestatus|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_updatedifftype|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_vehiclerisksymbols_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pctl_yearswithpriorcarrier_ext|Y||Truncate and Load|TypeList|||||
+[PolicyCenterL4-1].dbo.pcx_bcolperilentry_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_bp7covetermpremium_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_bricdetail_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_ccclaim|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_ccclaimorder|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cluelossentry_fa|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cluelossentry_frm|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_configupdateselection|Y||ID|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_coveragegroupentry_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7additionalcoveredprop1|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7additionalcoveredprop2|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7additionalcoveredpropt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7agreedvalcoin_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7agreedvalueblanket|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7agreedvaluebldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7agreedvaluebusnincome|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7agreedvaluefloodblanke|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7agreedvalueprsnlprop|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7basicgroupiiratingterr|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7basicgroupiratingterin|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7beginperiodofrestorat1|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7blanketdeduct_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7blanketlimitbuilding|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7blanketratedselection|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7blankettype|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7blankotherfloodinsur|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7blankunderinsurwaiver|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7bldgcodeeffectiveness2|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7bldgcodeeffectivenessg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7bldgincludedinoperatio|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7bldgschedconditem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7bldgschedconditemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7bldgschedcovitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7bldgschedcovitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7bldgschedexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7bldgschedexclitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7blktidnum|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7blktidnumbldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7blktidnumprsnlprop|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7blktweightblkt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7buildersrisktentativeg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7buildingtheftded_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7buildingtheftdeductibl|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7burglaryalarmcreditfac|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7busincschedconditem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7busincschedconditemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7busincschedcovitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7busincschedcovitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7busincschedexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7busincschedexclitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7causelossbypolopt1_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7causeoflossbldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7causeoflossbusnincome|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7causeoflossbypolicyopt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7causeoflossbypolicytyp|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7causeoflosscpponly|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7causeoflossds04|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7causeoflossforblanket|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7causeoflossspecialclas|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7citytownstate|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7civilauthorityincrease|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7classcodebldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7classcodeoccupclass|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7classdesc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7coinsurancebldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7coinsurancebusnincome|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7coinsurancefloodblkt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7coinsurancefloodform|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7coinsuranceforblanket|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7coinsuranceforoptional|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7coinsuranceopt1_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7coinsuranceprsnlprop|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7coinsurancespecialclas|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7combinedtypeofriskeduc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7combinedtypeofriskmanu|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7combinedtypeofriskmerc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7combinedtypeofriskrent|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7constructioncodert|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7constructiontypebldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7constructiontypetouser|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7countystate|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7coveredproperty|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7covform|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7covformbusnincome|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7covformspecialclass|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7covtypebldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7covtypeprsnlprop|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7creditfactor|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_CP7dedbldg_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7deductiblebldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7dronemodification|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_CP7EmpClassification_SAI|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7employeeandorclassific|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_CP7EmployeeSpclClass_SAI|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqcauseoflosscovblkti1|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqcauseoflosscovblktid|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqcauseoflosscoverageo|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqcauseoflossform|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqcauseoflossincludedi|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqclassbldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqclassspecialclass|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqcoverageutilityservi|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqcovindicatorbldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqcovindicatorbusninco|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqcovindicatorprsnlpro|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqcovindicatorspecialc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqdeductible|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqdeductiblebuilding|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqgradeprsnlprop|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqrooftankhazard|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqspecialclassstructur|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqsprinklerleakageonl1|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqsprinklerleakageonl2|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqsprinklerleakageonly|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqsublimitblktindicato|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqsublimitpct|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqsublimitpctblkt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7eqterrin|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7equipmentsratet|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7extendedperiod|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7extendedperiodapplies|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7extendedperiodbusninco|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7extendedperiodoptional|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7extofrecoverynumofmont|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7extraexpnlimitonlosspy|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7floodblanketrating|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7fullvaluebldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7fullvaluepersprop|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7fullvaluerange|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7funguswetrotdryrotbac2|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7funguswetrotdryrotbac3|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7funguswetrotdryrotbac4|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7funguswetrotdryrotbac6|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7funguswetrotdryrotbac7|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7funguswetrotdryrotbac8|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7funguswetrotdryrotbact|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7geographicwindhazardl1|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7geographicwindhazardle|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7heightofradioantenna|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7included_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7includedinblkt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7includedinblktbldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7includedinblktbusninco|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7includedinblktprsnlpro|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7includedinblktspecialc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7incsannagglmtoptloc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7indicateactualcashvalu|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7inflationguardpct|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7inflationguardpctblank|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7inflationguardpctbldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7inflationguardpctsubli|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7irpmbuildingfeaturespc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7irpmemployeespct|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7irpmlocationpct|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7irpmmodificationpct|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7irpmpremisesequipmentp|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7irpmprotectionpct|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7jurisdiction|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7jurisdictioncond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7jurisdictioncov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7jurisdictionexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7jurisschedconditem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7jurisschedconditemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7jurisschedcovitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7jurisschedcovitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7jurisschedexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7jurisschedexclitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7leaseholdintdiscfctr|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7limitalcoholicbeverage|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7limitbldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7limitbusnincomeoptiona|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7limitcontributinglocat|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7limitmanufacturingloca|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7limitpersonalproperty|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7limitprsnlprop|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7limitradioactiveconta1|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7limitradioactivecontam|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7limitrange|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7limitsforpreciousmetal|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7lineschedconditem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7lineschedconditemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7lineschedcovitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7lineschedcovitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7lineschedexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7lineschedexclitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7locationcond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7locationexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7locofheatingplantindic|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7locschedconditem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7locschedconditemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7locschedcovitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7locschedcovitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7locschedexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7locschedexclitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7lossassessmentlimitcon|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7marginclause|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7maxperiod|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7minesubsidencecoverage|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7minesubsidencelimitpol|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7minesubsidencelimitstr|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7minesubsidencestructty|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7monthlylimitofindemnit|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7mortgageorderprece_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7multipremiumanddispers|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7multiresidentialpropsp|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7natureofdependentprope|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7numofstoriesinbldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7occupancycategory|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7occupancyclasscond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7occupancyclassexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7occupancydesc_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7occupancygroup|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7ocpclsschedconditem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7ocpclsschedconditemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7ocpclsschedcovitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7ocpclsschedcovitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7ocpclsschedexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7ocpclsschedexclitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7offpremoption|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7offprempercentinstoexp|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7operationalunitindicat|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7ordinanceorlawcovb|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7ordinanceorlawcovbandc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7ordinanceorlawcovc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7ordinarypayrollnumbero|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7outsidesignconstrctnty|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7outsidesignplacement|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7payroll_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_CP7PayrollLimitation_SAI|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_CP7PayrollLimitSpecl_SAI|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7payrolspcl_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7pctoftotalexteriorwall|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7peakseasonblkt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7personalpropertycauseo|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7pertotrec_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7policytypeselection|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7premisesratep|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7prometrixbgicons_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7prometrixbgiicons_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7prometrixdata_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7prometrixeladate_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7prometrixelc_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7prometrixoccupants_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7prometrixorderiso_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7propertylinecond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7propertylinemod|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7propertylinerf|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7protectionclass|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7protectivesafeguardsym|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7prsprpschconditem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7prsprpschconditemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7prsprpschcovitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7prsprpschcovitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7prsprpschexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7prsprpschexclitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7radioactivecontaminat1|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7radioactivecontaminat2|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7radioactivecontaminati|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7radioandtelevision|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7ratingtype|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7ratingtypebasicgroupii|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7refrigerationmaintenan|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7risktype|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7spcclsbischconditem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7spcclsbischconditemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7spcclsbischcovitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7spcclsbischcovitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7spcclsbischexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7spcclsbischexclitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7spcclsschconditem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7spcclsschconditemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7spcclsschcovitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7spcclsschcovitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7spcclsschexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7spcclsschexclitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7specialclassbasicgroup|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7specialclasscode|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7specialclasscond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7specialclassdescconver|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7specialclassdescriptio|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7specialclasseqdesc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7specialratingterr|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7specialratingterrin|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7specificbasicgroupira1|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7specificbasicgroupirat|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7spoilagecoverage|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7sprinklersystembldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7sprinklersystemoccupcl|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7statrecord|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7terrorismconditionalex|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7terrorismconditionalra|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7terrorismcoverageforce|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7terrorismposttriaexclu|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7terrorismterritoryin|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7terrorismtriatype|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7theftdeductiblespecial|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7timelimitation|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7typeofblanketrating|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7typeofdependentprop|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7typeofdependentproplim|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7typeofrisk|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7typeofunmannedaircraft|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7typeradiotvantenna|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7unmannedaircraftclassd|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7unmannedaircraftmethod|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7unmannedaircraftowners|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7unmannedaircraftprimar|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7unmannedaircraftrating|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7utility|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7utilitydirectdamage|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7utilityservicestimeel1|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7utilityservicestimeele|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7utilitytimeelement|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7utilitytype|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7vacantbuilding|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7valuationtypebldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7valuationtypeprsnlprop|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7valuationtypespecialcl|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7watercraftexclbuyback1|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7watercraftexclbuyback2|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7watercraftexclbuybackc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_CP7windhaildedbasisbldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_CP7windhaildedbldg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7windstormorhaildeduct1|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7yardpropertyindicator|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7yesno|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cp7zipcodestate|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cppesereqres_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cppoccupancycategory_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cppstatemandate_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cpptriadetails_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_cucovtermpremium_ext|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_culineschedexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_facreinsurance_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_famotorcarrierend|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_fareconciliationcount_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_formpatternsystablevalue|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_formpatterntypekey|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_frm_coastalinelig_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_frmformdocumentlookup_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_frwaveeffectivedate_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7act|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7agglimits|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7agglmtli_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7agglmtownerscontr_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7agglmtsforpco_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7aggregatelimitliquor|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7aggregatelimitownersco|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7aggregatelimitpollutio|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7aggregatelimitrailroad|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7aggregatelimits_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7aggregatelimitust|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7aggrelimits_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7baseelprrrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7businessinfolmts_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ceoclasscodeforcde_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ceoclassdescbyc_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ceoforaddlstates_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ceoforstatescov_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ceoinsdbusdescpn_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7classcodeforclassdesc9|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7classcodeforclassdescr|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7classdescbycc_cs|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7classdescbyccepl|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7classdescbyccmeo|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7classdescriptionbycla9|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7classdescriptionbyclas|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7classificationtypert|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7compattackded_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7coverageform|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7coverageformclaimsmade|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7coverageformoccurrence|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7credibilityfactorrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7csclasscodeforcd|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7cyberliabilityded_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7cybersecurelimits_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7damagetopremisesrente9|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7damagetopremisesrented|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7damagetopremrented_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7damtoprempops_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7datacompplus_sai1|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7datarecreationlmts_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7dcptierratetable|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7dedfactorliquorrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7dedfactorpremopsbirt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7dedfactorpremopscslrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7dedfactorpremopspdrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7dedfactorprodsbirt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7dedfactorprodscslrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7dedfactorprodspdrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7deductible1_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7deductible2_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7deductibleliquor|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7detrendfactor5crt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7detrendfactorrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7eachemplimits_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7eachoccurrencelimitgov|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7edlclasscodeforclassde|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7edlclassdescriptionbyc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7eplclasscodeforcd|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7exclusion|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7expectedlossratiort|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7exposurecond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7exposuremod|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7exposurerf|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7exposureschedconditem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7exposureschedcovitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7exposureschedexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7expschedconditemcond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7expschedconditemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7expschedconditemexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7expschedcovitemcond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7expschedcovitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7expschedcovitemexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7expschedexclitemcond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7expschedexclitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7expschedexclitemexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7facreinsursubline_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7finalpremopsincrdlimit|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7finalprodscompldopsinc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7generalagglmt_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7generalaggregatelimit|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7generalaggregatelimitg|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7governmentalsubdivisio|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ilfliquorrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ilfpremopsrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ilfprodsrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7increasedlimitstablea8|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7increasedlimitstablea9|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7increasedlimitstableas|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7injurysuprvsrinspctrso|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7legalentity|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7limitnumericrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7linecond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7linecov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7lineexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7linemod|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7linerf|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7lineschconditem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7lineschcovitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7lineschexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7liquorelprt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7liquorelptextrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7liquorliabexposure_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locationcond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locationexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locationmod|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locationrf|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locationschedconditem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locationschedcovitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locationschedexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locschedconditemcond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locschedconditemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locschedconditemexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locschedcovitemcond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locschedcovitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locschedcovitemexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locschedexclitemcond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locschedexclitemcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7locschedexclitemexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7lossdevelopmentfactorr|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7lossofbusslmts_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7lowmedhigh|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7medpaylimitexcl|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7meoclasscodeforcd|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7meohazardgrade_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7noticecancellationdays|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7numpassgrfreighttrains|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7numyearssinceopsended|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7otherthanproductscompl|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ownerscontractorsclas9|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ownerscontractorsclass|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ownerscontractorselprt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ownerscontractorselpte|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ownerscontractorsterr|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7pcoagglmtsforcgl_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7peradvinjurylmt_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7percentageconversionrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7personalandadvertisin1|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7personalandadvertising|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7policyadjustmentfacto1|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7policyadjustmentfactor|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7pollutionclasscodeforc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7pollutionclassdescript|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7pollutionexclusion|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7pollutionterr|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premiumbaseceo|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premiumbasecybersecure|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premiumbaseepl|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premiumbaseliquor|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premiumbasemeo|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premiumbaseownerscontr|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premiumbasepollution|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premiumbasepremops|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premiumbaseprodscompld|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premiumbaserr|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premiumbaseust|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premiumratingbaseed|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premopsbipddeductible|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premopsded|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premopselp|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premopselprt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premopselptextrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premopsincrdlimittable|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7premopspddedexposure|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7prodcopspddedexposure|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7prodscompldopsaggrega9|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7prodscompldopsaggregat|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7prodscompldopsbipddedu|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7prodscompldopsded|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7prodscompldopselp|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7prodscompldopselpfacto|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7prodscompldopselptextr|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7prodscompldopsexposure|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7prodscompldopslcmrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7prodscompldopspdded|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7prodscompldopsterr|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7productcoverage|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7productscompldopscov|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7productwithdrawalcover|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7productwithdrawalexpen|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7productwithdrawallcmrt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7productwithdrawlfactor|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7prodwithdrawpartperc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7publicrelnservlmts_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7pwccoverage|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7railroadclasscodeforcl|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7railroadclassdescripti|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7railroadelprt|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7railroadterr|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ratingbasistype|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7regulatoryfinessai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7risktype|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7scheduleratingmodific1|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7scheduleratingmodific2|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7scheduleratingmodific3|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7scheduleratingmodific4|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7scheduleratingmodific5|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7scheduleratingmodific6|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7scheduleratingmodific7|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7scheduleratingmodifica|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7scheduletype|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7silicadustprods_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7statrecord|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublinecond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublineexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublinemod|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublinerf|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublineschedconditem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublineschedcovitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublineschedexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublinetypeform_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublinevalue|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublnschedconditmcond|Y||UpdateTime|Y|ID|ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublnschedconditmcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublnschedconditmexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublnschedcovitmcond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublnschedcovitmcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublnschedcovitmexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublnschedexclitmcond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublnschedexclitmcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublnschedexclitmexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublntypmod|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublntyprf|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublntypschconditem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublntypschconditmcond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublntypschconditmcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublntypschconditmexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublntypschcovitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublntypschcovitmcond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublntypschcovitmcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublntypschcovitmexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublntypschexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublntypschexclitmcond|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublntypschexclitmcov|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7sublntypschexclitmexcl|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7terrdesc|Y||ID|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7territory|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7terrorismaggregatelimi|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7triadetails_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7typeofpolicy|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7typeofwatercraft_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7unmannedaclimit|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7unmannedaircraftweight|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ustclasscodeforclassde|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7ustclassdescriptionbyc|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7yesno|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7zipcode|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_imaccourecschexclitem_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_imbuildersriskpartcov_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_imbuildersriskpartexcl_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_imceqippartschcovitem_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_imedpcomp_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_imeqpeakseasoninout_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_imeqpeakseplimit_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_imfacreinsurcovpart_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_iminstafloequipsched_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_iminstaflotestingschd_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_iminstallfloatersched_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_immanuscriptform_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_immepartschedexclitem_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_immfpartschedexclitem_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_immiscfloatefexhib_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_immiscfloatmbpfprem_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_immiscfloatmefequip_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_immiscfloatpdfprop_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_immiscfloatspfprop_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_immiscrestrictexcl_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_immobileequiplocation_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_immobileequipseason_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_immotortruckcargo_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_immotorvehiclesched_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_immtpartschedcovitem_sai|Y||UpdateTime|Y|ID|ID|||
+[PolicyCenterL4-1].dbo.pcx_immtpartschedexclitem_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_imtransitterminals_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_imtransitvehicle_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_imvalpappartcontainer_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_imvalpapscheduleitem_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_imwarehouselimitsched_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_imwarehouselocsched_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_imwarehousespoilsched_sai|Y||UpdateTime|Y|ID|ID|||
+[PolicyCenterL4-1].dbo.pcx_industrycodecpp_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_industrycodes_ext|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_inlandmarineexcl_sai|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_kytaxsurchargeconfig_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_pcifinesandpenalitites_sai|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_portalbillinginfo_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_portalpages_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_ratemodapplicability_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_ratemodfloworder_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_roofshapedetails_ext|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_sbtupdate|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_telematicsuser_ext|Y|Y|UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_ulcupolicy_extschexclitem|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_vehicleid_ext|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pctl_fanumberofdays|Y||Truncate and Load|TypeList| ||||
+[PolicyCenterL4-1].dbo.pctl_gl7costkeycategory|Y||Truncate and Load|TypeList| ||||
+[PolicyCenterL4-1].dbo.pctl_imfacreinschedequip_sai|Y||Truncate and Load|TypeList| ||||
+[PolicyCenterL4-1].dbo.pctl_typeofwatercraft|Y||Truncate and Load|TypeList| ||||
+[PolicyCenterL4-1].dbo.pctl_wgtoftheunmndarcrftinlbs|Y||Truncate and Load|TypeList| ||||
+[PolicyCenterL4-1].dbo.pcx_fanoticeofcancellation|Y||UpdateTime|Y||ID|||
+[PolicyCenterL4-1].dbo.pcx_gl7cg2142credittable|Y||UpdateTime|Y| |ID|||
+[PolicyCenterL4-1].dbo.pcx_imfacreinschedequip_sai|Y||UpdateTime|Y||ID|||

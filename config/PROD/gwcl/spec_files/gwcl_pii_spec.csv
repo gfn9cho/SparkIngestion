@@ -85,3 +85,4 @@ TABLE_NAME|COLUMN_NAME|Notes
 [PolicyCenterL4-1].dbo.pcx_fudriver|LicenseNumber|
 [PolicyCenterL4-1].dbo.pcx_fudriver|MiddleName|
 [PolicyCenterL4-1].dbo.pcx_Reconciliation_Ext|DriverName|
+[PolicyCenterL4-1].dbo.pcx_telematicsuser_ext|LicenseNumber|

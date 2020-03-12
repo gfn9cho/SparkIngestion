@@ -15,7 +15,7 @@ node('L5JENKSLVLA1') {
 	env.JAVA_HOME = "${jdk}"
 
 	//Add list of recipients separated by a single space
-	env.RECIPIENTS = 'venkata.naram@stateauto.com,vinaykumar.kittur@stateauto.com'
+	env.RECIPIENTS = 'venkata.naram@stateauto.com,vinaykumar.kittur@stateauto.com,EDLakeBuild@stateauto.com'
 
 	//Auto deploy to L1
 	env.L1env = ''

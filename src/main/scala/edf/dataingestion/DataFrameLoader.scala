@@ -1,9 +1,9 @@
 package edf.dataingestion
 
-import org.apache.spark.sql.{DataFrame, DataFrameReader, SparkSession}
+import edf.utilities.{Holder, JdbcConnectionUtility}
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions.{broadcast, col, lit}
 import org.joda.time.format.DateTimeFormat
-import edf.utilities.{Cipher, Holder, JdbcConnectionUtility, MetaInfo}
-import org.apache.spark.sql.functions.{col, lit, broadcast}
 
 import scala.util.{Failure, Success, Try}
 
@@ -55,16 +55,14 @@ object DataFrameLoader extends Serializable {
     //val lookUpFile = propertyConfigs.getOrElse("spark.dataingestion.lookUpFile", "")
     //val tableFile: String = propertyConfigs.getOrElse("spark.dataingestion.tableFile", "")
 
-
     val cdcColFromTableSpecStr = tableSpecMap.getOrElse(tableName, "").split(splitString, -1)
     val (cdcColFromTableSpec, hardDeleteFlag) = if (cacheInd != 'Y') {
-      //Holder.log.info("DataFrameLoader-tableName: " + tableName)
-      //Holder.log.info("cdcColFromTableSpecStr: " + cdcColFromTableSpecStr.mkString)
-      (cdcColFromTableSpecStr(0), cdcColFromTableSpecStr(1))
+      cdcColFromTableSpecStr match {
+        case Array(x,y,_,_,_) => (x, y )
+        case _ => throw new Exception(s"parse Exception for table $tableName" +
+          s" using ${cdcColFromTableSpecStr.mkString("-")}")
+      }
     } else ("", "")
-    //val lookUpFile = propertyConfigs.getOrElse("spark.dataingestion.lookUpFile", "")
-    //val metaInfoForLookupFile = new MetaInfo(lookUpFile)
-
 
     def parseQueryAndOptions =
       if (cacheInd == 'Y') {
@@ -182,6 +180,8 @@ object DataFrameLoader extends Serializable {
               case "N" => s" where $cdcColFromTableSpec > '$PreviousBatchWindowEnd'"
             }
           }
+          //Holder.log.info("refTableList: " + refTableList)
+          //Holder.log.info("mainTableList: " + mainTableListFromTableSpec.mkString(","))
           if (refTableList.contains(tableName)) {
             val querytoExecute = s"(select cast(null as datetime) as deleteTime, $decryptCol * from ${tableName}) ${df_name}"
             Success(querytoExecute, partitionMap)
@@ -190,7 +190,8 @@ object DataFrameLoader extends Serializable {
             /*val maxCdcDF: Try[org.apache.spark.sql.Row] = Try {
               spark.sqlContext.sql(cdcQuery).first
             }*/
-            val maxCDF = if (PreviousBatchWindowEnd.trim.isEmpty || PreviousBatchWindowEnd == "1900-01-01" ) "0" else PreviousBatchWindowEnd
+            val maxCDF = if (PreviousBatchWindowEnd.trim.isEmpty || PreviousBatchWindowEnd == "1900-01-01" ||
+              (refTableList.contains(tableName) && mainTableListFromTableSpec.contains(tableName))) "0" else PreviousBatchWindowEnd
             //Holder.log.info("####Capturing queryInfo inside read Table - Incremental: " + s"(select * from ${tableName} where ${cdcCols} > ${Cdc} ) ${df_name}")
             val partitionMap: Map[String, String] = Map("" -> "")
             Success(s"(select cast(null as datetime) as deleteTime, $decryptCol * from ${tableName} where ${cdcCols} > '${maxCDF}' ) ${df_name}", partitionMap)
@@ -270,7 +271,7 @@ object DataFrameLoader extends Serializable {
                 else
                   df.drop(operationalFields: _*).createOrReplaceTempView(df_name)
               else
-                df.drop(operationalFields: _*).cache.createOrReplaceTempView(df_name)
+                df.drop(operationalFields: _*).createOrReplaceTempView(df_name)
 
               val srcCount = 0L //spark.sql(s"select count(*) from $df_name").first().getAs[Long](0)
                  //Holder.log.info("df_name view Created")
@@ -330,17 +331,10 @@ object DataFrameLoader extends Serializable {
     Holder.log.info("delete query: " + query)
     val jdbcSqlConnStr = JdbcConnectionUtility.constructJDBCConnStr(propertyConfigs)
     val driver = JdbcConnectionUtility.getJDBCDriverName(propertyConfigs)
-    val sourceDB = tableToBeIngested.split("\\.")(0).toLowerCase
-    /*
-     * EDIN-***: start Instead of hard coding the suffix of hive database now we are passing the whole DB name from property file
-     */
-    //val hiveDB = propertyConfigs.getOrElse("spark.DataIngestion.targetDB", "") + dbMap.getOrElse(sourceDB, "") + "_data_processed"
-    val hiveDB = propertyConfigs.getOrElse("spark.DataIngestion.targetDB", "")
-    //val hiveSecuredDB = propertyConfigs.getOrElse("spark.DataIngestion.targetSecuredDB", "") + dbMap.getOrElse(sourceDB, "") + "_data_processed"
-    val hiveSecuredDB = propertyConfigs.getOrElse("spark.DataIngestion.targetSecuredDB", "")
-    /*
-     * EDIN-***: end Instead of hard coding the suffix of hive database now we are passing the whole DB name from property file
-     */
+    val boundQuery = s"(select min(id) as lower, max(id) as upper from $tableToBeIngested ) bounds"
+    val partitionOptions = getBoundForPartition(tableDF_arr(2), boundQuery,
+                                  cdcColFromTableSpecStr, spark)
+
     val formattedSourceDBName = if(tableDF_arr(0).contains("-"))
       tableDF_arr(0).replaceAll("\\[","").replaceAll("\\]","").replaceAll("-","_")
     else
@@ -349,51 +343,115 @@ object DataFrameLoader extends Serializable {
 
     def sourceDFwithIDs =
       spark.sqlContext.read.format("jdbc")
-        .options(Map("url" -> jdbcSqlConnStr, "Driver" -> driver, "dbTable" -> query)).load
-        .repartitionByRange(20, col(s"$partitionBy"))
+        .options(Map("url" -> jdbcSqlConnStr, "Driver" -> driver, "dbTable" -> query) ++ partitionOptions).load
+        .repartitionByRange(50, col(s"$partitionBy"))
         .withColumn("identifier", lit("dummy"))
 
+    val targetSql = if (stgLoadBatch)
+                        s"select $partitionBy from $hiveDB.$stageTablePrefix${tableDF_arr(2)} "
+                        else
+                        s"select $partitionBy, cast(ingestiondt as String) , batch, deleted_flag " +
+                          s"from $hiveDB.${tableDF_arr(2)} "
     def targetDFwithIDs =
-      spark.sql(s"select $partitionBy, cast(ingestiondt as String) , batch, deleted_flag from $hiveDB.${tableDF_arr(2)} ")
-        .repartitionByRange(20, col(s"$partitionBy"))
-    import org.apache.spark.sql.functions.{col, max, min}
-    val deleteRecords = targetDFwithIDs.join(sourceDFwithIDs, Seq(partitionBy), "left")
-                                       .groupBy(col(partitionBy))
-                                       .agg(max(col("ingestiondt")).as("ingestiondt"),
-                                         max(col("batch")).as("batch"),
-                                         max(col("identifier")).as("identifier"),
-                                         max(col("deleted_flag")).as("deleted_flag"))
-                                       .filter(col("identifier").isNull)
-                                       .filter(col("deleted_flag") === "0")
-                                       .drop("identifier")
-                                       .drop("deleted_flag")
-    // .rdd.map(row => (row.getAs[Long](0),
-                                        //                row.getAs[String](1),
-                                        //row.getAs[String](2))).collect()
+      spark.sql(targetSql)
+        .repartitionByRange(50, col(s"$partitionBy"))
+    import org.apache.spark.sql.functions.{col, max}
+    val deleteRecords = if(stgLoadBatch) {
+      targetDFwithIDs.join(sourceDFwithIDs,
+        Seq(partitionBy), "left").
+        filter(col("identifier").isNull).
+        drop("identifier")
+    } else {
+      targetDFwithIDs.join(sourceDFwithIDs, Seq(partitionBy), "left")
+        .groupBy(col(partitionBy))
+        .agg(max(col("ingestiondt")).as("ingestiondt"),
+          max(col("batch")).as("batch"),
+          max(col("identifier")).as("identifier"),
+          max(col("deleted_flag")).as("deleted_flag"))
+        .filter(col("identifier").isNull)
+        .filter(col("deleted_flag") === "0")
+        .drop("identifier")
+        .drop("deleted_flag")
+    }
+    def secureTableInd = spark.catalog.tableExists(s"$hiveSecuredDB.${tableDF_arr(2)}")
+    def hiveTable = if(stgLoadBatch)
+                              s"$hiveDB.$stageTablePrefix${tableDF_arr(2)}"
+                              else if (secureTableInd)
+                                    s"$hiveSecuredDB.${tableDF_arr(2)}"
+                                   else
+                                    s"$hiveDB.${tableDF_arr(2)}"
 
-    //Holder.log.info("deleteRecords Size: " + deleteRecords.mkString("--"))
-
-    /*val deleteRecordsID = deleteRecords.map(_._1).distinct.mkString(",")
-    val batchPartitionList = deleteRecords.map(_._3).distinct.map('"' + _ + '"').mkString(",")
-    val datePartitionList = deleteRecords.map(_._2).distinct.map('"' + _ + '"').mkString(",")*/
-    val secureTableInd = spark.catalog.tableExists(s"$hiveSecuredDB.${tableDF_arr(2)}")
-    val hiveTable = if (secureTableInd) s"$hiveSecuredDB.${tableDF_arr(2)}" else s"$hiveDB.${tableDF_arr(2)}"
-
-    val deleteRecordsDF = if (!deleteRecords.head(1).isEmpty)
+    def deleteRecordsDF = if (!deleteRecords.head(1).isEmpty && !stgLoadBatch)
       spark.sql(s"select * from $hiveTable " ).
         join(broadcast(deleteRecords), Seq("ingestiondt", "batch", s"$partitionBy"),"inner")
         .withColumn("deleted_flag", lit(1))
         .withColumn("ingestiondt", lit(datePartition))
         .withColumn("batch", lit(batchPartition.toString))
-    /*  )+
-        s"where ingestiondt in ($datePartitionList) " +
-        s"and batch in ($batchPartitionList) " +
-        s"and $partitionBy in ($deleteRecordsID)")*/
-
     else
       spark.sql(s"select * from $hiveTable where 1 = 0")
-    deleteRecordsDF.cache.createOrReplaceTempView(viewName)
+
+    if(stgLoadBatch) {
+      deleteRecords.createOrReplaceTempView(viewName)
+    } else {
+      deleteRecordsDF.cache.createOrReplaceTempView(viewName)
+    }
     viewName
+  }
+
+  def getBoundForPartition (tableName: String, boundQuery: String,
+                            cdcColFromTableSpecStr: Array[String], spark: SparkSession ) = {
+    val (cdcQuery: String, cdcCols: String) = cdcQueryMap.getOrElse(tableName, "")
+      .split("\\:") match {
+      case Array(query, cdcField) => {
+        //Holder.log.info("####Capturing cdcQueryMapInfo inside read Table: " + query.toString + " : " + cdcField.toString)
+        (query.toString, cdcField.toString)
+      }
+      case _ => ("", "")
+    }
+
+    def bounds: Try[org.apache.spark.sql.Row] = Try {
+      spark.sqlContext.read.format("jdbc").options(Map("url" -> jdbcSqlConnStr, "Driver" -> driver, "dbTable" -> boundQuery)).load.first
+    }
+    Holder.log.info("After Bound Query: " + tableName + ":" +  bounds.get)
+
+    bounds match {
+      case Success(row) => {
+        def boundsMap = row.getValuesMap[AnyVal](row.schema.fieldNames)
+
+        //    Holder.log.info("Bounds Map: " + boundsMap)
+        def lower: AnyVal = Option(boundsMap.getOrElse("lower", 0L)) match {
+          case None => 0L
+          case Some(value) => value
+        }
+        def upper: AnyVal = Option(boundsMap.getOrElse("upper", 0L)) match {
+          case None => 0L
+          case Some(value) => value
+        }
+
+        def boundDifference = upper.asInstanceOf[Number].longValue() - lower.asInstanceOf[Number].longValue()
+        /*if(upper.isInstanceOf[Date]) {
+          Months.monthsBetween(new DateTime().withDate(new LocalDate(upper.asInstanceOf[Date])),
+            new DateTime().withDate(new LocalDate(upper.asInstanceOf[Date]))).asInstanceOf[Number].longValue()
+        } else {
+          upper.asInstanceOf[Number].longValue() - lower.asInstanceOf[Number].longValue()
+        }*/
+
+        def numPartitionStr =  {
+          if(upper.isInstanceOf[Number])
+            if (boundDifference <= 1000000L) 1L else {
+              val part = (boundDifference / 5000000) * 4
+              if (part < 5L) 10L else if (part > 100L) 100L else part
+            }
+          else 5L
+        }
+
+        val numPartitions = if (cdcColFromTableSpecStr(3) == "") numPartitionStr else cdcColFromTableSpecStr(3)
+        val partitionMap: Map[String, String] = Map("partitionColumn" -> "id", "lowerBound" -> lower.toString, "upperBound" -> upper.toString, "numPartitions" -> numPartitions.toString)
+        partitionMap
+      }
+      case Failure(_) => Map("" -> "")
+
+    }
   }
 
   def buildRecords(considerBatchWindow: String, restartInd: String, hardDeleteFlag: String, tableName: String,
@@ -441,4 +499,5 @@ object DataFrameLoader extends Serializable {
       Success(queryToExecute, partitionMap)
     }
   }
+
 }

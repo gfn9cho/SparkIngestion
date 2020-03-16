@@ -1,6 +1,6 @@
-package edf.dataingestion
+package edf.utilities
 
-import edf.utilities.Holder
+import edf.dataload.splitString
 
 class CdcQueryBuilder(propertyConfigs: Map[String, String], tableSpecDetails: List[(String, String)]) {
 

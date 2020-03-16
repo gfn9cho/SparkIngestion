@@ -1,6 +1,7 @@
-package edf.dataingestion
+package edf.dataload.dfactions
 
 import edf.utilities.{BatchConcurrency, Holder}
+import edf.dataload._
 import org.apache.spark.sql.functions.{col, lit}
 import org.apache.spark.sql.{DataFrame, Row, SaveMode, SparkSession}
 
@@ -126,9 +127,9 @@ object WriteTypeList {
       val auditFrame = spark.createDataFrame(spark.sparkContext.parallelize(auditRows), schema)
 
       auditFrame
-        .withColumn("processname", lit(processName))
+        .withColumn("processName", lit(processName))
         .write.format("parquet")
-        .partitionBy("processname", "ingestiondt")
+        .partitionBy("processName", "ingestiondt")
         .options(Map("path" -> (auditPath + "/audit")))
         .mode(SaveMode.Append).saveAsTable(s"$auditDB.audit")
       Holder.log.info("Exiting writeConnect TypeList")
@@ -188,9 +189,9 @@ object WriteTypeList {
 
     val auditFrame = spark.createDataFrame(spark.sparkContext.parallelize(auditRows.toList), schema)
     auditFrame
-      .withColumn("processname", lit(processName))
+      .withColumn("processName", lit(processName))
       .write.format("parquet")
-      .partitionBy("processname", "ingestiondt")
+      .partitionBy("processName", "ingestiondt")
       .options(Map("path" -> (auditPath + "/audit")))
       .mode(SaveMode.Append).saveAsTable(s"$auditDB.audit")
     }

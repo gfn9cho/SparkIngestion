@@ -1,17 +1,29 @@
 package edf
-import scala.collection.immutable.Map
-import edf.utilities.{JdbcConnectionUtility, MetaInfo, sqlQueryParserFromCSV}
+import edf.dataingestion.CdcQueryBuilder
+import edf.utilities.{JdbcConnectionUtility, MetaInfo, TraversableOnceExt, sqlQueryParserFromCSV}
 import org.apache.spark.sql.types.{LongType, StringType, StructField, StructType}
 import org.joda.time.{DateTime, DateTimeZone}
+
+import scala.collection.immutable.Map
+import scala.io.Source
 
 package object dataingestion {
 
   implicit lazy val implicitConversions = scala.language.implicitConversions
 
+  implicit def commomExtendTraversable[A, C[A] <: TraversableOnce[A]](coll: C[A]): TraversableOnceExt[C[A], A] =
+    new TraversableOnceExt[C[A], A](coll, identity)
+
+  implicit def commomExtendStringTraversable(string: String): TraversableOnceExt[String, Char] =
+    new TraversableOnceExt[String, Char](string, implicitly)
+
+  implicit def commomExtendArrayTraversable[A](array: Array[A]): TraversableOnceExt[Array[A], A] =
+    new TraversableOnceExt[Array[A], A](array, implicitly)
+
   val splitString = "@@##@@"
   val dbMap = Map("accounting" -> "acct", "policy" -> "plcy", "contact" -> "cntct", "claims" -> "clms")
 
-  val auditSchema = StructType(
+  val schema = StructType(
     List(
       StructField("ingestiondt", StringType, true),
       StructField("batch", StringType, true),
@@ -62,23 +74,18 @@ package object dataingestion {
                       .map(props => (props.propertyName, props.PropValue)).toMap
 
   val targetDB: String = propertyMap.getOrElse("spark.DataIngestion.targetDB", "")
-  //Below variable decalration is for Missing ID
   val targetSecuredDB: String = propertyMap.getOrElse("spark.DataIngestion.targetSecuredDB", "")
   val oldConsolidateTypeList: String = targetDB  + "_typelist_consolidated"
   val newConsolidateTypeList: String = oldConsolidateTypeList + "_new"
   val auditPath: String = propertyMap.getOrElse("spark.DataIngestion.auditPath", "")
   val auditDB: String = propertyMap.getOrElse("spark.DataIngestion.auditDB", "")
   val hrmnzds3Path: String = propertyMap.getOrElse("spark.DataIngestion.hrmnzds3Path", "")
-
-  //below varibale is for missing ID
   val harmonizeds3SecurePath: String = propertyMap.getOrElse("spark.DataIngestion.hrmnzds3SecurePath", "")
 
 
   val processName: String = propertyMap.getOrElse("spark.DataIngestion.processName", "")
   val lookUpFile: String = propertyMap.getOrElse("spark.DataIngestion.lookUpFile", "")
   val tableFile: String = propertyMap.getOrElse("spark.DataIngestion.tableFile", "")
-
-  //below varibale is for missing ID
   val srcMissingDataTables: String = propertyMap.getOrElse("spark.DataIngestion.srcMissingDataTables", "")
   val loadType: String = propertyMap.getOrElse("spark.DataIngestion.loadType", "")
   val batchParallelism: String = propertyMap.getOrElse("spark.DataIngestion.batchParallelism", "")
@@ -91,8 +98,6 @@ package object dataingestion {
   val refTableListFromTableSpec: Iterator[String] = metaInfoForTableFile.getTypeTables
   val mainTableListFromTableSpec: List[String] = metaInfoForTableFile.getTableSpec.map(_._1)
   val refTableList: List[String] = (refTableListFromLookUp ++ refTableListFromTableSpec).toList.distinct
-
-  //below varibale is for missing ID
   val ref_col_list = metaInfoForLookupFile.getRefColList
   val refTableListStr: String = refTableList.mkString(splitString)
   val piiFile: String = propertyMap.getOrElse("spark.DataIngestion.piiFile", "")
@@ -123,27 +128,26 @@ package object dataingestion {
     })
 
   val piiList: List[(String, String)] = (piiListFromLookup ++ piiListInfo.values.flatten.toList)
-
+  val piiListMultiMap = piiList.toMultiMap
   //Holder.log.info("PiiList.info: " + piiList.toList)
 
   val tableInfos: Seq[(String, String, String, String)] = metaInfoForLookupFile.getLookUpInfo
+  val tableGroup: Map[String, List[String]] = tableInfos.map(info =>
+    (info._1.toString, info._2.toString + splitString + info._4.toString)).toList.toMultiMap
 
   val tableSpec: List[(String,String)] = metaInfoForTableFile.getTableSpec
 
   val tableIngestionList: List[String] = tableSpec.map(_._1)
   val deleteTableList: List[String] = tableSpec.map(x => (x._1,x._2.split(splitString,-1)(1))).filter(_._2 == "id").map(_._1)
   val tableSpecMap: Map[String, String] = tableSpec.toMap
-
-  //below varibale is for missing ID
   val tableSpecMapTrimmed: Map[String, String] = tableSpecMap.map{case (k,v) => k.split("\\.")(2).toLowerCase -> v}
   val refTableListfromTableSpec: String = metaInfoForTableFile.getTypeTables.mkString(splitString)
 
   val cdcQueryMap: Map[String, String] = new CdcQueryBuilder(propertyMap, tableSpec).draftCdcQuery()
 
-  val considerBatchWindow: String = propertyMap.getOrElse("spark.DataIngestion.considerBatchWindow", "")
+  val considerBatchWindowInd: String = propertyMap.getOrElse("spark.DataIngestion.considerBatchWindow", "")
 
   val sourceDB: String = propertyMap.getOrElse("spark.DataIngestion.sourceDB", "")
-
   val connectDBInd: String = propertyMap.getOrElse("spark.DataIngestion.connectDBInd", "N")
   val sourceDBFormatted: String = if(propertyMap.getOrElse("spark.DataIngestion.sourceDB", "").contains("[") || propertyMap.getOrElse("spark.DataIngestion.sourceDB", "").contains("-"))
     propertyMap.getOrElse("spark.DataIngestion.sourceDB", "").replaceAll("\\[","").replaceAll("\\]","").replaceAll("-","_")
@@ -172,6 +176,37 @@ package object dataingestion {
   //EDIN-406
   val claimcenterDatabaseName = propertyMap.getOrElse("spark.ingestion.claimcenter.database.name", "[ClaimCenterL3-1ENT]")
 
+  //Stage Load Parameters
+  val stgLoadBatch: Boolean = propertyMap.getOrElse("spark.ingestion.stageLoadBatch", "false") == "true"
+  val stgFilename: String = propertyMap.getOrElse("spark.ingestion.stageTableList","")
+  val stgTableList: List[String] = stgLoadBatch match {
+    case true => Source.fromFile(stgFilename).getLines.toList.map(_.toLowerCase)
+    case _ => List.empty[String]
+  }
+  val s3SyncEnabled: Boolean = propertyMap.getOrElse("spark.ingestion.s3SyncEnabled","false") == "true"
+  val loadOnlyTLBatch: Boolean = propertyMap.getOrElse("spark.ingestion.loadOnlyTLBatch","false") == "true"
+  val loadFromStage: Boolean = propertyMap.getOrElse("spark.ingestion.loadFromStage","false") == "true"
+  val extractProcessName: String = propertyMap.getOrElse("spark.ingestion.extractProcessName", "")
+  val restoreFromBatch: String = propertyMap.getOrElse("spark.ingestion.restoreFromBatch", "")
+  val stageTablePrefix: String = propertyMap.getOrElse("spark.DataIngestion.stageTablePrefix","")
+
+  val hiveDB: String = stgLoadBatch match {
+    case true =>  propertyMap.getOrElse ("spark.DataIngestion.targetStageDB", "")
+    case false => propertyMap.getOrElse ("spark.DataIngestion.targetDB", "")
+  }
+  val hiveSecuredDB: String = stgLoadBatch match {
+    case true => propertyMap.getOrElse("spark.DataIngestion.targetSecuredStageDB", "")
+    case false => propertyMap.getOrElse("spark.DataIngestion.targetSecuredDB", "")
+  }
+  val s3Location: String = stgLoadBatch match {
+    case true => propertyMap.getOrElse("spark.DataIngestion.stageS3Path", "") + "/temp/"
+    case false => propertyMap.getOrElse("spark.DataIngestion.hrmnzds3Path", "") + "/"
+  }
+  val s3SecuredLocation: String = stgLoadBatch match {
+    case true => propertyMap.getOrElse("spark.DataIngestion.stageS3SecurePath", "") + "/temp/"
+    case false => propertyMap.getOrElse("spark.DataIngestion.hrmnzds3SecurePath", "")  + "/"
+  }
+
   def formatDBName(originalDBName: String) : String = {
     if(originalDBName.contains("-"))
       originalDBName.replaceAll("\\[","").replaceAll("\\]","").replaceAll("-","_")
@@ -187,6 +222,11 @@ package object dataingestion {
 
   val isConnectDatabase: Boolean =  propertyMap.getOrElse("spark.ingestion.isconnectdatabase", "false") == "true"
   val isTypeListToBeRefreshed: Boolean =  propertyMap.getOrElse("spark.ingestion.isTypeListToBeRefreshed", "false") == "true"
+
+  val reconResultDB: String =  propertyMap.getOrElse("spark.ingestion.reconResultDB", "edf_recon")
+  val transformDB: String =  propertyMap.getOrElse("spark.ingestion.transformDB", "edf_transformed")
+  val reconResultPath: String =  propertyMap.getOrElse("spark.ingestion.reconResultPath", "")
+
 
 
   /*

@@ -9,16 +9,21 @@ object JdbcConnectionUtility {
     val dbPwd_enc = propertyConfigs.getOrElse("spark.DataIngestion.dbPwd","")    ///Password
     val dbPwd = Cipher(dbPwd_enc).simpleOffset(-5)
     val sourceDB = propertyConfigs.getOrElse("spark.DataIngestion.sourceDB","")
-    val jdbcSqlConnStr = if(propertyConfigs.getOrElse("spark.DataIngestion.dbType","") == "Netezza")
+    val dbType = propertyConfigs.getOrElse("spark.DataIngestion.dbType","")
+    val jdbcSqlConnStr = if(dbType == "Netezza")
       s"""jdbc:netezza://$dbHost:5480;database=$sourceDB;user=$dbUser;password=$dbPwd;"""
-    else
+    else if(dbType == "mysql")
+      s"""jdbc:mysql://$dbHost:3306/$sourceDB?user=$dbUser&password=$dbPwd"""
+      else
       s"""jdbc:sqlserver://$dbHost:1433;database=$sourceDB;user=$dbUser;password=$dbPwd;"""
     jdbcSqlConnStr
   }
 
   //Gets Driver name for TL Tables
   def getTLJDBCDriverName(propertyConfigs: Map[String,String]): String = {
-    val dbDriverMap = Map("SqlServer"->"com.microsoft.sqlserver.jdbc.SQLServerDriver","Netezza" -> "org.netezza.Driver")
+    val dbDriverMap = Map("SqlServer"->"com.microsoft.sqlserver.jdbc.SQLServerDriver",
+                          "Netezza" -> "org.netezza.Driver",
+                          "mysql" -> "com.mysql.cj.jdbc.Driver")
     val dbTLType = propertyConfigs.getOrElse("spark.dataingestion.dbTLType",propertyConfigs.getOrElse("spark.DataIngestion.dbType", ""))
     dbDriverMap.getOrElse(dbTLType,"com.microsoft.sqlserver.jdbc.SQLServerDriver")
   }
@@ -39,7 +44,10 @@ object JdbcConnectionUtility {
   }
 
   def getJDBCDriverName(propertyConfigs: Map[String,String]): String = {
-    val dbDriverMap = Map("SqlServer"->"com.microsoft.sqlserver.jdbc.SQLServerDriver","Netezza" -> "org.netezza.Driver")
+    val dbDriverMap = Map(
+                      "SqlServer"->"com.microsoft.sqlserver.jdbc.SQLServerDriver",
+                      "Netezza" -> "org.netezza.Driver",
+                      "mysql" -> "com.mysql.cj.jdbc.Driver")
     val dbName = propertyConfigs.getOrElse("spark.DataIngestion.dbType","sqlServer")
     dbDriverMap.getOrElse(dbName,"com.microsoft.sqlserver.jdbc.SQLServerDriver")
   }

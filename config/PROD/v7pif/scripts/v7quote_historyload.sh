@@ -8,7 +8,7 @@ DATE_TS=`date '+%Y-%m-%d_%H%M%S%s'`
 log_file=$base_dir"/logs/"$DATE"/v7quoteHistory_"$DATE_TS".log"
 spec_files_path=$base_dir/v7pif/spec_files
 jar_path=$base_dir/jars/
-spark_app_jar_file_suffix=datalake_processed-assembly
+spark_app_jar_file_suffix=datalake_processed-assembly-
 spark_app_jar_file_version=2.1.0.jar
 
 spark-submit --class edf.v7quote.LoadV7Data \
@@ -31,7 +31,7 @@ spark-submit --class edf.v7quote.LoadV7Data \
  --conf spark.executor.instances=3 --conf spark.serializer=org.apache.spark.serializer.KryoSerializer  \
  --queue default  \
  --name V7Quote_History_Load \
- --files $spec_files_path/v7quote_history.properties#v7quote_history.properties,$spec_files_path/v7quote_LookupAnalysis.csv#v7quote_LookupAnalysis.csv,$spec_files_path/v7quote_PIISpec.csv#v7quote_PIISpec.csv,$spec_files_path/v7quote_TableSpec.csv#v7quote_TableSpec.csv,/etc/spark/conf/hive-site.xml \
+ --files $spec_files_path/v7quote_history.properties#v7quote_history.properties,$spec_files_path/v7quote_lookup_info.csv#v7quote_lookup_info.csv,$spec_files_path/v7quote_pii_spec.csv#v7quote_pii_spec.csv,$spec_files_path/v7quote_table_spec.csv#v7quote_table_spec.csv,/etc/spark/conf/hive-site.xml \
  --properties-file /usr/lib/spark/conf/spark-defaults.conf \
  $jar_path/$spark_app_jar_file_suffix$spark_app_jar_file_version  1>>$log_file 2>&1
 

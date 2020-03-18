@@ -1,7 +1,7 @@
 package edf.dataload.dfactions
 
-import edf.dataload.dfutilities.BuildDeleteRecords
 import edf.dataload._
+import edf.dataload.dfutilities.BuildDeleteRecords
 import edf.utilities.Holder
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types._
@@ -35,7 +35,6 @@ object StageIncremental {
       val upsertDF = combinedDF.
                             where(col("RecordType") === "U").
                             select(col("destFile"), col("id"))
-
 
         if( !upsertDF.cache.head(1).isEmpty) {
           val deleteFileList =   upsertDF.rdd.

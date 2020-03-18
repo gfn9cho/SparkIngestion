@@ -1,8 +1,6 @@
 package edf.v7quote
 
 import edf.utilities.Holder
-import edf.dataload.{targetDB, hrmnzds3Path, targetSecuredDB,
-  harmonizeds3SecurePath, piiListMultiMap}
 import org.apache.spark.sql.functions.lit
 import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 
@@ -19,7 +17,7 @@ object writeToS3 {
       options(Map("path" -> targetLocation)).
       mode(SaveMode.Overwrite).
       saveAsTable(hiveTable)
-    df
+    spark.sql(s"select itemid from $hiveTable where batch = '9999999999999' ")
   }
 
   def piiDataClassification(table: String, df: DataFrame, piiColList: List[String])

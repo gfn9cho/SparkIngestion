@@ -1,9 +1,9 @@
 package edf.v7quote
 
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions.col
 
 import scala.util.{Failure, Success, Try}
-import edf.dataload.tableSpecMapTrimmed
 import edf.utilities.Holder
 object LoadV7Data extends SparkJob {
     override def run(spark: SparkSession, propertyConfigs: Map[String, String]) = {
@@ -24,17 +24,30 @@ object LoadV7Data extends SparkJob {
         6. if its a pii table, mask the respective column and load into harmonized.
        */
         tableSpecMapTrimmed.keys.foreach { table =>
-          def processedTable = CreateMainTableDF(table).
+          val historyFileLocation: String = propertyMap.getOrElse("spark.v7Quote.historyFileLocation", "")
+          val historyFile = s"$historyFileLocation/${table.toUpperCase}"
+          val fileDF = spark.read.format("csv").
+            option("header","false").
+            option("delimiter","\t").
+            option("inferSchema","false").
+            option("mode","DROPMALFORMED").
+            load(historyFile)
+          def processedTable = CreateMainTableDF(table, fileDF).
               transform(BuildDataFrameWithTypes(table)).
                   transform(writeToS3(table))
-          def count = Try{
-            processedTable.count
+          Try{
+            fileDF.select(col("_c0")).
+              except(processedTable.select(col("itemid")))
           } match {
-            case Success(count) => count
-            case Failure(ex) => ex.getMessage
+            case Success(ids) => {
+              Holder.log.info("Rejected Record IDs for table: " +
+                table + ":" + ids.collect().mkString("--"))
+            }
+            case Failure(ex) => {
+              Holder.log.info("Failed table: " +
+                table + ":" + ex.getMessage)
+            }
           }
-          Holder.log.info("Processed Table: " + table + ": "+ count.toString
-            )
         }
     }
 }

@@ -26,8 +26,7 @@ object HrmnzdDataPull {
 
     val df = if (loadFromStage) {
       //spark.sql(s"select * from ${hrmnzdDB.replaceAll("test_","")}.$stageTablePrefix$tableName")
-      spark.sql(s"select * from edf_staging.$stageTablePrefix$tableName")
-
+      spark.sql(s"select * from $initialLoadStagingDB.$stageTablePrefix$tableName")
     }
     else if (loadOnlyTLBatch) {
       spark.sql(s"select * from $hrmnzdDB.$tableName where " +

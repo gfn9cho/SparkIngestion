@@ -1,11 +1,12 @@
 package edf.dataload.dfactions
 
-import edf.dataload.{considerBatchWindowInd, deleteTableList, formatDBName, loadType, piiListMultiMap, restartabilityInd, stageTablePrefix, stgLoadBatch}
 import edf.dataload.dfutilities.{HrmnzdDataPull, PiiData, TypeTableJoins}
 import edf.dataload.helperutilities.{CdcColumnList, DefineCdcCutOffValues}
-import edf.utilities.{Holder, MetaInfo}
+import edf.dataload.{considerBatchWindowInd, formatDBName, loadType,
+  piiListMultiMap, restartabilityInd, stgLoadBatch, stgTableMap}
+import edf.utilities.MetaInfo
 import org.apache.spark.sql.functions._
-import org.apache.spark.sql.{Column, DataFrame, SaveMode, SparkSession}
+import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 
 import scala.collection.immutable.Map
 
@@ -48,6 +49,9 @@ object DataFrameS3Writer {
     else
       cdcColMaxStr._1
 
+    val tableLoadType = if(stgLoadBatch) stgTableMap.
+                                      getOrElse(tableToBeIngested,"").toUpperCase() else ""
+
     val dfBeforePii = hardDeleteBatch match {
       case "Y" => spark.sql(s"select * from $tableDF$deleteString")
         .withColumn("ingestiondt", trunc(date_format(
@@ -56,6 +60,8 @@ object DataFrameS3Writer {
           col(partitionByCol)))
       case "N"
         if stgLoadBatch && loadType == "TL" => HrmnzdDataPull.getTLDataFromHrmnzd(tableDF_arr(2), piiColList, cdcColMaxStr._2)
+      case "N"
+        if stgLoadBatch && tableLoadType == "DI" => HrmnzdDataPull.getTLDataFromHrmnzd(tableDF_arr(2), piiColList, cdcColMaxStr._2)
       case "N" => TypeTableJoins.joinTypeTables(spark, tableToBeIngested, ref_col_list,
         tableGroup, batchPartition).filter(cdcColMax <= max_window)
     }

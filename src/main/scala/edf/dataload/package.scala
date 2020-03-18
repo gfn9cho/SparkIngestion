@@ -89,7 +89,7 @@ package object dataload {
     val srcMissingDataTables: String = propertyMap.getOrElse("spark.DataIngestion.srcMissingDataTables", "")
     val loadType: String = propertyMap.getOrElse("spark.DataIngestion.loadType", "")
     val batchParallelism: String = propertyMap.getOrElse("spark.DataIngestion.batchParallelism", "")
-    val batchEndCutOff: Array[String] = propertyMap.getOrElse("spark.DataIngestion.batchEndCutOff", "").split("-")
+    val batchEndCutOff: Array[String] = propertyMap.getOrElse("spark.DataIngestion.batchEndCutOff", "0-0").split("-")
     val batchEndCutOffHour: Int = batchEndCutOff(0).toInt
     val batchEndCutOffMinute: Int = batchEndCutOff(1).toInt
     val metaInfoForLookupFile: MetaInfo = new MetaInfo(lookUpFile,tableFile)
@@ -184,10 +184,14 @@ package object dataload {
     //Stage Load Parameters
     val stgLoadBatch: Boolean = propertyMap.getOrElse("spark.ingestion.stageLoadBatch", "false") == "true"
     val stgFilename: String = propertyMap.getOrElse("spark.ingestion.stageTableList","")
-    val stgTableList: List[String] = stgLoadBatch match {
-      case true => Source.fromFile(stgFilename).getLines.toList.map(_.toLowerCase)
-      case _ => List.empty[String]
-    }
+  val stgTableList: List[(String, String)] = stgLoadBatch match {
+    case true => Source.fromFile(stgFilename).getLines.toList.map(table => {
+      val splitted = table.toLowerCase.split("\\|", -1)
+      (splitted(0), splitted(1))
+    })
+    case _ => List.empty[(String, String)]
+  }
+  val stgTableMap = stgTableList.toMap
     val s3SyncEnabled: Boolean = propertyMap.getOrElse("spark.ingestion.s3SyncEnabled","false") == "true"
     val loadOnlyTLBatch: Boolean = propertyMap.getOrElse("spark.ingestion.loadOnlyTLBatch","false") == "true"
     val loadFromStage: Boolean = propertyMap.getOrElse("spark.ingestion.loadFromStage","false") == "true"
@@ -196,6 +200,7 @@ package object dataload {
     val stageTablePrefix: String = propertyMap.getOrElse("spark.DataIngestion.stageTablePrefix","")
     val stageCutOffTime: String = propertyMap.getOrElse("spark.ingestion.stageCutOffTime","")
     val stageCutOffLimit: String = propertyMap.getOrElse("spark.ingestion.stageCutOffLimit","MIDNIGHT")
+    val initialLoadStagingDB: String = propertyMap.getOrElse("spark.ingestion.initialLoadStagingDB","edf_staging_bkp")
 
     val hiveDB: String = stgLoadBatch match {
       case true =>  propertyMap.getOrElse ("spark.DataIngestion.targetStageDB", "")

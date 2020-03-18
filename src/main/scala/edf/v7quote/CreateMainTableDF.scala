@@ -1,26 +1,15 @@
 package edf.v7quote
 
-import edf.dataload.{targetDB, propertyMap, getLookupCols}
-import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.functions.{to_date, lit, col}
+import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.apache.spark.sql.functions.{col, lit, to_date}
 
 object CreateMainTableDF {
 
-  def getData(tableName: String)(implicit  spark: SparkSession) = {
+  def getData(tableName: String, fileDF: DataFrame)(implicit  spark: SparkSession) = {
       val dfFromHive = spark.sql(s"select * from $targetDB.$tableName")
       val refCols = getLookupCols.getOrElse(tableName, List.empty[String]) ++
                             List("deletetime","ingestiondt", "batch")
       val hiveSchema = dfFromHive.drop(refCols.toList : _*)
-    val historyFileLocation: String = propertyMap.getOrElse("spark.v7Quote.historyFileLocation", "")
-
-    val historyFile = s"$historyFileLocation/${tableName.toUpperCase}"
-      val fileDF = spark.read.format("csv").
-      option("header","false").
-      option("delimiter","\t").
-      option("inferSchema","false").
-        option("mode","DROPMALFORMED").
-        load(historyFile)
-
       val fileSchema = fileDF.schema.fields.map(x => x.name)
       val tableSchema = hiveSchema.schema.fields.map(x => (x.name, x.dataType))
       val zipSchema = fileSchema.zip(tableSchema)
@@ -32,7 +21,7 @@ object CreateMainTableDF {
         withColumn("batch", lit("9999999999999"))
   }
 
-  def apply(tableName: String)(implicit spark: SparkSession) = {
-    getData(tableName)
+  def apply(tableName: String, fileDF: DataFrame)(implicit spark: SparkSession) = {
+    getData(tableName, fileDF)
   }
 }

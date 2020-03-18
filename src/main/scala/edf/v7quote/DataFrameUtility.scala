@@ -1,7 +1,7 @@
 package edf.v7quote
 
-import edf.utilities.SqlConditionBuilder
-import edf.dataload.{splitString, targetDB, ref_col_list}
+import edf.utilities.{Holder, SqlConditionBuilder}
+import edf.dataload.{ref_col_list, splitString, targetDB}
 import org.apache.spark.sql.functions.{broadcast, col}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
@@ -10,6 +10,7 @@ object DataFrameUtility {
     typeTableList match {
       case Nil => df
       case types :: tail => {
+        Holder.log.info("types: " + types._1)
         val typeTableSqlSplit = types._1.split(splitString, -1)
         val typeTable_arr = typeTableSqlSplit(0).split("\\.")
         val formattedTypeDBName = if (typeTable_arr(0).contains("-"))

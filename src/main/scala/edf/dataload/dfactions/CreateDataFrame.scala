@@ -1,9 +1,8 @@
 package edf.dataload.dfactions
 
-import edf.dataload.{deleteTableList, loadType, restartabilityInd, stgLoadBatch}
 import edf.dataload.dfutilities.ReadTable
-import edf.dataload.helperutilities.DefineCdcCutOffValues
-import org.apache.spark.sql.{Column, DataFrame, SparkSession}
+import edf.dataload.{deleteTableList, loadType, restartabilityInd, stgLoadBatch}
+import org.apache.spark.sql.{DataFrame, SparkSession}
 
 import scala.util.{Failure, Success, Try}
 
@@ -31,7 +30,7 @@ object CreateDataFrame {
         (dest , Container[Try[String]](ReadTable( tableInfo._1,
         Indicator, batch_window_start, auditInfo._3, window_end, failedPartition)))
       case dest if dest == "delete" =>
-        if(stgLoadBatch && isDeleteTable)
+        if(stgLoadBatch && isDeleteTable && loadType != "TL")
           (dest , Container[DataFrame](StageIncremental.getHardDeletesFromHrmnzd(tableDF_arr(2))))
         else
           (dest , Container[DataFrame](spark.emptyDataFrame))

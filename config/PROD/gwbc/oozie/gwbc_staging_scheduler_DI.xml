@@ -1,0 +1,28 @@
+<workflow-app
+    xmlns="uri:oozie:workflow:0.1" name="GWBC DI DATA STAGING">
+    <start to="GWBC_STAGING_DI_LOAD"/>
+        <action name="GWBC_STAGING_DI_LOAD">
+        <ssh xmlns="uri:oozie:ssh-action:0.1">
+        <host>${focusNodeLogin}</host>
+        <command>${spark_run_script_path_DI}</command>
+        <args></args>
+        </ssh>
+        <ok to="END"/>
+        <error to="GWBC_STAGING_DI_LOAD_FAILURE"/>
+        </action>
+
+        <action name="GWBC_STAGING_DI_LOAD_FAILURE">
+        <email xmlns="uri:oozie:email-action:0.1">
+        <to>${emailToAddress}</to>
+        <subject>${mode} TEST  GWBC Daily Staging - DI load failure notification</subject>
+        <body>${mode} TEST GWBC Daily Staging - DI load failure notification</body>
+        </email>
+        <ok to="END"/>
+        <error to="KILL"/>
+        </action>
+    <kill name="KILL">
+        <!-- <message>"Killed job due to error"</message> -->
+        <message>${mode} TEST GWBC DI STAGING load failed while sending the failure notification </message>
+    </kill>
+    <end name="END" />
+</workflow-app>

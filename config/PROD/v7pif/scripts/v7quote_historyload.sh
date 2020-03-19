@@ -2,7 +2,7 @@
 
 echo "Started the script"
 DATE=`date +%Y-%m-%d`
-base_dir=/home/hadoop/edf
+base_dir=/home/hadoop/processed
 mkdir -p $base_dir"/logs/"$DATE
 DATE_TS=`date '+%Y-%m-%d_%H%M%S%s'`
 log_file=$base_dir"/logs/"$DATE"/v7quoteHistory_"$DATE_TS".log"

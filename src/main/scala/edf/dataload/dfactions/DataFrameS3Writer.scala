@@ -61,12 +61,12 @@ object DataFrameS3Writer {
       case "N"
         if stgLoadBatch && loadType == "TL" => HrmnzdDataPull.getTLDataFromHrmnzd(tableDF_arr(2), piiColList, cdcColMaxStr._2)
       case "N"
-        if stgLoadBatch && tableLoadType == "DI" => HrmnzdDataPull.getTLDataFromHrmnzd(tableDF_arr(2), piiColList, cdcColMaxStr._2)
+        if stgLoadBatch && tableLoadType == "TL" => HrmnzdDataPull.getTLDataFromHrmnzd(tableDF_arr(2), piiColList, cdcColMaxStr._2)
       case "N" => TypeTableJoins.joinTypeTables(spark, tableToBeIngested, ref_col_list,
         tableGroup, batchPartition).filter(cdcColMax <= max_window)
     }
     val (srcCount, tgtCount) = PiiData.handlePiiData(dfBeforePii, hardDeleteDF, piiColList, tableToBeIngested,
-      batchPartition, cdcColMaxStr._2, saveMode)
+      batchPartition, cdcColMaxStr._2, saveMode, tableLoadType)
     if(stgLoadBatch && loadType == "TL" && !cdcColMaxStr._2.endsWith("id")) {
       val window = dfBeforePii.agg(min(cdcColMaxStr._1).as("min_window"),
         max(cdcColMaxStr._1).as("max_window")).rdd.

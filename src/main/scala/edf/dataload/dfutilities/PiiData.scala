@@ -1,15 +1,14 @@
 package edf.dataload.dfutilities
 
 import edf.dataload.dfactions.writeToS3
-import edf.dataload.{hiveDB, hiveSecuredDB, s3Location, s3SecuredLocation,
-  schemaCheck, stageTablePrefix, stgLoadBatch, initialLoadStagingDB}
+import edf.dataload.{hiveDB, hiveSecuredDB, s3Location, s3SecuredLocation, schemaCheck, stageTablePrefix, stgLoadBatch}
 import edf.utilities.Holder
 import org.apache.spark.sql.functions.lit
 import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 
 object PiiData {
   def handlePiiData(df: DataFrame, hardDeleteDF: DataFrame, piiColList: List[String], tableToBeIngested: String,
-                    batchPartition: String, cdcColMax: String, saveMode: SaveMode)
+                    batchPartition: String, cdcColMax: String, saveMode: SaveMode, tableLoadType: String)
                    (implicit spark: SparkSession) = {
     val tableDF_arr = tableToBeIngested.split("\\.")
     val hiveTableName = if(stgLoadBatch)
@@ -20,7 +19,7 @@ object PiiData {
       s"$hiveSecuredDB.$stageTablePrefix" + tableDF_arr(2)
     else
       s"$hiveSecuredDB." + tableDF_arr(2)
-    def alterDF(df: DataFrame, hiveTableName: String, hiveSecuredDB: String): DataFrame = {
+    /*def alterDF(df: DataFrame, hiveTableName: String, hiveSecuredDB: String): DataFrame = {
       if(schemaCheck) {
         val dropFields = AlterSchema(df,hiveTableName, "")
         if(dropFields.size > 0)
@@ -29,20 +28,24 @@ object PiiData {
             foldLeft(df)((acc, field) => acc.withColumn(field(0), lit(null).cast(field(1))))
         else df
       } else df
-    }
+    }*/
     def piiDataClassification(df: DataFrame, hardDeleteDF: DataFrame, piiColList: List[String]) : (Long, Long) = {
       piiColList match {
         case pii: List[String]
           if pii.isEmpty =>
           Holder.log.info("hiveDB: " + hiveDB + "-" + hiveTableName)
-         val dfaltered = alterDF(df, hiveTableName, "")
+         val dfaltered = if(schemaCheck)
+                                AlterSchema.alterDF(df, hiveTableName, "", s3Location + tableDF_arr(2))
+                          else df
           writeToS3(dfaltered, hardDeleteDF, s3Location + tableDF_arr(2),
-            hiveTableName, saveMode, batchPartition, cdcColMax)
+            hiveTableName, saveMode, batchPartition, cdcColMax, tableLoadType)
         case pii: List[String] => {
           Holder.log.info("hiveDBSecure: " + hiveSecuredDB + "-" + hiveSecureTable)
-          val dfaltered = alterDF(df, hiveTableName, hiveSecuredDB)
+          val dfaltered = if(schemaCheck)
+                                AlterSchema.alterDF(df, hiveTableName, hiveSecuredDB,s3SecuredLocation + tableDF_arr(2))
+                          else df
           writeToS3(dfaltered, hardDeleteDF, s3SecuredLocation + tableDF_arr(2),
-            hiveSecureTable, saveMode, batchPartition, cdcColMax)
+            hiveSecureTable, saveMode, batchPartition, cdcColMax, tableLoadType)
           val dfFromS3 = spark.sql(s"select * from $hiveSecureTable where " +
             s"batch = '$batchPartition'")
           val dfUpdated: DataFrame = pii.foldLeft(dfFromS3)((d, c) => d.withColumn(c, lit("")))

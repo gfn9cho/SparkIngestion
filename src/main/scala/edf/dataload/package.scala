@@ -186,8 +186,10 @@ package object dataload {
     val stgFilename: String = propertyMap.getOrElse("spark.ingestion.stageTableList","")
   val stgTableList: List[(String, String)] = stgLoadBatch match {
     case true => Source.fromFile(stgFilename).getLines.toList.map(table => {
-      val splitted = table.toLowerCase.split("\\|", -1)
-      (splitted(0), splitted(1))
+      if(table.contains("|")) {
+        val splitted = table.toLowerCase.split("\\|", -1)
+        (splitted(0), splitted(1))
+      } else (table,"")
     })
     case _ => List.empty[(String, String)]
   }

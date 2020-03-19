@@ -1,7 +1,7 @@
 package edf.dataload.dfactions
 
-import edf.utilities.Holder
 import edf.dataload._
+import edf.utilities.Holder
 import org.apache.hudi.DataSourceWriteOptions
 import org.apache.hudi.config.HoodieWriteConfig
 import org.apache.spark.sql.functions.{col, input_file_name, lit, pmod}
@@ -12,7 +12,7 @@ import scala.sys.process._
 
 object writeToS3 {
   def insertInToS3(df: DataFrame , hardDeleteDF: DataFrame , s3TempLocation: String, hiveTable: String,
-                   saveMode: SaveMode, batchPartition: String, cdcColMax: String)
+                   saveMode: SaveMode, batchPartition: String, cdcColMax: String, tableLoadType: String)
                   (implicit  spark: SparkSession): (Long, Long) = {
     /*
       * EDIN-362: Create empty hive table in harmonized layer for TL
@@ -27,7 +27,7 @@ object writeToS3 {
     Holder.log.info("isdeletetable: " + isDeleteTable)
     def hudiOrSparkWrite(df: DataFrame): Unit = {
       stgLoadBatch match {
-        case true if loadType == "TL" =>
+        case true if loadType == "TL" || tableLoadType == "TL" =>
           val partNum = df.select("ingestiondt").dropDuplicates().count
           val dfFiltered = if(isDeleteTable)
                             df.filter(col("deleted_flag")===0) else df
@@ -47,13 +47,13 @@ object writeToS3 {
         case true =>
             s3BackUp(false)
             StageIncremental.identifyPartitions(df, hardDeleteDF, hiveTable, batchPartition, isDeleteTable)
-          df
-            .withColumn("bucket", pmod(col("id"), lit(10)))
-            .write.format("parquet")
-            .partitionBy("ingestiondt", "bucket")
-            .options(Map("path" -> s3TempLocation))
-            .mode(saveMode)
-            .saveAsTable(hiveTable)
+            df
+              .withColumn("bucket", pmod(col("id"), lit(10)))
+              .write.format("parquet")
+              .partitionBy("ingestiondt", "bucket")
+              .options(Map("path" -> s3TempLocation))
+              .mode(saveMode)
+              .saveAsTable(hiveTable)
           StageIncremental.duplicatesCheck(hiveTable, s3TempLocation)
            s3BackUp(true)
         case false =>
@@ -146,9 +146,10 @@ object writeToS3 {
   }
 
   def apply(df: DataFrame, hardDeleteDF: DataFrame, s3TempLocation: String, hiveTable: String, saveMode: SaveMode,
-            batchPartition: String, cdcColMax: String)
+            batchPartition: String, cdcColMax: String, tableLoadType: String)
            (implicit  spark: SparkSession): (Long, Long) = {
-      insertInToS3(df, hardDeleteDF, s3TempLocation, hiveTable, saveMode, batchPartition, cdcColMax)
+      insertInToS3(df, hardDeleteDF, s3TempLocation, hiveTable,
+        saveMode, batchPartition, cdcColMax, tableLoadType)
   }
 }
 

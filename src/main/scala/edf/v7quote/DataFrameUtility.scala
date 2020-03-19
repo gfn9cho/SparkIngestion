@@ -1,7 +1,6 @@
 package edf.v7quote
 
 import edf.utilities.{Holder, SqlConditionBuilder}
-import edf.dataload.{ref_col_list, splitString, targetDB}
 import org.apache.spark.sql.functions.{broadcast, col}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 

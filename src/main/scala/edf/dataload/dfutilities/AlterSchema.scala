@@ -9,12 +9,16 @@ object AlterSchema {
                   hiveSecureDB: String)(implicit spark: SparkSession) = {
     val sourceSchema = dftos3.
       drop("ingestiondt").
+      drop("bucket").
       schema.fields.map(field => field.name + " " + field.dataType.typeName)
-    val targetSchema = spark.sql(s"select * from $hrmnzdHiveTableName").drop("ingestiondt").schema.fields.map(field => field.name + " " + field.dataType.typeName)
+    val targetSchema = spark.sql(s"select * from $hrmnzdHiveTableName").
+                            drop("ingestiondt").
+                            drop("bucket").
+                            schema.fields.
+                            map(field => field.name + " " + field.dataType.typeName)
     val newFields = sourceSchema.map(_.toLowerCase) diff targetSchema.map(_.toLowerCase)
     val dropFields = targetSchema.map(_.toLowerCase) diff sourceSchema.map(_.toLowerCase)
-    Holder.log.info("The new fields size to be added : " + newFields.size)
-    if(newFields.size > 0 ) {
+     if(newFields.size > 0 ) {
       val fieldsToAdd = sourceSchema.filter(field => newFields.map(_.toLowerCase).contains(field.toLowerCase)).mkString(",")
       if (hiveSecureDB != "") {
         val hiveTableName = hrmnzdHiveTableName.split("\\.")(1)
@@ -34,23 +38,32 @@ object AlterSchema {
     dropFields
   }
 
-  def alterDF(df: DataFrame, hiveTableName: String, hiveSecuredDB: String, s3Path: String)
+  def alterDF(df: DataFrame, tableName: String, hiveSecuredDB: String, s3Path: String)
              (implicit spark: SparkSession): DataFrame = {
 
-    val dropFields = AlterSchema(df,hiveTableName, "")
-
+    val hiveTableName = if (hiveSecuredDB != "")
+                                s"$hiveSecuredDB.${tableName.split("\\.")(1)}"
+                                  else
+                                  tableName
+    val dropFields = alterSchema(df,hiveTableName, hiveSecuredDB)
     if(stgLoadBatch && dropFields.size > 0) {
       val newSchema= spark.read.table(hiveTableName).
         schema.fields.
         filter(col => !dropFields.contains(col.name)).
-        map(field => field.name + " " + field.dataType.typeName)
+        map(field => field.name + " " + field.dataType.typeName).mkString(",")
+      val s3PrimLocation = s3Path.replaceAll("/temp/","/")
       spark.sql(s"drop table $hiveTableName")
       spark.sql(
         s"""CREATE TABLE $hiveTableName($newSchema)
            |USING parquet
-           |OPTIONS (path='$s3Path')
+           |OPTIONS (path='$s3PrimLocation')
            |PARTITIONED BY (ingestiondt, bucket)
            |""".stripMargin)
+      Holder.log.info("create table: " + s"""CREATE TABLE $hiveTableName($newSchema)
+                                            |USING parquet
+                                            |OPTIONS (path='$s3Path')
+                                            |PARTITIONED BY (ingestiondt, bucket)
+                                            |""".stripMargin)
       spark.sql(s"ALTER TABLE $hiveTableName RECOVER PARTITIONS")
       df
       /*dropFields.
@@ -60,7 +73,7 @@ object AlterSchema {
   }
 
   def apply(dftos3: Dataset[Row], hrmnzdHiveTableName: String,
-            hiveSecureDB: String)(implicit spark: SparkSession) = {
-    alterSchema(dftos3, hrmnzdHiveTableName, hiveSecureDB)
+            hiveSecureDB: String, s3path: String)(implicit spark: SparkSession) = {
+    alterDF(dftos3, hrmnzdHiveTableName, hiveSecureDB, s3path)
   }
 }

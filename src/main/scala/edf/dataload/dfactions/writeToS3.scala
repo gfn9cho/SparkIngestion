@@ -24,7 +24,6 @@ object writeToS3 {
     val loadTable: Boolean =
                     if(loadType == "TL" || loadType == "RB" || isDeleteTable) true
                     else !df.head(1).isEmpty
-    Holder.log.info("isdeletetable: " + isDeleteTable)
     def hudiOrSparkWrite(df: DataFrame): Unit = {
       stgLoadBatch match {
         case true if loadType == "TL" || tableLoadType == "TL" =>
@@ -46,16 +45,16 @@ object writeToS3 {
           s3RestoreFromBackUp(restoreFromBatch)
         case true =>
             s3BackUp(false)
-            StageIncremental.identifyPartitions(df, hardDeleteDF, hiveTable, batchPartition, isDeleteTable)
+            StageIncremental.identifyPartitions(df, hardDeleteDF, hiveTable,
+              batchPartition, isDeleteTable, s3TempLocation)
             df
               .withColumn("bucket", pmod(col("id"), lit(10)))
-              .write.format("parquet")
+              .write
               .partitionBy("ingestiondt", "bucket")
-              .options(Map("path" -> s3TempLocation))
               .mode(saveMode)
-              .saveAsTable(hiveTable)
-          StageIncremental.duplicatesCheck(hiveTable, s3TempLocation)
-           s3BackUp(true)
+              .parquet(s3TempLocation)
+            StageIncremental.duplicatesCheck(hiveTable, s3TempLocation)
+            s3BackUp(true)
         case false =>
           Holder.log.info("Executing spark load")
           df
@@ -74,6 +73,7 @@ object writeToS3 {
 
       if(isLoadCompleteInd) {
         s"aws s3 sync $s3TempLocation $s3PrimLocation --delete".!!
+        spark.sql(s"ALTER TABLE $hiveTable RECOVER PARTITIONS")
       } else if (s3SyncEnabled) {
         if (restartabilityInd == "Y") {
           s"aws s3 sync $s3PrimLocation $s3TempLocation --delete".!!
@@ -81,7 +81,29 @@ object writeToS3 {
         } else
           s"aws s3 sync $s3TempLocation $backUpLocation".!!
       }
+
+      if(loadType == "TL" || tableLoadType == "TL") {
+        createHiveTable(s3PrimLocation)
+        spark.sql(s"ALTER TABLE $hiveTable RECOVER PARTITIONS")
+      }
       //s3Sync.!!
+    }
+
+    def createHiveTable(s3Path: String) = {
+      val schemaCopy= spark.read.table(hiveTable).schema.fields.
+        map(field => field.name + " " + field.dataType.typeName).mkString(",")
+      spark.sql(s"drop table $hiveTable")
+      Holder.log.info("create table: " + s"""CREATE TABLE $hiveTable($schemaCopy)
+                                            |USING parquet
+                                            |OPTIONS (path='$s3Path')
+                                            |PARTITIONED BY (ingestiondt, bucket)
+                                            |""".stripMargin)
+      spark.sql(
+        s"""CREATE TABLE $hiveTable($schemaCopy)
+           |USING parquet
+           |OPTIONS (path='$s3Path')
+           |PARTITIONED BY (ingestiondt, bucket)
+           |""".stripMargin)
     }
 
     def s3RestoreFromBackUp(restoreBatch: String) = {

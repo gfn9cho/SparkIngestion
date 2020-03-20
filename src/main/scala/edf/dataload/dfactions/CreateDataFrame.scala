@@ -1,7 +1,7 @@
 package edf.dataload.dfactions
 
 import edf.dataload.dfutilities.ReadTable
-import edf.dataload.{deleteTableList, loadType, restartabilityInd, stgLoadBatch}
+import edf.dataload.{deleteTableList, loadType, restartabilityInd, stgLoadBatch, stgTableMap}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 import scala.util.{Failure, Success, Try}
@@ -24,13 +24,15 @@ object CreateDataFrame {
       deleteTableList.map(_.split("\\.")(2)).
         contains(tableDF_arr(2))
     else false
+    val tableLoadType = if(stgLoadBatch) stgTableMap.
+      getOrElse(tableInfo._1,"").toUpperCase() else ""
    val failedPartition =  if(restartabilityInd == "Y") auditInfo._2 else ""
     val dfActions = Array("read", "delete").par.map {
       case dest if dest == "read" =>
         (dest , Container[Try[String]](ReadTable( tableInfo._1,
         Indicator, batch_window_start, auditInfo._3, window_end, failedPartition)))
       case dest if dest == "delete" =>
-        if(stgLoadBatch && isDeleteTable && loadType != "TL")
+        if(stgLoadBatch && isDeleteTable && loadType != "TL" && tableLoadType != "TL")
           (dest , Container[DataFrame](StageIncremental.getHardDeletesFromHrmnzd(tableDF_arr(2))))
         else
           (dest , Container[DataFrame](spark.emptyDataFrame))

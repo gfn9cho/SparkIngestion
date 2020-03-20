@@ -1,11 +1,8 @@
 package edf.dataload.dfutilities
 
-import edf.dataload.{cdcQueryMap, claimcenterDatabaseName,
-  hardDeleteBatch, loadType, mainTableListFromTableSpec,
-  now, propertyMap, refTableListfromTableSpec,
-  splitString, tableSpecMap, timeZone, dbType}
 import edf.dataload.helperutilities.PartitionBounds
-import edf.utilities.{Holder, JdbcConnectionUtility}
+import edf.dataload.{cdcQueryMap, claimcenterDatabaseName, dbType, hardDeleteBatch, loadType, mainTableListFromTableSpec, now, propertyMap, refTableListfromTableSpec, splitString, tableSpecMap, timeZone}
+import edf.utilities.JdbcConnectionUtility
 import org.apache.spark.sql.SparkSession
 import org.joda.time.format.DateTimeFormat
 
@@ -90,7 +87,7 @@ object ReadTable {
           val boundQuery = if(dbType == "mysql")
             s"(${cdcQuery.replaceAll(".dummy.",".")}) bounds"
           else s"(${cdcQuery}) bounds"
-           Holder.log.info("####Capturing queryInfo inside read Table-Truncate: " + boundQuery)
+
           val conditionForQuery = considerBatchWindow match {
             case "Y" => if (hardDeleteFlag == "cdc" && tableName.contains(".cdc."))
               s" where ${cdcColFromTableSpec} <= '${PreviousBatchWindowEnd}' and $deleteRecordFilter "
@@ -168,7 +165,6 @@ object ReadTable {
           query.
             replaceAll(".dummy.",".")
         else query
-        Holder.log.info("The query to be executed : " + queryToExecute)
         Try(spark.sqlContext.read.format("jdbc")
           .options(Map("url" -> jdbcSqlConnStr, "Driver" -> driver, "dbTable" -> queryToExecute) ++ optns), query, numPartitions
         )

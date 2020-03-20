@@ -7,17 +7,13 @@ import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.{DataFrame, Row, SaveMode, SparkSession}
 
-import scala.collection.immutable.Map
-
 
 object StageIncremental {
-    def identifyPartitions(df: DataFrame, hardDeleteDF: DataFrame, stageTableName: String, batch: String,
-                           isDeleteTable: Boolean)
+    def identifyPartitions(df: DataFrame, hardDeleteDF: DataFrame, stageTableName: String,
+                           batch: String, isDeleteTable: Boolean, s3Loc: String)
                           (implicit spark: SparkSession) = {
       val incrDF = df.select(col("id"))
                       .withColumn("bucket", pmod(col("id"), lit(10)))
-      val stageTableWithoutDB = stageTableName.split("\\.")(1)
-      spark.sql(s"refresh table $stageTableName")
       val schema = StructType(
         StructField("id", LongType, true) ::
           StructField("bucket", LongType, true) :: Nil)
@@ -26,7 +22,7 @@ object StageIncremental {
                           hardDeleteDF.select(col("id"))
                            .withColumn("bucket", pmod(col("id"), lit(10)))
                           else spark.createDataFrame(spark.sparkContext.emptyRDD[Row], schema)
-      val stageDF = spark.sql(s"select ingestiondt, id, bucket from $stageTableName").
+      val stageDF = spark.read.parquet(s3Loc).
                     withColumn("RecordType", lit("U")).
                     withColumn("destFile", input_file_name)
 
@@ -37,8 +33,9 @@ object StageIncremental {
                             select(col("destFile"), col("id"))
 
         if( !upsertDF.cache.head(1).isEmpty) {
-          val deleteFileList =   upsertDF.rdd.
-            map(x => (x.getString(0), x.getLong(1))).collect().
+          Holder.log.info("upsertDF: " + upsertDF.collect())
+          val deleteFileList =   upsertDF.collect().
+            map(x => (x.getString(0), x.getLong(1))).
             groupBy(_._1).map { case (k, v) => k -> v.map(_._2) }.toList.par.map(x => {
             val oldDF = spark.read.format("parquet").load(x._1).
               filter(!col("id").isin(x._2.toList: _*))
@@ -54,24 +51,28 @@ object StageIncremental {
 
   def duplicatesCheck(stageTableName: String, s3Location: String)
                      (implicit spark: SparkSession) = {
-    val dupDF = spark.sql(s"select id, count(*) from $stageTableName " +
-      s"group by id having count(*) > 1")
+    val dupDF = spark.read.parquet(s3Location).
+                    groupBy(col("id")).count.
+                    where(col("count") > 1)
+
     if(!dupDF.head(1).isEmpty) {
-      val stageDF = spark.sql(s"select * from $stageTableName").
+      val stageDF = spark.read.parquet(s3Location).
         withColumn("fileName", input_file_name())
       val dupData = stageDF.
-                            join(broadcast(dupDF), Seq("id"),"inner")
+                            join(broadcast(dupDF.drop(col("count"))),
+                                Seq("id"),"inner")
+      val uniqueDF = dupData.groupBy(col("id")).
+                              agg(max("batch").as("batch"))
       val dupFiles = dupData.
                             select(col("fileName")).dropDuplicates().
                             collect()
       dupData.drop(col("fileName")).
-        drop(col("count(1)")).dropDuplicates.
-        write.format("parquet").
+        join(uniqueDF, Seq("id","batch")).coalesce(1).
+        dropDuplicates.
+        write.
         partitionBy("ingestiondt", "bucket")
-        .options(Map("path" -> s3Location))
         .mode(SaveMode.Append)
-        .saveAsTable(stageTableName)
-      Holder.log.info("duplicate files: " + dupFiles.mkString(","))
+        .parquet(s3Location)
       deleteStagePartition(dupFiles.map(_.getString(0)).toList)
     }
 
@@ -113,8 +114,9 @@ object StageIncremental {
   }
 
 
-  def apply(df: DataFrame, hardDeleteDF: DataFrame, stageTableName: String, batch: String, isDeleteTable: Boolean)
+  def apply(df: DataFrame, hardDeleteDF: DataFrame, stageTableName: String,
+            batch: String, isDeleteTable: Boolean, s3Loc: String)
            (implicit spark: SparkSession) = {
-    identifyPartitions(df,hardDeleteDF, stageTableName, batch, isDeleteTable)
+    identifyPartitions(df,hardDeleteDF, stageTableName, batch, isDeleteTable, s3Loc)
   }
 }

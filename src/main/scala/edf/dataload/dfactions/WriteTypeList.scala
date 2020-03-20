@@ -1,7 +1,7 @@
 package edf.dataload.dfactions
 
-import edf.utilities.{BatchConcurrency, Holder}
 import edf.dataload._
+import edf.utilities.{BatchConcurrency, Holder}
 import org.apache.spark.sql.functions.{col, lit}
 import org.apache.spark.sql.{DataFrame, Row, SaveMode, SparkSession}
 
@@ -88,7 +88,6 @@ object WriteTypeList {
         val writeFutures: Row = if (typeListToBeIngested.contains(auditValues(2)) && auditValues(6) == "success") {
           val sourceDBStr = auditValues(2).split("\\.")
           val sourceDB = sourceDBStr(0).toLowerCase
-          Holder.log.info("TypeList Table Name: " + sourceDBStr(2))
           /*
            * EDIN-***: start Instead of hard coding the suffix of hive database now we are passing the whole DB name from property file
            */
@@ -109,7 +108,6 @@ object WriteTypeList {
             } match {
               case Success(_) => None
               case Failure(ex) => {
-              Holder.log.info("Failed TypeList: " + hiveTableName + "-" + harmonizedPath + "-" + sourceCount)
               throw new Exception(ex.getMessage)
               }
             }
@@ -150,7 +148,6 @@ object WriteTypeList {
           val auditValues = value.split(splitString)
           val sourceDBStr = auditValues(2).split("\\.")
           val sourceDB = sourceDBStr(0).toLowerCase.replaceAll("\\[","").replaceAll("\\]","").replaceAll("-","_")
-          Holder.log.info("#### sourceDB "+ sourceDB)
           /*
           * EDIN-***: Start Instead of hard coding the suffix of hive database now we are passing the whole DB name from property file
           */
@@ -161,7 +158,6 @@ object WriteTypeList {
            */
 
           val tableDf = sourceDBStr(0).replaceAll("\\[","").replaceAll("\\]","").replaceAll("-","_") + "_" + sourceDBStr(2)
-          Holder.log.info("#### tableDf "+ tableDf)
           val hiveTableName = s"$hiveDB." + sourceDBStr(2)
           val harmonizedPath = hrmnzds3Path + "/" + sourceDBStr(2)
       val df = spark.sql(s"select * from ${tableDf}")

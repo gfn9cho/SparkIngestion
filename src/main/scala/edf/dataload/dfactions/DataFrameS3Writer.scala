@@ -2,8 +2,7 @@ package edf.dataload.dfactions
 
 import edf.dataload.dfutilities.{HrmnzdDataPull, PiiData, TypeTableJoins}
 import edf.dataload.helperutilities.{CdcColumnList, DefineCdcCutOffValues}
-import edf.dataload.{considerBatchWindowInd, formatDBName, loadType,
-  piiListMultiMap, restartabilityInd, stgLoadBatch, stgTableMap}
+import edf.dataload.{considerBatchWindowInd, formatDBName, loadType, piiListMultiMap, restartabilityInd, stgLoadBatch, stgTableMap}
 import edf.utilities.MetaInfo
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
@@ -32,11 +31,12 @@ object DataFrameS3Writer {
     val cdcColMaxStr = CdcColumnList.getCdcColMax(tableKey)
     val considerBatchWindow = if(hardDeleteBatch == "Y") "Y" else considerBatchWindowInd
     val deleteString = if(hardDeleteBatch == "Y") "_delete" else ""
-
+    val tableLoadType = if(stgLoadBatch) stgTableMap.
+      getOrElse(tableToBeIngested,"").toUpperCase() else ""
 
     val (cdcColMax, min_window, max_window) =
       if(considerBatchWindow == "Y" ||
-      (stgLoadBatch && loadType == "TL" &&
+      (stgLoadBatch && (loadType == "TL" || tableLoadType == "TL") &&
         !cdcColMaxStr._2.endsWith("id")))
       (null,null,null)
     else DefineCdcCutOffValues.getMinMaxCdc(tableDF, tableKey, replicationTime)
@@ -48,9 +48,6 @@ object DataFrameS3Writer {
       col("ingestiondt")
     else
       cdcColMaxStr._1
-
-    val tableLoadType = if(stgLoadBatch) stgTableMap.
-                                      getOrElse(tableToBeIngested,"").toUpperCase() else ""
 
     val dfBeforePii = hardDeleteBatch match {
       case "Y" => spark.sql(s"select * from $tableDF$deleteString")
@@ -67,7 +64,7 @@ object DataFrameS3Writer {
     }
     val (srcCount, tgtCount) = PiiData.handlePiiData(dfBeforePii, hardDeleteDF, piiColList, tableToBeIngested,
       batchPartition, cdcColMaxStr._2, saveMode, tableLoadType)
-    if(stgLoadBatch && loadType == "TL" && !cdcColMaxStr._2.endsWith("id")) {
+    if(stgLoadBatch && (loadType == "TL" || tableLoadType == "TL") && !cdcColMaxStr._2.endsWith("id")) {
       val window = dfBeforePii.agg(min(cdcColMaxStr._1).as("min_window"),
         max(cdcColMaxStr._1).as("max_window")).rdd.
         map(r => (r.getTimestamp(0), r.getTimestamp(1))).first()

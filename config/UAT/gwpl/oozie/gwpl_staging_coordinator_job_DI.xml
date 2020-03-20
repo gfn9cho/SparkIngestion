@@ -1,0 +1,8 @@
+<coordinator-app name="GWPL_DATA_STAGING_DI" frequency="${frequency}" start="${startTime}" end="${endTime}" timezone="${timezone}" xmlns="uri:oozie:coordinator:0.1">
+<action>
+<workflow>
+<app-path>${workflowPath}</app-path>
+</workflow>
+</action>
+</coordinator-app>
+

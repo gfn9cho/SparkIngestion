@@ -12,13 +12,15 @@ object AuditLog {
     {
 
       val auditFrame = spark.createDataFrame(spark.sparkContext.parallelize(Seq(stats._2),1), schema)
+      val auditSaveMode = if(spark.catalog.tableExists(s"$auditDB.audit"))
+        SaveMode.Append else SaveMode.Overwrite
       auditFrame
         .filter(!col("batchwindowend").isNull)
         .withColumn("processname", lit(processName))
         .write.format("parquet")
         .partitionBy("processname", "ingestiondt")
         .options(Map("path" -> (auditPath + "/audit")))
-        .mode(SaveMode.Append).saveAsTable(s"$auditDB.audit")
+        .mode(auditSaveMode).saveAsTable(s"$auditDB.audit")
 
       val auditData = stats._1 match {
         case "failed" => Some(stats._2.mkString(splitString))

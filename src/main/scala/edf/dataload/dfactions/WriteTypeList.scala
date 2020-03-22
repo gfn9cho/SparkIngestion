@@ -124,12 +124,14 @@ object WriteTypeList {
 
       val auditFrame = spark.createDataFrame(spark.sparkContext.parallelize(auditRows), schema)
 
+      val auditSaveMode = if(spark.catalog.tableExists(s"$auditDB.audit"))
+                          SaveMode.Append else SaveMode.Overwrite
       auditFrame
         .withColumn("processName", lit(processName))
         .write.format("parquet")
         .partitionBy("processName", "ingestiondt")
         .options(Map("path" -> (auditPath + "/audit")))
-        .mode(SaveMode.Append).saveAsTable(s"$auditDB.audit")
+        .mode(auditSaveMode).saveAsTable(s"$auditDB.audit")
       Holder.log.info("Exiting writeConnect TypeList")
     }
   }

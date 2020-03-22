@@ -24,7 +24,7 @@ package object dataload {
 
     val schema = StructType(
       List(
-        StructField("ingestionDt", StringType, true),
+        StructField("ingestiondt", StringType, true),
         StructField("batch", StringType, true),
         StructField("TableName", StringType, true),
         StructField("SourceCount", LongType, true),
@@ -44,7 +44,7 @@ package object dataload {
 
     val batchStatsSchema = StructType(
       List(
-        StructField("ProcessName", StringType, true),
+        StructField("processname", StringType, true),
         StructField("ingestiondt", StringType, true),
         StructField("batch", StringType, true),
         StructField("BatchStartTime", StringType, true),
@@ -189,7 +189,7 @@ package object dataload {
       if(table.contains("|")) {
         val splitted = table.toLowerCase.split("\\|", -1)
         (splitted(0), splitted(1))
-      } else (table,"")
+      } else (table.toLowerCase,"")
     })
     case _ => List.empty[(String, String)]
   }
@@ -203,6 +203,11 @@ package object dataload {
     val stageCutOffTime: String = propertyMap.getOrElse("spark.ingestion.stageCutOffTime","")
     val stageCutOffLimit: String = propertyMap.getOrElse("spark.ingestion.stageCutOffLimit","MIDNIGHT")
     val initialLoadStagingDB: String = propertyMap.getOrElse("spark.ingestion.initialLoadStagingDB","edf_staging_bkp")
+    val initialLoadSecuredStagingDB: String = propertyMap.getOrElse("spark.ingestion.initialLoadSecuredStagingDB","edf_staging_bkp")
+    val backUpStageforTL: Boolean = propertyMap.getOrElse("spark.ingestion.backUpStageforTL","false") == "true"
+    val backupFromDB: String = propertyMap.getOrElse ("spark.ingestion.backupFromDB", "")
+    val backupFromSecuredDB: String = propertyMap.getOrElse ("spark.ingestion.backupFromSecuredDB", "")
+    val backUpToLocation: String = propertyMap.getOrElse("spark.ingestion.backUpToLocation", "")
 
     val hiveDB: String = stgLoadBatch match {
       case true =>  propertyMap.getOrElse ("spark.DataIngestion.targetStageDB", "")

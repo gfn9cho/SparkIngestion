@@ -1,7 +1,9 @@
 package edf.dataload.helperutilities
 
 import edf.dataload.auditutilities.{BuildAuditData, FailedTablesFromAuditLog}
-import edf.dataload.{considerBatchWindowInd, deleteTableList, hardDeleteBatch, restartabilityInd, restartabilityLevel, stgLoadBatch, stgTableList, tableIngestionList}
+import edf.dataload.{considerBatchWindowInd, deleteTableList, hardDeleteBatch,
+  restartabilityInd, restartabilityLevel, stgLoadBatch,
+  stgTableList, tableIngestionList, loadType}
 import org.apache.spark.sql.SparkSession
 
 object TableList {
@@ -12,7 +14,8 @@ object TableList {
         val failedTableAuditMap = if(restartabilityInd == "Y")
                                       FailedTablesFromAuditLog().get else
                                       Map[String, (String, String, String, String)]()
-        val auditMap = BuildAuditData()
+        val auditMap = if(loadType == "TL") Map[String, (String, String, String, String)]()
+        else BuildAuditData()
         val tableList =
           if(hardDeleteBatch == "Y") deleteTableList.
                                         map(table => (table, auditMap.getOrElse(table, ("","","",""))))

@@ -16,12 +16,14 @@ object ConsolidateAuditEntry {
         //BatchTimes is a Tuple Of(batchPartition, batchStartTime, Batch_window_start, Batch_Window_End, HardDeleteBatch)
         def batchStats = Seq(Row(processName, datePartition, batchTimes._5, batchTimes._4, batchTimes._2,
           batchTimes._3, batchTimes._6))
+        val auditSaveMode = if(spark.catalog.tableExists(s"$auditDB.audit"))
+          SaveMode.Append else SaveMode.Overwrite
 
         spark.createDataFrame(spark.sparkContext.parallelize(batchStats,1), batchStatsSchema)
           .write.format("parquet")
           .partitionBy("processname", "ingestiondt")
           .options(Map("path" -> (auditPath + "/batchStats")))
-          .mode(SaveMode.Append).saveAsTable(s"$auditDB.batchStats")
+          .mode(auditSaveMode).saveAsTable(s"$auditDB.batchStats")
 
         val auditData = spark.sql(s"select * from $auditDB.audit where processname = '$processName' " +
           s"and ingestiondt = '$datePartition'").coalesce(1)

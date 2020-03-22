@@ -1,7 +1,8 @@
 package edf.dataload.dfutilities
 
 import edf.dataload.{auditDB, extractProcessName, loadFromStage,
-  loadOnlyTLBatch, propertyMap, stageTablePrefix,initialLoadStagingDB}
+  loadOnlyTLBatch, propertyMap, stageTablePrefix,
+  initialLoadStagingDB, initialLoadSecuredStagingDB}
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions.{array, row_number}
 import org.apache.spark.sql.{DataFrame, SparkSession}
@@ -27,7 +28,11 @@ object HrmnzdDataPull {
 
     val df = if (loadFromStage) {
       //spark.sql(s"select * from ${hrmnzdDB.replaceAll("test_","")}.$stageTablePrefix$tableName")
-      spark.sql(s"select * from $initialLoadStagingDB.$stageTablePrefix$tableName")
+      if(spark.catalog.
+          tableExists(s"$initialLoadSecuredStagingDB.$stageTablePrefix$tableName"))
+        spark.sql(s"select * from $initialLoadSecuredStagingDB.$stageTablePrefix$tableName")
+      else
+        spark.sql(s"select * from $initialLoadStagingDB.$stageTablePrefix$tableName")
     }
     else if (loadOnlyTLBatch) {
       spark.sql(s"select * from $hrmnzdDB.$tableName where " +

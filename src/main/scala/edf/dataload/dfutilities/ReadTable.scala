@@ -2,7 +2,7 @@ package edf.dataload.dfutilities
 
 import edf.dataload.helperutilities.PartitionBounds
 import edf.dataload.{cdcQueryMap, claimcenterDatabaseName, dbType, hardDeleteBatch, loadType, mainTableListFromTableSpec, now, propertyMap, refTableListfromTableSpec, splitString, tableSpecMap, timeZone}
-import edf.utilities.JdbcConnectionUtility
+import edf.utilities.{Holder, JdbcConnectionUtility}
 import org.apache.spark.sql.SparkSession
 import org.joda.time.format.DateTimeFormat
 
@@ -51,7 +51,7 @@ object ReadTable {
     }
     //val lookUpFile = propertyMap.getOrElse("spark.dataingestion.lookUpFile", "")
     //val tableFile: String = propertyMap.getOrElse("spark.dataingestion.tableFile", "")
-
+    Holder.log.info("Read Table: " + tableName + ":" + tableSpecMap.getOrElse(tableName, ""))
     val cdcColFromTableSpecStr = tableSpecMap.getOrElse(tableName, "").split(splitString, -1)
     val (cdcColFromTableSpec, hardDeleteFlag) = if (cacheInd != 'Y') {
       cdcColFromTableSpecStr match {

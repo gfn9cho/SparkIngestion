@@ -23,7 +23,7 @@ object LoadV7Data extends SparkJob {
         5. if its a pii table, load into secured bucket.
         6. if its a pii table, mask the respective column and load into harmonized.
        */
-        tableSpecMapTrimmed.keys.foreach { table =>
+        tableSpecMapTrimmed.keys.par.foreach { table =>
           val historyFileLocation: String = propertyMap.getOrElse("spark.v7Quote.historyFileLocation", "")
           val historyFile = s"$historyFileLocation/${table.toUpperCase}"
           val fileDF = spark.read.format("csv").

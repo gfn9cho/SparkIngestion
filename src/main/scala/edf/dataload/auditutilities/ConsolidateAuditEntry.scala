@@ -22,7 +22,7 @@ object ConsolidateAuditEntry {
         spark.createDataFrame(spark.sparkContext.parallelize(batchStats,1), batchStatsSchema)
           .write.format("parquet")
           .partitionBy("processname", "ingestiondt")
-          .options(Map("path" -> (auditPath + "/batchStats")))
+          .options(Map("path" -> (auditPath + "/batchstats")))
           .mode(auditSaveMode).saveAsTable(s"$auditDB.batchStats")
 
         val auditData = spark.sql(s"select * from $auditDB.audit where processname = '$processName' " +

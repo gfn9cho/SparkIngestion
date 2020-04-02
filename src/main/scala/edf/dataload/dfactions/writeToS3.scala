@@ -73,7 +73,6 @@ object writeToS3 {
 
       if(isLoadCompleteInd) {
         s"aws s3 sync $s3TempLocation $s3PrimLocation --delete".!!
-        spark.sql(s"ALTER TABLE $hiveTable RECOVER PARTITIONS")
       } else if (s3SyncEnabled) {
         if (restartabilityInd == "Y") {
           s"aws s3 sync $s3PrimLocation $s3TempLocation --delete".!!
@@ -84,6 +83,8 @@ object writeToS3 {
 
       if(loadType == "TL" || tableLoadType == "TL") {
         createHiveTable(s3PrimLocation)
+        spark.sql(s"ALTER TABLE $hiveTable RECOVER PARTITIONS")
+      } else {
         spark.sql(s"ALTER TABLE $hiveTable RECOVER PARTITIONS")
       }
       //s3Sync.!!

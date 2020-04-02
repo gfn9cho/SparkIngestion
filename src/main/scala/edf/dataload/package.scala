@@ -243,7 +243,7 @@ package object dataload {
     val isTypeListToBeRefreshed: Boolean =  propertyMap.getOrElse("spark.ingestion.isTypeListToBeRefreshed", "false") == "true"
 
     val reconResultDB: String =  propertyMap.getOrElse("spark.ingestion.reconResultDB", "edf_recon")
-    val transformDB: String =  propertyMap.getOrElse("spark.ingestion.transformDB", "edf_transformed")
+    val transformDB: String =  propertyMap.getOrElse("spark.ingestion.transformDB", "transformed")
     val reconResultPath: String =  propertyMap.getOrElse("spark.ingestion.reconResultPath", "")
 
 

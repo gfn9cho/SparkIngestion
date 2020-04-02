@@ -1,9 +1,8 @@
 package edf.dataload.helperutilities
 
 import edf.dataload.auditutilities.{BuildAuditData, FailedTablesFromAuditLog}
-import edf.dataload.{considerBatchWindowInd, deleteTableList, hardDeleteBatch,
-  restartabilityInd, restartabilityLevel, stgLoadBatch,
-  stgTableList, tableIngestionList, loadType}
+import edf.dataload.{considerBatchWindowInd, deleteTableList, hardDeleteBatch, loadType, restartabilityInd, restartabilityLevel, stgLoadBatch, stgTableList, tableIngestionList}
+import edf.utilities.Holder
 import org.apache.spark.sql.SparkSession
 
 object TableList {
@@ -19,8 +18,19 @@ object TableList {
         val tableList =
           if(hardDeleteBatch == "Y") deleteTableList.
                                         map(table => (table, auditMap.getOrElse(table, ("","","",""))))
-          else if(stgLoadBatch) stgTableList.
+          else if(stgLoadBatch && restartabilityInd != "Y") stgTableList.
                                         map(table => (table._1, auditMap.getOrElse(table._1, ("","","",""))))
+          else if(stgLoadBatch && restartabilityInd == "Y") {
+            if(restartabilityLevel == "table") failedTableAuditMap
+            else {
+              val  part = failedTableAuditMap.toList match {
+                case head :: _ =>  head._2._2
+                case _ => ""
+              }
+              (stgTableList.map(_._1) diff failedTableAuditMap.keys.toList).
+              map(table => (table, auditMap.getOrElse(table, ("", part, "", ""))))
+            }
+          }
           else if(restartabilityInd == "Y") {
             if(restartabilityLevel == "table") failedTableAuditMap
             else if(considerBatchWindow == "Y") {
@@ -36,6 +46,7 @@ object TableList {
             }
         else ingestionList.
                   map(table => (table, auditMap.getOrElse(table, ("","","",""))))
+        //Holder.log.info("tableList:" + tableList.toList.mkString(","))
         tableList.toList
       }
 

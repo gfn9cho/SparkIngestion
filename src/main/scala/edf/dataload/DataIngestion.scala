@@ -4,7 +4,8 @@ import edf.dataload._
 import edf.dataload.auditutilities.{AuditLog, ConsolidateAuditEntry}
 import edf.dataload.dfactions.{CreateDataFrame, LoadDataFrame, RefreshTypeLists}
 import edf.dataload.helperutilities.{BackUpHiveDB, ReplicationTime, TableList}
-import edf.recon.{gwRecon, gwclLakeQuery, gwclSourceQuery, gwplLakeQuery, gwplSourceQuery}
+import edf.recon.{gwRecon, gwbcRecon, gwclLakeQuery, gwclSourceQuery,
+  gwplLakeQuery, gwplSourceQuery, gwccLakeQuery, gwccSourceQuery}
 import edf.utilities.{Holder, MailingAgent, RichDF, TraversableOnceExt}
 import org.apache.spark.sql.SparkSession
 
@@ -88,7 +89,7 @@ object DataIngestion extends SparkJob {
       if (hardDeleteBatch == "Y") s"${processName} with Hard Delete Batch"
       else processName
     }
-      val batch_start_time = now.toString("YYYY-MM-dd HH:mm:ss.sss")
+     val batch_start_time = now.toString("YYYY-MM-dd HH:mm:ss.sss")
       val replicationTime = ReplicationTime()
 
       if (refTableListStr.trim != "")
@@ -127,10 +128,13 @@ object DataIngestion extends SparkJob {
   def reconResult(processnameInSubject: String, environment: String)(implicit spark: SparkSession) = {
     val reconResult = processName match {
       case name if (name.startsWith("gwcl")) =>
-        //gwRecon(gwclSourceQuery, gwclLakeQuery, "GWCL")
         gwRecon(gwclSourceQuery, gwclLakeQuery, "GWCL")
       case name if (name.startsWith("gwpl")) =>
         gwRecon(gwplSourceQuery, gwplLakeQuery, "GWPL")
+      case name if (name.startsWith("gwcc")) =>
+        gwRecon(gwccSourceQuery, gwccLakeQuery, "GWCC")
+      case name if (name.startsWith("gwbc")) =>
+        gwbcRecon( "GWBC")
       case _ => spark.emptyDataFrame
     }
     val htmlStr = RichDF(reconResult)

@@ -26,9 +26,6 @@ object PiiData {
          val dfaltered = if(schemaCheck)
                                 AlterSchema(df, hiveTableName, "", s3Location + tableDF_arr(2))
                           else df
-          Holder.log.info("df schema: " + df.schema.fieldNames.mkString(","))
-          Holder.log.info("dfaltered schema: " + dfaltered.schema.fieldNames.mkString + ": " +
-          hiveTableName)
           writeToS3(dfaltered, hardDeleteDF, s3Location + tableDF_arr(2),
             hiveTableName, saveMode, batchPartition, cdcColMax, tableLoadType)
         case pii: List[String] => {

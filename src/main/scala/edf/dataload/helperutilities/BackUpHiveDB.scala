@@ -20,7 +20,7 @@ object BackUpHiveDB {
         spark.sql(s"select * from $hiveDB.$stgTableName")
 
         sourceDF.
-        write.format("parquet").
+      write.format("parquet").
         partitionBy("ingestiondt","batch").
         options(Map("path" -> s"$backupLocation/$stgTableName")).
         mode(SaveMode.Overwrite).

@@ -8,9 +8,10 @@ import edf.utilities.Holder
 object LoadV7Data extends SparkJob {
     override def run(spark: SparkSession, propertyConfigs: Map[String, String]) = {
       implicit val ss: SparkSession = spark
+      spark.sparkContext.hadoopConfiguration.set("mapreduce.fileoutputcommitter.algorithm.version", "2")
+      //spark.conf.set("spark.hadoop.fs.s3a.impl","org.apache.hadoop.fs.s3a.S3AFileSystem")
       spark.conf.set("spark.sql.sources.partitionOverwriteMode","dynamic")
       spark.sparkContext.hadoopConfiguration.set("speculation", "false")
-      //spark.conf.set("spark.hadoop.fs.s3a.impl","org.apache.hadoop.fs.s3a.S3AFileSystem")
       spark.conf.set("spark.sql.parquet.mergeSchema","false")
       spark.conf.set("spark.sql.parquet.filterPushdown", "true")
       spark.conf.set("spark.sql.hive.metastorePartitionPruning","true")
@@ -23,20 +24,21 @@ object LoadV7Data extends SparkJob {
         5. if its a pii table, load into secured bucket.
         6. if its a pii table, mask the respective column and load into harmonized.
        */
-        tableSpecMapTrimmed.keys.par.foreach { table =>
+        tableSpecMapTrimmed.keys.map(_.toLowerCase).par.foreach { table =>
           val historyFileLocation: String = propertyMap.getOrElse("spark.v7Quote.historyFileLocation", "")
-          val historyFile = s"$historyFileLocation/${table.toUpperCase}"
+          val historyFile = s"$historyFileLocation/${table.toLowerCase}"
           val fileDF = spark.read.format("csv").
             option("header","false").
             option("delimiter","\t").
             option("inferSchema","false").
-            option("mode","DROPMALFORMED").
-            load(historyFile)
-          def processedTable = CreateMainTableDF(table, fileDF).
+            option("mode","DROPMALFORMED")
+          def processedTable = CreateMainTableDF(table, fileDF.
+            load(historyFile)).
               transform(BuildDataFrameWithTypes(table)).
                   transform(writeToS3(table))
           Try{
-            fileDF.select(col("_c0")).
+            fileDF.
+              load(historyFile).select(col("_c0")).
               except(processedTable.select(col("itemid")))
           } match {
             case Success(ids) => {
@@ -46,6 +48,7 @@ object LoadV7Data extends SparkJob {
             case Failure(ex) => {
               Holder.log.info("Failed table: " +
                 table + ":" + ex.getMessage)
+              Holder.log.info("whole exception: " + table + ":" + ex.getStackTrace.mkString)
             }
           }
         }

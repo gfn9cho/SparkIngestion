@@ -2,7 +2,7 @@ package edf.recon
 
 import org.apache.spark.sql.{SaveMode, SparkSession}
 import org.apache.spark.sql.functions.{lit, col, when}
-import edf.dataingestion._
+import edf.dataload._
 import edf.utilities.Holder
 import org.joda.time.format.DateTimeFormat
 
@@ -19,8 +19,8 @@ object gwRecon {
                               minusMillis(1).toString("YYYY-MM-dd HH:mm:ss.SSS")
     Holder.log.info(s"maxCreateTimetgt: $maxCreateTimetgt")
     Holder.log.info("invoking getSQLserverData function to get the dataframe,result_db and s3_path")
-    Holder.log.info(s"gwplSrcQuery: $srcQuery")
-    Holder.log.info(s"gwplLakeQuery: $lakeQuery")
+    Holder.log.info(s"SrcQuery: $srcQuery")
+    Holder.log.info(s"LakeQuery: $lakeQuery")
 
     val sourceDF = spark.read.format("jdbc").
       options(Map("url" -> jdbcSqlConnStr, "Driver" -> driver, "dbTable" -> srcQuery)).load

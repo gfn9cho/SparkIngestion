@@ -28,6 +28,28 @@ object RichDF {
     }
 
     val htmlStr = s"""
+                      <html>
+<head>
+        <meta charset="utf-8">
+        <style>
+            table {
+                border-collapse: collapse;
+                border: 2px black solid;
+                font: 12px sans-serif;
+            }
+
+            td {
+                border: 1px black solid;
+                padding: 5px;
+            }
+            th{
+                border: solid 1px;
+                padding: 5px;
+                background-color: #ccc;
+            }
+        </style>
+</head>
+<body aria-readonly="false">
                    Staing Recon for $processName is complete. Below are the results,
                    <table>
                 <tr>
@@ -37,6 +59,8 @@ object RichDF {
       s"<tr>${row.map{c => s"<td>${escape(c)}</td>" }.mkString}</tr>"
     }.mkString}
             </table>
+            </body>
+</html>
         """
   htmlStr
   }

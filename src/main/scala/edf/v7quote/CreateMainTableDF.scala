@@ -6,7 +6,8 @@ import org.apache.spark.sql.functions.{col, lit, to_date}
 object CreateMainTableDF {
 
   def getData(tableName: String, fileDF: DataFrame)(implicit  spark: SparkSession) = {
-      val dfFromHive = spark.sql(s"select * from $targetDB.$tableName")
+      val dfFromHive = spark.read.parquet(s"$hrmnzds3Path/$tableName")
+        //spark.sql(s"select * from $targetDB.$tableName")
       val refCols = getLookupCols.getOrElse(tableName, List.empty[String]) ++
                             List("deletetime","ingestiondt", "batch")
       val hiveSchema = dfFromHive.drop(refCols.toList : _*)

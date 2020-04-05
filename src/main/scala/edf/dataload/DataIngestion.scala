@@ -4,12 +4,12 @@ import edf.dataload._
 import edf.dataload.auditutilities.{AuditLog, ConsolidateAuditEntry}
 import edf.dataload.dfactions.{CreateDataFrame, LoadDataFrame, RefreshTypeLists}
 import edf.dataload.helperutilities.{BackUpHiveDB, ReplicationTime, TableList}
-import edf.recon.{gwRecon, gwbcRecon, gwclLakeQuery, gwclSourceQuery,
-  gwplLakeQuery, gwplSourceQuery, gwccLakeQuery, gwccSourceQuery}
+import edf.recon.{gwRecon, gwbcRecon, gwccLakeQuery, gwccSourceQuery, gwclLakeQuery, gwclSourceQuery, gwplLakeQuery, gwplSourceQuery}
 import edf.utilities.{Holder, MailingAgent, RichDF, TraversableOnceExt}
 import org.apache.spark.sql.SparkSession
 
 import scala.collection.immutable.Map
+import scala.collection.parallel.ForkJoinTaskSupport
 
 /**
   * Main class to invoke inorder to perform the ingestion/staging load.
@@ -101,7 +101,10 @@ object DataIngestion extends SparkJob {
         else if(hardDeleteBatch == "N")
               RefreshTypeLists(batch_start_time,replicationTime)
 
-      val auditResults =  TableList().par.
+      val parallelTableList = TableList().par
+      parallelTableList.tasksupport = new ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(batchParallelism.toInt))
+
+      val auditResults =  parallelTableList.
         map(table => {
           val lazydf = CreateDataFrame(table, 'N', batch_start_time)
           val loadDF = LoadDataFrame(lazydf._1, replicationTime, lazydf._2, lazydf._3)

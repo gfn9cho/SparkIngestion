@@ -1,6 +1,6 @@
 package edf
 
-import edf.dataingestion.{now, timeZone, hiveDB}
+import edf.dataload.{now, timeZone, hiveDB, transformDB}
 import org.joda.time.format.DateTimeFormat
 import java.sql.Timestamp
 
@@ -709,4 +709,144 @@ val gwclLakeQuery = s"""SELECT
                        | pctl_chargepattern_typecode = 'Premium' AND 
                        | YEAR(trans.WrittenDate) = YEAR(cast('$PV_ENDDATE' as timestamp)) AND
                        | MONTH(trans.WrittenDate) <= MONTH(cast('$PV_ENDDATE' as timestamp))""".stripMargin
+
+
+  val gwccSourceQuery = s"""(SELECT
+                           |CAST('$PV_ENDDATE' AS DATE) as ExtractDate,
+                           |'Bound' as polstatus,
+                           |'CLAIM_ID_CNT' as auditentity,
+                           |'1900-01-01' as AuditFrom,
+                           |'$PV_ENDDATE'  as AuditThru,
+                           |count(distinct claim.id) as AuditResult
+                           |FROM dbo.cc_claim claim  join
+                           |dbo.cc_transaction trans on trans.claimid = claim.id
+                           |Where
+                           |cast (claim.CreateTime as Datetime) <= '$PV_ENDDATE' and
+                           |cast (trans.CreateTime as Datetime) <= '$PV_ENDDATE' and
+                           |cast (trans.UpdateTime as Datetime) <= '$PV_ENDDATE' and
+                           |trans.LifeCycleState=8
+                           |union
+                           |SELECT
+                           |CAST('$PV_ENDDATE' AS DATE) as ExtractDate,
+                           |'Bound' as polstatus,
+                           |'CLAIM_NBR_CNT' as auditentity,
+                           |'1900-01-01' as AuditFrom,
+                           |'$PV_ENDDATE'  as AuditThru,
+                           |count(distinct claim.claimnumber) as AuditResult
+                           |FROM dbo.cc_claim claim  join
+                           |dbo.cc_transaction trans on trans.claimid = claim.id
+                           |Where
+                           |cast (claim.CreateTime as Datetime) <= '$PV_ENDDATE' and
+                           |cast (trans.CreateTime as Datetime) <= '$PV_ENDDATE' and
+                           |cast (trans.UpdateTime as Datetime) <= '$PV_ENDDATE' and
+                           |trans.LifeCycleState=8
+                           |UNION
+                           |SELECT
+                           |CAST('$PV_ENDDATE' AS DATE) as ExtractDate,
+                           |'Bound' as polstatus,
+                           |'MTD_LOSSAMT' as auditentity,
+                           |DATEADD(mm, DATEDIFF(mm, 0, CAST('$PV_ENDDATE' as DATE) ), 0) as AuditFrom,
+                           |'$PV_ENDDATE'  as AuditThru,
+                           |SUM(isnull(lineitem.transactionAmount,0)) as AuditResult
+                           |FROM
+                           |dbo.cc_transactionlineitem lineitem  join
+                           |dbo.cc_transaction trans on lineitem.TransactionID = trans.ID
+                           |where
+                           |COALESCE (cast(trans.OriginalCreateDate_Ext as DATETIME),
+                           |cast(trans.CreateTime as DATETIME)) >= DATEADD(mm, DATEDIFF(mm, 0, CAST('$PV_ENDDATE' as DATE) ), 0) and
+                           |COALESCE (cast(trans.OriginalCreateDate_Ext as DATETIME),
+                           |cast(trans.CreateTime as DATETIME)) < '$PV_ENDDATE' and
+                           |cast(lineitem.CreateTime as datetime) < '$PV_ENDDATE'
+                           |UNION
+                           |SELECT
+                           |CAST('$PV_ENDDATE' AS DATE) as ExtractDate,
+                           |'Bound' as polstatus,
+                           |'YTD_LOSSAMT' as auditentity,
+                           |DATEADD(yyyy, DATEDIFF(yyyy, 0, CAST('$PV_ENDDATE' as DATE) ), 0) as AuditFrom,
+                           |'$PV_ENDDATE'  as AuditThru,
+                           |SUM(isnull(lineitem.transactionAmount,0)) as AuditResult
+                           |FROM
+                           |dbo.cc_transactionlineitem lineitem  join
+                           |dbo.cc_transaction trans on lineitem.TransactionID = trans.ID
+                           |where
+                           |COALESCE (cast(trans.OriginalCreateDate_Ext as DATETIME), cast(trans.CreateTime as DATETIME)) >= DATEADD(yyyy, DATEDIFF(yyyy, 0, CAST('$PV_ENDDATE' as DATE) ), 0) and
+                           |COALESCE (cast(trans.OriginalCreateDate_Ext as DATETIME), cast(trans.CreateTime as DATETIME)) < '$PV_ENDDATE' and
+                           |cast(lineitem.CreateTime as datetime) < '$PV_ENDDATE'
+                           |UNION
+                           |SELECT
+                           |CAST('$PV_ENDDATE' AS DATE) as ExtractDate,
+                           |'Bound' as polstatus,
+                           |'ALL_LOSSAMT' as auditentity,
+                           |DATEADD(yyyy, DATEDIFF(yyyy, 0, CAST(CONVERT(date, CAST(CAST(YEAR(GETDATE()) AS CHAR(4))+'0101' AS DATE), 112) as DATE) ), 0) as AuditFrom,
+                           |'$PV_ENDDATE'  as AuditThru,
+                           |SUM(isnull(lineitem.transactionAmount,0)) as AuditResult
+                           |FROM
+                           |dbo.cc_transactionlineitem lineitem  join
+                           |dbo.cc_transaction trans on lineitem.TransactionID = trans.ID
+                           |where
+                           |COALESCE (cast(trans.OriginalCreateDate_Ext as DATETIME),
+                           |cast(trans.CreateTime as DATETIME)) >= '1900-01-01' and
+                           |COALESCE (cast(trans.OriginalCreateDate_Ext as DATETIME),
+                           |cast(trans.CreateTime as DATETIME)) < '$PV_ENDDATE' and
+                           |cast(lineitem.CreateTime as datetime) < '$PV_ENDDATE'
+                           |) q""".stripMargin
+  val gwccLakeQuery = s"""SELECT
+                         |'CLAIM_ID_CNT' as auditentity,
+                         |count(distinct claim.id) as AuditResult
+                         |FROM
+                         |$hiveDB.stg_gwcc_cc_claim claim join
+                         |$hiveDB.stg_gwcc_cc_transaction trans on trans.claimid = claim.id
+                         |WHERE
+                         |claim.CreateTime <= cast('$PV_ENDDATE' as timestamp) and
+                         |trans.CreateTime <= cast('$PV_ENDDATE' as timestamp) and
+                         |trans.updatetime <= cast('$PV_ENDDATE' as timestamp) and
+                         |trans.LifeCycleState=8
+                         |union
+                         |SELECT
+                         |'CLAIM_NBR_CNT' as auditentity,
+                         |count(distinct claim.claimnumber) as AuditResult
+                         |FROM
+                         |$hiveDB.stg_gwcc_cc_claim claim join
+                         |$hiveDB.stg_gwcc_cc_transaction trans on trans.claimid = claim.id
+                         |WHERE
+                         |claim.CreateTime <= cast('$PV_ENDDATE' as timestamp) and
+                         |trans.CreateTime <= cast('$PV_ENDDATE' as timestamp) and
+                         |trans.updatetime <= cast('$PV_ENDDATE' as timestamp) and
+                         |trans.LifeCycleState=8
+                         |union
+                         |SELECT
+                         |'MTD_LOSSAMT' as auditentity,
+                         |SUM(coalesce(lineitem.transactionAmount,0)) as AuditResult
+                         |FROM $hiveDB.stg_gwcc_cc_transactionlineitem lineitem JOIN
+                         |$hiveDB.stg_gwcc_cc_transaction trans ON lineitem.TransactionID = trans.ID JOIN
+                         |(select cast(add_months(CAST('1900-01-01' AS timestamp),cast(months_between(cast('$PV_ENDDATE' as date), CAST('1900-01-01' AS date)) as int)) as timestamp) as PV_STARTTIME ) lc ON 1=1
+                         |WHERE
+                         |COALESCE (cast(trans.OriginalCreateDate_Ext AS timestamp), cast(trans.CreateTime AS timestamp)) >= PV_STARTTIME AND
+                         |COALESCE (cast(trans.OriginalCreateDate_Ext AS timestamp), cast(trans.CreateTime AS timestamp)) < cast('$PV_ENDDATE' as timestamp) and
+                         |cast(lineitem.CreateTime as timestamp) < cast('$PV_ENDDATE' as timestamp)
+                         |union
+                         |SELECT
+                         |'YTD_LOSSAMT' as auditentity,
+                         |SUM(coalesce(lineitem.transactionAmount,0)) as AuditResult
+                         |FROM
+                         |$hiveDB.stg_gwcc_cc_transactionlineitem lineitem JOIN
+                         |$hiveDB.stg_gwcc_cc_transaction trans ON lineitem.TransactionID = trans.ID JOIN
+                         |(select cast(concat_ws('-',(year(CAST('1900-01-01' AS timestamp)) + cast(months_between(cast(cast('$PV_ENDDATE' AS timestamp) as date), CAST('1900-01-01' AS date))/12 as int)),'01','01') as timestamp) as PV_STARTTIME ) lc ON 1=1
+                         |WHERE
+                         |COALESCE (cast(trans.OriginalCreateDate_Ext AS timestamp), cast(trans.CreateTime AS timestamp)) >= PV_STARTTIME AND
+                         |COALESCE (cast(trans.OriginalCreateDate_Ext AS timestamp), cast(trans.CreateTime AS timestamp)) < cast('$PV_ENDDATE' as timestamp) and
+                         |cast(lineitem.CreateTime as timestamp) < cast('$PV_ENDDATE' as timestamp)
+                         |union
+                         |SELECT
+                         |'ALL_LOSSAMT' as auditentity,
+                         |SUM(coalesce(lineitem.transactionAmount,0)) as AuditResult
+                         |FROM
+                         |$hiveDB.stg_gwcc_cc_transactionlineitem lineitem JOIN
+                         |$hiveDB.stg_gwcc_cc_transaction trans ON lineitem.TransactionID = trans.ID  JOIN
+                         |(select CAST('1900-01-01' AS date) as PV_STARTTIME ) lc ON 1=1
+                         |WHERE
+                         |COALESCE (cast(trans.OriginalCreateDate_Ext AS timestamp), cast(trans.CreateTime AS timestamp)) >= PV_STARTTIME AND
+                         |COALESCE (cast(trans.OriginalCreateDate_Ext AS timestamp), cast(trans.CreateTime AS timestamp)) < cast('$PV_ENDDATE' as timestamp) and
+                         |cast(lineitem.CreateTime as timestamp) < cast('$PV_ENDDATE' as timestamp)
+                         |""".stripMargin
 }

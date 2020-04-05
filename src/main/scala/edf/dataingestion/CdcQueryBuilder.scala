@@ -28,8 +28,7 @@ class CdcQueryBuilder(propertyConfigs: Map[String, String], tableSpecDetails: Li
       /*
       * EDIN-***: End Instead of hard coding the suffix of hive database now we are passing the whole DB name from property file
       */
-      Holder.log.info("hiveDB_Cdc: " + hiveDB)
-      Holder.log.info("dbMaptable_arr: " + dbMap.getOrElse(table_arr(0),""))
+
 
       cdcCol match {
         case coalescePattern(col1: String, col2: String) => {

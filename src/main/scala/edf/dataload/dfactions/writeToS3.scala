@@ -82,7 +82,8 @@ object writeToS3 {
       }
 
       if(loadType == "TL" || tableLoadType == "TL") {
-        createHiveTable(s3PrimLocation)
+        //createHiveTable(s3PrimLocation)
+        spark.sql(s"""ALTER TABLE $hiveTable set location "$s3PrimLocation"""")
         spark.sql(s"ALTER TABLE $hiveTable RECOVER PARTITIONS")
       } else {
         spark.sql(s"ALTER TABLE $hiveTable RECOVER PARTITIONS")

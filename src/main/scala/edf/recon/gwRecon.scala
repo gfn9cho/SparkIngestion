@@ -21,6 +21,9 @@ object gwRecon {
     Holder.log.info("invoking getSQLserverData function to get the dataframe,result_db and s3_path")
     Holder.log.info(s"SrcQuery: $srcQuery")
     Holder.log.info(s"LakeQuery: $lakeQuery")
+    spark.conf.set("spark.sql.crossJoin.enabled", "true")
+    spark.conf.set("hive.strict.checks.cartesian.product", "false")
+    spark.conf.set("hive.mapred.mode", "nonstrict")
 
     val sourceDF = spark.read.format("jdbc").
       options(Map("url" -> jdbcSqlConnStr, "Driver" -> driver, "dbTable" -> srcQuery)).load

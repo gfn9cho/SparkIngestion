@@ -3,6 +3,7 @@ package edf.dataload.dfactions
 import edf.dataload.helperutilities.CdcColumnList.getCdcColMax
 import edf.dataload.{hardDeleteBatch, loadType, now, refTableList, restartabilityInd, splitString, stgLoadBatch}
 import edf.dataload.dfutilities.EmptyDataFrameCheck
+import edf.utilities.Holder
 import org.apache.spark.sql.{DataFrame, Row, SaveMode, SparkSession}
 
 import scala.util.{Failure, Success}
@@ -39,6 +40,7 @@ object LoadDataFrame {
                                   cdcCol._2.endsWith("yyyymm") ||
                                     cdcCol._2.startsWith("loadtime")) ("0", "0")
                               else ("1900-01-01", "1900-01-01")
+      Holder.log.info(spark.table(mainDF))
       def isEmptyDF = EmptyDataFrameCheck(mainDF_arr(2), mainDF)
       ingestionResult._1 match {
         case "success" =>

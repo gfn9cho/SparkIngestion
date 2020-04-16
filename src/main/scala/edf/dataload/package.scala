@@ -21,7 +21,10 @@ package object dataload {
 
     val splitString = "@@##@@"
     val dbMap = Map("accounting" -> "acct", "policy" -> "plcy", "contact" -> "cntct", "claims" -> "clms")
-
+    case class AuditSchema(ingestiondt: String, batch: String, TableName: String, SourceCount: Long,
+                           LoadStartTime: String, LoadEndTime: String, LoadStatus: String, Exception: String,
+                           BatchWindowStart: String, BatchWindowEnd: String, QueryString: String, BatchStartTime: String,
+                           TargetCount: Long, HardDeleteBatch: String)
     val schema = StructType(
       List(
         StructField("ingestiondt", StringType, true),
@@ -194,6 +197,7 @@ package object dataload {
     case _ => List.empty[(String, String)]
   }
   val stgTableMap = stgTableList.toMap
+
     val s3SyncEnabled: Boolean = propertyMap.getOrElse("spark.ingestion.s3SyncEnabled","false") == "true"
     val loadOnlyTLBatch: Boolean = propertyMap.getOrElse("spark.ingestion.loadOnlyTLBatch","false") == "true"
     val loadFromStage: Boolean = propertyMap.getOrElse("spark.ingestion.loadFromStage","false") == "true"
@@ -246,8 +250,21 @@ package object dataload {
     val transformDB: String =  propertyMap.getOrElse("spark.ingestion.transformDB", "transformed")
     val reconResultPath: String =  propertyMap.getOrElse("spark.ingestion.reconResultPath", "")
 
-
-
+    val turnOffAudit: Boolean =   propertyMap.getOrElse("spark.ingestion.turnOffAudit", "false") == "true"
+    val writeToDynamoDB: Boolean = propertyMap.getOrElse("spark.ingestion.writeToDynamoDB", "false") == "true"
+    val ddbRegion = propertyMap.getOrElse("spark.dynamodb.ddbRegion","us-east-1")
+    val ddbRoleArn = propertyMap.getOrElse("spark.dynamodb.ddbRoleArn","arn:aws:iam::605736271663:role/datalake-sa360-role")
+    val ddbTableMapFile: String = propertyMap.getOrElse("spark.dynamodb.ddbTableMapFile","")
+    val ddbTableMapList: List[(String, String, String, String)] = writeToDynamoDB match {
+    case true => Source.fromFile(ddbTableMapFile).getLines.toList.map(table => {
+        val splitted = table.toLowerCase.split("->", -1)
+        (splitted(0).trim, splitted(1).trim, splitted(2).trim, splitted(3).trim)
+      })
+    case _ => List.empty[(String, String, String, String)]
+    }
+    val ddbTableMap: Map[String, (String, String, String)] = ddbTableMapList.
+                            map(table => table._1 -> (table._2, table._3, table._4)).toMap
+    val ddbThrougPut: String =  propertyMap.getOrElse("spark.dynamodb.ddbThroughPut","200")
     /*
     *  def deleteStagePartition: Unit = {
         val stageAuditData = spark.sql(s"select * from $stageAuditHiveTable where where processName = '$processName' " +

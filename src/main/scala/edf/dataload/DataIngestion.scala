@@ -4,7 +4,8 @@ import edf.dataload._
 import edf.dataload.auditutilities.{AuditLog, ConsolidateAuditEntry}
 import edf.dataload.dfactions.{CreateDataFrame, LoadDataFrame, RefreshTypeLists}
 import edf.dataload.helperutilities.{BackUpHiveDB, ReplicationTime, TableList}
-import edf.recon.{gwRecon, gwbcRecon, gwccLakeQuery, gwccSourceQuery, gwclLakeQuery, gwclSourceQuery, gwplLakeQuery, gwplSourceQuery}
+import edf.recon.{gwRecon, gwbcRecon, gwccLakeQuery, gwccSourceQuery, gwclLakeQuery,
+  gwclSourceQuery, gwplLakeQuery, gwplSourceQuery, gwbcLakeQuery, gwbcSourceQuery}
 import edf.utilities.{Holder, MailingAgent, RichDF, TraversableOnceExt}
 import org.apache.spark.sql.SparkSession
 
@@ -102,7 +103,7 @@ object DataIngestion extends SparkJob {
               RefreshTypeLists(batch_start_time,replicationTime)
 
       val parallelTableList = TableList().par
-      parallelTableList.tasksupport = new ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(batchParallelism.toInt))
+      //parallelTableList.tasksupport = new ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(batchParallelism.toInt))
 
       val auditResults =  parallelTableList.
         map(table => {
@@ -137,7 +138,7 @@ object DataIngestion extends SparkJob {
       case name if (name.startsWith("gwcc")) =>
         gwRecon(gwccSourceQuery, gwccLakeQuery, "GWCC")
       case name if (name.startsWith("gwbc")) =>
-        gwbcRecon( "GWBC")
+        gwRecon(gwbcSourceQuery, gwbcLakeQuery, "GWBC")
       case _ => spark.emptyDataFrame
     }
     val htmlStr = RichDF(reconResult)

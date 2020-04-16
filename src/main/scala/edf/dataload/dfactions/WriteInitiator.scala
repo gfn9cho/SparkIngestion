@@ -1,6 +1,7 @@
 package edf.dataload.dfactions
 
 import edf.dataload.{considerBatchWindowInd, hardDeleteBatch, metaInfoForLookupFile, propertyMap, splitString, tableGroup}
+import edf.utilities.Holder
 import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 
 import scala.util.{Failure, Success, Try}
@@ -13,7 +14,7 @@ object WriteInitiator {
                      (implicit spark: SparkSession): Try[(Long, Long, String, String, Any, Any)] = {
     val considerBatchWindow = if(hardDeleteBatch == "Y") "Y" else considerBatchWindowInd
     Try {
-      DataFrameS3Writer.writeDataFrametoS3(tableName, propertyMap, metaInfoForLookupFile,
+      PrepareDataToWrite.writeDataFrametoS3(tableName, propertyMap, metaInfoForLookupFile,
         tableGroup, saveMode, batchPartition, replicationTime, hardDeleteBatch, hardDeleteDF)
     } match {
       case Success((srcCount, tgtCount, minWindow, maxWindow)) =>
@@ -24,6 +25,7 @@ object WriteInitiator {
             case "Y" => (currMinWindow, currMaxWindow)
             case _ => (minWindow, if(srcCount == 0L) prevWindow._2 else maxWindow)
           }
+          Holder.log.info(s"maxwindow: $tableName " + minWindowStr + ":" + maxWindowStr)
           Success((srcCount, tgtCount, "success", "",minWindowStr, maxWindowStr))
         }
         else

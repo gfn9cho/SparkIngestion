@@ -58,11 +58,11 @@ object writeToS3 {
         case false =>
           Holder.log.info("Executing spark load")
           df
-            .write.format("parquet")
-            .partitionBy("ingestiondt", "batch")
-            .options(Map("path" -> s3TempLocation))
-            .mode(saveMode)
-            .saveAsTable(hiveTable)
+      .write.format("parquet")
+      .partitionBy("ingestiondt", "batch")
+      .options(Map("path" -> s3TempLocation))
+      .mode(saveMode)
+      .saveAsTable(hiveTable)
       }
     }
 

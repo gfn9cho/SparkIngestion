@@ -32,10 +32,9 @@ object ConsolidateAuditEntry {
           .partitionBy("processname","ingestiondt")
           .options(Map("path" -> (auditPath + s"/$sourceDBFormatted/audit_temp")))
           .mode(SaveMode.Overwrite).saveAsTable(s"$auditDB.${sourceDBFormatted}_audit_temp")
-
+        auditData.createOrReplaceTempView(s"${processName}_auditView")
         spark.conf.set("spark.sql.sources.partitionOverwriteMode","dynamic")
         spark.sql(s"select * from $auditDB.${sourceDBFormatted}_audit_temp where processname = '$processName' ")
-
           .write.format("parquet")
           .options(Map("path" -> (auditPath + "/audit"), "maxRecordsPerFile" -> "30000"))
           .mode(SaveMode.Overwrite).insertInto(s"$auditDB.audit")

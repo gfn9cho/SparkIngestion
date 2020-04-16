@@ -1,15 +1,16 @@
 package edf.dataload.dfactions
 
+import edf.dataload.ddbutilities.writeToDdbTable
 import edf.dataload.dfutilities.{HrmnzdDataPull, PiiData, TypeTableJoins}
 import edf.dataload.helperutilities.{CdcColumnList, DefineCdcCutOffValues}
-import edf.dataload.{considerBatchWindowInd, formatDBName, loadType, piiListMultiMap, restartabilityInd, stgLoadBatch, stgTableMap}
-import edf.utilities.MetaInfo
+import edf.dataload.{considerBatchWindowInd, formatDBName, loadType, piiListMultiMap, restartabilityInd, stgLoadBatch, stgTableMap, turnOffAudit, writeToDynamoDB}
+import edf.utilities.{Holder, MetaInfo}
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 
 import scala.collection.immutable.Map
 
-object DataFrameS3Writer {
+object PrepareDataToWrite {
   def writeDataFrametoS3(tableToBeIngested: String, propertyConfigs: Map[String, String],
                           metaInfoLookUp: MetaInfo, tableGroup: Map[String, List[String]],
                          saveMode: SaveMode, batchPartition: String, replicationTime: String,
@@ -35,7 +36,7 @@ object DataFrameS3Writer {
       getOrElse(tableToBeIngested,"").toUpperCase() else ""
 
     val (cdcColMax, min_window, max_window) =
-      if(considerBatchWindow == "Y" ||
+      if(turnOffAudit || considerBatchWindow == "Y" ||
       (stgLoadBatch && (loadType == "TL" || tableLoadType == "TL") &&
         !cdcColMaxStr._2.endsWith("id")))
       (null,null,null)
@@ -59,12 +60,20 @@ object DataFrameS3Writer {
         if stgLoadBatch && loadType == "TL" => HrmnzdDataPull.getTLDataFromHrmnzd(tableDF_arr(2), piiColList, cdcColMaxStr._2)
       case "N"
         if stgLoadBatch && tableLoadType == "TL" => HrmnzdDataPull.getTLDataFromHrmnzd(tableDF_arr(2), piiColList, cdcColMaxStr._2)
+      case "N" if turnOffAudit => TypeTableJoins.joinTypeTables(spark, tableToBeIngested, ref_col_list,
+        tableGroup, batchPartition)
       case "N" => TypeTableJoins.joinTypeTables(spark, tableToBeIngested, ref_col_list,
         tableGroup, batchPartition).filter(cdcColMax <= max_window)
     }
-    val (srcCount, tgtCount) = PiiData.handlePiiData(dfBeforePii, hardDeleteDF, piiColList, tableToBeIngested,
-      batchPartition, cdcColMaxStr._2, saveMode, tableLoadType)
-    if(stgLoadBatch && (loadType == "TL" || tableLoadType == "TL") && !cdcColMaxStr._2.endsWith("id")) {
+    val (srcCount, tgtCount) = if(writeToDynamoDB)
+                                writeToDdbTable(dfBeforePii, tableDF_arr(2))
+                               else
+                                PiiData.handlePiiData(dfBeforePii, hardDeleteDF, piiColList,
+                                  tableToBeIngested, batchPartition, cdcColMaxStr._2,
+                                  saveMode, tableLoadType)
+
+    if( turnOffAudit || (stgLoadBatch && (loadType == "TL" || tableLoadType == "TL") &&
+          !cdcColMaxStr._2.endsWith("id"))) {
       val window = dfBeforePii.agg(min(cdcColMaxStr._1).as("min_window"),
         max(cdcColMaxStr._1).as("max_window")).rdd.
         map(r => (r.getTimestamp(0), r.getTimestamp(1))).first()

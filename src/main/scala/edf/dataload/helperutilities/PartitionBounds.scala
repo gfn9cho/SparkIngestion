@@ -1,6 +1,7 @@
 package edf.dataload.helperutilities
 
-import edf.dataload.{cdcQueryMap, jdbcSqlConnStr, driver}
+import edf.dataload.{cdcQueryMap, driver, jdbcSqlConnStr}
+import edf.utilities.Holder
 import org.apache.spark.sql.SparkSession
 
 import scala.util.{Failure, Success, Try}
@@ -17,7 +18,9 @@ object PartitionBounds {
       case _ => ("", "")
     }
 
+
     def bounds: Try[org.apache.spark.sql.Row] = Try {
+      Holder.log.info(boundQuery)
       spark.sqlContext.read.format("jdbc").options(Map("url" -> jdbcSqlConnStr, "Driver" -> driver, "dbTable" -> boundQuery)).load.first
     }
     bounds match {
@@ -44,7 +47,8 @@ object PartitionBounds {
         }
 
         val numPartitions = if (cdcColFromTableSpecStr(3) == "") numPartitionStr else cdcColFromTableSpecStr(3)
-        val partitionMap: Map[String, String] = Map("partitionColumn" -> "id", "lowerBound" -> lower.toString, "upperBound" -> upper.toString, "numPartitions" -> numPartitions.toString)
+        val partitionBy = cdcColFromTableSpecStr(2)
+        val partitionMap: Map[String, String] = Map("partitionColumn" -> partitionBy.trim, "lowerBound" -> lower.toString, "upperBound" -> upper.toString, "numPartitions" -> numPartitions.toString)
         partitionMap
       }
       case Failure(_) => Map("" -> "")

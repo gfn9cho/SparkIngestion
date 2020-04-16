@@ -7,6 +7,8 @@ import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.{DataFrame, Row, SaveMode, SparkSession}
 
+import scala.util.{Failure, Success, Try}
+
 
 object StageIncremental {
     def identifyPartitions(df: DataFrame, hardDeleteDF: DataFrame, stageTableName: String,
@@ -22,9 +24,20 @@ object StageIncremental {
                           hardDeleteDF.select(col("id"))
                            .withColumn("bucket", pmod(col("id"), lit(10)))
                           else spark.createDataFrame(spark.sparkContext.emptyRDD[Row], schema)
-      val stageDF = spark.read.parquet(s3Loc).
-                    withColumn("RecordType", lit("U")).
-                    withColumn("destFile", input_file_name)
+      val stageDF = Try {
+        spark.read.parquet(s3Loc).
+          withColumn("RecordType", lit("U")).
+          withColumn("destFile", input_file_name)
+      } match {
+        case Success(df) => df
+        case Failure(exception) =>
+          {
+            Holder.log.info("parquet read exception: " + exception.getMessage)
+            spark.createDataFrame(spark.sparkContext.emptyRDD[Row], schema).
+              withColumn("RecordType", lit("NA")).
+              withColumn("destFile", lit("na"))
+          }
+      }
 
       val combinedDF = broadcast(incrDF.union(hardDeleteDFWithBucket)).
                         join(stageDF, Seq("id","bucket"), "left")
@@ -51,9 +64,18 @@ object StageIncremental {
 
   def duplicatesCheck(stageTableName: String, s3Location: String)
                      (implicit spark: SparkSession) = {
-    val dupDF = spark.read.parquet(s3Location).
-                    groupBy(col("id")).count.
-                    where(col("count") > 1)
+    val dupDF = Try {
+      spark.read.parquet(s3Location).
+        groupBy(col("id")).count.
+        where(col("count") > 1)
+    } match {
+      case Success(df) => df
+      case Failure(exception) => {
+        Holder.log.info("parquet read exception: " + exception.getMessage)
+        spark.emptyDataFrame
+      }
+
+    }
 
     if(!dupDF.head(1).isEmpty) {
       val stageDF = spark.read.parquet(s3Location).

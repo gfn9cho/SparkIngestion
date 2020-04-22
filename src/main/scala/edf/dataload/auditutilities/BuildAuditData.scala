@@ -34,10 +34,6 @@ object BuildAuditData {
           ltrim(max(col("batchwindowstart")),"0").as("batchwindowstart"),
           ltrim(max(col("batchwindowend")),"0").as("batchwindowend")).cache
 
-      if (!spark.catalog.tableExists(s"${processName}_auditView"))
-            audit.createOrReplaceTempView(s"${processName}_auditView")
-      else
-            spark.catalog.refreshTable(s"${processName}_auditView")
       Holder.log.info("Entering the buildAuditData Function")
       val auditMapStr = audit.rdd.flatMap(row => Map(row.getAs[String](0)-> (row.getAs[String](1),
         row.getAs[String](2), row.getAs[String](3),row.getAs[String](4))))

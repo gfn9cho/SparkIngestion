@@ -16,8 +16,11 @@ import org.apache.spark.sql.functions.{col, lit}
 import org.apache.spark.sql.{Row, SaveMode, SparkSession}
 import net.liftweb.json._
 import net.liftweb.json.Serialization.write
+import scala.concurrent.ExecutionContext.Implicits.global
+
 
 import scala.collection.immutable.Map
+import scala.concurrent.Future
 
 object AuditLog {
   def logAuditRow(stats: (String, Row), batchWindowStart: String, replTime: String)
@@ -51,7 +54,7 @@ object AuditLog {
       spark.sparkContext.parallelize(Seq(stats._2),1), schema)
     Holder.log.info(s"auditStr: ${stats._2.mkString(",")}")
     val auditData = auditFrame.as[AuditSchema].first
-    implicit val formats = DefaultFormats
+    implicit val formats: DefaultFormats.type = DefaultFormats
     val data = write(auditData)
     //val data = stats._2.mkString(",")
 
@@ -102,7 +105,9 @@ object AuditLog {
 
   def apply(stats: (String, Row), batchWindowStart: String, replTime: String)
            (implicit spark: SparkSession) = {
-    logAuditRow(stats,batchWindowStart,replTime)
+    Future {
+      logAuditRow(stats,batchWindowStart,replTime)
+    }
   }
   def apply(stats: (String, Row), batchWindowStart: String, replTime: String, region: Regions)
            (implicit spark: SparkSession) = {

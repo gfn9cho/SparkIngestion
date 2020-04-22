@@ -42,24 +42,15 @@ object SparkKinesisStreaming extends SparkJob {
     //conf.setIfMissing("spark.master", "local[*]")
     //conf.set("spark.driver.allowMultipleContexts","true")
 
-    // Typesafe config - load external config from src/main/resources/application.conf
-    //val kinesisConf = ConfigFactory.load.getConfig("kinesis")
-
     val appName = "sa360Streaming"
     val streamName = "IngestionAuditLog"
     val endpointUrl = "https://kinesis.us-east-1.amazonaws.com"
 
-    /*val credentials = new DefaultAWSCredentialsProviderChain().getCredentials()
-    require(credentials != null,
-      "No AWS credentials found. See http://docs.aws.amazon.com/AWSSdkDocsJava/latest/DeveloperGuide/credentials.html")
-*/
     val regionName = "us-east-1"
     val credentials = getCredentials(ddbRegion, None)
-    //val kinesisClient = new AmazonKinesisClient(credentials)
     val kinesisClient = AmazonKinesisClientBuilder.standard()
         .withCredentials(credentials).withEndpointConfiguration(
       new AwsClientBuilder.EndpointConfiguration(endpointUrl, "us-east-1")).build()
-    //kinesisClient.setEndpoint(endpointUrl)
 
     val numShards = kinesisClient.describeStream(streamName).getStreamDescription().getShards().size
 
@@ -86,27 +77,11 @@ object SparkKinesisStreaming extends SparkJob {
       .checkpointInterval(kinesisCheckpointInterval)
       .storageLevel(StorageLevel.MEMORY_AND_DISK_2)
         .build()
-     // KinesisUtils.createStream(ssc, appName, streamName, endpointUrl, regionName,
-        //InitialPositionInStream.TRIM_HORIZON, kinesisCheckpointInterval, StorageLevel.MEMORY_AND_DISK_2)
     }
 
     // Union all the streams (in case numStreams > 1)
     val unionStreams = ssc.union(kinesisStreams)
     import spark.implicits._
-    /*unionStreams.foreachRDD(rdd => {
-      Holder.log.info(rdd.count() + ":" + rdd.isEmpty())
-      Holder.log.info("rddString:" + rdd.toString())
-      Holder.log.info("rddShow:" + rdd.toDF().show())
-      val rowRDD = rdd.map(jstr => new String(jstr))
-      rowRDD.toDF().show
-
-      /*rdd.toDF(schema.fieldNames: _*)
-        .withColumn("processname", lit(processName))
-        .write.format("parquet")
-        .partitionBy("processname", "ingestiondt")
-        .options(Map("path" -> (auditPath + "/audit")))*/
-    })*/
-
     unionStreams.foreachRDD ((rdd: RDD[Array[Byte]], time: Time) => {
       val rowRDD = rdd.map(jstr => new String(jstr))
       val df = spark.sqlContext.read.schema(schema).json(rowRDD.toDS)

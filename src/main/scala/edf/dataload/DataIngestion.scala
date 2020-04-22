@@ -1,16 +1,20 @@
 package edf.dataload
 
+import com.amazonaws.regions.{Region, Regions}
 import edf.dataload._
 import edf.dataload.auditutilities.{AuditLog, ConsolidateAuditEntry}
 import edf.dataload.dfactions.{CreateDataFrame, LoadDataFrame, RefreshTypeLists}
 import edf.dataload.helperutilities.{BackUpHiveDB, ReplicationTime, TableList}
-import edf.recon.{gwRecon, gwbcRecon, gwccLakeQuery, gwccSourceQuery, gwclLakeQuery,
-  gwclSourceQuery, gwplLakeQuery, gwplSourceQuery, gwbcLakeQuery, gwbcSourceQuery}
+import edf.recon.{gwRecon, gwbcLakeQuery, gwbcRecon, gwbcSourceQuery, gwccLakeQuery, gwccSourceQuery, gwclLakeQuery, gwclSourceQuery, gwplLakeQuery, gwplSourceQuery}
 import edf.utilities.{Holder, MailingAgent, RichDF, TraversableOnceExt}
 import org.apache.spark.sql.SparkSession
 
 import scala.collection.immutable.Map
 import scala.collection.parallel.ForkJoinTaskSupport
+import scala.concurrent.duration.Duration
+import scala.concurrent.{Await, Future}
+import scala.concurrent.ExecutionContext.Implicits.global
+
 
 /**
   * Main class to invoke inorder to perform the ingestion/staging load.
@@ -110,8 +114,12 @@ object DataIngestion extends SparkJob {
           val lazydf = CreateDataFrame(table, 'N', batch_start_time)
           val loadDF = LoadDataFrame(lazydf._1, replicationTime, lazydf._2, lazydf._3)
           AuditLog(loadDF, batch_start_time, replicationTime)
-        })
-      val auditEntry = ConsolidateAuditEntry(auditResults.toList)
+        }).toList
+      val auditData = Await.result(
+        Future.sequence(auditResults), Duration.Inf
+      )
+      val auditEntry = ConsolidateAuditEntry(auditData)
+      /*val auditEntry = ConsolidateAuditEntry(auditResults.toList) */
       MailingAgent.sendMail(s"$fromEmail", s"$toEmail",
         subject = s"${environment} : Ingestion notification from $processnameInSubject process",
         text = auditEntry)

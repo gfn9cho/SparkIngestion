@@ -35,7 +35,7 @@ object SqlConditionBuilder {
               sparkFieldMut += left.mkString + "-" + left.mkString + "_" + idx
               "jEqui-" + left.mkString + ":" + left.mkString + "_" + idx
             }
-            case condPattern(left, right) if right == "id"  => {
+            case condPattern(left, right) if right == "id" || right == "statemastertrid" => {
               sparkFieldMut += right.mkString + "-" + right.mkString + "_" + idx
               "jEqui-" + left.mkString + ":" + right.mkString + "_" + idx
             }

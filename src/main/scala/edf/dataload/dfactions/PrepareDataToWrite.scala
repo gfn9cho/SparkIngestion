@@ -3,7 +3,7 @@ package edf.dataload.dfactions
 import edf.dataload.ddbutilities.writeToDdbTable
 import edf.dataload.dfutilities.{HrmnzdDataPull, PiiData, TypeTableJoins}
 import edf.dataload.helperutilities.{CdcColumnList, DefineCdcCutOffValues}
-import edf.dataload.{considerBatchWindowInd, formatDBName, loadType, piiListMultiMap, restartabilityInd, stgLoadBatch, stgTableMap, turnOffAudit, writeToDynamoDB}
+import edf.dataload.{considerBatchWindowInd, formatDBName, loadType, piiListMultiMap, restartabilityInd, stgLoadBatch, stgTableMap, auditThroughStreaming, writeToDynamoDB}
 import edf.utilities.{Holder, MetaInfo}
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
@@ -36,7 +36,7 @@ object PrepareDataToWrite {
       getOrElse(tableToBeIngested,"").toUpperCase() else ""
 
     val (cdcColMax, min_window, max_window) =
-      if(turnOffAudit || considerBatchWindow == "Y" ||
+      if(auditThroughStreaming || considerBatchWindow == "Y" ||
       (stgLoadBatch && (loadType == "TL" || tableLoadType == "TL") &&
         !cdcColMaxStr._2.endsWith("id")))
       (null,null,null)
@@ -60,7 +60,7 @@ object PrepareDataToWrite {
         if stgLoadBatch && loadType == "TL" => HrmnzdDataPull.getTLDataFromHrmnzd(tableDF_arr(2), piiColList, cdcColMaxStr._2)
       case "N"
         if stgLoadBatch && tableLoadType == "TL" => HrmnzdDataPull.getTLDataFromHrmnzd(tableDF_arr(2), piiColList, cdcColMaxStr._2)
-      case "N" if turnOffAudit => TypeTableJoins.joinTypeTables(spark, tableToBeIngested, ref_col_list,
+      case "N" if auditThroughStreaming => TypeTableJoins.joinTypeTables(spark, tableToBeIngested, ref_col_list,
         tableGroup, batchPartition)
       case "N" => TypeTableJoins.joinTypeTables(spark, tableToBeIngested, ref_col_list,
         tableGroup, batchPartition).filter(cdcColMax <= max_window)
@@ -72,7 +72,7 @@ object PrepareDataToWrite {
                                   tableToBeIngested, batchPartition, cdcColMaxStr._2,
                                   saveMode, tableLoadType)
 
-    if( turnOffAudit || (stgLoadBatch && (loadType == "TL" || tableLoadType == "TL") &&
+    if( auditThroughStreaming || (stgLoadBatch && (loadType == "TL" || tableLoadType == "TL") &&
           !cdcColMaxStr._2.endsWith("id"))) {
       val window = dfBeforePii.agg(min(cdcColMaxStr._1).as("min_window"),
         max(cdcColMaxStr._1).as("max_window")).rdd.

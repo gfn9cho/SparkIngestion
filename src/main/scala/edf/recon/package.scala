@@ -12,6 +12,7 @@ package object recon {
                 parseDateTime(now.toString("YYYY-MM-dd HH:mm:ss.sss"))
     val PV_ENDDATE = nowString.withTimeAtStartOfDay().
     minusMillis(1).toString("YYYY-MM-dd HH:mm:ss.SSS")
+    val PV_STARTDATE = "1900-01-01 00:00:00"
 
 
   val gwplSourceQuery = s"""( SELECT
@@ -849,4 +850,731 @@ val gwclLakeQuery = s"""SELECT
                          |COALESCE (cast(trans.OriginalCreateDate_Ext AS timestamp), cast(trans.CreateTime AS timestamp)) < cast('$PV_ENDDATE' as timestamp) and
                          |cast(lineitem.CreateTime as timestamp) < cast('$PV_ENDDATE' as timestamp)
                          |""".stripMargin
+
+  val gwbcSourceQuery = s"""(SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_BILL_INV_ITM_CNT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, count(distinct invitem.PublicID) AS auditresult
+                           |FROM dbo.bc_invoiceitem invitem
+                           |WHERE (invitem.UpdateTime <= '$PV_ENDDATE'
+                           |        OR invitem.CreateTime <= '$PV_ENDDATE' )
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_BILL_INV_ITM_AMT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, sum(invitem.Amount) AS auditresult
+                           |FROM dbo.bc_invoiceitem invitem
+                           |WHERE (invitem.UpdateTime <= '$PV_ENDDATE'
+                           |        OR invitem.CreateTime <= '$PV_ENDDATE' )
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_BILL_CHRG_CNT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, count(distinct chrg.PublicID) AS auditresult
+                           |FROM dbo.bc_charge chrg
+                           |WHERE chrg.CreateTime <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_BILL_CHRG_AMT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(chrg.Amount) AS auditresult
+                           |FROM dbo.bc_charge chrg
+                           |WHERE chrg.CreateTime <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_BILL_DIST_ITM_CNT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, count(distinct distitem.PublicID) AS auditresult
+                           |FROM dbo.bc_basedistitem distitem
+                           |WHERE (distitem.UpdateTime <= '$PV_ENDDATE'
+                           |        OR distitem.CreateTime <= '$PV_ENDDATE' )
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_GROSS_APPLY_AMT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(distitem.GrossAmountToApply) AS auditresult
+                           |FROM dbo.bc_basedistitem distitem
+                           |WHERE (distitem.UpdateTime <= '$PV_ENDDATE'
+                           |        OR distitem.CreateTime <= '$PV_ENDDATE' )
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_COMM_APPLY_AMT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(distitem.CommissionAmountToApply) AS auditresult
+                           |FROM dbo.bc_basedistitem distitem
+                           |WHERE (distitem.UpdateTime <= '$PV_ENDDATE'
+                           |        OR distitem.CreateTime <= '$PV_ENDDATE' )
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_BILL_DIST_CNT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, count(distinct basedist.PublicID) AS auditresult
+                           |FROM dbo.bc_basedist basedist
+                           |LEFT JOIN
+                           |    (SELECT DISTINCT ISNULL(ActiveDistID ,
+                           |         ReversedDistID ) AS DistID,
+                           |        MAX(CAST(CASE
+                           |        WHEN distitem.CreateTime > '$PV_STARTDATE'
+                           |            AND distitem.CreateTime <= '$PV_ENDDATE' THEN
+                           |        distitem.CreateTime
+                           |        ELSE distitem.UpdateTime
+                           |        END AS datetime2)) AS distitem_ROW_PROC_DTS
+                           |    FROM dbo.bc_basedistitem distitem
+                           |        WHERE (distitem.UpdateTime > '$PV_STARTDATE'
+                           |                AND distitem.UpdateTime <= '$PV_ENDDATE')
+                           |                OR (distitem.CreateTime > '$PV_STARTDATE'
+                           |                AND distitem.CreateTime <= '$PV_ENDDATE')
+                           |        GROUP BY  ISNULL(ActiveDistID , ReversedDistID )) disitem
+                           |        ON disitem.DistID = basedist.ID
+                           |WHERE ((basedist.UpdateTime <= '$PV_ENDDATE'
+                           |        OR basedist.CreateTime <= '$PV_ENDDATE' )
+                           |        OR distitem_ROW_PROC_DTS <= '$PV_ENDDATE')
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_BILL_DIST_WO_AMT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(basedist.WriteOffAmount) AS auditresult
+                           |FROM dbo.bc_basedist basedist
+                           |LEFT JOIN
+                           |    (SELECT DISTINCT ISNULL(ActiveDistID ,
+                           |         ReversedDistID ) AS DistID,
+                           |        MAX(CAST(CASE
+                           |        WHEN distitem.CreateTime > '$PV_STARTDATE'
+                           |            AND distitem.CreateTime <= '$PV_ENDDATE' THEN
+                           |        distitem.CreateTime
+                           |        ELSE distitem.UpdateTime
+                           |        END AS datetime2)) AS distitem_ROW_PROC_DTS
+                           |    FROM dbo.bc_basedistitem distitem
+                           |        WHERE (distitem.UpdateTime > '$PV_STARTDATE'
+                           |                AND distitem.UpdateTime <= '$PV_ENDDATE')
+                           |                OR (distitem.CreateTime > '$PV_STARTDATE'
+                           |                AND distitem.CreateTime <= '$PV_ENDDATE')
+                           |        GROUP BY  ISNULL(ActiveDistID , ReversedDistID )) disitem
+                           |        ON disitem.DistID = basedist.ID
+                           |WHERE ((basedist.UpdateTime <= '$PV_ENDDATE'
+                           |        OR basedist.CreateTime <= '$PV_ENDDATE' )
+                           |        OR distitem_ROW_PROC_DTS <= '$PV_ENDDATE')
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_BILL_WO_CNT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, count(distinct wo.PublicID) AS auditresult
+                           |FROM dbo.bc_writeoff wo
+                           |WHERE wo.CreateTime <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_REVERSED_AMT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(wo.ReversedAmount) AS auditresult
+                           |FROM dbo.bc_writeoff wo
+                           |WHERE wo.CreateTime <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_WO_AMT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(wo.Amount) AS auditresult
+                           |FROM dbo.bc_writeoff wo
+                           |WHERE wo.CreateTime <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'MTD_BILL_CHRG_TRANS_AMT' AS auditentity, DATEADD(mm, DATEDIFF(mm, 0, CAST('$PV_ENDDATE' AS DATE) ), 0) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_chargeinstancecontext cix
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = cix.TransactionID
+                           |JOIN dbo.bc_charge chrg
+                           |    ON chrg.ID = cix.ChargeID
+                           |JOIN dbo.bc_TAccountContainer TAC
+                           |    ON TAC.ID = chrg.TAccountContainerID
+                           |JOIN dbo.bctl_TAccountContainer TC
+                           |    ON TC.ID = TAC.Subtype
+                           |LEFT JOIN dbo.bc_policyperiod polper
+                           |    ON (polper.HiddenTAccountContainerID = chrg.TAccountContainerID
+                           |        AND TC.TYPECODE = 'PolTAcctContainer')
+                           |LEFT JOIN dbo.bc_policy pol
+                           |    ON pol.ID = polper.PolicyID
+                           |        AND pol.PCPublicID IS NOT NULL
+                           |LEFT JOIN dbo.bc_account a
+                           |    ON a.ID = pol.AccountID
+                           |LEFT JOIN dbo.bc_account ta
+                           |    ON (ta.HiddenTAccountContainerID = chrg.TAccountContainerID
+                           |        AND TC.TYPECODE = 'AcctTAcctContainer')
+                           |WHERE CONVERT(varchar(6), trans.TransactionDate, 112) = CONVERT(varchar(6), '$PV_ENDDATE', 112)
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'YTD_BILL_CHRG_TRANS_AMT' AS auditentity, cast(cast(YEAR('$PV_ENDDATE') AS varchar)+'-01-01' AS datetime2) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_chargeinstancecontext cix
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = cix.TransactionID
+                           |JOIN dbo.bc_charge chrg
+                           |    ON chrg.ID = cix.ChargeID
+                           |JOIN dbo.bc_TAccountContainer TAC
+                           |    ON TAC.ID = chrg.TAccountContainerID
+                           |JOIN dbo.bctl_TAccountContainer TC
+                           |    ON TC.ID = TAC.Subtype
+                           |LEFT JOIN dbo.bc_policyperiod polper
+                           |    ON (polper.HiddenTAccountContainerID = chrg.TAccountContainerID
+                           |        AND TC.TYPECODE = 'PolTAcctContainer')
+                           |LEFT JOIN dbo.bc_policy pol
+                           |    ON pol.ID = polper.PolicyID
+                           |        AND pol.PCPublicID IS NOT NULL
+                           |LEFT JOIN dbo.bc_account a
+                           |    ON a.ID = pol.AccountID
+                           |LEFT JOIN dbo.bc_account ta
+                           |    ON (ta.HiddenTAccountContainerID = chrg.TAccountContainerID
+                           |        AND TC.TYPECODE = 'AcctTAcctContainer')
+                           |WHERE YEAR(trans.TransactionDate) = YEAR('$PV_ENDDATE')
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_BILL_NWO_CNT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, COUNT(DISTINCT nwo.PublicID) AS auditresult
+                           |FROM dbo.bc_negativewriteoff nwo
+                           |WHERE nwo.CreateTime <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_NWO_AMT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(nwo.Amount) AS auditresult
+                           |FROM dbo.bc_negativewriteoff nwo
+                           |WHERE nwo.CreateTime <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_DISB_AMT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(disb.Amount) AS auditresult
+                           |FROM dbo.bc_disbursement disb
+                           |WHERE disb.CreateTime <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_FUND_TRANFR_AMT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(ft.Amount) AS auditresult
+                           |FROM dbo.bc_fundsTransfer ft
+                           |WHERE ft.CreateTime <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_BILL_NONRECV_DIST_ITM_CNT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, COUNT(distinct distitem.PublicID) AS auditresult
+                           |FROM dbo.bc_basenonrecdistitem distitem
+                           |WHERE (distitem.UpdateTime <= '$PV_ENDDATE'
+                           |        OR distitem.CreateTime <= '$PV_ENDDATE' )
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_GROSS_NONRECV_APPLY_AMT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(distitem.GrossAmountToApply) AS auditresult
+                           |FROM dbo.bc_basenonrecdistitem distitem
+                           |WHERE (distitem.UpdateTime <= '$PV_ENDDATE'
+                           |        OR distitem.CreateTime <= '$PV_ENDDATE' )
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'TOTAL_COMM_NONRECV_APPLY_AMT' AS auditentity, '1900-01-01 00:00:00' AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(distitem.CommissionAmountToApply) AS auditresult
+                           |FROM dbo.bc_basenonrecdistitem distitem
+                           |WHERE (distitem.UpdateTime <= '$PV_ENDDATE'
+                           |        OR distitem.CreateTime <= '$PV_ENDDATE' )
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'MTD_BILL_PROD_TRANS_AMT' AS auditentity, DATEADD(mm, DATEDIFF(mm, 0, CAST('$PV_ENDDATE' AS DATE) ), 0) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_producercontext px
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = px.TransactionID
+                           |LEFT JOIN dbo.bc_chargecommission comm
+                           |    ON comm.ID = px.ChargeCommissionID
+                           |LEFT JOIN dbo.bc_charge chrg
+                           |    ON chrg.ID = comm.ChargeID
+                           |LEFT JOIN dbo.bc_policyperiod polper
+                           |    ON polper.HiddenTAccountContainerID = chrg.TAccountContainerID
+                           |LEFT JOIN dbo.bc_policy pol
+                           |    ON pol.ID = polper.PolicyID
+                           |        AND pol.PCPublicID IS NOT NULL
+                           |LEFT JOIN dbo.bc_account a
+                           |    ON a.ID = pol.AccountID
+                           |WHERE CONVERT(varchar(6), trans.TransactionDate, 112) = CONVERT(varchar(6), '$PV_ENDDATE', 112)
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'YTD_BILL_PROD_TRANS_AMT' AS auditentity, cast(cast(YEAR('$PV_ENDDATE') AS varchar)+'-01-01' AS datetime2) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_producercontext px
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = px.TransactionID
+                           |LEFT JOIN dbo.bc_chargecommission comm
+                           |    ON comm.ID = px.ChargeCommissionID
+                           |LEFT JOIN dbo.bc_charge chrg
+                           |    ON chrg.ID = comm.ChargeID
+                           |LEFT JOIN dbo.bc_policyperiod polper
+                           |    ON polper.HiddenTAccountContainerID = chrg.TAccountContainerID
+                           |LEFT JOIN dbo.bc_policy pol
+                           |    ON pol.ID = polper.PolicyID
+                           |        AND pol.PCPublicID IS NOT NULL
+                           |LEFT JOIN dbo.bc_account a
+                           |    ON a.ID = pol.AccountID
+                           |WHERE YEAR(trans.TransactionDate) = YEAR('$PV_ENDDATE')
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'MTD_BILL_ACCT_TRANS_AMT' AS auditentity, DATEADD(mm, DATEDIFF(mm, 0, CAST('$PV_ENDDATE' AS DATE) ), 0) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_accountcontext cix
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = cix.TransactionID
+                           |JOIN dbo.bc_account acc
+                           |    ON acc.ID = cix.AccountID
+                           |WHERE CONVERT(varchar(6), trans.TransactionDate, 112) = CONVERT(varchar(6), '$PV_ENDDATE', 112)
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'YTD_BILL_ACCT_TRANS_AMT' AS auditentity, cast(cast(YEAR('$PV_ENDDATE') AS varchar)+'-01-01' AS datetime2) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_accountcontext cix
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = cix.TransactionID
+                           |JOIN dbo.bc_account acc
+                           |    ON acc.ID = cix.AccountID
+                           |WHERE YEAR(trans.TransactionDate) = YEAR('$PV_ENDDATE')
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'MTD_BILL_DBMR_TRANS_AMT' AS auditentity, DATEADD(mm, DATEDIFF(mm, 0, CAST('$PV_ENDDATE' AS DATE) ), 0) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_dbmoneyrcvdcontext cix
+                           |JOIN dbo.bc_account acc
+                           |    ON acc.ID = cix.AccountID
+                           |LEFT JOIN dbo.bc_basemoneyreceived bsmr
+                           |    ON bsmr.ID = cix.DirectBillMoneyRcvdID
+                           |LEFT JOIN dbo.bc_policyperiod polper
+                           |    ON polper.ID = bsmr.PolicyPeriodID
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = cix.TransactionID
+                           |WHERE CONVERT(varchar(6), trans.TransactionDate, 112) = CONVERT(varchar(6), '$PV_ENDDATE', 112)
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'YTD_BILL_DBMR_TRANS_AMT' AS auditentity, cast(cast(YEAR('$PV_ENDDATE') AS varchar)+'-01-01' AS datetime2) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_dbmoneyrcvdcontext cix
+                           |JOIN dbo.bc_account acc
+                           |    ON acc.ID = cix.AccountID
+                           |LEFT JOIN dbo.bc_basemoneyreceived bsmr
+                           |    ON bsmr.ID = cix.DirectBillMoneyRcvdID
+                           |LEFT JOIN dbo.bc_policyperiod polper
+                           |    ON polper.ID = bsmr.PolicyPeriodID
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = cix.TransactionID
+                           |WHERE YEAR(trans.TransactionDate) = YEAR('$PV_ENDDATE')
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'MTD_BILL_SUSPYMT_TRANS_AMT' AS auditentity, DATEADD(mm, DATEDIFF(mm, 0, CAST('$PV_ENDDATE' AS DATE) ), 0) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_susppymtcontext cix
+                           |JOIN dbo.bc_suspensepayment spmt
+                           |    ON spmt.ID = cix.SuspensePaymentID
+                           |LEFT JOIN dbo.bc_policyperiod polper
+                           |    ON polper.ID = spmt.PolicyPeriodAppliedToID
+                           |LEFT JOIN dbo.bc_policy pol
+                           |    ON pol.ID = polper.PolicyID
+                           |        AND pol.PCPublicID IS NOT NULL
+                           |LEFT JOIN dbo.bc_account a
+                           |    ON a.ID = pol.AccountID
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = cix.TransactionID
+                           |WHERE CONVERT(varchar(6), trans.TransactionDate, 112) = CONVERT(varchar(6), '$PV_ENDDATE', 112)
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'YTD_BILL_SUSPYMT_TRANS_AMT' AS auditentity, cast(cast(YEAR('$PV_ENDDATE') AS varchar)+'-01-01' AS datetime2) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_susppymtcontext cix
+                           |JOIN dbo.bc_suspensepayment spmt
+                           |    ON spmt.ID = cix.SuspensePaymentID
+                           |LEFT JOIN dbo.bc_policyperiod polper
+                           |    ON polper.ID = spmt.PolicyPeriodAppliedToID
+                           |LEFT JOIN dbo.bc_policy pol
+                           |    ON pol.ID = polper.PolicyID
+                           |        AND pol.PCPublicID IS NOT NULL
+                           |LEFT JOIN dbo.bc_account a
+                           |    ON a.ID = pol.AccountID
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = cix.TransactionID
+                           |WHERE YEAR(trans.TransactionDate) = YEAR('$PV_ENDDATE')
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'MTD_BILL_TRANSFR_TRANS_AMT' AS auditentity, DATEADD(mm, DATEDIFF(mm, 0, CAST('$PV_ENDDATE' AS DATE) ), 0) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_transfertxcontext cix
+                           |LEFT JOIN dbo.bc_account sa
+                           |    ON sa.ID = cix.SourceAccountID
+                           |LEFT JOIN dbo.bc_account ta
+                           |    ON ta.ID = cix.TargetAccountID
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = cix.TransactionID
+                           |WHERE CONVERT(varchar(6), trans.TransactionDate, 112) = CONVERT(varchar(6), '$PV_ENDDATE', 112)
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'YTD_BILL_TRANSFR_TRANS_AMT' AS auditentity, cast(cast(YEAR('$PV_ENDDATE') AS varchar)+'-01-01' AS datetime2) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_transfertxcontext cix
+                           |LEFT JOIN dbo.bc_account sa
+                           |    ON sa.ID = cix.SourceAccountID
+                           |LEFT JOIN dbo.bc_account ta
+                           |    ON ta.ID = cix.TargetAccountID
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = cix.TransactionID
+                           |WHERE YEAR(trans.TransactionDate) = YEAR('$PV_ENDDATE')
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'MTD_BILL_NONRECV_TRANS_AMT' AS auditentity, DATEADD(mm, DATEDIFF(mm, 0, CAST('$PV_ENDDATE' AS DATE) ), 0) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_nonreceivableitemctx cix
+                           |JOIN dbo.bc_basenonrecdistitem bndi
+                           |    ON bndi.ID = cix.BaseNonReceivableDistItemID
+                           |LEFT JOIN dbo.bc_account acc
+                           |    ON acc.ID = cix.AccountWithSuspenseID
+                           |LEFT JOIN dbo.bc_policyperiod polper
+                           |    ON polper.ID = bndi.MatchingPolicyID
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = cix.TransactionID
+                           |WHERE CONVERT(varchar(6), trans.TransactionDate, 112) = CONVERT(varchar(6), '$PV_ENDDATE', 112)
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'YTD_BILL_NONRECV_TRANS_AMT' AS auditentity, cast(cast(YEAR('$PV_ENDDATE') AS varchar)+'-01-01' AS datetime2) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_nonreceivableitemctx cix
+                           |JOIN dbo.bc_basenonrecdistitem bndi
+                           |    ON bndi.ID = cix.BaseNonReceivableDistItemID
+                           |LEFT JOIN dbo.bc_account acc
+                           |    ON acc.ID = cix.AccountWithSuspenseID
+                           |LEFT JOIN dbo.bc_policyperiod polper
+                           |    ON polper.ID = bndi.MatchingPolicyID
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = cix.TransactionID
+                           |WHERE YEAR(trans.TransactionDate) = YEAR('$PV_ENDDATE')
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'MTD_BILL_CREDIT_TRANS_AMT' AS auditentity, DATEADD(mm, DATEDIFF(mm, 0, CAST('$PV_ENDDATE' AS DATE) ), 0) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_creditcontext cix
+                           |JOIN dbo.bc_account acc
+                           |    ON acc.ID = cix.AccountID
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = cix.TransactionID
+                           |WHERE CONVERT(varchar(6), trans.TransactionDate, 112) = CONVERT(varchar(6), '$PV_ENDDATE', 112)
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE'
+                           |UNION
+                           |SELECT '$PV_ENDDATE' AS extractdate,
+                           |         'GWBC' AS source_system, 'YTD_BILL_CREDIT_TRANS_AMT' AS auditentity, cast(cast(YEAR('$PV_ENDDATE') AS varchar)+'-01-01' AS datetime2) AS auditfrom, '$PV_ENDDATE' AS auditthru, SUM(trans.Amount) AS auditresult
+                           |FROM dbo.bc_creditcontext cix
+                           |JOIN dbo.bc_account acc
+                           |    ON acc.ID = cix.AccountID
+                           |JOIN dbo.bc_transaction trans
+                           |    ON trans.ID = cix.TransactionID
+                           |WHERE YEAR(trans.TransactionDate) = YEAR('$PV_ENDDATE')
+                           |        AND trans.TransactionDate <= '$PV_ENDDATE' ) a""".stripMargin
+
+  val gwbcLakeQuery = s"""SELECT 'TOTAL_BILL_INV_ITM_CNT' AS auditentity, count(distinct invitem.PublicID) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_invoiceitem invitem
+                         |WHERE (invitem.UpdateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |        OR invitem.CreateTime <= cast('$PV_ENDDATE' as timestamp) )
+                         |UNION
+                         |SELECT 'TOTAL_BILL_INV_ITM_AMT' AS auditentity, sum(invitem.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_invoiceitem invitem
+                         |WHERE (invitem.UpdateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |        OR invitem.CreateTime <= cast('$PV_ENDDATE' as timestamp) )
+                         |UNION
+                         |SELECT  'TOTAL_BILL_CHRG_CNT' AS auditentity,  count(distinct chrg.PublicID) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_charge chrg
+                         |WHERE chrg.CreateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'TOTAL_BILL_CHRG_AMT' AS auditentity,  SUM(chrg.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_charge chrg
+                         |WHERE chrg.CreateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'TOTAL_BILL_DIST_ITM_CNT' AS auditentity,  count(distinct distitem.PublicID) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_basedistitem distitem
+                         |WHERE (distitem.UpdateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |        OR distitem.CreateTime <= cast('$PV_ENDDATE' as timestamp) )
+                         |UNION
+                         |SELECT  'TOTAL_GROSS_APPLY_AMT' AS auditentity,  SUM(distitem.GrossAmountToApply) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_basedistitem distitem
+                         |WHERE (distitem.UpdateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |        OR distitem.CreateTime <= cast('$PV_ENDDATE' as timestamp) )
+                         |UNION
+                         |SELECT  'TOTAL_COMM_APPLY_AMT' AS auditentity,  SUM(distitem.CommissionAmountToApply) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_basedistitem distitem
+                         |WHERE (distitem.UpdateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |        OR distitem.CreateTime <= cast('$PV_ENDDATE' as timestamp) )
+                         |UNION
+                         |SELECT  'TOTAL_BILL_DIST_CNT' AS auditentity,  count(distinct basedist.PublicID) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_basedist basedist
+                         |LEFT JOIN
+                         |    (SELECT COALESCE(ActiveDistID ,
+                         |         ReversedDistID ) AS DistID ,
+                         |        CASE
+                         |        WHEN distitem.CreateTime > cast('$PV_STARTDATE' as timestamp)
+                         |            AND distitem.CreateTime <= cast('$PV_ENDDATE' as timestamp) THEN
+                         |        MAX(distitem.CreateTime)
+                         |        ELSE MAX(distitem.UpdateTime)
+                         |        END AS distitem_ROW_PROC_DTS
+                         |    FROM $hiveDB.stg_gwbc_bc_basedistitem distitem
+                         |        WHERE (distitem.UpdateTime > cast('$PV_STARTDATE' as timestamp)
+                         |                AND distitem.UpdateTime <= cast('$PV_ENDDATE' as timestamp))
+                         |                OR (distitem.CreateTime > cast('$PV_STARTDATE' as timestamp)
+                         |                AND distitem.CreateTime <= cast('$PV_ENDDATE' as timestamp))
+                         |        GROUP BY  COALESCE(ActiveDistID , ReversedDistID ) ,distitem.CreateTime,distitem.UpdateTime ) disitem
+                         |        ON disitem.DistID = basedist.ID
+                         |WHERE ((basedist.UpdateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |        OR basedist.CreateTime <= cast('$PV_ENDDATE' as timestamp) )
+                         |        OR distitem_ROW_PROC_DTS <= cast('$PV_ENDDATE' as timestamp))
+                         |UNION
+                         |SELECT   'TOTAL_BILL_DIST_WO_AMT' AS auditentity,  SUM(basedist.WriteOffAmount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_basedist basedist
+                         |LEFT JOIN
+                         |    (SELECT COALESCE(ActiveDistID ,
+                         |         ReversedDistID ) AS DistID,
+                         |        CASE
+                         |        WHEN distitem.CreateTime > cast('$PV_STARTDATE' as timestamp)
+                         |            AND distitem.CreateTime <= cast('$PV_ENDDATE' as timestamp) THEN
+                         |        MAX(distitem.CreateTime)
+                         |        ELSE MAX(distitem.UpdateTime)
+                         |        END AS distitem_ROW_PROC_DTS
+                         |    FROM $hiveDB.stg_gwbc_bc_basedistitem distitem
+                         |        WHERE (distitem.UpdateTime > cast('$PV_STARTDATE' as timestamp)
+                         |                AND distitem.UpdateTime <= cast('$PV_ENDDATE' as timestamp))
+                         |                OR (distitem.CreateTime > cast('$PV_STARTDATE' as timestamp)
+                         |                AND distitem.CreateTime <= cast('$PV_ENDDATE' as timestamp))
+                         |        GROUP BY  COALESCE(ActiveDistID , ReversedDistID ),distitem.CreateTime ) disitem
+                         |        ON disitem.DistID = basedist.ID
+                         |WHERE (basedist.UpdateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |        OR basedist.CreateTime <= cast('$PV_ENDDATE' as timestamp) )
+                         |        OR distitem_ROW_PROC_DTS <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'TOTAL_BILL_WO_CNT' AS auditentity,  count(distinct wo.PublicID) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_writeoff wo
+                         |WHERE wo.CreateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'TOTAL_REVERSED_AMT' AS auditentity,  SUM(wo.ReversedAmount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_writeoff wo
+                         |WHERE wo.CreateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'TOTAL_WO_AMT' AS auditentity,  SUM(wo.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_writeoff wo
+                         |WHERE wo.CreateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'MTD_BILL_CHRG_TRANS_AMT' AS auditentity, SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_chargeinstancecontext cix
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = cix.TransactionID
+                         |JOIN $hiveDB.stg_gwbc_bc_charge chrg
+                         |    ON chrg.ID = cix.ChargeID
+                         |JOIN $hiveDB.stg_gwbc_bc_TAccountContainer TAC
+                         |    ON TAC.ID = chrg.TAccountContainerID
+                         |JOIN $hiveDB.stg_gwbc_bc_taccountcontainer TC
+                         |    ON TC.ID = TAC.Subtype
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policyperiod polper
+                         |    ON (polper.HiddenTAccountContainerID = chrg.TAccountContainerID
+                         |        AND TC.bctl_taccountcontainer_typecode_subtype = 'PolTAcctContainer' )
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policy pol
+                         |    ON pol.ID = polper.PolicyID
+                         |        AND pol.PCPublicID IS NOT NULL
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_account a
+                         |    ON a.ID = pol.AccountID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_account ta
+                         |    ON (ta.HiddenTAccountContainerID = chrg.TAccountContainerID
+                         |        AND TC.bctl_taccountcontainer_typecode_subtype = 'AcctTAcctContainer')
+                         |WHERE replace(substring(trans.TransactionDate, 1, 7),'-','') = replace(substring(cast('$PV_ENDDATE' as timestamp), 1, 7),'-','')
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'YTD_BILL_CHRG_TRANS_AMT' AS auditentity, SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_chargeinstancecontext cix
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = cix.TransactionID
+                         |JOIN $hiveDB.stg_gwbc_bc_charge chrg
+                         |    ON chrg.ID = cix.ChargeID
+                         |JOIN $hiveDB.stg_gwbc_bc_TAccountContainer TAC
+                         |    ON TAC.ID = chrg.TAccountContainerID
+                         |JOIN $hiveDB.stg_gwbc_bc_taccountcontainer TC
+                         |    ON TC.ID = TAC.Subtype
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policyperiod polper
+                         |    ON (polper.HiddenTAccountContainerID = chrg.TAccountContainerID
+                         |        AND TC.bctl_taccountcontainer_typecode_subtype = 'PolTAcctContainer')
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policy pol
+                         |    ON pol.ID = polper.PolicyID
+                         |        AND pol.PCPublicID IS NOT NULL
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_account a
+                         |    ON a.ID = pol.AccountID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_account ta
+                         |    ON (ta.HiddenTAccountContainerID = chrg.TAccountContainerID
+                         |        AND TC.bctl_taccountcontainer_typecode_subtype = 'AcctTAcctContainer')
+                         |WHERE YEAR(trans.TransactionDate) = YEAR(cast('$PV_ENDDATE' as timestamp))
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'TOTAL_BILL_NWO_CNT' AS auditentity,  COUNT(DISTINCT nwo.PublicID) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_negativewriteoff nwo
+                         |WHERE nwo.CreateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'TOTAL_NWO_AMT' AS auditentity,  SUM(nwo.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_negativewriteoff nwo
+                         |WHERE nwo.CreateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'TOTAL_DISB_AMT' AS auditentity,  SUM(disb.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_disbursement disb
+                         |WHERE disb.CreateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'TOTAL_FUND_TRANFR_AMT' AS auditentity,  SUM(ft.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_fundsTransfer ft
+                         |WHERE ft.CreateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'TOTAL_BILL_NONRECV_DIST_ITM_CNT' AS auditentity,  COUNT(distinct distitem.PublicID) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_basenonrecdistitem distitem
+                         |WHERE (distitem.UpdateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |        OR distitem.CreateTime <= cast('$PV_ENDDATE' as timestamp) )
+                         |UNION
+                         |SELECT  'TOTAL_GROSS_NONRECV_APPLY_AMT' AS auditentity,  SUM(distitem.GrossAmountToApply) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_basenonrecdistitem distitem
+                         |WHERE (distitem.UpdateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |        OR distitem.CreateTime <= cast('$PV_ENDDATE' as timestamp) )
+                         |UNION
+                         |SELECT  'TOTAL_COMM_NONRECV_APPLY_AMT' AS auditentity,  SUM(distitem.CommissionAmountToApply) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_basenonrecdistitem distitem
+                         |WHERE (distitem.UpdateTime <= cast('$PV_ENDDATE' as timestamp)
+                         |        OR distitem.CreateTime <= cast('$PV_ENDDATE' as timestamp) )
+                         |UNION
+                         |SELECT  'MTD_BILL_PROD_TRANS_AMT' AS auditentity, SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_producercontext px
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = px.TransactionID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_chargecommission comm
+                         |    ON comm.ID = px.ChargeCommissionID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_charge chrg
+                         |    ON chrg.ID = comm.ChargeID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policyperiod polper
+                         |    ON polper.HiddenTAccountContainerID = chrg.TAccountContainerID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policy pol
+                         |    ON pol.ID = polper.PolicyID
+                         |        AND pol.PCPublicID IS NOT NULL
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_account a
+                         |    ON a.ID = pol.AccountID
+                         |WHERE replace(substring(trans.TransactionDate, 1, 7),'-','') = replace(substring(cast('$PV_ENDDATE' as timestamp), 1, 7),'-','')
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'YTD_BILL_PROD_TRANS_AMT' AS auditentity, SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_producercontext px
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = px.TransactionID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_chargecommission comm
+                         |    ON comm.ID = px.ChargeCommissionID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_charge chrg
+                         |    ON chrg.ID = comm.ChargeID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policyperiod polper
+                         |    ON polper.HiddenTAccountContainerID = chrg.TAccountContainerID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policy pol
+                         |    ON pol.ID = polper.PolicyID
+                         |        AND pol.PCPublicID IS NOT NULL
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_account a
+                         |    ON a.ID = pol.AccountID
+                         |WHERE YEAR(trans.TransactionDate) = YEAR(cast('$PV_ENDDATE' as timestamp))
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'MTD_BILL_ACCT_TRANS_AMT' AS auditentity, SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_accountcontext cix
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = cix.TransactionID
+                         |JOIN $hiveDB.stg_gwbc_bc_account acc
+                         |    ON acc.ID = cix.AccountID
+                         |WHERE replace(substring(trans.TransactionDate, 1, 7),'-','') = replace(substring(cast('$PV_ENDDATE' as timestamp), 1, 7),'-','')
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'YTD_BILL_ACCT_TRANS_AMT' AS auditentity, SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_accountcontext cix
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = cix.TransactionID
+                         |JOIN $hiveDB.stg_gwbc_bc_account acc
+                         |    ON acc.ID = cix.AccountID
+                         |WHERE YEAR(trans.TransactionDate) = YEAR(cast('$PV_ENDDATE' as timestamp))
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'MTD_BILL_DBMR_TRANS_AMT' AS auditentity, SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_dbmoneyrcvdcontext cix
+                         |JOIN $hiveDB.stg_gwbc_bc_account acc
+                         |    ON acc.ID = cix.AccountID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_basemoneyreceived bsmr
+                         |    ON bsmr.ID = cix.DirectBillMoneyRcvdID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policyperiod polper
+                         |    ON polper.ID = bsmr.PolicyPeriodID
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = cix.TransactionID
+                         |WHERE replace(substring(trans.TransactionDate, 1, 7),'-','') = replace(substring(cast('$PV_ENDDATE' as timestamp), 1, 7),'-','')
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'YTD_BILL_DBMR_TRANS_AMT' AS auditentity, SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_dbmoneyrcvdcontext cix
+                         |JOIN $hiveDB.stg_gwbc_bc_account acc
+                         |    ON acc.ID = cix.AccountID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_basemoneyreceived bsmr
+                         |    ON bsmr.ID = cix.DirectBillMoneyRcvdID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policyperiod polper
+                         |    ON polper.ID = bsmr.PolicyPeriodID
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = cix.TransactionID
+                         |WHERE YEAR(trans.TransactionDate) = YEAR(cast('$PV_ENDDATE' as timestamp))
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'MTD_BILL_SUSPYMT_TRANS_AMT' AS auditentity,  SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_susppymtcontext cix
+                         |JOIN $hiveDB.stg_gwbc_bc_suspensepayment spmt
+                         |    ON spmt.ID = cix.SuspensePaymentID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policyperiod polper
+                         |    ON polper.ID = spmt.PolicyPeriodAppliedToID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policy pol
+                         |    ON pol.ID = polper.PolicyID
+                         |        AND pol.PCPublicID IS NOT NULL
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_account a
+                         |    ON a.ID = pol.AccountID
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = cix.TransactionID
+                         |WHERE replace(substring(trans.TransactionDate, 1, 7),'-','') = replace(substring(cast('$PV_ENDDATE' as timestamp), 1, 7),'-','')
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'YTD_BILL_SUSPYMT_TRANS_AMT' AS auditentity, SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_susppymtcontext cix
+                         |JOIN $hiveDB.stg_gwbc_bc_suspensepayment spmt
+                         |    ON spmt.ID = cix.SuspensePaymentID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policyperiod polper
+                         |    ON polper.ID = spmt.PolicyPeriodAppliedToID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policy pol
+                         |    ON pol.ID = polper.PolicyID
+                         |        AND pol.PCPublicID IS NOT NULL
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_account a
+                         |    ON a.ID = pol.AccountID
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = cix.TransactionID
+                         |WHERE YEAR(trans.TransactionDate) = YEAR(cast('$PV_ENDDATE' as timestamp))
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'MTD_BILL_TRANSFR_TRANS_AMT' AS auditentity,  SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_transfertxcontext cix
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_account sa
+                         |    ON sa.ID = cix.SourceAccountID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_account ta
+                         |    ON ta.ID = cix.TargetAccountID
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = cix.TransactionID
+                         |WHERE replace(substring(trans.TransactionDate, 1, 7),'-','') = replace(substring(cast('$PV_ENDDATE' as timestamp), 1, 7),'-','')
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'YTD_BILL_TRANSFR_TRANS_AMT' AS auditentity, SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_transfertxcontext cix
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_account sa
+                         |    ON sa.ID = cix.SourceAccountID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_account ta
+                         |    ON ta.ID = cix.TargetAccountID
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = cix.TransactionID
+                         |WHERE YEAR(trans.TransactionDate) = YEAR(cast('$PV_ENDDATE' as timestamp))
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'MTD_BILL_NONRECV_TRANS_AMT' AS auditentity, SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_nonreceivableitemctx cix
+                         |JOIN $hiveDB.stg_gwbc_bc_basenonrecdistitem bndi
+                         |    ON bndi.ID = cix.BaseNonReceivableDistItemID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_account acc
+                         |    ON acc.ID = cix.AccountWithSuspenseID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policyperiod polper
+                         |    ON polper.ID = bndi.MatchingPolicyID
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = cix.TransactionID
+                         |WHERE replace(substring(trans.TransactionDate, 1, 7),'-','') = replace(substring(cast('$PV_ENDDATE' as timestamp), 1, 7),'-','')
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'YTD_BILL_NONRECV_TRANS_AMT' AS auditentity, SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_nonreceivableitemctx cix
+                         |JOIN $hiveDB.stg_gwbc_bc_basenonrecdistitem bndi
+                         |    ON bndi.ID = cix.BaseNonReceivableDistItemID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_account acc
+                         |    ON acc.ID = cix.AccountWithSuspenseID
+                         |LEFT JOIN $hiveDB.stg_gwbc_bc_policyperiod polper
+                         |    ON polper.ID = bndi.MatchingPolicyID
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = cix.TransactionID
+                         |WHERE YEAR(trans.TransactionDate) = YEAR(cast('$PV_ENDDATE' as timestamp))
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'MTD_BILL_CREDIT_TRANS_AMT' AS auditentity, SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_creditcontext cix
+                         |JOIN $hiveDB.stg_gwbc_bc_account acc
+                         |    ON acc.ID = cix.AccountID
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = cix.TransactionID
+                         |WHERE replace(substring(trans.TransactionDate, 1, 7),'-','') = replace(substring(cast('$PV_ENDDATE' as timestamp), 1, 7),'-','')
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)
+                         |UNION
+                         |SELECT  'YTD_BILL_CREDIT_TRANS_AMT' AS auditentity, SUM(trans.Amount) AS AuditResult
+                         |FROM $hiveDB.stg_gwbc_bc_creditcontext cix
+                         |JOIN $hiveDB.stg_gwbc_bc_account acc
+                         |    ON acc.ID = cix.AccountID
+                         |JOIN $hiveDB.stg_gwbc_bc_transaction trans
+                         |    ON trans.ID = cix.TransactionID
+                         |WHERE YEAR(trans.TransactionDate) = YEAR(cast('$PV_ENDDATE' as timestamp))
+                         |        AND trans.TransactionDate <= cast('$PV_ENDDATE' as timestamp)""".stripMargin
 }

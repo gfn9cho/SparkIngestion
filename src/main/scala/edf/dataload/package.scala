@@ -250,21 +250,23 @@ package object dataload {
     val transformDB: String =  propertyMap.getOrElse("spark.ingestion.transformDB", "transformed")
     val reconResultPath: String =  propertyMap.getOrElse("spark.ingestion.reconResultPath", "")
 
-    val turnOffAudit: Boolean =   propertyMap.getOrElse("spark.ingestion.turnOffAudit", "false") == "true"
+    val auditThroughStreaming: Boolean =   propertyMap.getOrElse("spark.ingestion.auditThroughStreaming", "false") == "true"
     val writeToDynamoDB: Boolean = propertyMap.getOrElse("spark.ingestion.writeToDynamoDB", "false") == "true"
     val ddbRegion = propertyMap.getOrElse("spark.dynamodb.ddbRegion","us-east-1")
     val ddbRoleArn = propertyMap.getOrElse("spark.dynamodb.ddbRoleArn","arn:aws:iam::605736271663:role/datalake-sa360-role")
     val ddbTableMapFile: String = propertyMap.getOrElse("spark.dynamodb.ddbTableMapFile","")
-    val ddbTableMapList: List[(String, String, String, String)] = writeToDynamoDB match {
+    val ddbTableMapList: List[(String, String, String, String, String, String)] = writeToDynamoDB match {
     case true => Source.fromFile(ddbTableMapFile).getLines.toList.map(table => {
-        val splitted = table.toLowerCase.split("->", -1)
-        (splitted(0).trim, splitted(1).trim, splitted(2).trim, splitted(3).trim)
+        val splitted = table.split("->", -1).map(_.trim)
+        (splitted(0).toLowerCase, splitted(1).toLowerCase, splitted(2).toLowerCase,
+          splitted(3).toLowerCase, splitted(4).toLowerCase, splitted(5))
       })
-    case _ => List.empty[(String, String, String, String)]
+    case _ => List.empty[(String, String, String, String, String, String)]
     }
-    val ddbTableMap: Map[String, (String, String, String)] = ddbTableMapList.
-                            map(table => table._1 -> (table._2, table._3, table._4)).toMap
+    val ddbTableMap: Map[String, (String, String, String, String, String)] = ddbTableMapList.
+                            map(table => table._1 -> (table._2, table._3, table._4, table._5, table._6)).toMap
     val ddbThrougPut: String =  propertyMap.getOrElse("spark.dynamodb.ddbThroughPut","200")
+    val writeUsingARN: Boolean = propertyMap.getOrElse("spark.dynamodb.writeUsingARN","false") == "true"
     /*
     *  def deleteStagePartition: Unit = {
         val stageAuditData = spark.sql(s"select * from $stageAuditHiveTable where where processName = '$processName' " +

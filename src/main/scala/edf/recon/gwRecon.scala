@@ -29,8 +29,10 @@ object gwRecon {
       options(Map("url" -> jdbcSqlConnStr, "Driver" -> driver, "dbTable" -> srcQuery)).load
     val lakeDF = spark.sql(lakeQuery)
 
-    val srcDf = sourceDF.
-      select(col("extractdate"),col("polstatus"),col("auditentity"),col("auditfrom"),
+    val srcDf_temp = if(src_sstm_cd == "GWBC")
+    sourceDF.withColumn("polstatus", lit(null)) else sourceDF
+
+     val srcDf = srcDf_temp.select(col("extractdate"),col("polstatus"),col("auditentity"),col("auditfrom"),
         col("auditthru"),col("auditresult").as("src_value")).
       withColumn("source_system_cd", lit(src_sstm_cd))
     val dlDf = lakeDF.
